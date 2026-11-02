@@ -294,6 +294,21 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important }
 }
 :focus-visible { outline: 4px solid var(--pink); outline-offset: 3px }
+
+/* policz stado (mini-gra) */
+.herd-sec { padding: 40px 0 0; background: #fff }
+.herd-card { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; background: #fff; border: 3px solid var(--ink); border-radius: 28px;
+  box-shadow: 0 8px 0 var(--ink); padding: 40px 48px; overflow: hidden }
+.herd-pic { position: relative; height: 230px; border-radius: 20px; border: 3px solid var(--ink); background: linear-gradient(var(--sky2), #fff 55%, var(--hill) 55.5%);
+  display: flex; align-items: flex-end; justify-content: center; gap: 6px; padding-bottom: 14px }
+.herd-pic img { height: 86px; width: auto }
+.herd-pic img.tall { height: 150px }
+.herd-pic .axis-mini { position: absolute; left: 8%; right: 8%; top: 34px; height: 4px; background: var(--ink); border-radius: 2px }
+.herd-pic .axis-mini i { position: absolute; top: -8px; width: 4px; height: 20px; background: var(--ink); border-radius: 2px }
+.herd-card .sub { margin-bottom: 18px }
+.herd-card .facts { margin-bottom: 24px }
+.herd-card .facts li { background: var(--sky2); border: 2px solid var(--ink) }
+@media (max-width: 960px) { .herd-card { grid-template-columns: 1fr; padding: 30px 24px; gap: 26px } }
 </style>
 </head>
 <body>
@@ -515,6 +530,26 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
         <li>Klasy 4, 5, 7 i 8</li><li>50:50 · telefon · publiczność</li><li>Rozwiązanie po każdym pytaniu</li><li>Działa na tablicy interaktywnej</li>
       </ul>
       <a class="btn btn-gold" href="https://paulinaniemiec.github.io/milionerzy/" target="_blank" rel="noopener"><span class="play"></span>Zagraj w Milionerów</a>
+    </div>
+  </div>
+</section>
+
+<section class="herd-sec" id="policz-stado">
+  <div class="wrap">
+    <div class="herd-card">
+      <div class="herd-pic" aria-hidden="true">
+        <span class="axis-mini"><i style="left:0"></i><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i><i style="right:0"></i></span>
+        <img class="tall" src="img/grok.png" alt="" loading="lazy"><img src="img/owca.png" alt="" loading="lazy"><img src="img/beata.png" alt="" loading="lazy">
+      </div>
+      <div>
+        <span class="eyebrow">Gra · pastwiska</span>
+        <h2>Policz stado!</h2>
+        <p class="sub">Mini-gra z Grokiem i owcą Beatą. Postaw owcę we właściwym miejscu na osi liczbowej i sprawdź, do których zagród stado zmieści się po równo. Za każde pastwisko są trzy gwiazdki.</p>
+        <ul class="facts">
+          <li>Oś liczbowa (odc. 5)</li><li>Cechy podzielności (odc. 2)</li><li>Podpowiedzi i ściąga</li><li>Działa na telefonie i tablicy</li>
+        </ul>
+        <a class="btn btn-main" href="gra.html"><span class="play"></span>Zagraj w Policz stado!</a>
+      </div>
     </div>
   </div>
 </section>
