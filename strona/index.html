@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grok liczy owce · animowana matematyka dla klas 4–5</title>
+<meta name="description" content="Animowany serial matematyczny dla uczniów klas 4–5 szkoły podstawowej. Grok, owca Beata i Kosmita tłumaczą liczby naturalne, podzielność, dzielenie pisemne, oś liczbową i zadania tekstowe.">
+<meta property="og:title" content="Grok liczy owce">
+<meta property="og:description" content="Animowana matematyka z owcami dla klas 4–5.">
+<meta property="og:image" content="img/odc-01.jpg">
+<meta name="theme-color" content="#7cc8f2">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;700;800;900&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root {
+  --ink: #2b2340;
+  --ink-soft: #5a5170;
+  --sky1: #7cc8f2;
+  --sky2: #d9f1ff;
+  --hill: #8fcf6a;
+  --hill2: #74b957;
+  --grass: #5da646;
+  --grass-dark: #4a8f38;
+  --yellow: #ffd84d;
+  --pink: #ff6fa8;
+  --blue: #3d8bfd;
+  --green: #2fbf71;
+  --orange: #ff9f1c;
+  --night: #1d2350;
+  --paper: #fffaf0;
+  --head: "Baloo 2", system-ui, sans-serif;
+  --body: "Nunito", system-ui, sans-serif;
+  --radius: 22px;
+}
+* { box-sizing: border-box }
+html { scroll-behavior: smooth }
+body { margin: 0; font: 600 18px/1.55 var(--body); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased }
+img { display: block; max-width: 100% }
+a { color: inherit }
+.wrap { width: min(1160px, 100% - 40px); margin-inline: auto }
+
+/* ---------- nagłówek ---------- */
+.nav { position: absolute; inset: 0 0 auto; z-index: 10; padding: 18px 0 }
+.nav .wrap { display: flex; align-items: center; gap: 28px }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 800 22px/1 var(--head); margin-right: auto }
+.brand img { width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--ink) }
+.nav a.link { text-decoration: none; font-weight: 800; font-size: 16px; opacity: .85 }
+.nav a.link:hover { opacity: 1; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 5px }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; font: 800 18px/1 var(--body); text-decoration: none; padding: 15px 26px 16px;
+  border-radius: 999px; border: 3px solid var(--ink); box-shadow: 0 5px 0 var(--ink); transition: transform .15s, box-shadow .15s; cursor: pointer }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink) }
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink) }
+.btn-yt { background: var(--ink); color: #fff; padding: 11px 18px 12px; font-size: 16px; box-shadow: 0 4px 0 #00000040; border-color: var(--ink) }
+.btn-main { background: var(--yellow); color: var(--ink) }
+.btn-ghost { background: #fff; color: var(--ink) }
+.play { width: 0; height: 0; border-left: 13px solid currentColor; border-top: 8px solid transparent; border-bottom: 8px solid transparent }
+.btn-yt .play { border-left-color: var(--yellow); border-left-width: 11px; border-top-width: 7px; border-bottom-width: 7px }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; background: linear-gradient(var(--sky1), var(--sky2) 78%); min-height: 760px; padding-top: 128px }
+.clouds { position: absolute; inset: 0; pointer-events: none }
+.cloud { position: absolute; fill: #fff; animation: drift linear infinite }
+@keyframes drift { from { transform: translateX(-12vw) } to { transform: translateX(112vw) } }
+
+.hero-copy { position: relative; z-index: 3; text-align: center }
+.title { margin: 0; font: 800 clamp(54px, 9.4vw, 124px)/.95 var(--head); letter-spacing: .5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 0 .22em }
+.title span { display: inline-block; -webkit-text-stroke: .11em var(--ink); paint-order: stroke fill; text-shadow: 0 .07em 0 var(--ink) }
+.title span:nth-child(1) { color: var(--yellow); rotate: -3deg }
+.title span:nth-child(2) { color: #fff; rotate: 2deg }
+.title span:nth-child(3) { color: var(--yellow); rotate: -2deg }
+.tag { display: inline-block; margin-top: 22px; background: var(--ink); color: #fff; font: 900 clamp(17px, 2vw, 24px)/1.2 var(--body); padding: 8px 22px 10px; border-radius: 16px; rotate: -1.5deg }
+.tag b { color: var(--yellow) }
+.lead { max-width: 560px; margin: 26px auto 0; font-size: 19px; font-weight: 700; color: var(--ink) }
+.cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 30px }
+
+.meadow { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; z-index: 1 }
+.meadow svg { position: absolute; bottom: 0; width: 100%; height: 100% }
+.meadow::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 28.6%; opacity: .55;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='86'%3E%3Cg fill='none' stroke='%234a8f38' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 34l4-12 4 10 4-10 4 12'/%3E%3Cpath d='M130 22l4-12 4 10 4-10 4 12'/%3E%3Cpath d='M80 70l4-12 4 10 4-10 4 12'/%3E%3Cpath d='M185 64l4-12 4 10 4-10 4 12'/%3E%3C/g%3E%3C/svg%3E") repeat-x 0 6px }
+.cast { position: absolute; left: 0; right: 0; bottom: 64px; z-index: 2; height: 0 }
+.cast > * { position: absolute; bottom: 0 }
+.grok { left: max(1vw, calc(50% - 700px)); width: clamp(190px, 21vw, 290px); bottom: -40px }
+.beata { right: max(13vw, calc(50% - 520px)); width: clamp(120px, 12vw, 170px); bottom: -10px }
+.kosmita { right: max(1vw, calc(50% - 690px)); width: clamp(90px, 9.5vw, 132px); bottom: -14px }
+.flock { left: max(22vw, calc(50% - 400px)); display: flex; align-items: flex-end; gap: 4px; bottom: -6px }
+
+.sheep { width: clamp(70px, 7vw, 100px); background: none; border: 0; padding: 0; cursor: pointer; transition: transform .2s }
+.sheep:hover { transform: translateY(-4px) rotate(-3deg) }
+.sheep.hop { animation: hop .5s cubic-bezier(.3,1.6,.5,1) }
+.sheep:nth-child(2) { width: clamp(58px, 5.8vw, 82px) }
+@keyframes hop { 0% { transform: translateY(0) } 40% { transform: translateY(-34px) rotate(-6deg) } 100% { transform: translateY(0) } }
+
+.bubble { position: absolute; left: max(calc(1vw + 150px), calc(50% - 560px)); bottom: clamp(300px, 30vw, 400px); background: #fff; border: 3px solid var(--ink);
+  border-radius: 18px; padding: 8px 16px 10px; font: 800 20px/1.1 var(--head); white-space: nowrap; box-shadow: 0 4px 0 var(--ink);
+  opacity: 0; transform: translateY(8px) scale(.9); transition: .2s; pointer-events: none; z-index: 4 }
+.bubble::after { content: ""; position: absolute; left: 26px; bottom: -13px; width: 18px; height: 18px; background: #fff; border: solid var(--ink); border-width: 0 3px 3px 0; rotate: 45deg }
+.bubble.on { opacity: 1; transform: none }
+.hint { position: absolute; z-index: 3; left: max(23vw, calc(50% - 380px)); bottom: 112px; font: 800 15px/1.2 var(--body); color: var(--ink);
+  background: #ffffffc0; padding: 5px 12px; border-radius: 999px; rotate: -3deg }
+
+/* ---------- sekcje ---------- */
+section { padding: 96px 0 }
+.eyebrow { display: inline-block; font: 900 14px/1 var(--body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink); background: var(--yellow);
+  padding: 7px 12px; border-radius: 8px; rotate: -2deg }
+h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
+.sub { max-width: 620px; margin: 0; font-size: 19px; color: var(--ink-soft) }
+.head-row { display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 40px }
+
+/* odcinki */
+.episodes { background: var(--paper) }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px }
+.ep { display: flex; flex-direction: column; text-decoration: none; background: #fff; border: 3px solid var(--ink); border-radius: var(--radius);
+  overflow: hidden; box-shadow: 0 6px 0 var(--ink); transition: transform .2s, box-shadow .2s }
+.ep:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: 0 10px 0 var(--ink) }
+.ep:nth-child(even):hover { transform: translateY(-4px) rotate(.6deg) }
+.thumb { position: relative; aspect-ratio: 16/9; border-bottom: 3px solid var(--ink); background: var(--sky2) }
+.thumb img { width: 100%; height: 100%; object-fit: cover }
+.dur { position: absolute; right: 10px; bottom: 10px; background: var(--ink); color: #fff; font: 800 13px/1 var(--body); padding: 5px 8px; border-radius: 7px }
+.ep-body { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1 }
+.ep-num { font: 900 13px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft) }
+.ep-num b { color: var(--ink); background: var(--yellow); padding: 3px 7px; border-radius: 6px; margin-right: 6px }
+.ep h3 { margin: 2px 0 0; font: 800 26px/1.1 var(--head) }
+.ep p { margin: 0; font-size: 16px; color: var(--ink-soft) }
+.ep .watch { margin-top: auto; padding-top: 10px; font-weight: 900; font-size: 15px; display: flex; align-items: center; gap: 8px }
+.ep .watch .play { border-left-width: 10px; border-top-width: 6px; border-bottom-width: 6px; color: var(--pink) }
+.ep.trailer { background: var(--ink); color: #fff }
+.ep.trailer .ep-body { justify-content: center; align-items: flex-start }
+.ep.trailer h3 { color: var(--yellow) }
+.ep.trailer p, .ep.trailer .ep-num { color: #cfc8e3 }
+
+/* bohaterowie */
+.cast-sec { background: linear-gradient(var(--sky2), #fff 70%) ; position: relative }
+.people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 44px }
+.person { background: #fff; border: 3px solid var(--ink); border-radius: var(--radius); box-shadow: 0 6px 0 var(--ink); padding: 0 26px 28px; text-align: center }
+.portrait { height: 250px; display: flex; align-items: flex-end; justify-content: center; margin: 0 -26px 22px; border-bottom: 3px solid var(--ink);
+  border-radius: 19px 19px 0 0; overflow: hidden; position: relative }
+.portrait::before { content: ""; position: absolute; width: 210px; height: 210px; border-radius: 50%; background: #ffffff80; top: 22px; left: 50%; translate: -50% 0 }
+.portrait img { position: relative; max-height: 220px; width: auto; margin-bottom: -2px }
+.p-grok .portrait { background: var(--yellow) }
+.p-grok .portrait img { max-height: 300px; margin-bottom: -80px }
+.p-beata .portrait { background: #ffc2da }
+.p-beata .portrait img { max-height: 170px; margin-bottom: 26px }
+.p-kosmita .portrait { background: #c9f0b4 }
+.p-kosmita .portrait img { max-height: 210px; margin-bottom: 0 }
+.person h3 { margin: 0; font: 800 32px/1 var(--head) }
+.person .role { display: inline-block; margin: 10px 0 12px; font: 900 13px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; border-radius: 7px; background: var(--ink); color: #fff }
+.person p { margin: 0; font-size: 17px; color: var(--ink-soft) }
+
+/* jak wygląda odcinek */
+.how { background: #fff }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 46px; margin-top: 48px; counter-reset: s }
+.step { position: relative }
+.digit { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; font: 800 42px/1 var(--head); color: #fff;
+  border: 4px solid var(--ink); box-shadow: 0 5px 0 var(--ink); -webkit-text-stroke: 6px var(--ink); paint-order: stroke fill; margin-bottom: 20px; padding-top: 4px }
+.step:nth-child(1) .digit { background: var(--blue) }
+.step:nth-child(2) .digit { background: var(--green) }
+.step:nth-child(3) .digit { background: var(--orange) }
+.step h3 { font: 800 28px/1.1 var(--head); margin: 0 0 8px }
+.step p { margin: 0; color: var(--ink-soft) }
+.stop { display: inline-block; background: var(--pink); color: #fff; font-weight: 900; padding: 0 8px; border-radius: 6px }
+
+/* dla nauczycieli */
+.teachers { padding: 0 0 96px; background: #fff }
+.panel { background: var(--yellow); border: 3px solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 var(--ink); padding: 52px 56px;
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; position: relative; overflow: hidden }
+.panel h2 { margin-top: 16px }
+.panel p { margin: 0 0 14px; font-size: 18px }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px }
+.checks li { background: #fff; border: 3px solid var(--ink); border-radius: 16px; padding: 12px 16px 12px 52px; font-weight: 800; position: relative }
+.checks li::before { content: ""; position: absolute; left: 16px; top: 50%; width: 20px; height: 20px; translate: 0 -50%; border-radius: 50%; background: var(--green);
+  box-shadow: inset 0 0 0 3px var(--ink) }
+.checks li::after { content: ""; position: absolute; left: 22px; top: calc(50% - 6px); width: 5px; height: 9px; border: solid #fff; border-width: 0 3px 3px 0; rotate: 45deg }
+
+/* stopka */
+footer { position: relative; background: var(--night); color: #fff; overflow: hidden; padding: 110px 0 40px; text-align: center }
+.stars { position: absolute; inset: 0; pointer-events: none }
+.star { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #fff; animation: tw 3s ease-in-out infinite }
+@keyframes tw { 50% { opacity: .25 } }
+.moon { overflow: hidden; position: absolute; top: 50px; right: 12%; width: 74px; height: 74px; border-radius: 50%; background: #fff3b0; box-shadow: 0 0 60px #fff3b066 }
+.moon::after { content: ""; position: absolute; width: 74px; height: 74px; border-radius: 50%; background: var(--night); top: -12px; left: 22px }
+.sleeper { position: relative; width: 150px; margin: 0 auto 6px }
+.zzz { position: absolute; right: -36px; top: -30px; font: 800 26px/1 var(--head); color: var(--yellow) }
+.zzz span { display: inline-block; animation: z 2.4s ease-in-out infinite }
+.zzz span:nth-child(2) { font-size: .8em; animation-delay: .4s } .zzz span:nth-child(3) { font-size: .6em; animation-delay: .8s }
+@keyframes z { 0%,100% { transform: translateY(0); opacity: .4 } 50% { transform: translateY(-8px); opacity: 1 } }
+footer h2 { margin: 18px 0 8px; color: #fff }
+footer .sub { margin: 0 auto 30px; color: #c7cbef }
+.fine { margin-top: 70px; font-size: 14px; color: #8f94c4; position: relative }
+
+/* ---------- responsywność ---------- */
+@media (max-width: 960px) {
+  .people, .steps { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto }
+  .steps { gap: 36px }
+  .panel { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px }
+  .nav a.link { display: none }
+  .beata { right: 18vw } .flock { left: 34vw } .hint { display: none }
+}
+@media (max-width: 640px) {
+  body { font-size: 17px }
+  .hero { min-height: 780px; padding-top: 104px }
+  .lead { font-size: 17px; padding-inline: 8px }
+  .grok { width: 160px; left: -12px; bottom: -28px }
+  .kosmita { width: 78px; right: 8px }
+  .beata { width: 108px; right: 84px }
+  .flock { display: none }
+  .bubble { left: 110px; bottom: 230px; font-size: 17px }
+  .meadow { height: 210px }
+  .cast { bottom: 40px }
+  section { padding: 72px 0 }
+  .grid { grid-template-columns: 1fr }
+  .brand span { display: none }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important }
+}
+:focus-visible { outline: 4px solid var(--pink); outline-offset: 3px }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/awatar.jpg" alt=""><span>Grok liczy owce</span></a>
+    <a class="link" href="#odcinki">Odcinki</a>
+    <a class="link" href="#bohaterowie">Bohaterowie</a>
+    <a class="link" href="#dla-nauczycieli">Dla nauczycieli</a>
+    <a class="btn btn-yt" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener"><span class="play"></span>YouTube</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-label="Grok liczy owce">
+  <div class="clouds" aria-hidden="true">
+    <svg class="cloud" style="top:120px; width:200px; animation-duration:95s; animation-delay:-20s" viewBox="-130 -90 260 150"><ellipse cx="0" cy="20" rx="120" ry="34"/><circle cx="-50" r="46"/><circle cx="10" cy="-20" r="60"/><circle cx="64" cy="4" r="40"/></svg>
+    <svg class="cloud" style="top:60px; width:130px; animation-duration:130s; animation-delay:-75s; opacity:.9" viewBox="-130 -90 260 150"><ellipse cx="0" cy="20" rx="120" ry="34"/><circle cx="-50" r="46"/><circle cx="10" cy="-20" r="60"/><circle cx="64" cy="4" r="40"/></svg>
+    <svg class="cloud" style="top:240px; width:160px; animation-duration:110s; animation-delay:-50s" viewBox="-130 -90 260 150"><ellipse cx="0" cy="20" rx="120" ry="34"/><circle cx="-50" r="46"/><circle cx="10" cy="-20" r="60"/><circle cx="64" cy="4" r="40"/></svg>
+    <svg class="cloud" style="top:330px; width:110px; animation-duration:150s; animation-delay:-120s; opacity:.85" viewBox="-130 -90 260 150"><ellipse cx="0" cy="20" rx="120" ry="34"/><circle cx="-50" r="46"/><circle cx="10" cy="-20" r="60"/><circle cx="64" cy="4" r="40"/></svg>
+  </div>
+
+  <div class="hero-copy wrap">
+    <h1 class="title"><span>GROK</span><span>LICZY</span><span>OWCE</span></h1>
+    <div class="tag">Matematyka z owcami · <b>klasy 4–5</b></div>
+    <p class="lead">Animowany serial o pasterzu, który musi policzyć swoje owce. Każdy odcinek to jeden temat z lekcji matematyki, wyjaśniony krok po kroku.</p>
+    <div class="cta">
+      <a class="btn btn-main" href="#odcinki"><span class="play"></span>Oglądaj odcinki</a>
+      <a class="btn btn-ghost" href="#bohaterowie">Poznaj bohaterów</a>
+    </div>
+  </div>
+
+  <div class="meadow" aria-hidden="true">
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="none">
+      <path d="M0 120 C 260 40, 520 60, 760 130 C 980 60, 1220 30, 1440 110 V300 H0Z" fill="#8fcf6a"/>
+      <path d="M0 175 C 300 120, 620 120, 900 165 C 1100 130, 1300 125, 1440 160 V300 H0Z" fill="#74b957"/>
+      <path d="M0 214 H1440 V300 H0Z" fill="#5da646"/>
+    </svg>
+  </div>
+
+  <div class="cast">
+    <div class="bubble" id="bubble" aria-live="polite"></div>
+    <img class="grok" src="img/grok.png" alt="Grok, pasterz, macha na powitanie">
+    <span class="hint">kliknij owcę!</span>
+    <div class="flock">
+      <button class="sheep" type="button" aria-label="Policz owcę"><img src="img/owca.png" alt=""></button>
+      <button class="sheep" type="button" aria-label="Policz owcę"><img src="img/owca.png" alt=""></button>
+    </div>
+    <button class="sheep beata" type="button" aria-label="Policz owcę Beatę"><img src="img/beata.png" alt=""></button>
+    <img class="kosmita" src="img/kosmita.png" alt="Kosmita">
+  </div>
+</section>
+
+<section class="episodes" id="odcinki">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">10 odcinków · około 5 minut</span>
+        <h2>Odcinki</h2>
+        <p class="sub">Najlepiej oglądać po kolei. W każdym są zagadki, przy których warto zatrzymać film i wziąć kartkę.</p>
+      </div>
+      <a class="btn btn-ghost" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener"><span class="play"></span>Cała playlista</a>
+    </div>
+
+    <!-- Linki do odcinków: po wrzuceniu na YouTube podmień href na adres filmu. -->
+    <div class="grid">
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-01.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:22</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#1</b>Klasa 4</span><h3>Liczby naturalne</h3>
+        <p>Grok nie zna liczb. Skąd się wzięło liczenie, po co nam setki i dlaczego zero to wielki wynalazek.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-02.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">7:25</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#2</b>Klasa 4</span><h3>Cechy podzielności</h3>
+        <p>Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-03.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:21</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#3</b>Klasa 4</span><h3>Liczby pierwsze i złożone</h3>
+        <p>Siedem owiec nie chce stanąć w równych rzędach. Dzielniki, liczby pierwsze i drzewko czynników.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-04.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:03</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#4</b>Klasa 4</span><h3>Dzielenie pisemne</h3>
+        <p>852 snopki siana do trzech zagród. Dzielenie pisemne krok po kroku, z resztą i przez liczbę dwucyfrową.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-05.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:26</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#5</b>Klasa 4</span><h3>Oś liczbowa</h3>
+        <p>Owce przy płocie to prawie oś liczbowa. Jednostka, równe odstępy i liczby schowane pod literami.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-06.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">3:47</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#6</b>Klasa 4</span><h3>Dodawanie i odejmowanie</h3>
+        <p>Składnik, suma, odjemna, odjemnik i różnica. Przylatuje Kosmita z zielonymi owcami.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-07.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:44</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#7</b>Klasa 4</span><h3>Szacowanie</h3>
+        <p>„Jedna… dwie… DUŻO!” Kiedy wystarczy oszacować i jak sprawdzić, czy wynik ma sens.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-08.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:45</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#8</b>Klasa 4</span><h3>Sprytne dodawanie</h3>
+        <p>Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-09.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:33</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#9</b>Klasa 4</span><h3>Wielka powtórka</h3>
+        <p>Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda?</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+        <div class="thumb"><img src="img/odc-10.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:23</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#10</b>Klasa 4</span><h3>Zadania tekstowe</h3>
+        <p>Ile lat ma pasterz? Zadania tekstowe w trzech krokach: dane, obliczenia i odpowiedź pełnym zdaniem.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
+      </a>
+      <div class="ep trailer">
+        <div class="ep-body"><span class="ep-num">Wkrótce</span><h3>Kolejne odcinki</h3>
+        <p>Grok wciąż liczy. Następne tematy są w drodze, a owiec też ciągle przybywa.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cast-sec" id="bohaterowie">
+  <div class="wrap">
+    <span class="eyebrow">Bohaterowie</span>
+    <h2>Kto liczy, a kogo liczą</h2>
+    <p class="sub">Trójka, która w każdym odcinku mierzy się z jednym tematem z lekcji matematyki.</p>
+    <div class="people">
+      <article class="person p-grok">
+        <div class="portrait"><img src="img/grok.png" alt="Grok" loading="lazy"></div>
+        <h3>Grok</h3><span class="role">Pasterz</span>
+        <p>Ma dużo owiec i jeszcze więcej pytań. Liczy na dziesięciu palcach, a gdy palców braknie, wymyśla coś sprytniejszego.</p>
+      </article>
+      <article class="person p-beata">
+        <div class="portrait"><img src="img/beata.png" alt="Owca Beata" loading="lazy"></div>
+        <h3>Beata</h3><span class="role">Najbardziej uparta owca</span>
+        <p>Nosi różową kokardę i zawsze stoi tam, gdzie nie trzeba. Przez nią Grokowi nic nie wychodzi równo, a lekcja robi się ciekawsza.</p>
+      </article>
+      <article class="person p-kosmita">
+        <div class="portrait"><img src="img/kosmita.png" alt="Kosmita" loading="lazy"></div>
+        <h3>Kosmita</h3><span class="role">Gość z kosmosu</span>
+        <p>Ma osiem palców, więc liczy po osiem. Przylatuje z zagadkami i zielonymi owcami, a czasem urządza kosmiczny egzamin.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <span class="eyebrow">Jak to działa</span>
+    <h2>Co jest w każdym odcinku</h2>
+    <div class="steps">
+      <div class="step"><div class="digit">1</div><h3>Historia z pastwiska</h3>
+        <p>Każdy temat zaczyna się od kłopotu Groka: owce do policzenia, siano do podzielenia albo zagadka od Kosmity.</p></div>
+      <div class="step"><div class="digit">2</div><h3>Zagadki w trakcie</h3>
+        <p>Gdy na ekranie pojawia się <span class="stop">Zatrzymaj film!</span>, pora wziąć kartkę i sprawdzić się samemu.</p></div>
+      <div class="step"><div class="digit">3</div><h3>Ściąga i quiz</h3>
+        <p>Na koniec zasady do przepisania do zeszytu i szybki quiz „prawda czy fałsz”.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="teachers" id="dla-nauczycieli">
+  <div class="wrap">
+    <div class="panel">
+      <div>
+        <span class="eyebrow" style="background:#fff">Dla nauczycieli i rodziców</span>
+        <h2>Pięć minut, jeden temat</h2>
+        <p>Odcinki trzymają się programu matematyki dla klasy 4. Dobrze sprawdzają się na początku lekcji, przy powtórce przed klasówką i wtedy, gdy trzeba nadrobić zaległości.</p>
+        <p>Wszystkie są za darmo na YouTube, z polskimi napisami i rozdziałami.</p>
+      </div>
+      <ul class="checks">
+        <li>Krótkie, około 5 minut</li>
+        <li>Polskie napisy i rozdziały</li>
+        <li>Zagadki do rozwiązania na kartce</li>
+        <li>Do oglądania razem na lekcji</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="moon" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative">
+    <div class="sleeper"><img src="img/owca-spi.png" alt=""><span class="zzz" aria-hidden="true"><span>Z</span><span>z</span><span>z</span></span></div>
+    <h2>Policzone? To dobranoc!</h2>
+    <p class="sub">Nowe odcinki pojawiają się na kanale. Zasubskrybuj, żeby Grok nie liczył sam.</p>
+    <a class="btn btn-main" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener"><span class="play"></span>Kanał na YouTube</a>
+    <p class="fine">Grok liczy owce · animowana matematyka dla klas 4–5 · © 2026</p>
+  </div>
+</footer>
+
+<script>
+// Liczenie owiec: Grok liczy jak w odcinku o szacowaniu.
+const words = ["Jedna!", "Dwie!", "Trzy!", "Cztery…", "Pięć!", "DUŻO!"];
+let n = 0, t;
+const bubble = document.getElementById("bubble");
+document.querySelectorAll(".sheep").forEach((s) => s.addEventListener("click", () => {
+  s.classList.remove("hop"); void s.offsetWidth; s.classList.add("hop");
+  bubble.textContent = words[n++ % words.length];
+  bubble.classList.add("on");
+  clearTimeout(t); t = setTimeout(() => bubble.classList.remove("on"), 1600);
+  document.querySelector(".hint")?.remove();
+}));
+// Gwiazdy w stopce
+const st = document.getElementById("stars");
+for (let i = 0; i < 46; i++) {
+  const d = document.createElement("i");
+  d.className = "star";
+  const r = Math.random();
+  d.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 70}%;animation-delay:${-Math.random() * 3}s;` + (r > .8 ? "width:6px;height:6px" : "");
+  st.appendChild(d);
+}
+</script>
+</body>
+</html>
