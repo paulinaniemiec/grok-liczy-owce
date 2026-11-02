@@ -9,3 +9,8 @@ Podgląd lokalny: otwórz `strona/index.html` w przeglądarce.
 
 Odcinki #1–#7 linkują do filmów na kanale `@grokliczyowce`, a klasy na kartach są wzięte z tytułów na YouTube. #8–#10 są oznaczone jako „Wkrótce”.
 Po wrzuceniu kolejnego odcinka w `index.html` zamień jego `<div class="ep soon" …>` na `<a class="ep" … href="https://www.youtube.com/watch?v=…">`, a plakietkę „Wkrótce” na czas trwania.
+
+## Mini-gra „Policz stado!”
+
+`strona/gra.html` to samodzielna gra (jeden plik, bez budowania). Gotowe pastwiska: „Owca na osi” (odc. 5) i „Zagrody” (odc. 2).
+Pozostałe są na mapie oznaczone jako „Wkrótce”. Linki do odcinków są w obiekcie `ODCINKI` w `gra.html`.
