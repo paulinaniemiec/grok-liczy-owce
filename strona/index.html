@@ -126,6 +126,18 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .ep p { margin: 0; font-size: 16px; color: var(--ink-soft) }
 .ep .watch { margin-top: auto; padding-top: 10px; font-weight: 900; font-size: 15px; display: flex; align-items: center; gap: 8px }
 .ep .watch .play { border-left-width: 10px; border-top-width: 6px; border-bottom-width: 6px; color: var(--pink) }
+.ep-num .k4 { color: var(--blue) } .ep-num .k5 { color: #e07d00 }
+.ep.soon { box-shadow: 0 6px 0 #2b234066; border-style: dashed }
+.ep.soon:hover { transform: none; box-shadow: 0 6px 0 #2b234066 }
+.ep.soon .thumb img { filter: saturate(.55) brightness(1.05); opacity: .8 }
+.ribbon { position: absolute; left: 12px; bottom: 12px; background: var(--pink); color: #fff; font: 900 13px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; padding: 7px 10px; border-radius: 8px; border: 2px solid var(--ink); rotate: -3deg }
+.ep .watch.later { color: var(--ink-soft) }
+.ep[hidden] { display: none }
+.playlists { display: flex; gap: 14px; flex-wrap: wrap }
+.filters { display: flex; gap: 10px; margin: -14px 0 30px; flex-wrap: wrap }
+.chip { font: 800 16px/1 var(--body); color: var(--ink); background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 9px 18px 10px; cursor: pointer }
+.chip:hover { background: #fff4c2 }
+.chip.on { background: var(--ink); color: var(--yellow) }
 .ep.trailer { background: var(--ink); color: #fff }
 .ep.trailer .ep-body { justify-content: center; align-items: flex-start }
 .ep.trailer h3 { color: var(--yellow) }
@@ -275,65 +287,73 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
   <div class="wrap">
     <div class="head-row">
       <div>
-        <span class="eyebrow">10 odcinków · około 5 minut</span>
+        <span class="eyebrow">7 odcinków na YouTube · kolejne wkrótce</span>
         <h2>Odcinki</h2>
         <p class="sub">Najlepiej oglądać po kolei. W każdym są zagadki, przy których warto zatrzymać film i wziąć kartkę.</p>
       </div>
-      <a class="btn btn-ghost" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener"><span class="play"></span>Cała playlista</a>
+      <div class="playlists">
+        <a class="btn btn-ghost" href="https://www.youtube.com/playlist?list=PLWAZGF4-ivZc" target="_blank" rel="noopener"><span class="play"></span>Playlista klasa 4</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/playlist?list=PLOltZXzmRTJY" target="_blank" rel="noopener"><span class="play"></span>Playlista klasa 5</a>
+      </div>
+    </div>
+    <div class="filters" role="group" aria-label="Pokaż odcinki dla klasy">
+      <button type="button" class="chip on" data-f="all">Wszystkie</button>
+      <button type="button" class="chip" data-f="4">Klasa 4</button>
+      <button type="button" class="chip" data-f="5">Klasa 5</button>
     </div>
 
     <!-- Linki do odcinków: po wrzuceniu na YouTube podmień href na adres filmu. -->
     <div class="grid">
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+      <a class="ep" data-klasa="4" href="https://www.youtube.com/watch?v=NEiQK3w0GOs" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-01.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:22</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#1</b>Klasa 4</span><h3>Liczby naturalne</h3>
+        <div class="ep-body"><span class="ep-num"><b>#1</b><span class="k4">Klasa 4</span></span><h3>Liczby naturalne</h3>
         <p>Grok nie zna liczb. Skąd się wzięło liczenie, po co nam setki i dlaczego zero to wielki wynalazek.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+      <a class="ep" data-klasa="5" href="https://www.youtube.com/watch?v=ClVDgk-Ps1E" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-02.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">7:25</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#2</b>Klasa 4</span><h3>Cechy podzielności</h3>
+        <div class="ep-body"><span class="ep-num"><b>#2</b><span class="k5">Klasa 5</span></span><h3>Cechy podzielności</h3>
         <p>Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+      <a class="ep" data-klasa="5" href="https://www.youtube.com/watch?v=axhkUmy1AgY" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-03.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:21</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#3</b>Klasa 4</span><h3>Liczby pierwsze i złożone</h3>
+        <div class="ep-body"><span class="ep-num"><b>#3</b><span class="k5">Klasa 5</span></span><h3>Liczby pierwsze i złożone</h3>
         <p>Siedem owiec nie chce stanąć w równych rzędach. Dzielniki, liczby pierwsze i drzewko czynników.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+      <a class="ep" data-klasa="5" href="https://www.youtube.com/watch?v=GWMigBTXm8A" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-04.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:03</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#4</b>Klasa 4</span><h3>Dzielenie pisemne</h3>
+        <div class="ep-body"><span class="ep-num"><b>#4</b><span class="k5">Klasa 5</span></span><h3>Dzielenie pisemne</h3>
         <p>852 snopki siana do trzech zagród. Dzielenie pisemne krok po kroku, z resztą i przez liczbę dwucyfrową.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+      <a class="ep" data-klasa="4" href="https://www.youtube.com/watch?v=RIXLuf781SQ" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-05.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:26</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#5</b>Klasa 4</span><h3>Oś liczbowa</h3>
+        <div class="ep-body"><span class="ep-num"><b>#5</b><span class="k4">Klasa 4</span></span><h3>Oś liczbowa</h3>
         <p>Owce przy płocie to prawie oś liczbowa. Jednostka, równe odstępy i liczby schowane pod literami.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+      <a class="ep" data-klasa="4" href="https://www.youtube.com/watch?v=6-Dt63XVpCM" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-06.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">3:47</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#6</b>Klasa 4</span><h3>Dodawanie i odejmowanie</h3>
+        <div class="ep-body"><span class="ep-num"><b>#6</b><span class="k4">Klasa 4</span></span><h3>Dodawanie i odejmowanie</h3>
         <p>Składnik, suma, odjemna, odjemnik i różnica. Przylatuje Kosmita z zielonymi owcami.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
+      <a class="ep" data-klasa="4" href="https://www.youtube.com/watch?v=5HGl8kqOalU" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-07.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:44</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#7</b>Klasa 4</span><h3>Szacowanie</h3>
+        <div class="ep-body"><span class="ep-num"><b>#7</b><span class="k4">Klasa 4</span></span><h3>Szacowanie</h3>
         <p>„Jedna… dwie… DUŻO!” Kiedy wystarczy oszacować i jak sprawdzić, czy wynik ma sens.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
-        <div class="thumb"><img src="img/odc-08.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:45</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#8</b>Klasa 4</span><h3>Sprytne dodawanie</h3>
-        <p>Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
-      </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
-        <div class="thumb"><img src="img/odc-09.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:33</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#9</b>Klasa 4</span><h3>Wielka powtórka</h3>
-        <p>Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda?</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
-      </a>
-      <a class="ep" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener">
-        <div class="thumb"><img src="img/odc-10.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:23</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#10</b>Klasa 4</span><h3>Zadania tekstowe</h3>
-        <p>Ile lat ma pasterz? Zadania tekstowe w trzech krokach: dane, obliczenia i odpowiedź pełnym zdaniem.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
-      </a>
+      <div class="ep soon" data-klasa="4">
+        <div class="thumb"><img src="img/odc-08.jpg" alt="" loading="lazy" width="800" height="450"><span class="ribbon">Wkrótce</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#8</b><span class="k4">Klasa 4</span></span><h3>Sprytne dodawanie</h3>
+        <p>Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie.</p><span class="watch later">Wkrótce na YouTube</span></div>
+      </div>
+      <div class="ep soon" data-klasa="4">
+        <div class="thumb"><img src="img/odc-09.jpg" alt="" loading="lazy" width="800" height="450"><span class="ribbon">Wkrótce</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#9</b><span class="k4">Klasa 4</span></span><h3>Wielka powtórka</h3>
+        <p>Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda?</p><span class="watch later">Wkrótce na YouTube</span></div>
+      </div>
+      <div class="ep soon" data-klasa="4">
+        <div class="thumb"><img src="img/odc-10.jpg" alt="" loading="lazy" width="800" height="450"><span class="ribbon">Wkrótce</span></div>
+        <div class="ep-body"><span class="ep-num"><b>#10</b><span class="k4">Klasa 4</span></span><h3>Zadania tekstowe</h3>
+        <p>Ile lat ma pasterz? Zadania tekstowe w trzech krokach: dane, obliczenia i odpowiedź pełnym zdaniem.</p><span class="watch later">Wkrótce na YouTube</span></div>
+      </div>
       <div class="ep trailer">
         <div class="ep-body"><span class="ep-num">Wkrótce</span><h3>Kolejne odcinki</h3>
         <p>Grok wciąż liczy. Następne tematy są w drodze, a owiec też ciągle przybywa.</p></div>
@@ -388,8 +408,8 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
       <div>
         <span class="eyebrow" style="background:#fff">Dla nauczycieli i rodziców</span>
         <h2>Pięć minut, jeden temat</h2>
-        <p>Odcinki trzymają się programu matematyki dla klasy 4. Dobrze sprawdzają się na początku lekcji, przy powtórce przed klasówką i wtedy, gdy trzeba nadrobić zaległości.</p>
-        <p>Wszystkie są za darmo na YouTube, z polskimi napisami i rozdziałami.</p>
+        <p>Odcinki trzymają się programu matematyki dla klas 4 i 5. Dobrze sprawdzają się na początku lekcji, przy powtórce przed klasówką i wtedy, gdy trzeba nadrobić zaległości.</p>
+        <p>Odcinki są za darmo na YouTube, z polskimi napisami i rozdziałami, w playlistach dla klasy 4 i klasy 5.</p>
       </div>
       <ul class="checks">
         <li>Krótkie, około 5 minut</li>
@@ -425,6 +445,11 @@ document.querySelectorAll(".sheep").forEach((s) => s.addEventListener("click", (
   bubble.classList.add("on");
   clearTimeout(t); t = setTimeout(() => bubble.classList.remove("on"), 1600);
   document.querySelector(".hint")?.remove();
+}));
+// Filtr klas
+document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => {
+  document.querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x === c));
+  document.querySelectorAll(".ep[data-klasa]").forEach((e) => { e.hidden = c.dataset.f !== "all" && e.dataset.klasa !== c.dataset.f; });
 }));
 // Gwiazdy w stopce
 const st = document.getElementById("stars");

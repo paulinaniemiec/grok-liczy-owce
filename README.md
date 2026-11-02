@@ -7,4 +7,5 @@ Cała strona leży w `strona/` (czysty HTML i CSS, bez budowania). Po każdym pu
 
 Podgląd lokalny: otwórz `strona/index.html` w przeglądarce.
 
-Linki „Oglądaj” prowadzą na razie do kanału `@grokliczyowce`. Po wrzuceniu filmów podmień je w `index.html` na adresy odcinków.
+Odcinki #1–#7 linkują do filmów na kanale `@grokliczyowce`, a klasy na kartach są wzięte z tytułów na YouTube. #8–#10 są oznaczone jako „Wkrótce”.
+Po wrzuceniu kolejnego odcinka w `index.html` zamień jego `<div class="ep soon" …>` na `<a class="ep" … href="https://www.youtube.com/watch?v=…">`, a plakietkę „Wkrótce” na czas trwania.
