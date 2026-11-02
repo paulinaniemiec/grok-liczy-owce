@@ -229,6 +229,44 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
   .crayons { right: -26px; scale: .8; transform-origin: bottom right }
 }
 
+/* milionerzy */
+.game-sec { background: #fff; padding-bottom: 40px }
+.game-grid { display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: end }
+.host { position: relative; align-self: end; justify-self: center; width: 300px; padding-top: 120px }
+.host img { width: 100%; height: auto }
+.say { position: absolute; top: 0; left: -10px; right: -30px; background: #fff; border: 3px solid var(--ink); border-radius: 22px; box-shadow: 0 5px 0 var(--ink);
+  padding: 12px 18px 14px; font: 800 21px/1.2 var(--head); text-align: center; transition: .2s }
+.say::after { content: ""; position: absolute; left: 46%; bottom: -14px; width: 20px; height: 20px; background: #fff; border: solid var(--ink); border-width: 0 3px 3px 0; rotate: 45deg }
+.say.pop { animation: pop .35s cubic-bezier(.3,1.6,.5,1) }
+@keyframes pop { 0% { transform: scale(.85) } 100% { transform: none } }
+.studio { position: relative; overflow: hidden; border: 3px solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 var(--ink); color: #fff; padding: 40px 44px 42px;
+  background: radial-gradient(ellipse at 50% -10%, #2a4fd1 0%, #10227a 45%, #060b33 100%) }
+.studio::before { content: ""; position: absolute; inset: -40%; background: repeating-conic-gradient(from 0deg at 50% 0%, #ffffff10 0 6deg, transparent 6deg 18deg); pointer-events: none }
+.studio > * { position: relative }
+.studio .eyebrow { background: #f5c451 }
+.studio h2 { color: #fff; margin-bottom: 6px }
+.studio h2 span { color: #f5c451 }
+.studio .sub { color: #c9d3ff; margin-bottom: 22px }
+.q { background: linear-gradient(#1b2f8f, #0c1857); border: 2px solid #8fa8ff; border-radius: 999px; padding: 12px 28px; text-align: center; font: 800 20px/1.3 var(--body); margin-bottom: 14px }
+.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin-bottom: 26px }
+.ans { font: 800 18px/1 var(--body); color: #fff; text-align: left; background: linear-gradient(#1b2f8f, #0c1857); border: 2px solid #8fa8ff; border-radius: 999px; padding: 12px 22px; cursor: pointer; transition: .15s }
+.ans b { color: #f5c451; margin-right: 10px }
+.ans:hover:not(:disabled) { border-color: #f5c451; background: linear-gradient(#2a43b8, #13247a) }
+.ans.ok { background: linear-gradient(#2fbf71, #1d8a4f); border-color: #b9f5d2 }
+.ans.bad { background: linear-gradient(#ff8a3d, #d9612a); border-color: #ffd3b5 }
+.ans:disabled { cursor: default }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 26px; padding: 0; list-style: none }
+.facts li { font-weight: 800; font-size: 15px; padding: 6px 12px; border-radius: 999px; background: #ffffff1a; border: 1.5px solid #ffffff40 }
+.btn-gold { background: #f5c451; color: var(--ink) }
+@media (max-width: 960px) {
+  .game-grid { grid-template-columns: 1fr; gap: 10px }
+  .host { width: 190px; padding-top: 100px; margin-bottom: -4px }
+  .host img { width: 150px; margin: 0 auto }
+  .say { font-size: 18px; left: -40px; right: -40px }
+  .studio { padding: 30px 22px 30px }
+  .answers { grid-template-columns: 1fr }
+}
+
 /* ---------- responsywność ---------- */
 @media (max-width: 960px) {
   .people, .steps { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto }
@@ -266,6 +304,7 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
     <a class="link" href="#odcinki">Odcinki</a>
     <a class="link" href="#bohaterowie">Bohaterowie</a>
     <a class="link" href="#kolorowanka">Kolorowanka</a>
+    <a class="link" href="#gra">Gra</a>
     <a class="link" href="#dla-nauczycieli">Dla nauczycieli</a>
     <a class="btn btn-yt" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener"><span class="play"></span>YouTube</a>
   </div>
@@ -455,6 +494,31 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
   </div>
 </section>
 
+<section class="game-sec" id="gra">
+  <div class="wrap game-grid">
+    <div class="host">
+      <div class="say" id="say">Umiesz liczyć? To zagraj o&nbsp;milion!</div>
+      <img src="img/grok.png" alt="Grok zaprasza do gry" loading="lazy" width="542" height="750">
+    </div>
+    <div class="studio">
+      <span class="eyebrow">Gra · teleturniej</span>
+      <h2>Milionerzy <span>z matematyki</span></h2>
+      <p class="sub">Teleturniej w przeglądarce: 12 pytań, drabinka do miliona i trzy koła ratunkowe. Spróbuj pytania na rozgrzewkę:</p>
+      <div class="q">Grok ma 7 zagród, w każdej po 8 owiec. Ile owiec ma razem?</div>
+      <div class="answers" id="answers">
+        <button class="ans" type="button"><b>A:</b>54</button>
+        <button class="ans" type="button" data-ok><b>B:</b>56</button>
+        <button class="ans" type="button"><b>C:</b>63</button>
+        <button class="ans" type="button"><b>D:</b>15</button>
+      </div>
+      <ul class="facts">
+        <li>Klasy 4, 5, 7 i 8</li><li>50:50 · telefon · publiczność</li><li>Rozwiązanie po każdym pytaniu</li><li>Działa na tablicy interaktywnej</li>
+      </ul>
+      <a class="btn btn-gold" href="https://paulinaniemiec.github.io/milionerzy/" target="_blank" rel="noopener"><span class="play"></span>Zagraj w Milionerów</a>
+    </div>
+  </div>
+</section>
+
 <section class="teachers" id="dla-nauczycieli" style="padding-top:96px">
   <div class="wrap">
     <div class="panel">
@@ -503,6 +567,15 @@ document.querySelectorAll(".sheep").forEach((s) => s.addEventListener("click", (
 document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => {
   document.querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x === c));
   document.querySelectorAll(".ep[data-klasa]").forEach((e) => { e.hidden = c.dataset.f !== "all" && e.dataset.klasa !== c.dataset.f; });
+}));
+// Milionerzy: pytanie na rozgrzewkę
+const say = document.getElementById("say");
+document.querySelectorAll("#answers .ans").forEach((b) => b.addEventListener("click", () => {
+  const ok = b.hasAttribute("data-ok");
+  b.classList.add(ok ? "ok" : "bad");
+  if (ok) document.querySelectorAll("#answers .ans").forEach((x) => (x.disabled = true));
+  say.textContent = ok ? "Brawo! 7 · 8 = 56. Teraz zagraj o\u00a0milion!" : "Hmm, policz jeszcze raz! 7 razy po 8…";
+  say.classList.remove("pop"); void say.offsetWidth; say.classList.add("pop");
 }));
 // Gwiazdy w stopce
 const st = document.getElementById("stars");
