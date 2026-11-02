@@ -1,8 +1,8 @@
 {
-  "pid": 11730,
-  "port": 58639,
-  "token": "8654150b-b2b4-4421-82ea-7ea37542a06b",
-  "startedAt": "2026-11-02T20:55:11.019Z",
+  "pid": 25949,
+  "port": 11263,
+  "token": "0bec31af-55aa-4ac3-855d-d9e8e9a60ad8",
+  "startedAt": "2026-11-02T22:06:31.477Z",
   "serverPath": "/Users/wojciechachtelik/.claude/skills/gstack/browse/src/server.ts",
   "mode": "launched",
   "configHash": "303a7eeccc03078b"

@@ -202,6 +202,33 @@ footer h2 { margin: 18px 0 8px; color: #fff }
 footer .sub { margin: 0 auto 30px; color: #c7cbef }
 .fine { margin-top: 70px; font-size: 14px; color: #8f94c4; position: relative }
 
+/* kolorowanka */
+.color-sec { background-color: #fdf6e3; background-image: linear-gradient(#efe3c6 2px, transparent 2px), linear-gradient(90deg, #efe3c6 2px, transparent 2px); background-size: 44px 44px; border-block: 3px solid var(--ink) }
+.color-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 72px; align-items: center }
+.sheet-wrap { position: relative; justify-self: center; width: min(420px, 100%) }
+.sheet { display: block; width: 100%; background: #fff; border: 3px solid var(--ink); border-radius: 10px; box-shadow: 10px 12px 0 var(--ink); rotate: -3deg; transition: rotate .25s, transform .25s }
+.sheet:hover { rotate: -1deg; transform: translateY(-4px) }
+.sheet img { width: 100%; height: auto; border-radius: 7px }
+.tape { position: absolute; top: -14px; left: 50%; width: 110px; height: 30px; translate: -50% 0; rotate: 2deg; background: #ffd84dcc; border: 2px solid #2b234033 }
+.crayons { position: absolute; right: -34px; bottom: -26px; display: flex; gap: 6px; align-items: flex-end; rotate: 12deg; pointer-events: none }
+.crayon { width: 20px; height: 118px; border: 3px solid var(--ink); border-radius: 4px 4px 3px 3px; position: relative; background: var(--c) }
+.crayon::before { content: ""; position: absolute; left: -3px; right: -3px; top: -24px; height: 24px; background: var(--ink); clip-path: polygon(50% 0, 100% 100%, 0 100%) }
+.crayon::after { content: ""; position: absolute; left: 0; right: 0; top: -19px; height: 19px; background: var(--c); clip-path: polygon(50% 12%, 88% 100%, 12% 100%) }
+.crayon:nth-child(2) { height: 140px } .crayon:nth-child(3) { height: 104px } .crayon:nth-child(4) { height: 128px }
+.color-copy .sub { margin-bottom: 22px }
+.mini-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none }
+.mini-legend li { display: flex; align-items: center; gap: 7px; background: #fff; border: 2.5px solid var(--ink); border-radius: 999px; padding: 5px 12px 5px 6px; font-weight: 800; font-size: 15px }
+.mini-legend i { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid var(--ink); background: var(--c) }
+.mini-legend b { font: 800 17px/1 var(--head); padding-top: 2px }
+.dl { display: flex; gap: 14px; flex-wrap: wrap; align-items: center }
+.dl small { display: block; width: 100%; margin-top: 4px; font-size: 14px; color: var(--ink-soft) }
+.example { display: inline-block; font: 900 15px/1 var(--body); background: #fff; border: 2.5px dashed var(--ink); border-radius: 8px; padding: 4px 8px; margin: 0 2px }
+@media (max-width: 960px) {
+  .color-grid { grid-template-columns: 1fr; gap: 56px }
+  .sheet-wrap { width: min(300px, 76%) }
+  .crayons { right: -26px; scale: .8; transform-origin: bottom right }
+}
+
 /* ---------- responsywność ---------- */
 @media (max-width: 960px) {
   .people, .steps { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto }
@@ -238,6 +265,7 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
     <a class="brand" href="#"><img src="img/awatar.jpg" alt=""><span>Grok liczy owce</span></a>
     <a class="link" href="#odcinki">Odcinki</a>
     <a class="link" href="#bohaterowie">Bohaterowie</a>
+    <a class="link" href="#kolorowanka">Kolorowanka</a>
     <a class="link" href="#dla-nauczycieli">Dla nauczycieli</a>
     <a class="btn btn-yt" href="https://www.youtube.com/@grokliczyowce" target="_blank" rel="noopener"><span class="play"></span>YouTube</a>
   </div>
@@ -402,7 +430,32 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
   </div>
 </section>
 
-<section class="teachers" id="dla-nauczycieli">
+<section class="color-sec" id="kolorowanka">
+  <div class="wrap color-grid">
+    <div class="sheet-wrap">
+      <a class="sheet" href="kolorowanki/grok-liczy-owce-kolorowanka.pdf" target="_blank" rel="noopener" aria-label="Otwórz kolorowankę (PDF)">
+        <img src="img/kolorowanka.jpg" alt="Kolorowanka: Grok, Beata i Kosmita na łące, w polach działania do obliczenia" loading="lazy" width="794" height="1123">
+      </a>
+      <span class="tape" aria-hidden="true"></span>
+      <div class="crayons" aria-hidden="true">
+        <span class="crayon" style="--c:#ffd84d"></span><span class="crayon" style="--c:#4fa83c"></span><span class="crayon" style="--c:#7cc8f2"></span><span class="crayon" style="--c:#a4622a"></span>
+      </div>
+    </div>
+    <div class="color-copy">
+      <span class="eyebrow">Do wydruku · za darmo</span>
+      <h2>Kolorowanka z&nbsp;działaniami</h2>
+      <p class="sub">Grok, Beata i Kosmita czekają na kolory. Ale najpierw trzeba policzyć! W każdym polu jest działanie, na przykład <span class="example">29−19</span>, a wynik mówi, jakiej kredki użyć.</p>
+      <ul class="mini-legend" aria-label="Legenda kolorów"><li><i style="--c:#ffd84d"></i><b>10</b>żółty</li><li><i style="--c:#7cc8f2"></i><b>12</b>niebieski</li><li><i style="--c:#a6e07c"></i><b>15</b>jasnozielony</li><li><i style="--c:#4fa83c"></i><b>16</b>zielony</li><li><i style="--c:#a4622a"></i><b>18</b>brązowy</li><li><i style="--c:#f6c49c"></i><b>20</b>cielisty</li></ul>
+      <div class="dl">
+        <a class="btn btn-main" href="kolorowanki/grok-liczy-owce-kolorowanka.pdf" download><span class="play" style="rotate:90deg"></span>Pobierz PDF</a>
+        <a class="btn btn-ghost" href="kolorowanki/grok-liczy-owce-kolorowanka.pdf" target="_blank" rel="noopener">Otwórz i wydrukuj</a>
+        <small>1 strona A4 · dodawanie, odejmowanie, mnożenie i dzielenie · klasy 4–5</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="teachers" id="dla-nauczycieli" style="padding-top:96px">
   <div class="wrap">
     <div class="panel">
       <div>
