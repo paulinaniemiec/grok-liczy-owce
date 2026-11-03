@@ -72,6 +72,22 @@ button { font: inherit; color: inherit }
 .stars svg.on { fill: var(--yellow) }
 .go { font: 900 15px/1 var(--body); background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 999px }
 .field.soon { cursor: default; filter: saturate(.35) }
+.field .go { text-decoration: none }
+.field .go::after { content: ""; position: absolute; inset: 0; border-radius: 21px }   /* cała karta uruchamia grę */
+.field .film { position: relative; z-index: 1; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; font: 900 14px/1 var(--body);
+  color: var(--ink); text-decoration: none; background: #fff; border: 2px solid var(--ink); border-radius: 999px; padding: 7px 12px }
+.field a.film:hover { background: var(--sky2) }
+.field .film.later { border-style: dashed; color: var(--ink-soft) }
+.tri { display: inline-block; width: 0; height: 0; border-left: 10px solid var(--pink); border-top: 6px solid transparent; border-bottom: 6px solid transparent }
+.kl { display: inline-block; font: 900 12px/1 var(--body); letter-spacing: .8px; text-transform: uppercase; padding: 5px 8px; border-radius: 7px; border: 2px solid var(--ink); background: #fff; vertical-align: middle }
+.kl4 { color: var(--blue) } .kl5 { color: #e07d00 } .kl45 { color: var(--ink) }
+.field-pic .kl { position: absolute; right: 12px; top: 14px }
+.chips { display: flex; justify-content: center; gap: 10px; margin: -14px 0 26px; flex-wrap: wrap }
+.chip { font: 900 16px/1 var(--body); padding: 10px 18px; border-radius: 999px; border: 3px solid var(--ink); background: #fff; cursor: pointer }
+.chip.on { background: var(--ink); color: #fff }
+.back-home { margin: 30px 0 0 } .back-home a { font-weight: 900; color: var(--ink) }
+.lvl-name .kl { font-size: 11px; margin-left: 4px; position: relative; top: -3px }
+.film-btn { text-decoration: none; gap: 8px }
 .field.soon .go { background: #b9b2c9 }
 
 /* ---------- poziom ---------- */
@@ -289,13 +305,18 @@ button { font: inherit; color: inherit }
   <section class="map" id="map">
     <h1 class="gtitle"><span>Policz</span><span>stado!</span></h1>
     <p class="lead">Grok ma dużo owiec i jeszcze więcej kłopotów z liczeniem. Wybierz pastwisko i pomóż mu! Za każde dostaniesz do trzech gwiazdek.</p>
+    <div class="chips" role="group" aria-label="Pokaż pastwiska dla klasy">
+      <button class="chip" data-f="all">Wszystkie</button><button class="chip" data-f="4">Klasa 4</button><button class="chip" data-f="5">Klasa 5</button>
+    </div>
     <div class="fields" id="fields"></div>
+    <p class="back-home"><a href="index.html#odcinki">← Wszystkie odcinki na stronie głównej</a></p>
   </section>
 
   <section class="level" id="level" hidden>
     <div class="lvl-bar">
       <button class="btn btn-small" id="back">← Mapa</button>
-      <div class="lvl-name" id="lvlName"></div>
+      <div class="lvl-name"><span id="lvlName"></span> <span id="lvlKl"></span></div>
+      <a class="btn btn-small film-btn" id="filmBtn" href="#" target="_blank" rel="noopener"></a>
       <button class="btn btn-small" id="cheatBtn" hidden>Ściąga</button>
       <div class="dots" id="dots"></div>
     </div>
@@ -382,42 +403,63 @@ const ODCINKI = {
   8: { tytul: "Sprytne dodawanie", url: "", rozdzial: "1:43", co: "Szukamy pełnych dziesiątek" },
   9: { tytul: "Wielka powtórka", url: "" },
 };
-function epLink(nr) {
+function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
-  let href = KANAL;
-  if (o.url) { href = o.url; if (o.rozdzial) { const [m, s] = o.rozdzial.split(":").map(Number); href += (href.includes("?") ? "&" : "?") + "t=" + (m * 60 + s) } }
+  if (!o.url) return KANAL;
+  let href = o.url;
+  if (chapter && o.rozdzial) { const [m, s] = o.rozdzial.split(":").map(Number); href += (href.includes("?") ? "&" : "?") + "t=" + (m * 60 + s) }
+  return href;
+}
+const KLASA = { "4": "Klasa 4", "5": "Klasa 5", "45": "Klasy 4–5" };
+const klasaTag = k => `<span class="kl kl${k}">${KLASA[k]}</span>`;
+function epLink(nr) {
+  const o = ODCINKI[nr], href = epHref(nr);
   const where = o.url && o.rozdzial ? `, rozdział ${o.rozdzial} „${o.co}”` : "";
   return `<a href="${href}" target="_blank" rel="noopener">odcinek ${nr} „${o.tytul}”${where}</a>`;
 }
 
 /* ============ pastwiska ============ */
 const PASTWISKA = [
-  { key: "szacowanie", nr: 1, color: "var(--orange)", title: "Ile owiec?", ep: 7, desc: "Stado przebiega przez łąkę. Zgadnij, ile było owiec.", pics: ["owca", "owca", "owca"] },
-  { key: "os", nr: 2, color: "var(--blue)", title: "Owca na osi", ep: 5, desc: "Postaw owcę we właściwym miejscu na osi liczbowej.", pics: ["owca", "beata"] },
-  { key: "zagrody", nr: 3, color: "var(--green)", title: "Zagrody", ep: 2, desc: "Do których zagród owce zmieszczą się po równo?", pics: ["grok", "owca", "owca"] },
-  { key: "prostokat", nr: 4, color: "var(--pink)", title: "Stado w prostokąt", ep: 3, desc: "Ustaw owce w równe rzędy. Czy to liczba pierwsza?", pics: ["owca", "owca", "owca"] },
-  { key: "pary", nr: 5, color: "#9b6bff", title: "Okrągłe pary", ep: 8, desc: "Połącz grupki owiec, które razem dają okrągłą liczbę.", pics: ["kosmita", "owca"] },
-  { key: "final", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
+  { key: "szacowanie", klasa: "4", nr: 1, color: "var(--orange)", title: "Ile owiec?", ep: 7, desc: "Stado przebiega przez łąkę. Zgadnij, ile było owiec.", pics: ["owca", "owca", "owca"] },
+  { key: "os", klasa: "4", nr: 2, color: "var(--blue)", title: "Owca na osi", ep: 5, desc: "Postaw owcę we właściwym miejscu na osi liczbowej.", pics: ["owca", "beata"] },
+  { key: "zagrody", klasa: "5", nr: 3, color: "var(--green)", title: "Zagrody", ep: 2, desc: "Do których zagród owce zmieszczą się po równo?", pics: ["grok", "owca", "owca"] },
+  { key: "prostokat", klasa: "5", nr: 4, color: "var(--pink)", title: "Stado w prostokąt", ep: 3, desc: "Ustaw owce w równe rzędy. Czy to liczba pierwsza?", pics: ["owca", "owca", "owca"] },
+  { key: "pary", klasa: "4", nr: 5, color: "#9b6bff", title: "Okrągłe pary", ep: 8, desc: "Połącz grupki owiec, które razem dają okrągłą liczbę.", pics: ["kosmita", "owca"] },
+  { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
 function drawMap() {
-  $("#fields").innerHTML = PASTWISKA.map(p => {
-    const st = save.stars[p.key] || 0;
+  const f = save.klasa || "all";
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c.dataset.f === f));
+  $("#fields").innerHTML = PASTWISKA.filter(p => f === "all" || p.klasa.includes(f)).map(p => {
+    const st = save.stars[p.key] || 0, o = ODCINKI[p.ep];
     const pics = p.pics.map(n => `<img src="img/${n}.png" alt="" class="${n === "grok" || n === "kosmita" ? "big" : ""}">`).join("");
-    return `<button class="field${p.soon ? " soon" : ""}" data-key="${p.key}" ${p.soon ? 'aria-disabled="true"' : ""}>
-      <div class="field-pic">${pics}<span class="field-num" style="background:${p.color}">${p.nr}</span></div>
+    const film = o.url
+      ? `<a class="film" href="${epHref(p.ep, false)}" target="_blank" rel="noopener"><span class="tri"></span>Obejrzyj odcinek ${p.ep}</a>`
+      : `<span class="film later">Odcinek ${p.ep} wkrótce na YouTube</span>`;
+    return `<div class="field">
+      <div class="field-pic">${pics}<span class="field-num" style="background:${p.color}">${p.nr}</span>${klasaTag(p.klasa)}</div>
       <div class="field-body">
-        <span class="from">Z odcinka ${p.ep}: ${ODCINKI[p.ep].tytul}</span>
+        <span class="from">Z odcinka ${p.ep}: ${o.tytul}</span>
         <h3>${p.title}</h3><p>${p.desc}</p>
-        <div class="field-foot"><div class="stars">${starsHTML(st)}</div><span class="go">${p.soon ? "Wkrótce" : st ? "Zagraj jeszcze raz" : "Graj"}</span></div>
-      </div></button>`;
+        <div class="field-foot"><div class="stars">${starsHTML(st)}</div><a class="go" href="#${p.key}">${st ? "Zagraj jeszcze raz" : "Graj"}</a></div>
+        ${film}
+      </div></div>`;
   }).join("");
   $("#total").textContent = Object.values(save.stars).reduce((a, b) => a + b, 0);
-  document.querySelectorAll(".field").forEach(el => el.onclick = () => {
-    const p = PASTWISKA.find(p => p.key === el.dataset.key);
-    if (p.soon) { sfx("bad"); return }
-    location.hash = p.key;
-  });
+}
+document.querySelectorAll(".chip").forEach(c => c.onclick = () => { sfx("click"); save.klasa = c.dataset.f; persist(); drawMap() });
+// ?klasa=4 albo ?klasa=5 w adresie ustawia filtr (np. link z planu lekcji)
+{ const k = new URLSearchParams(location.search).get("klasa"); if (k === "4" || k === "5") { save.klasa = k; persist() } }
+
+/* pasek poziomu: klasa i link do filmu z bieżącego tematu */
+function drawLevelBar() {
+  const p = PASTWISKA.find(x => x.ep === cur.ep) || cur.p, o = ODCINKI[cur.ep];
+  $("#lvlKl").outerHTML = klasaTag(p.klasa).replace('<span class="kl', '<span id="lvlKl" class="kl');
+  const f = $("#filmBtn");
+  f.href = epHref(cur.ep, false);
+  f.innerHTML = `<span class="tri"></span>${o.url ? `Obejrzyj odcinek ${cur.ep}` : "Kanał YouTube"}`;
+  f.title = `Odcinek ${cur.ep}: ${o.tytul}`;
 }
 
 /* ============ silnik poziomu ============ */
@@ -492,6 +534,7 @@ function startRound() {
   const act = $("#act"); act.hidden = false; act.disabled = false; $("#act2").hidden = true;
   drawDots(); ui.beata("");
   cur.game.round(cur.i, ui);
+  drawLevelBar();
 }
 function finish() {
   stopClock(); drawDots();
