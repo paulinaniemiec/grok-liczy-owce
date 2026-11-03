@@ -133,6 +133,16 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .ribbon { position: absolute; left: 12px; bottom: 12px; background: var(--pink); color: #fff; font: 900 13px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; padding: 7px 10px; border-radius: 8px; border: 2px solid var(--ink); rotate: -3deg }
 .ep .watch.later { color: var(--ink-soft) }
 .ep[hidden] { display: none }
+.ep.has-game { position: relative; cursor: pointer }
+.ep.has-game a.watch { text-decoration: none; color: inherit }
+.ep.has-game a.watch::after { content: ""; position: absolute; inset: 0; border-radius: inherit }   /* cała karta otwiera film */
+.ep-actions { margin-top: auto; padding-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap }
+.ep-actions .watch { margin-top: 0; padding-top: 0 }
+.ep-game { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 7px; font: 900 14px/1 var(--body); color: var(--ink); text-decoration: none;
+  background: var(--yellow); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 12px 5px 6px; box-shadow: 0 3px 0 var(--ink); transition: transform .12s, box-shadow .12s }
+.ep-game img { width: 26px }
+.ep-game:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--ink) }
+.ep.soon .ep-game { box-shadow: 0 3px 0 var(--ink) }
 .playlists { display: flex; gap: 14px; flex-wrap: wrap }
 .filters { display: flex; gap: 10px; margin: -14px 0 30px; flex-wrap: wrap }
 .chip { font: 800 16px/1 var(--body); color: var(--ink); background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 9px 18px 10px; cursor: pointer }
@@ -391,45 +401,45 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
         <div class="ep-body"><span class="ep-num"><b>#1</b><span class="k4">Klasa 4</span></span><h3>Liczby naturalne</h3>
         <p>Grok nie zna liczb. Skąd się wzięło liczenie, po co nam setki i dlaczego zero to wielki wynalazek.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" data-klasa="5" href="https://www.youtube.com/watch?v=ClVDgk-Ps1E" target="_blank" rel="noopener">
+      <div class="ep has-game" data-klasa="5">
         <div class="thumb"><img src="img/odc-02.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">7:25</span></div>
         <div class="ep-body"><span class="ep-num"><b>#2</b><span class="k5">Klasa 5</span></span><h3>Cechy podzielności</h3>
-        <p>Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
-      </a>
-      <a class="ep" data-klasa="5" href="https://www.youtube.com/watch?v=axhkUmy1AgY" target="_blank" rel="noopener">
+        <p>Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=ClVDgk-Ps1E" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#zagrody"><img src="img/owca.png" alt="">Zagraj: Zagrody</a></div></div>
+      </div>
+      <div class="ep has-game" data-klasa="5">
         <div class="thumb"><img src="img/odc-03.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:21</span></div>
         <div class="ep-body"><span class="ep-num"><b>#3</b><span class="k5">Klasa 5</span></span><h3>Liczby pierwsze i złożone</h3>
-        <p>Siedem owiec nie chce stanąć w równych rzędach. Dzielniki, liczby pierwsze i drzewko czynników.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
-      </a>
+        <p>Siedem owiec nie chce stanąć w równych rzędach. Dzielniki, liczby pierwsze i drzewko czynników.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=axhkUmy1AgY" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#prostokat"><img src="img/owca.png" alt="">Zagraj: Stado w prostokąt</a></div></div>
+      </div>
       <a class="ep" data-klasa="5" href="https://www.youtube.com/watch?v=GWMigBTXm8A" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-04.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:03</span></div>
         <div class="ep-body"><span class="ep-num"><b>#4</b><span class="k5">Klasa 5</span></span><h3>Dzielenie pisemne</h3>
         <p>852 snopki siana do trzech zagród. Dzielenie pisemne krok po kroku, z resztą i przez liczbę dwucyfrową.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" data-klasa="4" href="https://www.youtube.com/watch?v=RIXLuf781SQ" target="_blank" rel="noopener">
+      <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-05.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">5:26</span></div>
         <div class="ep-body"><span class="ep-num"><b>#5</b><span class="k4">Klasa 4</span></span><h3>Oś liczbowa</h3>
-        <p>Owce przy płocie to prawie oś liczbowa. Jednostka, równe odstępy i liczby schowane pod literami.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
-      </a>
+        <p>Owce przy płocie to prawie oś liczbowa. Jednostka, równe odstępy i liczby schowane pod literami.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=RIXLuf781SQ" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#os"><img src="img/owca.png" alt="">Zagraj: Owca na osi</a></div></div>
+      </div>
       <a class="ep" data-klasa="4" href="https://www.youtube.com/watch?v=6-Dt63XVpCM" target="_blank" rel="noopener">
         <div class="thumb"><img src="img/odc-06.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">3:47</span></div>
         <div class="ep-body"><span class="ep-num"><b>#6</b><span class="k4">Klasa 4</span></span><h3>Dodawanie i odejmowanie</h3>
         <p>Składnik, suma, odjemna, odjemnik i różnica. Przylatuje Kosmita z zielonymi owcami.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
       </a>
-      <a class="ep" data-klasa="4" href="https://www.youtube.com/watch?v=5HGl8kqOalU" target="_blank" rel="noopener">
+      <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-07.jpg" alt="" loading="lazy" width="800" height="450"><span class="dur">4:44</span></div>
         <div class="ep-body"><span class="ep-num"><b>#7</b><span class="k4">Klasa 4</span></span><h3>Szacowanie</h3>
-        <p>„Jedna… dwie… DUŻO!” Kiedy wystarczy oszacować i jak sprawdzić, czy wynik ma sens.</p><span class="watch"><span class="play"></span>Oglądaj</span></div>
-      </a>
+        <p>„Jedna… dwie… DUŻO!” Kiedy wystarczy oszacować i jak sprawdzić, czy wynik ma sens.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=5HGl8kqOalU" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#szacowanie"><img src="img/owca.png" alt="">Zagraj: Ile owiec?</a></div></div>
+      </div>
       <div class="ep soon" data-klasa="4">
         <div class="thumb"><img src="img/odc-08.jpg" alt="" loading="lazy" width="800" height="450"><span class="ribbon">Wkrótce</span></div>
         <div class="ep-body"><span class="ep-num"><b>#8</b><span class="k4">Klasa 4</span></span><h3>Sprytne dodawanie</h3>
-        <p>Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie.</p><span class="watch later">Wkrótce na YouTube</span></div>
+        <p>Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie.</p><div class="ep-actions"><span class="watch later">Wkrótce na YouTube</span><a class="ep-game" href="gra.html#pary"><img src="img/owca.png" alt="">Zagraj: Okrągłe pary</a></div></div>
       </div>
       <div class="ep soon" data-klasa="4">
         <div class="thumb"><img src="img/odc-09.jpg" alt="" loading="lazy" width="800" height="450"><span class="ribbon">Wkrótce</span></div>
         <div class="ep-body"><span class="ep-num"><b>#9</b><span class="k4">Klasa 4</span></span><h3>Wielka powtórka</h3>
-        <p>Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda?</p><span class="watch later">Wkrótce na YouTube</span></div>
+        <p>Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda?</p><div class="ep-actions"><span class="watch later">Wkrótce na YouTube</span><a class="ep-game" href="gra.html#final"><img src="img/owca.png" alt="">Zagraj: Wielka powtórka</a></div></div>
       </div>
       <div class="ep soon" data-klasa="4">
         <div class="thumb"><img src="img/odc-10.jpg" alt="" loading="lazy" width="800" height="450"><span class="ribbon">Wkrótce</span></div>
