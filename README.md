@@ -12,5 +12,7 @@ Po wrzuceniu kolejnego odcinka w `index.html` zamień jego `<div class="ep soon"
 
 ## Mini-gra „Policz stado!”
 
-`strona/gra.html` to samodzielna gra (jeden plik, bez budowania). Gotowe pastwiska: „Owca na osi” (odc. 5) i „Zagrody” (odc. 2).
-Pozostałe są na mapie oznaczone jako „Wkrótce”. Linki do odcinków są w obiekcie `ODCINKI` w `gra.html`.
+`strona/gra.html` to samodzielna gra (jeden plik, bez budowania). Pastwiska: „Ile owiec?” (odc. 7), „Owca na osi” (odc. 5),
+„Zagrody” (odc. 2), „Stado w prostokąt” (odc. 3), „Okrągłe pary” (odc. 8) i finał „Wielka powtórka” (odc. 9, 10 rund na czas).
+Linki do odcinków są w obiekcie `ODCINKI` w `gra.html`. Po wrzuceniu odcinka 8 albo 9 wpisz tam jego adres.
+Do pastwiska można wejść bezpośrednio: `gra.html#szacowanie`, `#os`, `#zagrody`, `#prostokat`, `#pary`, `#final`.
