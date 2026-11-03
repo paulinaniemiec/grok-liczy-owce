@@ -125,6 +125,7 @@ button { font: inherit; color: inherit }
 .opt { min-width: 110px; font: 800 28px/1 var(--head); padding: 14px 22px 12px }
 .opt.no { background: #ffd0d0; text-decoration: line-through }
 .opt.yes { background: #b9f0d1 }
+.opt.yes:disabled, .opt.no:disabled { opacity: 1 }
 
 /* ---------- gra: zagrody ---------- */
 .herd { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 18px }
@@ -167,6 +168,72 @@ button { font: inherit; color: inherit }
 .cheat h4 { margin: 0 0 4px; font: 800 20px/1.2 var(--head) }
 .cheat ul { margin: 0; padding-left: 20px }
 
+/* ---------- zegar finału ---------- */
+.clock { display: flex; align-items: center; gap: 10px; padding: 14px 22px 0 }
+.clock img { width: 46px }
+.clock .bar { flex: 1; height: 18px; border: 3px solid var(--ink); border-radius: 999px; background: #fff; overflow: hidden }
+.clock i { display: block; height: 100%; background: var(--blue); transition: width .25s linear }
+.clock.low i { background: var(--orange) }
+
+/* ---------- gra: szacowanie ---------- */
+.meadow { position: relative; aspect-ratio: 2.6 / 1; max-width: 860px; margin: 0 auto; border: 3px solid var(--ink); border-radius: 20px; overflow: hidden;
+  background: linear-gradient(var(--sky2), #fff 24%, var(--hill) 24.5%, var(--grass)) }
+.meadow > img { position: absolute; animation: runin .7s cubic-bezier(.2,.8,.3,1) backwards }
+@keyframes runin { from { transform: translateX(-110vw) } }
+.fog { position: absolute; inset: 0; display: grid; place-items: center; animation: fogin .45s cubic-bezier(.2,.8,.3,1);
+  background: radial-gradient(130% 90% at 50% 105%, var(--grass) 55%, var(--hill) 55.5%, var(--hill) 70%, transparent 70.5%), linear-gradient(var(--sky2), #fff) }
+.fog span { font: 800 clamp(22px, 4vw, 34px)/1.1 var(--head); color: #fff; -webkit-text-stroke: 6px var(--ink); paint-order: stroke fill; margin-top: 18% }
+@keyframes fogin { from { transform: translateY(100%) } }
+.tens { display: flex; flex-direction: column; gap: 3px; align-items: flex-start; width: fit-content; max-width: 100%; margin: 0 auto; padding: 10px 14px;
+  border: 3px solid var(--ink); border-radius: 20px; background: #fff; animation: pop .3s }
+.ten { display: flex; align-items: center; gap: 2px }
+.ten img { width: 34px }
+.ten b { margin-left: 10px; font: 800 18px/1 var(--head); color: var(--ink-soft); min-width: 2ch }
+.opt.word { font-size: 22px; min-width: 0 }
+.guess { max-width: 520px; margin: 16px auto 0; text-align: center; font-size: 20px }
+.guess p { margin: 0 0 8px }
+.guess b { background: var(--yellow); padding: 0 8px; border-radius: 6px }
+.guess input { width: 100%; height: 36px; accent-color: var(--pink); cursor: pointer }
+.market { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
+.price { background: #fff; border: 3px solid var(--ink); border-radius: 16px; box-shadow: 0 4px 0 var(--ink); padding: 12px 20px 14px; text-align: center; min-width: 150px; rotate: -1deg }
+.price:nth-child(2) { rotate: 1.5deg }
+.price b { display: block; font: 800 36px/1.1 var(--head) }
+.price span { font-size: 16px; color: var(--ink-soft) }
+.calc { display: flex; align-items: flex-end; justify-content: center; gap: 18px; flex-wrap: wrap; padding-top: 10px }
+.calc img { width: 92px }
+.lcd { background: #c9f0b4; border: 4px solid var(--ink); border-radius: 16px; padding: 16px 24px; font: 800 clamp(26px, 5vw, 44px)/1 "Courier New", monospace; letter-spacing: 1px;
+  box-shadow: inset 0 0 0 5px #a6dd90, 0 6px 0 var(--ink); margin-bottom: 18px }
+
+/* ---------- gra: prostokąt ---------- */
+.rows-ctl { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 14px }
+.step { width: 58px; height: 58px; padding: 0; font: 800 34px/1 var(--head) }
+.rows-n { text-align: center; min-width: 92px }
+.rows-n b { display: block; font: 800 42px/1 var(--head) }
+.rows-n span { font-size: 15px; color: var(--ink-soft) }
+.pasture { display: grid; gap: 4px; justify-content: center; align-content: start; width: fit-content; max-width: 100%; margin: 0 auto; padding: 12px;
+  border: 3px dashed var(--wood-dark); border-radius: 16px; background: #f4fbe9; transition: background .2s, border-color .2s }
+.pasture img, .pasture .hole { width: 100%; aspect-ratio: 299 / 260 }
+.pasture .hole { box-sizing: border-box; border: 3px dashed var(--red); border-radius: 50%; background: #ffe4ec }
+.pasture.full { border-style: solid; border-color: var(--green); background: #dcf7e8 }
+.rows-info { text-align: center; font-size: 18px; margin: 12px 0 0 }
+
+/* ---------- gra: okrągłe pary ---------- */
+.target { display: flex; align-items: flex-end; justify-content: center; gap: 14px; margin-bottom: 16px }
+.target img { width: 62px }
+.pairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 760px; margin: 0 auto }
+.pair { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 124px; padding: 12px 8px; background: #fff;
+  border: 3px solid var(--ink); border-radius: 18px; box-shadow: 0 5px 0 var(--ink); cursor: pointer; transition: transform .15s, opacity .4s, background .15s }
+.pair:hover:not(.gone) { transform: translateY(-2px) }
+.pair .one { width: 58px }
+.flock-mini { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; max-width: 150px }
+.flock-mini img { width: 28px }
+.pair .pn { font: 800 36px/1 var(--head) }
+.pair.sel { background: var(--yellow); transform: translateY(-4px) rotate(-1.5deg) }
+.pair.no { background: #ffd0d0; animation: shake .45s }
+.pair.gone { opacity: 0; transform: scale(.6) translateY(-24px); pointer-events: none }
+.pair-done { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; min-height: 40px }
+.pair-done span { background: #dcf7e8; border: 2px solid var(--ink); border-radius: 999px; padding: 6px 14px; font-weight: 900; animation: pop .3s }
+
 /* ---------- koniec poziomu ---------- */
 .modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: #1d235099; padding: 16px; animation: fade .2s }
 @keyframes fade { from { opacity: 0 } }
@@ -199,6 +266,10 @@ button { font: inherit; color: inherit }
   .pen .k { font-size: 28px }
   .opt { min-width: 90px; font-size: 24px; padding: 12px 16px 10px }
   .sign { font-size: 21px } .sign b { font-size: 32px }
+  .ten img { width: 22px } .ten b { font-size: 15px }
+  .pairs { grid-template-columns: 1fr 1fr; gap: 10px } .pair { min-height: 104px } .pair .pn { font-size: 30px } .flock-mini img { width: 22px }
+  .price { min-width: 0; flex: 1 1 40%; padding: 10px 12px } .price b { font-size: 28px }
+  .calc img { width: 64px } .clock { padding: 10px 12px 0 } .opt.word { font-size: 18px; padding: 12px 14px 10px }
   .flock img { width: 24px } .grp img { width: 21px } .rest img { width: 24px }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -229,12 +300,13 @@ button { font: inherit; color: inherit }
       <div class="dots" id="dots"></div>
     </div>
     <div class="stage">
+      <div class="clock" id="clock" hidden title="Beata zasypia"><img src="img/owca-spi.png" alt=""><div class="bar"><i id="clockBar"></i></div></div>
       <div class="top-row">
         <div class="grok-wrap"><img src="img/grok.png" alt="Grok"></div>
         <div class="say say-grok" id="grokSay" aria-live="polite"></div>
       </div>
       <div class="play" id="play"></div>
-      <div class="act-row"><button class="btn btn-main" id="act">Sprawdź</button></div>
+      <div class="act-row"><button class="btn btn-main" id="act">Sprawdź</button><button class="btn" id="act2" hidden></button></div>
       <div class="bot-row">
         <div class="say say-beata off" id="beataSay" aria-live="polite"></div>
         <img class="g-beata" id="beataImg" src="img/beata.png" alt="Owca Beata">
@@ -304,28 +376,28 @@ drawMute();
 const KANAL = "https://www.youtube.com/@grokliczyowce";
 const ODCINKI = {
   2: { tytul: "Cechy podzielności", url: "https://www.youtube.com/watch?v=ClVDgk-Ps1E", rozdzial: "4:51", co: "Ściąga: wszystkie cechy podzielności" },
-  3: { tytul: "Liczby pierwsze i złożone", url: "https://www.youtube.com/watch?v=axhkUmy1AgY" },
+  3: { tytul: "Liczby pierwsze i złożone", url: "https://www.youtube.com/watch?v=axhkUmy1AgY", rozdzial: "0:53", co: "Liczba pierwsza" },
   5: { tytul: "Oś liczbowa", url: "https://www.youtube.com/watch?v=RIXLuf781SQ", rozdzial: "1:50", co: "Różne osie: co 2, co 5, co 100" },
-  7: { tytul: "Szacowanie", url: "https://www.youtube.com/watch?v=5HGl8kqOalU" },
-  8: { tytul: "Sprytne dodawanie", url: "" },
+  7: { tytul: "Szacowanie", url: "https://www.youtube.com/watch?v=5HGl8kqOalU", rozdzial: "0:24", co: "Kilka, kilkanaście, kilkadziesiąt, kilkaset" },
+  8: { tytul: "Sprytne dodawanie", url: "", rozdzial: "1:43", co: "Szukamy pełnych dziesiątek" },
   9: { tytul: "Wielka powtórka", url: "" },
 };
 function epLink(nr) {
   const o = ODCINKI[nr];
   let href = KANAL;
   if (o.url) { href = o.url; if (o.rozdzial) { const [m, s] = o.rozdzial.split(":").map(Number); href += (href.includes("?") ? "&" : "?") + "t=" + (m * 60 + s) } }
-  const where = o.rozdzial ? `, rozdział ${o.rozdzial} „${o.co}”` : "";
+  const where = o.url && o.rozdzial ? `, rozdział ${o.rozdzial} „${o.co}”` : "";
   return `<a href="${href}" target="_blank" rel="noopener">odcinek ${nr} „${o.tytul}”${where}</a>`;
 }
 
 /* ============ pastwiska ============ */
 const PASTWISKA = [
-  { key: "szacowanie", nr: 1, color: "var(--orange)", title: "Ile owiec?", ep: 7, desc: "Stado przebiega przez łąkę. Zgadnij, ile było owiec.", pics: ["owca", "owca", "owca"], soon: true },
+  { key: "szacowanie", nr: 1, color: "var(--orange)", title: "Ile owiec?", ep: 7, desc: "Stado przebiega przez łąkę. Zgadnij, ile było owiec.", pics: ["owca", "owca", "owca"] },
   { key: "os", nr: 2, color: "var(--blue)", title: "Owca na osi", ep: 5, desc: "Postaw owcę we właściwym miejscu na osi liczbowej.", pics: ["owca", "beata"] },
   { key: "zagrody", nr: 3, color: "var(--green)", title: "Zagrody", ep: 2, desc: "Do których zagród owce zmieszczą się po równo?", pics: ["grok", "owca", "owca"] },
-  { key: "prostokat", nr: 4, color: "var(--pink)", title: "Stado w prostokąt", ep: 3, desc: "Ustaw owce w równe rzędy. Czy to liczba pierwsza?", pics: ["owca", "owca"], soon: true },
-  { key: "pary", nr: 5, color: "#9b6bff", title: "Okrągłe pary", ep: 8, desc: "Połącz grupki owiec, które razem dają okrągłą liczbę.", pics: ["kosmita", "owca"], soon: true },
-  { key: "final", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["owca-spi"], soon: true },
+  { key: "prostokat", nr: 4, color: "var(--pink)", title: "Stado w prostokąt", ep: 3, desc: "Ustaw owce w równe rzędy. Czy to liczba pierwsza?", pics: ["owca", "owca", "owca"] },
+  { key: "pary", nr: 5, color: "#9b6bff", title: "Okrągłe pary", ep: 8, desc: "Połącz grupki owiec, które razem dają okrągłą liczbę.", pics: ["kosmita", "owca"] },
+  { key: "final", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
 function drawMap() {
@@ -349,8 +421,9 @@ function drawMap() {
 }
 
 /* ============ silnik poziomu ============ */
-const ROUNDS = 8;
 let cur = null;
+const roundsOf = () => cur.game.rounds || 8;
+const isLast = () => cur.i === roundsOf() - 1;
 
 const ui = {
   grok(html) { $("#grokSay").innerHTML = html },
@@ -361,10 +434,16 @@ const ui = {
     const img = $("#beataImg"); img.classList.remove("hop", "shake"); void img.offsetWidth;
     if (mood === "good") img.classList.add("hop"); if (mood === "bad") img.classList.add("shake");
   },
-  action(label, fn, disabled = false) { const b = $("#act"); b.textContent = label; b.onclick = () => { sfx("click"); fn() }; b.disabled = disabled },
+  action(label, fn, disabled = false) { const b = $("#act"); b.hidden = false; b.textContent = label; b.onclick = () => { sfx("click"); fn() }; b.disabled = disabled },
+  action2(label, fn) { const b = $("#act2"); b.hidden = !label; if (label) { b.textContent = label; b.onclick = () => { sfx("click"); fn() } } },
+  hideActions() { $("#act").hidden = true; $("#act2").hidden = true },
+  nextLabel() { return isLast() ? "Koniec →" : "Dalej →" },
+  done() { ui.action2(null); ui.action(ui.nextLabel(), ui.next) },
+  // opóźnienie, które samo się anuluje, gdy dziecko przejdzie dalej albo wyjdzie z pastwiska
+  later(fn, ms) { const tok = cur.token; setTimeout(() => { if (cur && cur.token === tok) fn() }, ms) },
   error() {
     cur.errors++; cur.roundErrors++; sfx("bad");
-    if (cur.errors >= 2) { const t = $("#tip"); t.hidden = false; t.innerHTML = `Coś nie wychodzi? Obejrzyj ${epLink(cur.p.ep)}.` }
+    if (cur.errors >= 2) { const t = $("#tip"); t.hidden = false; t.innerHTML = `Coś nie wychodzi? Obejrzyj ${epLink(cur.ep)}.` }
   },
   correct() { sfx("ok") },
   next() { cur.dotState[cur.i] = cur.roundErrors ? "meh" : "ok"; cur.i++; startRound() },
@@ -373,41 +452,67 @@ const ui = {
 const PRAISE = ["Bee-ardzo dobrze!", "No proszę, trafione!", "Brawo! Nawet ja bym lepiej nie policzyła.", "Super! Grok jest z ciebie dumny.", "Tak jest! Bee!", "Pięknie! Należy się garść siana."];
 const praise = () => pick(PRAISE);
 
+/* zegar finału: pasek się kurczy, a gdy dojdzie do końca, Beata zasypia */
+let clockT = null;
+function stopClock() { clearInterval(clockT); clockT = null }
+function startClock(sec) {
+  stopClock();
+  const bar = $("#clockBar"); bar.style.width = "100%"; $("#clock").classList.remove("low");
+  clockT = setInterval(() => {
+    if (!cur) return stopClock();
+    const left = Math.max(0, 1 - (Date.now() - cur.t0) / 1000 / sec);
+    bar.style.width = left * 100 + "%"; $("#clock").classList.toggle("low", left < .25);
+    if (left === 0) { stopClock(); cur.slept = true; $("#beataImg").src = "img/owca-spi.png"; ui.beata("Chrrr… zasnęłam. Ale dokończ, gwiazdki wciąż czekają!") }
+  }, 250);
+}
+
 function startLevel(key) {
+  stopClock();
   const p = PASTWISKA.find(p => p.key === key);
   if (!p || p.soon) { showMap(); return }
-  cur = { p, game: GAMES[key], i: 0, errors: 0, roundErrors: 0, dotState: [] };
+  cur = { p, game: GAMES[key], i: 0, errors: 0, roundErrors: 0, dotState: [], ep: p.ep, slept: false, t0: Date.now() };
+  if (cur.game.setup) cur.game.setup(cur);
   $("#map").hidden = true; $("#level").hidden = false; $("#end").hidden = true;
-  $("#lvlName").textContent = `${p.nr}. ${p.title}`;
   $("#tip").hidden = true;
+  $("#beataImg").src = "img/beata.png";
+  $("#clock").hidden = !cur.game.time;
+  if (cur.game.time) startClock(cur.game.time);
   $("#cheatBtn").hidden = !cur.game.cheat;
   $("#cheatBtn").onclick = () => { sfx("click"); const c = document.querySelector(".cheat"); if (c) c.remove(); else $("#play").insertAdjacentHTML("afterbegin", cur.game.cheat) };
   window.scrollTo(0, 0);
   startRound();
 }
 function drawDots() {
-  $("#dots").innerHTML = Array.from({ length: ROUNDS }, (_, i) => `<i class="${i === cur.i ? "now" : cur.dotState[i] || ""}"></i>`).join("");
+  $("#dots").innerHTML = Array.from({ length: roundsOf() }, (_, i) => `<i class="${i === cur.i ? "now" : cur.dotState[i] || ""}"></i>`).join("");
 }
 function startRound() {
-  if (cur.i >= ROUNDS) return finish();
-  cur.roundErrors = 0;
-  $("#act").hidden = false;
+  if (cur.i >= roundsOf()) return finish();
+  cur.roundErrors = 0; cur.token = {}; cur.ep = cur.p.ep;
+  $("#lvlName").textContent = `${cur.p.nr}. ${cur.p.title}`;
+  const act = $("#act"); act.hidden = false; act.disabled = false; $("#act2").hidden = true;
   drawDots(); ui.beata("");
   cur.game.round(cur.i, ui);
 }
 function finish() {
-  drawDots();
-  const e = cur.errors, st = e <= 1 ? 3 : e <= 3 ? 2 : 1;
+  stopClock(); drawDots();
+  const e = cur.errors;
+  let st = e <= 1 ? 3 : e <= 3 ? 2 : 1;
+  if (cur.slept) st = Math.min(st, 2);
   const best = Math.max(save.stars[cur.p.key] || 0, st);
   save.stars[cur.p.key] = best; persist();
   $("#total").textContent = Object.values(save.stars).reduce((a, b) => a + b, 0);
   sfx("win");
-  const msg = st === 3 ? "Ani jedna owca się nie zgubiła!" : st === 2 ? "Prawie idealnie. Jeszcze raz po trzy gwiazdki?" : "Udało się! Następnym razem pójdzie lepiej.";
+  let msg = st === 3 ? "Ani jedna owca się nie zgubiła!" : st === 2 ? "Prawie idealnie. Jeszcze raz po trzy gwiazdki?" : "Udało się! Następnym razem pójdzie lepiej.";
+  let extra = "";
+  if (cur.game.time) {
+    const t = Math.round((Date.now() - cur.t0) / 1000);
+    extra = `<p>Czas: ${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}. ${cur.slept ? "Beata zdążyła zasnąć, więc tym razem najwyżej dwie gwiazdki." : "Beata nie zdążyła zasnąć!"}</p>`;
+  }
   const watch = e >= 2 ? `<p>Chcesz to sobie przypomnieć? Obejrzyj ${epLink(cur.p.ep)}.</p>` : "";
-  $("#endCard").innerHTML = `<img src="img/${st === 3 ? "beata" : "owca"}.png" alt="">
-    <h2>Pastwisko ukończone!</h2>
+  $("#endCard").innerHTML = `<img src="img/${cur.slept ? "owca-spi" : st === 3 ? "beata" : "owca"}.png" alt="">
+    <h2>${cur.game.time ? "Policzone? To dobranoc!" : "Pastwisko ukończone!"}</h2>
     <div class="stars">${starsHTML(st)}</div>
-    <p><b>${msg}</b></p><p>Błędy: ${e}</p>${watch}
+    <p><b>${msg}</b></p><p>Błędy: ${e}</p>${extra}${watch}
     <div class="row"><button class="btn" id="again">Jeszcze raz</button><button class="btn btn-main" id="toMap">Na mapę</button></div>`;
   $("#end").hidden = false;
   $("#again").onclick = () => startLevel(cur.p.key);
@@ -415,7 +520,7 @@ function finish() {
   $("#toMap").focus();
 }
 function showMap() {
-  cur = null; $("#level").hidden = true; $("#end").hidden = true; $("#map").hidden = false; drawMap();
+  stopClock(); cur = null; $("#level").hidden = true; $("#end").hidden = true; $("#map").hidden = false; drawMap();
 }
 $("#back").onclick = () => { location.hash = "" };
 function route() { const k = location.hash.slice(1); if (k && GAMES[k]) startLevel(k); else showMap() }
@@ -498,7 +603,7 @@ const GAMES_OS = {
     const win = () => {
       locked = true; svg.classList.add("locked");
       pos = target; setPos(); tag(fmt(v), "#2fbf71"); hop();
-      ui.action("Dalej →", ui.next);
+      ui.action(ui.nextLabel(), ui.next);
     };
     const good = () => { ui.correct(); win(); ui.grok(`Tak! Owca stoi na ${num(v)}.`); ui.beata(praise(), "good") };
     const reveal = () => { win(); ui.grok(`Zobacz, tutaj jest ${num(v)}. ${stepHint}`); ui.beata("Nic się nie stało. Następna owca na pewno trafi!", "bad") };
@@ -667,12 +772,265 @@ const GAMES_ZAG = {
         ui.beata("Bee… " + parts.join(" "), "bad");
         ui.grok(`Sprawdźmy każdą zagrodę. Wyniki są na kartkach.`);
       }
-      ui.action(cur.i === ROUNDS - 1 ? "Koniec →" : "Dalej →", ui.next);
+      ui.action(ui.nextLabel(), ui.next);
     });
   },
 };
 
-const GAMES = { os: GAMES_OS, zagrody: GAMES_ZAG };
+/* =====================================================================
+   PASTWISKO 1: ILE OWIEC? (odcinek 7, szacowanie)
+   Rundy 1–4: stado przebiega przez łąkę i ucieka, dziecko wybiera słowo
+   (kilka / kilkanaście / kilkadziesiąt / kilkaset). Rundy 5–6: suwak „około”.
+   Runda 7: zakupy na targu (wystarczy pieniędzy?). Runda 8: kosmiczny kalkulator.
+   ===================================================================== */
+const SZ_WORDS = [["kilka", 2, 9, "mniej niż 10"], ["kilkanaście", 11, 19, "od 11 do 19"], ["kilkadziesiąt", 20, 99, "od 20 do 99"], ["kilkaset", 200, 999, "od 200 do 999"]];
+const SZ_PLAN = [
+  () => ({ type: "word", n: rnd(4, 9), ms: 3500 }),
+  () => ({ type: "word", n: rnd(12, 19), ms: 3500 }),
+  () => ({ type: "word", n: rnd(30, 90), ms: 3000 }),
+  () => ({ type: "word", n: pick([rnd(5, 9), rnd(13, 19), rnd(25, 85)]), ms: 2500 }),
+  () => ({ type: "slider", n: rnd(20, 60), ms: 3000 }),
+  () => ({ type: "slider", n: rnd(45, 95), ms: 3000 }),
+  () => ({ type: "market" }),
+  () => ({ type: "calc" }),
+];
+const MARKET = ["siano", "marchewki", "wiadro", "dzwonek dla owcy", "nożyce do strzyżenia", "koszyk jabłek"];
+
+function meadowHTML(n) {
+  // owce w losowych miejscach siatki, z przesunięciem, żeby się nie nakładały
+  const cols = Math.ceil(Math.sqrt(n * 2.6)), rows = Math.ceil(n / cols);
+  const cells = shuffle(Array.from({ length: cols * rows }, (_, i) => i)).slice(0, n);
+  const w = n <= 9 ? 12 : n <= 19 ? 9 : n <= 50 ? 6.4 : 5;     // szerokość owcy w % łąki
+  const h = w * .87 * 2.6;                                       // wysokość owcy w % łąki (łąka ma proporcje 2.6 : 1)
+  return cells.map((c, k) => {
+    const x = (c % cols + Math.random() * .6) / cols * (100 - w);
+    const y = 26 + (Math.floor(c / cols) + Math.random() * .6) / rows * (72 - h);
+    return `<img src="img/owca.png" alt="" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%;width:${w}%;animation-delay:${Math.min(k * 25, 800)}ms">`;
+  }).join("");
+}
+function tensHTML(n) {
+  let h = "";
+  for (let r = 0; r * 10 < n; r++) {
+    const k = Math.min(10, n - r * 10);
+    h += `<div class="ten">${'<img src="img/owca.png" alt="">'.repeat(k)}<b>${r * 10 + k}</b></div>`;
+  }
+  return `<div class="tens">${h}</div>`;
+}
+
+const GAMES_SZAC = {
+  round(i, ui) {
+    const c = SZ_PLAN[i]();
+    if (c.type === "market") return this.market(ui);
+    if (c.type === "calc") return this.calc(ui);
+    const n = c.n;
+    ui.grok(i === 0 ? "Patrz uważnie! Stado przebiegnie przez łąkę i ucieknie za górkę. Nie licz po kolei, tylko oszacuj!" : "Patrz uważnie! Owce zaraz uciekną.");
+    $("#play").innerHTML = `<div class="meadow" id="meadow">${meadowHTML(n)}<div class="fog" id="fog" hidden><span>Owce uciekły za górkę!</span></div></div><div id="below"></div>`;
+    ui.hideActions();
+    const reveal = () => { $("#meadow").outerHTML = tensHTML(n) };
+    ui.later(() => {
+      $("#fog").hidden = false; sfx("tick");
+      if (c.type === "word") {
+        ui.grok("Ile owiec było na łące?");
+        $("#below").innerHTML = `<div class="opts">${SZ_WORDS.map(([w]) => `<button class="btn opt word" data-w="${w}">${w}</button>`).join("")}</div>`;
+        const ok = SZ_WORDS.find(([, lo, hi]) => n >= lo && n <= hi);
+        document.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+          document.querySelectorAll(".opt").forEach(x => { x.disabled = true; if (x.dataset.w === ok[0]) x.classList.add("yes") });
+          reveal();
+          const expl = `Policzone: ${num(n)} ${owiec(n)}. To <b>${ok[0]}</b>, czyli ${ok[3]}.`;
+          if (b.dataset.w === ok[0]) { ui.correct(); ui.beata(praise(), "good") }
+          else { b.classList.add("no"); ui.error(); ui.beata(`Bee… „${b.dataset.w}” to ${SZ_WORDS.find(x => x[0] === b.dataset.w)[3]}, a tu owiec było ${ok[0]}.`, "bad") }
+          ui.grok(expl); ui.done();
+        });
+      } else {
+        ui.grok("Ile mniej więcej było owiec? Przesuń suwak.");
+        $("#below").innerHTML = `<div class="guess"><p>Moim zdaniem było około <b id="gv">50</b> owiec</p><input type="range" id="gr" min="0" max="100" step="5" value="50" aria-label="Ile owiec"></div>`;
+        $("#gr").oninput = () => { $("#gv").textContent = $("#gr").value };
+        ui.action("Sprawdź", () => {
+          const g = +$("#gr").value, tol = Math.max(5, Math.round(n * .2));
+          $("#gr").disabled = true; reveal();
+          if (Math.abs(g - n) <= tol) { ui.correct(); ui.beata(`Było ${num(n)}, a ty mówisz około ${num(g)}. Świetny szacunek!`, "good") }
+          else { ui.error(); ui.beata(`Bee… było ${num(n)}, a ty mówisz około ${num(g)}. To za ${g < n ? "mało" : "dużo"}.`, "bad") }
+          ui.grok(`Policzone: ${num(n)} ${owiec(n)}. Sztuczka: policz owce w jednym kawałku łąki i sprawdź, ile takich kawałków jest razem.`);
+          ui.done();
+        });
+      }
+    }, c.ms);
+  },
+  market(ui) {
+    const rs = shuffle([20, 30, 40, 50, 60]);
+    const items = shuffle(MARKET.slice()).slice(0, 3).map((name, k) => { const r = rs[k], d = pick([-2, -1, 1, 2]); return { name, r, d, p: r + d } });
+    const R = items.reduce((a, x) => a + x.r, 0), exact = items.reduce((a, x) => a + x.p, 0);
+    const B = R + pick([-20, -10, 10, 20]), enough = exact <= B;
+    ui.grok(`Grok idzie na targ i ma ${num(B)} zł. Wystarczy mu na wszystko? Nie licz dokładnie, tylko oszacuj!`);
+    $("#play").innerHTML = `<div class="herd"><div class="sign">Grok ma: <b>${fmt(B)}</b> zł</div></div>
+      <div class="market">${items.map(x => `<div class="price"><b>${x.p} zł</b><span>${x.name}</span></div>`).join("")}</div>`;
+    const answer = yes => {
+      const expl = `${items.map(x => `${x.p} to ${x.d < 0 ? "prawie" : "trochę ponad"} ${x.r}`).join(", ")}. Razem około ${num(R)} zł, a Grok ma ${num(B)} zł. ${enough ? "Wystarczy" : "Nie wystarczy"}! Dokładnie: ${fmt(exact)} zł.`;
+      if (yes === enough) { ui.correct(); ui.beata(praise(), "good") } else { ui.error(); ui.beata(enough ? "Bee… a jednak wystarczy, i jeszcze zostanie reszta!" : "Bee… zabraknie pieniędzy, a ja zostanę bez marchewek!", "bad") }
+      ui.grok(expl); ui.done();
+    };
+    ui.action("Wystarczy", () => answer(true));
+    ui.action2("Nie wystarczy", () => answer(false));
+  },
+  calc(ui) {
+    const near = () => { const r = 100 * rnd(1, 6); return { r, v: r + pick([-3, -2, -1, 1, 2, 3]) } };
+    const a = near(), b = near(), s = a.v + b.v, right = Math.random() < .5;
+    const shown = right ? s : s + pick([-300, -200, 200, 300, 900].filter(d => s + d > 0));
+    const R = a.r + b.r;
+    ui.grok("Kosmita sprawdza swój kosmiczny kalkulator. Oszacuj: czy ten wynik może być dobry?");
+    $("#play").innerHTML = `<div class="calc"><img src="img/kosmita.png" alt="Kosmita"><div class="lcd">${a.v} + ${b.v} = ${fmt(shown)}</div></div>`;
+    const answer = ok => {
+      const expl = `${a.v} to około ${a.r}, ${b.v} to około ${b.r}. Razem około ${num(R)}. ` + (right ? `Kalkulator pokazał ${num(shown)}, czyli blisko szacunku. Wynik ma sens.` : `Kalkulator pokazał ${num(shown)}, a to daleko od ${fmt(R)}. Pomylił się! Dobrze jest ${num(s)}.`);
+      if (ok === right) { ui.correct(); ui.beata(praise(), "good") } else { ui.error(); ui.beata(right ? "Bee… tym razem kalkulator miał rację!" : "Bee… ten kalkulator chyba liczy po kosmicznemu!", "bad") }
+      ui.grok(expl); ui.done();
+    };
+    ui.action("Może być dobrze", () => answer(true));
+    ui.action2("Na pewno źle", () => answer(false));
+  },
+};
+
+/* =====================================================================
+   PASTWISKO 4: STADO W PROSTOKĄT (odcinek 3, liczby pierwsze i złożone)
+   Dziecko zmienia liczbę rzędów. Gdy wyjdzie prostokąt (więcej niż jeden rząd
+   i jedna kolumna), liczba jest złożona. Jeśli się nie da, jest pierwsza.
+   ===================================================================== */
+const isPrime = n => { if (n < 2) return false; for (let d = 2; d * d <= n; d++) if (n % d === 0) return false; return true };
+const divisors = n => Array.from({ length: n }, (_, i) => i + 1).filter(d => n % d === 0);
+function rzedow(n) { const d = n % 10, dd = n % 100; if (n === 1) return "rząd"; if (d >= 2 && d <= 4 && !(dd >= 12 && dd <= 14)) return "rzędy"; return "rzędów" }
+const poOwiec = c => c === 1 ? "po 1 owcy" : `po ${c} ${owiec(c)}`;
+const PR_PLAN = [
+  () => pick([6, 8, 10, 12]), () => pick([5, 7]), () => pick([14, 15, 16, 18, 20]), () => pick([11, 13]),
+  () => rnd(15, 30), () => pick([17, 19, 23, 29]), () => rnd(20, 40), () => rnd(20, 40),
+];
+
+const GAMES_PROST = {
+  round(i, ui) {
+    const n = PR_PLAN[i](), prime = isPrime(n), maxR = Math.min(n, 12);
+    const small = divisors(n).find(d => d > 1 && d < n);
+    let r = 1, tries = 0, locked = false;
+    ui.grok(i === 0
+      ? `Mam ${num(n)} ${owiec(n)}. Ustaw je w prostokąt: kilka rzędów, w każdym tyle samo owiec. Zmieniaj liczbę rzędów przyciskami − i +. Jeśli prostokąta nie da się ułożyć, kliknij „Nie da się!”.`
+      : `Mam ${num(n)} ${owiec(n)}. Ułożysz z nich prostokąt?`);
+    $("#play").innerHTML = `<div class="rows-ctl"><button class="btn step" id="minus" aria-label="Mniej rzędów">−</button>
+      <div class="rows-n"><b id="rn">1</b><span id="rl">rząd</span></div><button class="btn step" id="plus" aria-label="Więcej rzędów">+</button></div>
+      <div class="pasture" id="pasture"></div><p class="rows-info" id="ri"></p>`;
+    const draw = () => {
+      const c = Math.ceil(n / r), holes = r * c - n;
+      const p = $("#pasture");
+      p.style.gridTemplateColumns = `repeat(${c}, minmax(0, 46px))`;
+      p.innerHTML = Array.from({ length: r * c }, (_, k) => k < n ? '<img src="img/owca.png" alt="">' : '<span class="hole"></span>').join("");
+      p.classList.toggle("full", !holes && r > 1 && c > 1);
+      $("#rn").textContent = r; $("#rl").textContent = rzedow(r);
+      $("#ri").innerHTML = holes ? `${r} ${rzedow(r)} ${poOwiec(c)}, ale w ostatnim brakuje ${holes} ${holes === 1 ? "owcy" : "owiec"}.` : r === 1 || c === 1 ? `Jeden długi ${r === 1 ? "rząd" : "słupek"}.` : `${r} ${rzedow(r)} ${poOwiec(c)}: ${r} × ${c} = ${n}`;
+      $("#minus").disabled = locked || r <= 1; $("#plus").disabled = locked || r >= maxR;
+    };
+    $("#minus").onclick = () => { if (r > 1) { r--; sfx("tick"); draw() } };
+    $("#plus").onclick = () => { if (r < maxR) { r++; sfx("tick"); draw() } };
+    draw();
+    const divText = `Dzielniki liczby ${n}: ${divisors(n).join(", ")}.`;
+    const end = html => { locked = true; draw(); ui.grok(html); ui.done() };
+    const win = () => { ui.correct(); ui.beata(praise(), "good"); end(`Tak! ${r} × ${Math.ceil(n / r)} = ${num(n)}. ${divText} Więcej niż dwa, więc ${n} to <b>liczba złożona</b>.`) };
+    const winPrime = () => { ui.correct(); ui.beata(praise(), "good"); r = 1; end(`Tak! ${num(n)} ${owiec(n)} da się ustawić tylko w jeden rząd albo w jeden słupek. ${divText} Tylko dwa, więc ${n} to <b>liczba pierwsza</b>.`) };
+    const miss = () => {
+      tries++; ui.error();
+      if (tries >= 3) {
+        ui.beata("Nic się nie stało. Grok pokaże, jak to jest.", "bad");
+        if (prime) { r = 1; end(`${num(n)} nie dzieli się przez żadną liczbę oprócz 1 i ${n}. ${divText} To <b>liczba pierwsza</b>.`) }
+        else { r = small; end(`Zobacz: ${small} × ${n / small} = ${num(n)}. ${divText} To <b>liczba złożona</b>.`) }
+        return true;
+      }
+      ui.grok(tries === 1 ? `Sprawdź, czy ${n} dzieli się przez 2, 3, 4… Tyle rzędów warto spróbować.` : prime ? `${n} nie dzieli się ani przez 2, ani przez 3, ani przez 5… Może to liczba pierwsza?` : `${n} dzieli się przez ${small}. Spróbuj ${small} ${rzedow(small)}.`);
+      return false;
+    };
+    ui.action("To jest prostokąt!", () => {
+      const c = Math.ceil(n / r), holes = r * c - n;
+      if (!holes && r > 1 && c > 1) return win();
+      const msg = holes ? "Bee… w ostatnim rzędzie brakuje owiec. To jeszcze nie prostokąt." : "Bee… to jeden długi rząd, a Grok chce prawdziwy prostokąt.";
+      if (!miss()) ui.beata(msg, "bad");
+    });
+    ui.action2("Nie da się!", () => {
+      if (prime) return winPrime();
+      if (!miss()) ui.beata("Bee… a jednak się da! Szukaj dalej.", "bad");
+    });
+  },
+};
+
+/* =====================================================================
+   PASTWISKO 5: OKRĄGŁE PARY (odcinek 8, sprytne dodawanie)
+   Sześć grupek owiec, trzy pary. Każda para razem daje 10, 100 albo 1000.
+   ===================================================================== */
+const PA_PLAN = [
+  { T: 10, gen: () => rnd(1, 4) }, { T: 10, gen: () => rnd(1, 4) },
+  { T: 100, gen: () => pick([10, 20, 30, 40, 15, 25, 35, 45]) }, { T: 100, gen: () => pick([10, 20, 30, 40, 15, 25, 35, 45]) },
+  { T: 100, gen: () => { let a; do a = rnd(11, 49); while (a % 10 === 0); return a } }, { T: 100, gen: () => { let a; do a = rnd(11, 49); while (a % 10 === 0); return a } },
+  { T: 1000, gen: () => pick([100, 200, 300, 400, 150, 250, 350, 450, 125, 225, 275, 325, 375, 475]) }, { T: 1000, gen: () => 10 * rnd(11, 49) },
+];
+const PA_RULE = { 10: "Pomyśl, ile brakuje do 10.", 100: "Najpierw jedności: razem muszą dać pełną dziesiątkę. Potem dziesiątki.", 1000: "Popatrz na końcówki: razem muszą dać pełną setkę." };
+
+const GAMES_PARY = {
+  round(i, ui) {
+    const { T, gen } = PA_PLAN[i], as = new Set();
+    while (as.size < 3) as.add(gen());
+    const nums = shuffle([...as].flatMap(a => [a, T - a]));
+    ui.grok(i === 0
+      ? `Kosmita przywiózł owce w grupkach. Połącz je w pary, które razem dają ${num(T)}. Stuknij jedną grupkę, a potem drugą.`
+      : `Połącz grupki w pary, które razem dają ${num(T)}.`);
+    const card = v => `<button class="pair" data-v="${v}">${T === 10 ? `<span class="flock-mini">${'<img src="img/owca.png" alt="">'.repeat(v)}</span>` : '<img class="one" src="img/owca.png" alt="">'}<span class="pn">${fmt(v)}</span></button>`;
+    $("#play").innerHTML = `<div class="target"><img src="img/kosmita.png" alt=""><div class="sign">Razem: <b>${fmt(T)}</b></div></div>
+      <div class="pairs">${nums.map(card).join("")}</div><div class="pair-done" id="pd"></div>`;
+    ui.hideActions();
+    let sel = null, found = 0, errs = 0;
+    document.querySelectorAll(".pair").forEach(el => el.onclick = () => {
+      if (el.classList.contains("gone")) return;
+      sfx("click");
+      if (sel === el) { el.classList.remove("sel"); sel = null; return }
+      if (!sel) { sel = el; el.classList.add("sel"); return }
+      const a = +sel.dataset.v, b = +el.dataset.v, first = sel; sel = null;
+      first.classList.remove("sel");
+      if (a + b === T) {
+        ui.correct(); found++;
+        [first, el].forEach(x => { x.classList.add("gone"); x.disabled = true });
+        $("#pd").insertAdjacentHTML("beforeend", `<span>${fmt(a)} + ${fmt(b)} = ${fmt(T)}</span>`);
+        if (found === 3) {
+          ui.beata(cur.roundErrors ? "Udało się! Łąka pusta, wszystkie owce w parach." : praise(), "good");
+          ui.grok(`Łąka pusta! Wszystkie pary dają razem ${num(T)}.`);
+          ui.done();
+        } else ui.beata(`${fmt(a)} + ${fmt(b)} = ${fmt(T)}. Tak jest!`, "good");
+        return;
+      }
+      errs++; ui.error();
+      [first, el].forEach(x => { x.classList.remove("no"); void x.offsetWidth; x.classList.add("no") });
+      ui.later(() => [first, el].forEach(x => x.classList.remove("no")), 600);
+      ui.beata(`Bee… ${fmt(a)} + ${fmt(b)} = ${fmt(a + b)}, a nie ${fmt(T)}.`, "bad");
+      ui.grok(errs === 1 ? PA_RULE[T] : `${num(a)} potrzebuje ${num(T - a)}, żeby było ${num(T)}.`);
+    });
+  },
+};
+
+/* =====================================================================
+   FINAŁ: WIELKA POWTÓRKA (odcinek 9)
+   10 rund wylosowanych ze wszystkich pastwisk, na czas. Kolejność losowa,
+   ale to samo pastwisko nie wypada dwa razy pod rząd.
+   ===================================================================== */
+const FINAL_KEYS = ["os", "zagrody", "szacowanie", "prostokat", "pary"];
+const FINAL_LEVEL = { os: [3, 7], zagrody: [3, 6], szacowanie: [3, 7], prostokat: [4, 6], pary: [3, 6] };
+const GAMES_FINAL = {
+  rounds: 10, time: 300,
+  setup(c) {
+    let seq;
+    do seq = shuffle([...FINAL_KEYS, ...FINAL_KEYS]); while (seq.some((k, i) => i && seq[i - 1] === k));
+    c.seq = seq; c.seen = {};
+  },
+  round(i, ui) {
+    const k = cur.seq[i], n = cur.seen[k] = (cur.seen[k] || 0) + 1;
+    const p = PASTWISKA.find(p => p.key === k);
+    cur.ep = p.ep;
+    $("#lvlName").textContent = `★ Wielka powtórka · ${p.title}`;
+    GAMES[k].round(FINAL_LEVEL[k][n - 1], ui);
+  },
+};
+
+const GAMES = { szacowanie: GAMES_SZAC, os: GAMES_OS, zagrody: GAMES_ZAG, prostokat: GAMES_PROST, pary: GAMES_PARY, final: GAMES_FINAL };
 route();
 </script>
 </body>
