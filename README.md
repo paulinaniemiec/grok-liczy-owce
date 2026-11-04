@@ -16,3 +16,14 @@ Po wrzuceniu kolejnego odcinka w `index.html` zamień jego `<div class="ep soon"
 „Zagrody” (odc. 2), „Stado w prostokąt” (odc. 3), „Okrągłe pary” (odc. 8) i finał „Wielka powtórka” (odc. 9, 10 rund na czas).
 Linki do odcinków są w obiekcie `ODCINKI` w `gra.html` (po dodaniu pastwiska do nowego odcinka wpisz tam jego adres).
 Do pastwiska można wejść bezpośrednio: `gra.html#szacowanie`, `#os`, `#zagrody`, `#prostokat`, `#pary`, `#final`.
+
+## SEO i wyszukiwarki AI
+
+Strona działa pod adresem https://grokliczyowce.pl (DNS w OVH, domena ustawiona w Settings → Pages).
+`<title>`, opisy i znaczniki Open Graph są wpisane ręcznie w `<head>` obu stron. Dane strukturalne (JSON-LD
+z listą odcinków), `strona/sitemap.xml` i `strona/llms.txt` (opis serialu dla ChatGPT, Perplexity i innych wyszukiwarek AI)
+generuje skrypt. **Po dodaniu albo zmianie odcinka w `index.html` uruchom:**
+
+    python3 scripts/seo.py
+
+Daty publikacji filmów skrypt pobiera z YouTube i zapisuje w `scripts/seo-daty.json`.

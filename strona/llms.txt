@@ -1,0 +1,29 @@
+# Grok liczy owce
+
+> Darmowy animowany serial matematyczny po polsku dla uczniów klas 4–5 szkoły podstawowej. Każdy odcinek (ok. 5 minut, na YouTube, z polskimi napisami i rozdziałami) wyjaśnia jeden temat z programu matematyki. Bohaterowie: pasterz Grok, uparta owca Beata i Kosmita, który liczy po osiem.
+
+Dla kogo: uczniowie klas 4 i 5 (powtórka przed klasówką, nadrobienie lekcji), rodzice i nauczyciele matematyki (krótki film na początek lekcji).
+W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darmowa gra „Policz stado!” i kolorowanka z działaniami do druku.
+
+## Odcinki
+
+- [#1 Liczby naturalne (matematyka klasa 4, 4:22)](https://www.youtube.com/watch?v=NEiQK3w0GOs): Grok nie zna liczb. Skąd się wzięło liczenie, po co nam setki i dlaczego zero to wielki wynalazek.
+- [#2 Cechy podzielności (matematyka klasa 5, 7:25)](https://www.youtube.com/watch?v=ClVDgk-Ps1E): Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku. Gra do odcinka: https://grokliczyowce.pl/gra.html#zagrody („Zagrody”).
+- [#3 Liczby pierwsze i złożone (matematyka klasa 5, 5:21)](https://www.youtube.com/watch?v=axhkUmy1AgY): Siedem owiec nie chce stanąć w równych rzędach. Dzielniki, liczby pierwsze i drzewko czynników. Gra do odcinka: https://grokliczyowce.pl/gra.html#prostokat („Stado w prostokąt”).
+- [#4 Dzielenie pisemne (matematyka klasa 5, 5:03)](https://www.youtube.com/watch?v=GWMigBTXm8A): 852 snopki siana do trzech zagród. Dzielenie pisemne krok po kroku, z resztą i przez liczbę dwucyfrową.
+- [#5 Oś liczbowa (matematyka klasa 4, 5:26)](https://www.youtube.com/watch?v=RIXLuf781SQ): Owce przy płocie to prawie oś liczbowa. Jednostka, równe odstępy i liczby schowane pod literami. Gra do odcinka: https://grokliczyowce.pl/gra.html#os („Owca na osi”).
+- [#6 Dodawanie i odejmowanie (matematyka klasa 4, 3:47)](https://www.youtube.com/watch?v=6-Dt63XVpCM): Składnik, suma, odjemna, odjemnik i różnica. Przylatuje Kosmita z zielonymi owcami.
+- [#7 Szacowanie (matematyka klasa 4, 4:44)](https://www.youtube.com/watch?v=5HGl8kqOalU): „Jedna… dwie… DUŻO!” Kiedy wystarczy oszacować i jak sprawdzić, czy wynik ma sens. Gra do odcinka: https://grokliczyowce.pl/gra.html#szacowanie („Ile owiec?”).
+- [#8 Sprytne dodawanie (matematyka klasa 4, 4:46)](https://www.youtube.com/watch?v=fP3Fg6p8jWc): Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie. Gra do odcinka: https://grokliczyowce.pl/gra.html#pary („Okrągłe pary”).
+- [#9 Wielka powtórka (matematyka klasa 4, 4:34)](https://www.youtube.com/watch?v=qswL8UbfW60): Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda? Gra do odcinka: https://grokliczyowce.pl/gra.html#final („Wielka powtórka”).
+- [#10 Zadania tekstowe (matematyka klasa 4, 4:24)](https://www.youtube.com/watch?v=uovow-ytGzM): Ile lat ma pasterz? Zadania tekstowe w trzech krokach: dane, obliczenia i odpowiedź pełnym zdaniem.
+- [#11 Trójkąty (matematyka klasa 5, 4:55)](https://www.youtube.com/watch?v=AVuYOJIyyMI): Zagroda z trzech desek, przez którą ucieka Beata. Kiedy powstanie trójkąt, suma kątów i rodzaje trójkątów.
+
+## Materiały
+
+- [Strona serialu](https://grokliczyowce.pl/): wszystkie odcinki z podziałem na klasy
+- [Gra „Policz stado!”](https://grokliczyowce.pl/gra.html): mini-gra w przeglądarce, bez logowania, działa na telefonie i tablicy interaktywnej
+- [Kolorowanka z działaniami (PDF)](https://grokliczyowce.pl/kolorowanki/grok-liczy-owce-kolorowanka.pdf)
+- [Kanał YouTube](https://www.youtube.com/@grokliczyowce)
+- [Playlista klasa 4](https://www.youtube.com/playlist?list=PLWAZGF4-ivZc)
+- [Playlista klasa 5](https://www.youtube.com/playlist?list=PLOltZXzmRTJY)
