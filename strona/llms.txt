@@ -3,7 +3,7 @@
 > Darmowy animowany serial matematyczny po polsku dla uczniów klas 4–5 szkoły podstawowej. Każdy odcinek (ok. 5 minut, na YouTube, z polskimi napisami i rozdziałami) wyjaśnia jeden temat z programu matematyki. Bohaterowie: pasterz Grok, uparta owca Beata i Kosmita, który liczy po osiem.
 
 Dla kogo: uczniowie klas 4 i 5 (powtórka przed klasówką, nadrobienie lekcji), rodzice i nauczyciele matematyki (krótki film na początek lekcji).
-W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darmowa gra „Policz stado!” i kolorowanka z działaniami do druku.
+W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darmowa gra „Policz stado!”.
 
 ## Odcinki
 
@@ -23,7 +23,6 @@ W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darm
 
 - [Strona serialu](https://grokliczyowce.pl/): wszystkie odcinki z podziałem na klasy
 - [Gra „Policz stado!”](https://grokliczyowce.pl/gra.html): mini-gra w przeglądarce, bez logowania, działa na telefonie i tablicy interaktywnej
-- [Kolorowanka z działaniami (PDF)](https://grokliczyowce.pl/kolorowanki/grok-liczy-owce-kolorowanka.pdf)
 - [Kanał YouTube](https://www.youtube.com/@grokliczyowce)
 - [Playlista klasa 4](https://www.youtube.com/playlist?list=PLWAZGF4-ivZc)
 - [Playlista klasa 5](https://www.youtube.com/playlist?list=PLOltZXzmRTJY)

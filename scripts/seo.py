@@ -113,7 +113,7 @@ open(INDEX, "w", encoding="utf-8").write(src)
 
 # ---- sitemap.xml ----
 today = datetime.date.today().isoformat()
-urls = [("", "1.0"), ("gra.html", "0.8"), ("kolorowanki/grok-liczy-owce-kolorowanka.pdf", "0.5")]
+urls = [("", "1.0"), ("gra.html", "0.8")]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 sm += [f"  <url><loc>{SITE}/{u}</loc><lastmod>{today}</lastmod><priority>{p}</priority></url>" for u, p in urls]
 sm.append("</urlset>")
@@ -128,7 +128,7 @@ L = [
     "Bohaterowie: pasterz Grok, uparta owca Beata i Kosmita, który liczy po osiem.",
     "",
     "Dla kogo: uczniowie klas 4 i 5 (powtórka przed klasówką, nadrobienie lekcji), rodzice i nauczyciele matematyki (krótki film na początek lekcji).",
-    "W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darmowa gra „Policz stado!” i kolorowanka z działaniami do druku.",
+    "W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darmowa gra „Policz stado!”.",
     "",
     "## Odcinki",
     "",
@@ -142,7 +142,6 @@ L += [
     "",
     f"- [Strona serialu]({SITE}/): wszystkie odcinki z podziałem na klasy",
     f"- [Gra „Policz stado!”]({SITE}/gra.html): mini-gra w przeglądarce, bez logowania, działa na telefonie i tablicy interaktywnej",
-    f"- [Kolorowanka z działaniami (PDF)]({SITE}/kolorowanki/grok-liczy-owce-kolorowanka.pdf)",
     f"- [Kanał YouTube]({CHANNEL})",
     "- [Playlista klasa 4](https://www.youtube.com/playlist?list=PLWAZGF4-ivZc)",
     "- [Playlista klasa 5](https://www.youtube.com/playlist?list=PLOltZXzmRTJY)",
