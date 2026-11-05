@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze i sprytne dodawanie. Bez logowania, działa na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: porównywanie liczb, dzielenie pisemne, szacowanie, oś liczbowa, podzielność, liczby pierwsze, sprytne dodawanie, zadania tekstowe i trójkąty. Bez logowania, działa na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Sześć pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Jedenaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -405,6 +405,11 @@ drawMute();
 // Po wrzuceniu odcinka na YouTube wpisz jego adres w `url`. Do tego czasu link prowadzi na kanał.
 const KANAL = "https://www.youtube.com/@grokliczyowce";
 const ODCINKI = {
+  1: { tytul: "Liczby naturalne", url: "https://www.youtube.com/watch?v=NEiQK3w0GOs", rozdzial: "2:55", co: "Liczby na osi i porównywanie (&lt; &gt;)" },
+  4: { tytul: "Dzielenie pisemne", url: "https://www.youtube.com/watch?v=GWMigBTXm8A", rozdzial: "0:26", co: "852 : 3 krok po kroku" },
+  6: { tytul: "Dodawanie i odejmowanie", url: "https://www.youtube.com/watch?v=6-Dt63XVpCM", rozdzial: "0:28", co: "Składnik, suma, odjemna, odjemnik, różnica" },
+  10: { tytul: "Zadania tekstowe", url: "https://www.youtube.com/watch?v=uovow-ytGzM", rozdzial: "0:27", co: "Trzy kroki: dane, obliczenia, odpowiedź" },
+  11: { tytul: "Trójkąty", url: "https://www.youtube.com/watch?v=AVuYOJIyyMI", rozdzial: "0:26", co: "Warunek trójkąta" },
   2: { tytul: "Cechy podzielności", url: "https://www.youtube.com/watch?v=ClVDgk-Ps1E", rozdzial: "4:51", co: "Ściąga: wszystkie cechy podzielności" },
   3: { tytul: "Liczby pierwsze i złożone", url: "https://www.youtube.com/watch?v=axhkUmy1AgY", rozdzial: "0:53", co: "Liczba pierwsza" },
   5: { tytul: "Oś liczbowa", url: "https://www.youtube.com/watch?v=RIXLuf781SQ", rozdzial: "1:50", co: "Różne osie: co 2, co 5, co 100" },
@@ -434,6 +439,11 @@ const PASTWISKA = [
   { key: "zagrody", klasa: "5", nr: 3, color: "var(--green)", title: "Zagrody", ep: 2, desc: "Do których zagród owce zmieszczą się po równo?", pics: ["grok", "owca", "owca"] },
   { key: "prostokat", klasa: "5", nr: 4, color: "var(--pink)", title: "Stado w prostokąt", ep: 3, desc: "Ustaw owce w równe rzędy. Czy to liczba pierwsza?", pics: ["owca", "owca", "owca"] },
   { key: "pary", klasa: "4", nr: 5, color: "#9b6bff", title: "Okrągłe pary", ep: 8, desc: "Połącz grupki owiec, które razem dają okrągłą liczbę.", pics: ["kosmita", "owca"] },
+  { key: "porownaj", klasa: "4", nr: 6, color: "#ff7a59", title: "Która większa?", ep: 1, desc: "Znak &lt; i &gt; otwiera paszczę w stronę większej liczby. Porównuj i licz worki kamyków.", pics: ["owca", "beata"] },
+  { key: "snopki", klasa: "5", nr: 7, color: "var(--wood)", title: "Snopki dla zagród", ep: 4, desc: "Dziel pisemnie krok po kroku: dzielę, mnożę, odejmuję, dopisuję.", pics: ["grok", "owca"] },
+  { key: "zostalo", klasa: "4", nr: 8, color: "#14b8a6", title: "Ile zostało?", ep: 6, desc: "Składnik, suma, odjemna, odjemnik, różnica. I kto tu jest różnicą?", pics: ["beata", "owca", "owca"] },
+  { key: "zadania", klasa: "4", nr: 9, color: "#e2557a", title: "Ile lat ma pasterz?", ep: 10, desc: "Dane, obliczenia, odpowiedź. Uważaj na zadania z haczykiem!", pics: ["kosmita", "grok"] },
+  { key: "trojkaty", klasa: "5", nr: 10, color: "#f59e0b", title: "Trójkątna zagroda", ep: 11, desc: "Z których desek zbudujesz zagrodę? Policz trzeci kąt.", pics: ["grok", "owca"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -538,6 +548,7 @@ function drawDots() {
 }
 function startRound() {
   if (cur.i >= roundsOf()) return finish();
+  document.onkeydown = null; // klawiatura numeryczna z poprzedniej rundy
   cur.roundErrors = 0; cur.token = {}; cur.ep = cur.p.ep;
   $("#lvlName").textContent = `${cur.p.nr}. ${cur.p.title}`;
   const act = $("#act"); act.hidden = false; act.disabled = false; $("#act2").hidden = true;
@@ -546,7 +557,7 @@ function startRound() {
   drawLevelBar();
 }
 function finish() {
-  stopClock(); drawDots();
+  document.onkeydown = null; stopClock(); drawDots();
   const e = cur.errors;
   let st = e <= 1 ? 3 : e <= 3 ? 2 : 1;
   if (cur.slept) st = Math.min(st, 2);
@@ -572,7 +583,7 @@ function finish() {
   $("#toMap").focus();
 }
 function showMap() {
-  stopClock(); cur = null; $("#level").hidden = true; $("#end").hidden = true; $("#map").hidden = false; drawMap();
+  document.onkeydown = null; stopClock(); cur = null; $("#level").hidden = true; $("#end").hidden = true; $("#map").hidden = false; drawMap();
 }
 $("#back").onclick = () => { location.hash = "" };
 function route() { const k = location.hash.slice(1); if (k && GAMES[k]) startLevel(k); else showMap() }
@@ -1083,6 +1094,804 @@ const GAMES_FINAL = {
 };
 
 const GAMES = { szacowanie: GAMES_SZAC, os: GAMES_OS, zagrody: GAMES_ZAG, prostokat: GAMES_PROST, pary: GAMES_PARY, final: GAMES_FINAL };
+
+/* =====================================================================
+   WSPÓLNE KLOCKI DO GIER
+   Używane przez pastwiska 6–10 (korzystają z $, ui, cur, sfx, fmt…).
+   Każda gra to obiekt { round(i, ui), rounds?, host?, cheat? } wpisany do GAMES.
+   ===================================================================== */
+
+// odmiana: pl(5, "owca", "owce", "owiec") → "owiec"
+function pl(n, one, few, many) {
+  const d = n % 10, dd = n % 100;
+  if (n === 1) return one;
+  if (d >= 2 && d <= 4 && !(dd >= 12 && dd <= 14)) return few;
+  return many;
+}
+const SHEEP = '<img src="img/owca.png" alt="">';
+
+document.head.insertAdjacentHTML("beforeend", `<style>/* ---------- wspólne: klawiatura, wybór, kartki ---------- */
+.q-big { text-align: center; font: 800 clamp(34px, 6vw, 54px)/1.15 var(--head); margin: 6px 0 4px }
+.q-big .gap { display: inline-block; min-width: 1.6em; border-bottom: 5px solid var(--pink); color: var(--pink) }
+.q-sub { text-align: center; color: var(--ink-soft); font-size: 16px; margin: 0 0 6px }
+.pad { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 14px }
+.pad-show { min-width: 170px; min-height: 66px; padding: 8px 22px; background: #fff; border: 3px solid var(--ink); border-radius: 16px; font: 800 40px/1.2 var(--head);
+  text-align: center; box-shadow: inset 0 4px 0 #0000000d }
+.pad-show.bad { background: #ffe4ec; animation: shake .4s } .pad-show.good { background: #dcf7e8 }
+.pad-show .u { font-size: 26px; color: var(--ink-soft); margin-left: 4px }
+.pad-show .cur { display: inline-block; width: 3px; height: 38px; background: var(--ink); vertical-align: -4px; animation: blink 1s steps(1) infinite }
+@keyframes blink { 50% { opacity: 0 } }
+.keys { display: grid; grid-template-columns: repeat(6, 54px); gap: 8px }
+.keys button { height: 54px; border-radius: 14px; border: 3px solid var(--ink); background: #fff; box-shadow: 0 4px 0 var(--ink); font: 800 26px/1 var(--head); cursor: pointer; padding: 0 }
+.keys button:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink) }
+.keys button.del { background: #ffe4ec; font-size: 22px }
+.keys button:disabled { opacity: .4 }
+.opts.col { flex-direction: column; align-items: stretch; max-width: 620px; margin-left: auto; margin-right: auto }
+.opt.txt { font: 800 19px/1.3 var(--body); padding: 14px 20px; text-align: left; justify-content: flex-start; border-radius: 18px }
+.opt.sm { min-width: 70px; font-size: 24px }
+
+@media (max-width: 600px) { .keys { grid-template-columns: repeat(6, 46px); gap: 6px } .keys button { height: 48px } }
+</style>`);
+const nextLabel = () => ui.nextLabel();
+
+// pokaż „Dalej →” i zakończ rundę
+function endRound() { $("#act").hidden = false; ui.action(nextLabel(), ui.next) }
+
+const CHEER_UP = ["Nic się nie stało. Następnym razem trafisz!", "Bee… zapamiętaj to, przyda się!", "Spokojnie, Grok też się czasem myli. Codziennie."];
+
+/* ---------- wybór jednej odpowiedzi ----------
+   opts: tablica wartości albo {v, t} (t = napis na guziku)
+   ok: poprawna wartość, tries: ile prób przed pokazaniem odpowiedzi
+   onRight(), onWrong(v, n), onReveal(), then() – co dalej (domyślnie koniec rundy) */
+function choice({ el, opts, ok, tries = 2, cls = "", onRight, onWrong, onReveal, then = endRound }) {
+  const items = opts.map(o => typeof o === "object" ? o : { v: o, t: typeof o === "number" ? fmt(o) : o });
+  el.innerHTML = items.map(o => `<button class="btn opt ${cls}" data-v="${o.v}">${o.t}</button>`).join("");
+  $("#act").hidden = true;
+  const btns = [...el.querySelectorAll(".opt")];
+  let n = 0, done = false;
+  const lock = () => { done = true; btns.forEach(x => { x.disabled = true; if (x.dataset.v === String(ok)) x.classList.add("yes") }) };
+  btns.forEach(b => b.onclick = () => {
+    if (done) return;
+    if (b.dataset.v === String(ok)) {
+      lock(); ui.correct();
+      onRight ? onRight() : ui.beata(praise(), "good");
+      return then();
+    }
+    n++; ui.error(); b.classList.add("no"); b.disabled = true;
+    if (n >= tries) { lock(); onReveal ? onReveal() : ui.beata(pick(CHEER_UP), "bad"); return then() }
+    onWrong ? onWrong(b.dataset.v, n) : ui.beata("Bee… to nie to. Spróbuj jeszcze raz!", "bad");
+  });
+}
+
+/* ---------- klawiatura z cyframi ----------
+   ok: poprawna liczba, unit: napis po liczbie (np. "°"), max: ile cyfr
+   Wpisywać można też z klawiatury komputera. */
+function numPad({ el, ok, unit = "", max = 5, tries = 3, label = "Sprawdź", onRight, onWrong, onReveal, then = endRound }) {
+  el.innerHTML = `<div class="pad"><div class="pad-show" id="padShow"></div>
+    <div class="keys">${[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(d => `<button data-d="${d}">${d}</button>`).join("")}<button class="del" data-d="x" aria-label="Usuń">⌫</button><button class="del" data-d="c" aria-label="Wyczyść">C</button></div></div>`;
+  let val = "", n = 0, done = false;
+  const show = $("#padShow");
+  const draw = (cls = "") => {
+    show.className = "pad-show " + cls;
+    show.innerHTML = (val ? fmt(+val) : "") + (done ? "" : '<span class="cur"></span>') + (unit ? `<span class="u">${unit}</span>` : "");
+    $("#act").disabled = !val && !done;
+  };
+  const press = d => {
+    if (done) return;
+    if (d === "x") val = val.slice(0, -1);
+    else if (d === "c") val = "";
+    else if (val.length < max) val = val === "0" ? String(d) : val + d;
+    sfx("tick"); draw();
+  };
+  el.querySelectorAll(".keys button").forEach(b => b.onclick = () => press(b.dataset.d === "x" || b.dataset.d === "c" ? b.dataset.d : +b.dataset.d));
+  document.onkeydown = e => {
+    if (done) return;
+    if (/^[0-9]$/.test(e.key)) { e.preventDefault(); press(+e.key) }
+    else if (e.key === "Backspace") { e.preventDefault(); press("x") }
+    else if (e.key === "Enter" && val) { e.preventDefault(); $("#act").click() }
+  };
+  const finish = () => { done = true; document.onkeydown = null; el.querySelectorAll(".keys button").forEach(b => b.disabled = true) };
+  $("#act").hidden = false;
+  ui.action(label, () => {
+    if (!val) return;
+    const v = +val;
+    if (v === ok) { finish(); draw("good"); ui.correct(); onRight ? onRight() : ui.beata(praise(), "good"); return then() }
+    n++; ui.error(); draw("bad");
+    if (n >= tries) { val = String(ok); finish(); draw("good"); onReveal ? onReveal(v) : ui.beata(pick(CHEER_UP), "bad"); return then() }
+    onWrong ? onWrong(v, n) : ui.beata(`Bee… ${fmt(v)} to nie to. Spróbuj jeszcze raz!`, "bad");
+    val = ""; ui.later(() => { if (!done) draw() }, 450);
+  });
+  draw();
+}
+
+// „Nie” albo „Tak” itp. – dwa duże guziki
+const yesNo = (a = "Tak", b = "Nie") => [{ v: "t", t: a }, { v: "n", t: b }];
+
+// losowe złe odpowiedzi blisko dobrej (bez duplikatów, bez ujemnych)
+function near(ok, cands, k = 2) {
+  const out = new Set();
+  for (const c of shuffle([...cands])) if (c !== ok && c >= 0 && out.size < k) out.add(c);
+  let d = 1; while (out.size < k) { if (!out.has(ok + d) && ok + d !== ok) out.add(ok + d); d++ }
+  return shuffle([ok, ...out]);
+}
+
+/* =====================================================================
+   PASTWISKO 6: KTÓRA WIĘKSZA? (odcinek 1, liczby naturalne)
+   Rundy: porównywanie (<, =, >), worki z kamykami (setki, dziesiątki,
+   jedności), co jest liczbą naturalną, największa liczba z cyfr.
+   ===================================================================== */
+(() => {
+  const css = `
+  .cmp { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 18px 0 6px; flex-wrap: wrap }
+  .cmp .sign { font-size: clamp(30px, 6vw, 48px); min-width: 120px; text-align: center }
+  .cmp .slot { width: 92px; height: 92px; border: 4px dashed var(--ink-soft); border-radius: 22px; display: grid; place-items: center; font: 800 64px/1 var(--head); background: #fff }
+  .cmp .slot.ok { border: 4px solid var(--ink); background: var(--yellow); animation: pop .3s }
+  .sacks { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: 18px; margin: 12px auto; max-width: 760px }
+  .sgroup { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-end; justify-content: center; padding: 10px 12px 8px; border: 3px dashed #c9bfd9; border-radius: 16px; background: #fff; min-width: 90px; max-width: 300px; position: relative }
+  .sgroup em { position: absolute; top: -12px; left: 10px; background: var(--ink); color: #fff; font: 900 12px/1 var(--body); font-style: normal; padding: 3px 7px; border-radius: 6px }
+  .sack { width: 54px; height: 60px; background: var(--wood); border: 3px solid var(--ink); border-radius: 14px 14px 22px 22px; display: grid; place-items: center; font: 900 15px/1 var(--body); color: #fff; position: relative; box-shadow: inset 0 -6px 0 var(--wood-dark) }
+  .sack::before { content: ""; position: absolute; top: -9px; width: 22px; height: 10px; background: var(--wood); border: 3px solid var(--ink); border-radius: 6px }
+  .bag { width: 34px; height: 40px; background: #f2c879; border: 3px solid var(--ink); border-radius: 10px 10px 16px 16px; display: grid; place-items: center; font: 900 12px/1 var(--body) }
+  .peb { width: 20px; height: 16px; background: #a8a3b5; border: 3px solid var(--ink); border-radius: 50% }
+  .nums { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 14px }
+  .nums .btn.sel { background: var(--yellow) } .nums .btn.yes { background: #b9f0d1 } .nums .btn.no { background: #ffd0d0 } .nums .btn.miss { background: #fff1d6; border-style: dashed }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  const sign = (a, b) => a < b ? "<" : a > b ? ">" : "=";
+  const why = (a, b) => {
+    if (a === b) return `Obie liczby są takie same.`;
+    const [A, B] = [String(a), String(b)];
+    if (A.length !== B.length) return `${fmt(a > b ? a : b)} ma więcej cyfr, więc jest większa.`;
+    let i = 0; while (A[i] === B[i]) i++;
+    const names = ["jedności", "dziesiątek", "setek", "tysięcy", "dziesiątek tysięcy"];
+    return `Porównujemy od lewej. Pierwsza różnica jest w rzędzie ${names[A.length - 1 - i]}: ${A[i]} i ${B[i]}.`;
+  };
+
+  function compareRound(a, b) {
+    const ok = sign(a, b);
+    ui.grok(`Który znak wstawić między liczby?<small>Paszcza otwiera się w stronę większej liczby.</small>`);
+    $("#play").innerHTML = `<div class="cmp"><div class="sign">${fmt(a)}</div><div class="slot" id="slot">?</div><div class="sign">${fmt(b)}</div></div>
+      <div class="opts" id="opts"></div>`;
+    const reveal = () => { const s = $("#slot"); s.textContent = ok; s.classList.add("ok") };
+    choice({
+      el: $("#opts"), ok, cls: "opt", opts: ["<", "=", ">"].map(v => ({ v, t: v })),
+      onRight: () => { reveal(); ui.beata(praise(), "good"); ui.grok(`Tak! ${fmt(a)} ${ok} ${fmt(b)}. ${why(a, b)}`) },
+      onWrong: () => { ui.beata("Bee… paszcza zjada zawsze większą liczbę!", "bad"); ui.grok(why(a, b)) },
+      onReveal: () => { reveal(); ui.beata(pick(CHEER_UP), "bad"); ui.grok(`${fmt(a)} ${ok} ${fmt(b)}. ${why(a, b)}`) },
+    });
+  }
+
+  function sacksRound(h, t, u, th = 0) {
+    const v = th * 1000 + h * 100 + t * 10 + u;
+    const grp = (k, html, name) => k ? `<div class="sgroup"><em>${name}</em>${html.repeat(k)}</div>` : "";
+    ui.grok(`Grok liczy kamyki: duży worek to setka, woreczek to dziesiątka. Ile to razem?`);
+    $("#play").innerHTML = `<div class="sacks">
+      ${grp(th, '<div class="sack" style="width:64px;background:#8e5a2b">1000</div>', "tysiące")}
+      ${grp(h, '<div class="sack">100</div>', "setki")}${grp(t, '<div class="bag">10</div>', "dziesiątki")}${grp(u, '<div class="peb"></div>', "jedności")}</div>
+      <div class="opts" id="opts"></div>`;
+    // złe odpowiedzi: zgubione zero, zamienione rzędy
+    const wrong = [th * 100 + h * 10 + u, h * 100 + u * 10 + t + th * 1000, v + 100, v - 10, h * 100 + t + u * 10, th * 1000 + t * 100 + h * 10 + u];
+    const opts = near(v, wrong.filter(x => x > 0));
+    const desc = [th && `${th} ${pl(th, "tysiąc", "tysiące", "tysięcy")}`, `${h} ${pl(h, "setka", "setki", "setek")}`, `${t} ${pl(t, "dziesiątka", "dziesiątki", "dziesiątek")}`, `${u} ${pl(u, "jedność", "jedności", "jedności")}`].filter(Boolean).join(", ");
+    const zero = (t === 0 || u === 0) ? " Pusty rząd zapisujemy zerem!" : "";
+    choice({
+      el: $("#opts"), ok: v, opts,
+      onRight: () => { ui.grok(`Tak! ${desc} to ${num(v)}.`); ui.beata(praise(), "good") },
+      onWrong: () => { ui.grok(`Policz osobno: ${desc}.${zero}`); ui.beata("Bee… policz worki jeszcze raz.", "bad") },
+      onReveal: () => { ui.grok(`${desc} to ${num(v)}.${zero}`); ui.beata(pick(CHEER_UP), "bad") },
+    });
+  }
+
+  function naturalRound() {
+    const pool = shuffle([
+      { t: "0", ok: true }, { t: String(rnd(2, 9)), ok: true }, { t: fmt(rnd(100, 999)), ok: true }, { t: fmt(rnd(1000, 50000)), ok: true },
+      { t: "2 i pół", ok: false }, { t: "½", ok: false }, { t: "3,5", ok: false },
+    ]).slice(0, 6);
+    if (!pool.some(p => p.t === "0")) pool[0] = { t: "0", ok: true };
+    if (!pool.some(p => !p.ok)) pool[1] = { t: "2 i pół", ok: false };
+    ui.grok(`Którymi liczbami można policzyć owce? Zaznacz wszystkie liczby naturalne.`);
+    $("#play").innerHTML = `<div class="nums" id="nums">${pool.map((p, i) => `<button class="btn opt" data-i="${i}" aria-pressed="false">${p.t}</button>`).join("")}</div>`;
+    const sel = new Set(), btns = [...document.querySelectorAll("#nums .btn")];
+    let checked = false;
+    btns.forEach(b => b.onclick = () => { if (checked) return; sfx("click"); const i = +b.dataset.i; sel.has(i) ? sel.delete(i) : sel.add(i); b.classList.toggle("sel", sel.has(i)); b.setAttribute("aria-pressed", sel.has(i)) });
+    ui.action("Sprawdź", () => {
+      checked = true; let bad = 0;
+      btns.forEach(b => { const i = +b.dataset.i, p = pool[i]; b.classList.remove("sel"); b.disabled = true;
+        if (p.ok && sel.has(i)) b.classList.add("yes"); else if (!p.ok && sel.has(i)) { b.classList.add("no"); bad++ } else if (p.ok) { b.classList.add("miss"); bad++ } });
+      if (!bad) { ui.correct(); ui.beata(praise(), "good"); ui.grok(`Tak! Zero też jest liczbą naturalną. A pół owcy? Tego nie liczymy.`) }
+      else { ui.error(); ui.beata("Bee… Liczby naturalne to 0, 1, 2, 3… Bez połówek!", "bad"); ui.grok(`Zielone to liczby naturalne. Zero też! Połówki i przecinki nie.`) }
+      endRound();
+    });
+  }
+
+  function biggestRound() {
+    let ds; do { ds = shuffle([0, rnd(1, 9), rnd(1, 9), rnd(1, 9)]) } while (new Set(ds).size < 4);
+    const big = +[...ds].sort((a, b) => b - a).join("");
+    const small = +[...ds].sort((a, b) => a - b).join("");
+    const smallNoZero = (() => { const s = [...ds].sort((a, b) => a - b); const i = s.findIndex(d => d > 0); const [f] = s.splice(i, 1); return +[f, ...s].join("") })();
+    const askBig = Math.random() < .5;
+    const ok = askBig ? big : smallNoZero;
+    ui.grok(`Grok ma kamyki z cyframi ${ds.join(", ")}. Ułóż z nich ${askBig ? "<b>największą</b>" : "<b>najmniejszą</b> czterocyfrową"} liczbę.`);
+    $("#play").innerHTML = `<div class="nums">${ds.map(d => `<span class="sack" style="width:60px;height:60px;font-size:30px">${d}</span>`).join("")}</div><div class="opts" id="opts"></div>`;
+    const opts = askBig ? near(big, [+[...ds].sort((a, b) => b - a).reverse().join(""), +(String(big).slice(0, 2) + String(big)[3] + String(big)[2]), +ds.join("")]) : near(ok, [small, +ds.join(""), big].filter(x => x !== ok && String(x).length === 4).concat([ok + 9]));
+    choice({ el: $("#opts"), ok, opts: opts.map(o => ({ v: o, t: o < 1000 ? "0" + o : fmt(o) })),
+      onRight: () => { ui.grok(askBig ? `Tak! Największe cyfry stawiamy na początku: ${fmt(big)}.` : `Tak! Na początku nie może stać zero, więc ${fmt(ok)}.`); ui.beata(praise(), "good") },
+      onWrong: () => { ui.grok(askBig ? `Największą cyfrę postaw na początku, potem następną…` : `Najmniejsza cyfra na początek… ale zero z przodu się nie liczy!`); ui.beata("Bee… spróbuj jeszcze raz.", "bad") },
+      onReveal: () => { ui.grok(`To ${fmt(ok)}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 1009 / 1090: te same cyfry, inne miejsce zera
+  const tricky = () => { const a = rnd(1, 9), b = rnd(1, 9); return shuffle([a * 1000 + b, a * 1000 + b * 10]) };
+  const close4 = () => { const a = rnd(1000, 9989), k = pick([1, 9, 10, 90, 100]); return shuffle([a, a + k]) };
+
+  const PLAN = [
+    () => { const a = rnd(11, 98); let b; do { b = rnd(11, 98) } while (Math.floor(b / 10) === Math.floor(a / 10)); compareRound(a, b) },
+    () => sacksRound(rnd(1, 4), rnd(1, 6), rnd(1, 7)),
+    () => { const a = rnd(101, 989), b = a - a % 100 + rnd(0, 99); compareRound(a, b === a ? a + 1 : b) },
+    () => { const [a, b] = tricky(); compareRound(a, b) },
+    () => pick([() => sacksRound(rnd(1, 5), 0, rnd(1, 6)), () => sacksRound(rnd(2, 5), rnd(1, 5), 0)])(),
+    naturalRound,
+    () => { const [a, b] = pick([close4, () => { const x = rnd(100, 999) * 10; return [x, x] }])(); compareRound(a, b) },
+    () => pick([biggestRound, () => sacksRound(rnd(1, 3), 0, rnd(1, 4), rnd(1, 2))])(),
+  ];
+  GAMES.porownaj = { round(i) { PLAN[i]() } };
+})();
+
+/* =====================================================================
+   PASTWISKO 7: SNOPKI DLA ZAGRÓD (odcinek 4, dzielenie pisemne)
+   Dzielenie pod kreską krok po kroku. Dziecko podaje kolejne cyfry wyniku,
+   a gra sama mnoży, odejmuje i dopisuje następną cyfrę (jak w wierszyku:
+   dzielę, mnożę, odejmuję, dopisuję). Do tego reszta i sprawdzenie.
+   ===================================================================== */
+(() => {
+  const css = `
+  .ld-wrap { display: flex; justify-content: center; margin: 4px 0 6px; overflow-x: auto }
+  .ld { display: inline-grid; grid-auto-rows: 1.2em; font: 800 clamp(30px, 5.5vw, 42px)/1.2 var(--head); font-variant-numeric: tabular-nums; background:
+    repeating-linear-gradient(#fff 0 calc(1.2em - 2px), #dbe9f7 calc(1.2em - 2px) 1.2em); border: 3px solid var(--ink); border-radius: 16px; padding: 10px 24px 12px }
+  .ld span { text-align: center; position: relative }
+  .ld .ktop { border-top: 4px solid var(--ink) }
+  .ld .dv { text-align: left; padding-left: 10px; white-space: nowrap; color: var(--ink-soft) }
+  .ld .q { color: var(--blue); animation: pop .3s }
+  .ld .pr { color: var(--ink-soft) }
+  .ld .line { border-bottom: 3px solid var(--ink); align-self: end; height: 0; margin-bottom: 2px }
+  .ld .hl { background: var(--yellow); border-radius: 6px }
+  .ld .new { animation: pop .35s backwards }
+  .ld .down { color: var(--pink) }
+  .poem { text-align: center; font: 900 14px/1 var(--body); letter-spacing: .5px; text-transform: uppercase; color: var(--ink-soft); margin: 8px 0 0 }
+  .poem i { font-style: normal; padding: 4px 8px; border-radius: 6px }
+  .poem i.on { background: var(--ink); color: #fff }
+  .digits { display: grid; grid-template-columns: repeat(10, minmax(0, 54px)); gap: 6px; justify-content: center; margin-top: 12px }
+  .digits .opt { min-width: 0; padding: 12px 0 10px; font-size: 26px }
+  @media (max-width: 600px) { .digits { grid-template-columns: repeat(5, 54px) } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  function longDiv(D, d) {
+    const s = String(D); let L = 1; while (+s.slice(0, L) < d) L++;
+    const steps = []; let p = +s.slice(0, L);
+    for (let j = L - 1; j < s.length; j++) {
+      const q = Math.floor(p / d), prod = q * d, r = p - prod;
+      steps.push({ j, p, q, prod, r, next: j + 1 < s.length ? +s[j + 1] : null });
+      if (j + 1 < s.length) p = r * 10 + +s[j + 1];
+    }
+    return { s, L, steps };
+  }
+
+  function render(D, d, ld, done) {
+    const { s, L, steps } = ld, cells = [];
+    const cell = (r, c, t, cls = "") => cells.push(`<span class="${cls}" style="grid-row:${r};grid-column:${c + 1}">${t}</span>`);
+    for (let k = 0; k < done; k++) cell(1, steps[k].j + 1, steps[k].q, "q");
+    [...s].forEach((ch, j) => cell(2, j + 1, ch, "ktop" + (done === 0 && j < L ? " hl" : "")));
+    cell(2, s.length + 1, `: ${d}`, "dv");
+    for (let k = 0; k < done; k++) {
+      const st = steps[k], row = 3 + 2 * k, end = st.j + 1, ps = String(st.prod), start = end - ps.length + 1, fresh = k === done - 1 ? " new" : "";
+      cell(row, start - 1, "−", "pr" + fresh);
+      [...ps].forEach((ch, i) => cell(row, start + i, ch, "pr" + fresh));
+      cells.push(`<span class="line${fresh}" style="grid-row:${row};grid-column:${start} / ${end + 2}"></span>`);
+      const rs = st.next !== null && st.r === 0 ? "" : String(st.r), cur = k === done - 1 && done < steps.length ? " hl" : "";
+      [...rs].forEach((ch, i) => cell(row + 1, end - rs.length + 1 + i, ch, fresh + cur));
+      if (st.next !== null) cell(row + 1, end + 1, st.next, "down" + fresh + cur);
+    }
+    return `<div class="ld" style="grid-template-columns:repeat(${s.length + 1}, .72em) auto">${cells.join("")}</div>`;
+  }
+
+  const s1 = L => `Pierwsze cyfry dają liczbę mniejszą od dzielnika, więc bierzemy od razu ${L === 2 ? "dwie cyfry" : L + " cyfry"}.`;
+  const poem = on => `<p class="poem">${["dzielę", "mnożę", "odejmuję", "dopisuję"].map((w, i) => `<i class="${on.includes(i) ? "on" : ""}">${w}</i>`).join(" · ")}</p>`;
+
+  function divRound(D, d) {
+    const ld = longDiv(D, d), { steps } = ld, Q = Math.floor(D / d), R = D % d;
+    $("#play").innerHTML = `<div class="herd"><div class="sign">${fmt(D)} ${pl(D, "snopek", "snopki", "snopków")} · ${d} ${pl(d, "zagroda", "zagrody", "zagród")}</div></div>
+      <div class="ld-wrap" id="ld"></div><div id="poem"></div><div class="digits opts" id="opts"></div>`;
+    const ask = k => {
+      const st = steps[k];
+      $("#ld").innerHTML = render(D, d, ld, k); $("#poem").innerHTML = poem([0]);
+      ui.grok(k === 0
+        ? `Podziel ${num(D)} : ${num(d)} pisemnie. Ile razy ${num(d)} mieści się w ${num(st.p)}?${st.j > 0 ? `<small>${s1(ld.L)}</small>` : ""}`
+        : `Dzielę dalej: ile razy ${num(d)} mieści się w ${num(st.p)}?${st.p < d ? `<small>Uwaga, ${st.p} jest mniejsze od ${d}!</small>` : ""}`);
+      choice({
+        el: $("#opts"), ok: st.q, tries: 3, cls: "sm", opts: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        onRight: () => ui.beata(pick(["Bee! Dobrze!", "Tak jest!", "Zgadza się!", praise()]), "good"),
+        onWrong: v => {
+          v = +v;
+          if (v * d > st.p) ui.beata(`Bee… ${v} · ${d} = ${v * d}, a to więcej niż ${st.p}. Za dużo!`, "bad");
+          else ui.beata(`Bee… ${v} · ${d} = ${v * d}. Zostaje ${st.p - v * d}, a to wciąż ${st.p - v * d === d ? "tyle samo co" : "więcej niż"} ${d}. Zmieści się więcej!`, "bad");
+        },
+        onReveal: () => ui.beata(`${d} mieści się w ${st.p} ${st.q} ${pl(st.q, "raz", "razy", "razy")}. ${pick(CHEER_UP)}`, "bad"),
+        then: () => {
+          $("#ld").innerHTML = render(D, d, ld, k + 1);
+          const last = k === steps.length - 1;
+          $("#poem").innerHTML = poem(last ? [1, 2] : [1, 2, 3]);
+          $("#opts").innerHTML = "";
+          const said = `Mnożę: ${st.q} · ${d} = ${st.prod}. Odejmuję: ${st.p} − ${st.prod} = ${st.r}.${last ? "" : ` Dopisuję ${st.next}.`}`;
+          $("#act").hidden = false;
+          if (!last) { ui.grok(said); ui.action("Następny krok →", () => ask(k + 1)) }
+          else {
+            ui.grok(`${said}<br>Wynik: <b>${fmt(D)} : ${d} = ${fmt(Q)}${R ? ` r. ${R}` : ""}</b><small>Sprawdzenie: ${fmt(Q)} · ${d}${R ? ` + ${R}` : ""} = ${fmt(D)}</small>`);
+            if (R) ui.beata(`Każda zagroda dostaje ${fmt(Q)}, a ${R} ${pl(R, "snopek zostaje", "snopki zostają", "snopków zostaje")}. Dla mnie!`, "good");
+            ui.action(nextLabel(), ui.next);
+          }
+        },
+      });
+    };
+    ask(0);
+  }
+
+  function ruleRound() {
+    const d = rnd(4, 9), q = rnd(12, 40), good = Math.random() < .4;
+    const r = good ? rnd(1, d - 1) : rnd(d, d + 3);
+    const D = q * d + r;
+    ui.grok(`Beata podzieliła ${num(D)} : ${num(d)} i mówi, że wyszło <b>${q} r. ${r}</b>. Czy to może być dobry wynik?`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(D)} : ${d} = ${q} r. ${r}</div><div class="opts" id="opts"></div>`;
+    const ok = good ? "t" : "n";
+    const why = good ? `Reszta ${r} jest mniejsza od ${d}, a ${q} · ${d} + ${r} = ${fmt(D)}. Zgadza się!` : `Reszta ${r} nie jest mniejsza od ${d}. Z reszty da się dać jeszcze po snopku! Dobrze jest: ${fmt(Math.floor(D / d))} r. ${D % d}.`;
+    choice({ el: $("#opts"), ok, opts: yesNo("Tak, może", "Nie, coś tu nie gra"),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(good ? praise() : "Przyłapana… Reszta zawsze musi być mniejsza od dzielnika.", "good") },
+      onReveal: () => { ui.grok(why); ui.beata("Zapamiętaj: reszta zawsze jest mniejsza od dzielnika.", "bad") }, tries: 1 });
+  }
+
+  function checkRound() {
+    const d = rnd(3, 9), q = rnd(21, 99), r = rnd(1, d - 1), D = q * d + r;
+    ui.grok(`Grok podzielił snopki: ${num(D)} : ${num(d)} = ${num(q)} r. ${num(r)}. Sprawdź go!<small>wynik · dzielnik + reszta = dzielna</small>`);
+    $("#play").innerHTML = `<div class="q-big">${q} · ${d} + ${r} = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: D, max: 4,
+      onRight: () => { ui.grok(`Tak! ${q} · ${d} = ${q * d}, plus ${r} daje ${fmt(D)}. Grok dobrze podzielił.`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === q * d ? `Bee… to dopiero mnożenie. Teraz dodaj resztę ${r}!` : `Bee… najpierw pomnóż ${q} · ${d}, a potem dodaj ${r}.`, "bad"),
+      onReveal: () => { ui.grok(`${q} · ${d} = ${q * d}, a ${q * d} + ${r} = ${fmt(D)}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const mk = (dMin, dMax, qMin, qMax, rem, test = () => true) => {
+    for (let t = 0; t < 300; t++) {
+      const d = rnd(dMin, dMax), q = rnd(qMin, qMax), r = rem ? rnd(1, d - 1) : 0, D = q * d + r;
+      if (test(D, d, q)) return [D, d];
+    }
+    return [852, 3];
+  };
+  const PLAN = [
+    () => divRound(...mk(2, 5, 12, 30, false, D => D < 100)),
+    () => divRound(...mk(3, 7, 11, 24, true, D => D < 100)),
+    () => divRound(...mk(3, 7, 102, 199, false, (D, d, q) => D < 1000 && !String(q).includes("0"))),
+    () => divRound(...mk(2, 4, 101, 309, false, (D, d, q) => D < 1000 && String(q)[1] === "0" && String(q)[2] !== "0")),
+    ruleRound,
+    () => divRound(...mk(6, 9, 30, 99, true, (D, d) => D < 1000 && +String(D)[0] < d)),
+    checkRound,
+    () => divRound(...mk(11, 15, 21, 79, false, D => D < 1000)),
+  ];
+  GAMES.snopki = {
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 4</h4><ul>
+      <li>Kolejne kroki: <b>dzielę, mnożę, odejmuję, dopisuję</b> i od początku.</li>
+      <li><b>Reszta</b> zawsze jest mniejsza od dzielnika.</li>
+      <li>Sprawdzenie: wynik · dzielnik + reszta = dzielna (24 · 4 + 1 = 97).</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 8: ILE ZOSTAŁO? (odcinek 6, dodawanie i odejmowanie)
+   Nazwy (składnik, suma, odjemna, odjemnik, różnica), pytania, na które
+   odpowiada odejmowanie, brakujące liczby i sprawdzanie dodawaniem.
+   ===================================================================== */
+(() => {
+  const css = `
+  .eq3 { display: flex; justify-content: center; align-items: flex-end; gap: 10px; font: 800 clamp(36px, 7vw, 60px)/1 var(--head); margin: 10px 0 4px; flex-wrap: wrap }
+  .eq3 .t { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 14px }
+  .eq3 .t.hl { background: var(--yellow); outline: 3px solid var(--ink) }
+  .eq3 .t small { font: 900 14px/1 var(--body); text-transform: uppercase; letter-spacing: .5px; color: var(--ink-soft); min-height: 14px }
+  .story { max-width: 640px; margin: 0 auto; background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 12px 18px; font-size: 19px; text-align: center }
+  .story .pics { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; margin-top: 8px }
+  .story .pics img { width: 26px } .story .pics img.g { filter: hue-rotate(80deg) saturate(2.2) } .story .pics img.z { opacity: .35 }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  const eq = (parts, hl = -1, names = []) => `<div class="eq3">${parts.map((p, i) =>
+    /^[+−=]$/.test(p) ? `<div class="t">${p}<small></small></div>` : `<div class="t${i === hl ? " hl" : ""}">${p}<small>${names[i] || ""}</small></div>`).join("")}</div>`;
+  const NAMES_ADD = ["składnik", "", "składnik", "", "suma"], NAMES_SUB = ["odjemna", "", "odjemnik", "", "różnica"];
+
+  function nameRound(sub) {
+    let a = rnd(20, 90), b = rnd(5, 40); if (sub && b >= a) [a, b] = [b + a, a];
+    const c = sub ? a - b : a + b, parts = [a, sub ? "−" : "+", b, "=", c], idx = pick([0, 2, 4]);
+    const NAMES = sub ? NAMES_SUB : NAMES_ADD, ok = NAMES[idx];
+    ui.grok(`Jak nazywa się zaznaczona liczba?`);
+    $("#play").innerHTML = `<div id="eq">${eq(parts, idx)}</div><div class="opts" id="opts"></div>`;
+    const showAll = () => { $("#eq").innerHTML = eq(parts, idx, NAMES) };
+    const opts = sub ? ["odjemna", "odjemnik", "różnica"] : ["składnik", "suma", "różnica"];
+    choice({ el: $("#opts"), ok, cls: "txt", opts: opts.map(v => ({ v, t: v })),
+      onRight: () => { showAll(); ui.grok(sub ? `Tak! Od odjemnej odejmujemy odjemnik, a wynik to różnica.` : `Tak! Dodajemy składniki, a wynik to suma.`); ui.beata(idx === 4 && sub ? "Ja też jestem różnicą. Ta, która została!" : praise(), "good") },
+      onWrong: v => ui.beata(v === "różnica" && !sub ? "Bee… różnica jest w odejmowaniu. Tu dodajemy!" : "Bee… spójrz, gdzie stoi ta liczba.", "bad"),
+      onReveal: () => { showAll(); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function whichRound() {
+    const a = rnd(30, 90); let b; do { b = rnd(5, 25) } while (a - b === b);
+    const idx = pick([0, 2, 4]);
+    const parts = [a, "−", b, "=", a - b];
+    ui.grok(`W działaniu ${num(a)} − ${num(b)} = ${num(a - b)} która liczba to <b>${NAMES_SUB[idx]}</b>?`);
+    $("#play").innerHTML = `<div id="eq">${eq(parts)}</div><div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: parts[idx], opts: shuffle([a, b, a - b]),
+      onRight: () => { $("#eq").innerHTML = eq(parts, idx, NAMES_SUB); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… odjemna stoi pierwsza, odjemnik drugi, a różnica to wynik.", "bad"),
+      onReveal: () => { $("#eq").innerHTML = eq(parts, idx, NAMES_SUB); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function missingRound() {
+    const type = pick(["add", "subA", "subB"]);
+    let a = rnd(15, 60), b = rnd(8, 35), parts, ok, hint;
+    if (type === "add") { parts = ["?", "+", b, "=", a + b]; ok = a; hint = `Brakujący składnik: suma − składnik = ${a + b} − ${b}.` }
+    else if (type === "subA") { parts = ["?", "−", b, "=", a]; ok = a + b; hint = `Odjemna to różnica + odjemnik = ${a} + ${b}.` }
+    else { parts = [a + b, "−", "?", "=", a]; ok = b; hint = `Odjemnik: odjemna − różnica = ${a + b} − ${a}.` }
+    ui.grok(`Ile owiec schowało się pod znakiem zapytania?`);
+    $("#play").innerHTML = eq(parts.map(p => p === "?" ? '<span class="gap" style="color:var(--pink)">?</span>' : p)) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok, max: 3,
+      onRight: () => { ui.grok(`Tak! Sprawdźmy: ${parts.map(p => p === "?" ? ok : p).join(" ")}.`); ui.beata(praise(), "good") },
+      onWrong: () => { ui.grok(hint); ui.beata("Bee… policz jeszcze raz.", "bad") },
+      onReveal: () => { ui.grok(`${hint} To ${ok}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // zadania z pytaniami „ile zostało? o ile więcej? o ile mniej? ile brakuje?”
+  const STORIES = [
+    () => { const a = rnd(18, 40), b = rnd(4, a - 6); return { t: `Rano na łące pasło się ${a} ${owiec(a)}. Wieczorem ${b} ${pl(b, "poszła", "poszły", "poszło")} spać. <b>Ile owiec zostało</b> na łące?`, ok: a - b, op: `${a} − ${b}`, pics: [a, b] } },
+    () => { const a = rnd(15, 30), b = rnd(4, a - 3); return { t: `Grok ma ${a} ${owiec(a)}, a Kosmita ${b} ${pl(b, "zieloną owcę", "zielone owce", "zielonych owiec")}. <b>O ile więcej</b> owiec ma Grok?`, ok: a - b, op: `${a} − ${b}`, green: b } },
+    () => { const a = rnd(20, 60), b = rnd(5, a - 5); return { t: `Beata zjadła ${b} ${pl(b, "snopek", "snopki", "snopków")} siana, a Grok przyniósł ${a}. <b>O ile mniej</b> snopków zjadła Beata, niż przyniósł Grok?`, ok: a - b, op: `${a} − ${b}` } },
+    () => { const a = pick([30, 40, 50, 60]), b = rnd(12, a - 4); return { t: `Do zagrody mieści się ${a} owiec. W środku jest już ${b}. <b>Ilu owiec brakuje</b>, żeby zagroda była pełna?`, ok: a - b, op: `${a} − ${b}` } },
+    () => { const a = rnd(12, 40), b = rnd(5, 30); return { t: `Rano przyszło ${a} ${owiec(a)}, a po południu jeszcze ${b}. <b>Ile owiec</b> przyszło <b>razem</b>?`, ok: a + b, op: `${a} + ${b}` } },
+  ];
+
+  function storyRound(kinds) {
+    const st = STORIES[pick(kinds)]();
+    ui.grok(`Przeczytaj i policz.`);
+    let pics = "";
+    if (st.pics && st.pics[0] <= 40) pics = `<div class="pics">${'<img src="img/owca.png" alt="">'.repeat(st.pics[0] - st.pics[1])}${'<img class="z" src="img/owca-spi.png" alt="">'.repeat(st.pics[1])}</div>`;
+    $("#play").innerHTML = `<div class="story">${st.t}${pics}</div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: st.ok, max: 3,
+      onRight: () => { ui.grok(`Tak! ${st.op} = ${st.ok}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(st.op.includes("+") ? "Bee… tu owce przychodzą. Czyli dodajemy!" : "Bee… na takie pytanie odpowiada odejmowanie.", "bad"),
+      onReveal: () => { ui.grok(`${st.op} = ${st.ok}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function opRound() {
+    const st = STORIES[rnd(0, 4)](), [x, y] = st.op.split(/ [+−] /);
+    ui.grok(`Jakim działaniem rozwiążesz to zadanie?`);
+    $("#play").innerHTML = `<div class="story">${st.t}</div><div class="opts" id="opts"></div>`;
+    const ok = st.op;
+    choice({ el: $("#opts"), ok, opts: shuffle([`${x} + ${y}`, `${x} − ${y}`]).map(v => ({ v, t: v })),
+      onRight: () => { ui.grok(`Tak! ${st.op} = ${st.ok}.`); ui.beata(praise(), "good") },
+      onReveal: () => { ui.grok(`${st.op} = ${st.ok}. ${ok.includes("−") ? "Ile zostało? O ile więcej? Ile brakuje? Na to odpowiada odejmowanie." : "Owce przychodzą, więc dodajemy."}`); ui.beata(pick(CHEER_UP), "bad") }, tries: 1 });
+  }
+
+  function checkRound() {
+    const a = rnd(41, 95), b = rnd(12, a - 15), good = Math.random() < .45;
+    const c = good ? a - b : a - b + pick([-10, 10, 1, -1]);
+    ui.grok(`Kosmita policzył: ${num(a)} − ${num(b)} = ${num(c)}. Sprawdź go dodawaniem!<small>różnica + odjemnik = odjemna</small>`);
+    $("#play").innerHTML = `<div class="q-big">${a} − ${b} = ${c}</div><p class="q-sub" id="chk">Sprawdzenie: ${c} + ${b} = ?</p><div class="opts" id="opts"></div>`;
+    const sh = () => { $("#chk").innerHTML = `Sprawdzenie: ${c} + ${b} = <b>${c + b}</b> ${c + b === a ? "✓" : `, a nie ${a} ✗`}` };
+    choice({ el: $("#opts"), ok: good ? "t" : "n", opts: yesNo("Dobrze", "Źle"), tries: 1,
+      onRight: () => { sh(); ui.grok(good ? `Tak! ${c} + ${b} = ${a}. Zgadza się.` : `Brawo, złapany! ${c} + ${b} = ${c + b}, a nie ${a}. Dobrze jest ${a - b}.`); ui.beata(praise(), "good") },
+      onReveal: () => { sh(); ui.grok(good ? `Jednak dobrze: ${c} + ${b} = ${a}.` : `${c} + ${b} = ${c + b}, a nie ${a}. Dobrze jest ${a - b}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [
+    () => nameRound(false),
+    () => nameRound(true),
+    () => storyRound([0]),
+    missingRound,
+    () => storyRound([1, 2]),
+    opRound,
+    whichRound,
+    checkRound,
+  ];
+  GAMES.zostalo = {
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 6</h4><ul>
+      <li><b>składnik + składnik = suma</b></li>
+      <li><b>odjemna − odjemnik = różnica</b></li>
+      <li>Odejmowanie odpowiada na pytania: ile zostało? o ile więcej? o ile mniej? ile brakuje?</li>
+      <li>Odejmowanie sprawdzamy dodawaniem: 21 + 17 = 38.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 9: ILE LAT MA PASTERZ? (odcinek 10, zadania tekstowe)
+   Każde zadanie w trzech krokach: 1. Dane (stuknij potrzebne liczby),
+   2. Obliczenia (wybierz działanie), 3. Odpowiedź pełnym zdaniem.
+   Czasem Kosmita da zadanie z haczykiem, którego nie da się obliczyć.
+   ===================================================================== */
+(() => {
+  const css = `
+  .task { max-width: 680px; margin: 0 auto; background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 14px 20px; font-size: 20px; line-height: 1.7 }
+  .task .dn { font: 800 20px/1 var(--body); padding: 4px 8px; margin: 0 1px; border: 3px solid var(--ink); border-radius: 10px; background: #f3eefb; cursor: pointer; box-shadow: 0 3px 0 var(--ink) }
+  .task .dn.sel { background: var(--yellow) }
+  .task .dn.need { background: #b9f0d1 } .task .dn.extra { background: #ffd0d0; text-decoration: line-through }
+  .task .dn:disabled { cursor: default; color: var(--ink) }
+  .task .ques { display: block; margin-top: 6px; font-weight: 900 }
+  .steps3 { display: flex; justify-content: center; gap: 8px; margin: 14px 0 6px; flex-wrap: wrap }
+  .steps3 span { font: 900 14px/1 var(--body); padding: 7px 12px; border-radius: 999px; border: 3px solid var(--ink); background: #fff; color: var(--ink-soft) }
+  .steps3 span.now { background: var(--yellow); color: var(--ink) } .steps3 span.ok { background: var(--green); color: #fff }
+  .given { text-align: center; font-size: 17px; margin: 4px 0 0; color: var(--ink-soft) }
+  .given b { color: var(--ink) }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  // {liczba} w tekście to dana. need: indeksy potrzebnych danych.
+  const sn = n => pl(n, "snopek", "snopki", "snopków"), km = n => pl(n, "kamyk", "kamyki", "kamyków");
+  const zo = n => pl(n, "zieloną owcę", "zielone owce", "zielonych owiec");
+  const T = {
+    zostalo: () => { const a = rnd(25, 60), b = rnd(8, a - 5), d = rnd(2, 4);
+      return { nums: [a, d, b], text: `Na łące pasie się {0} ${owiec(a)} i {1} krowy. Wieczorem {2} ${owiec(b)} ${pl(b, "idzie", "idą", "idzie")} spać.`, q: "Ile owiec zostało na łące?", need: [0, 2],
+        ops: [[`${a} − ${b}`, a - b], [`${a} + ${b}`, a + b], [`${a} − ${d}`, a - d]],
+        ans: [`Na łące ${pl(a - b, "została", "zostały", "zostało")} ${a - b} ${owiec(a - b)}.`, `Spać ${pl(b, "poszła", "poszły", "poszło")} ${b} ${owiec(b)}.`, `${a - b}.`] } },
+    plot: () => { const a = rnd(24, 40), b = rnd(5, 19), h = rnd(2, 4);
+      return { nums: [a, h, b], text: `Grok postawił płot długości {0} m. Pracował {1} godziny. Płot Kosmity jest o {2} m dłuższy.`, q: "Ile metrów ma płot Kosmity?", need: [0, 2],
+        ops: [[`${a} + ${b}`, a + b], [`${a} − ${b}`, a - b], [`${a} + ${b} + ${h}`, a + b + h]],
+        ans: [`Płot Kosmity ma ${a + b} m.`, `Płot Groka ma ${a} m.`, `Płot Kosmity jest o ${b} m dłuższy.`] } },
+    wiecej: () => { const a = rnd(30, 70), b = rnd(10, a - 8), l = pick([31, 34, 35, 38, 40, 42, 45].filter(x => x !== b));
+      return { nums: [a, l, b], text: `Grok ma {0} ${owiec(a)} i {1} ${pl(l, "rok", "lata", "lat")}. Kosmita ma {2} ${zo(b)}.`, q: "O ile więcej owiec ma Grok niż Kosmita?", need: [0, 2],
+        ops: [[`${a} − ${b}`, a - b], [`${a} + ${b}`, a + b], [`${a} + ${l}`, a + l]],
+        ans: [`Grok ma o ${a - b} ${owiec(a - b)} więcej niż Kosmita.`, `Grok ma ${a} ${owiec(a)}.`, `Razem mają ${a + b} ${owiec(a + b)}.`] } },
+    kamyki: () => { const n = rnd(3, 6), k = rnd(6, 15), w = rnd(2, 9);
+      return { nums: [n, k, w], text: `Grok przez {0} dni zbierał po {1} kamyków dziennie. Pusty worek waży {2} kg.`, q: "Ile kamyków zebrał Grok?", need: [0, 1],
+        ops: [[`${n} · ${k}`, n * k], [`${n} + ${k}`, n + k], [`${n} · ${k} + ${w}`, n * k + w]],
+        ans: [`Grok zebrał ${n * k} ${km(n * k)}.`, `Grok zbierał kamyki przez ${n} dni.`, `Worek waży ${w} kg.`] } },
+    siano: () => { const k = rnd(3, 8), d = rnd(6, 15), S = k * d, g = pick([3, 4, 5, 6, 7, 8, 9].filter(x => x !== k));
+      return { nums: [S, k, g], text: `Grok ma {0} ${sn(S)} siana. Beata zjada {1} ${sn(k)} dziennie. Kosmita przywiózł {2} ${zo(g)}, ale one jedzą tylko kamienie.`, q: "Na ile dni wystarczy siana dla Beaty?", need: [0, 1],
+        ops: [[`${S} : ${k}`, d], [`${S} − ${k}`, S - k], [`${S} − ${g}`, S - g]],
+        ans: [`Siana wystarczy na ${d} dni.`, `Beata zje ${S} ${sn(S)}.`, `${pl(S - k, "Zostanie", "Zostaną", "Zostanie")} ${S - k} ${sn(S - k)}.`] } },
+    razy: () => { const a = rnd(4, 12), b = rnd(3, 6), c = pick([2, 3, 4, 5, 6, 7].filter(x => x !== b && a * x !== a + b));
+      return { nums: [a, b, c], text: `Kosmita ma {0} ${zo(a)}. Grok ma {1} razy więcej owiec niż Kosmita. Kosmita przyleciał {2} spodkami.`, q: "Ile owiec ma Grok?", need: [0, 1],
+        ops: [[`${a} · ${b}`, a * b], [`${a} + ${b}`, a + b], [`${a} · ${c}`, a * c]],
+        ans: [`Grok ma ${a * b} ${owiec(a * b)}.`, `Kosmita ma ${a} ${zo(a)}.`, `Grok ma o ${b} ${owiec(b)} więcej.`] } },
+    dwa: () => { const a = rnd(20, 40), b = rnd(5, 15), c = pick([3, 4, 5, 6, 7, 8, 9, 10].filter(x => x !== b));
+      return { nums: [a, b, c], text: `Rano na pastwisko ${pl(a, "wyszła", "wyszły", "wyszło")} {0} ${owiec(a)}. W południe przyszło jeszcze {1}, a wieczorem {2} ${pl(c, "uciekła", "uciekły", "uciekło")} do lasu.`, q: "Ile owiec było na pastwisku wieczorem?", need: [0, 1, 2],
+        ops: [[`${a} + ${b} − ${c}`, a + b - c], [`${a} + ${b} + ${c}`, a + b + c], [`${a} − ${b} + ${c}`, a - b + c]],
+        ans: [`Wieczorem na pastwisku ${pl(a + b - c, "była", "były", "było")} ${a + b - c} ${owiec(a + b - c)}.`, `Do lasu ${pl(c, "uciekła", "uciekły", "uciekło")} ${c} ${owiec(c)}.`, `${a + b - c}.`] } },
+  };
+  const TRICKS = [
+    () => { const a = rnd(8, 20), b = rnd(3, 9); return { nums: [a, b], text: `Grok ma {0} ${owiec(a)}. Przychodzi jeszcze {1}.`, q: "Ile lat ma pasterz?", sum: [`${a} + ${b} = ${a + b}`, a + b] } },
+    () => { const a = rnd(3, 9), b = rnd(10, 30); return { nums: [a, b], text: `Kosmita przyleciał {0} spodkami. W każdym spodku ${pl(b, "był", "były", "było")} {1} ${pl(b, "kamień", "kamienie", "kamieni")}.`, q: "Jak ma na imię Kosmita?", sum: [`${a} · ${b} = ${a * b}`, a * b] } },
+    () => { const a = rnd(20, 50), b = rnd(2, 9); return { nums: [a, b], text: `Beata zjadła {0} ${sn(a)} w {1} dni.`, q: "Ile waży Beata?", sum: [`${a} : ${b}`, 0] } },
+  ];
+
+  const stepsBar = k => `<div class="steps3">${["1. Dane", "2. Obliczenia", "3. Odpowiedź"].map((s, i) => `<span class="${i < k ? "ok" : i === k ? "now" : ""}">${s}</span>`).join("")}</div>`;
+  const taskHTML = t => `<div class="task" id="task">${t.text.replace(/\{(\d)\}/g, (_, i) => `<button class="dn" data-i="${i}">${t.nums[i]}</button>`)}<span class="ques">${t.q}</span></div>`;
+
+  function taskRound(make) {
+    const t = make(), need = new Set(t.need);
+    $("#play").innerHTML = `${taskHTML(t)}<div id="bar">${stepsBar(0)}</div><p class="given" id="given"></p><div class="opts col" id="opts"></div>`;
+    const dns = [...document.querySelectorAll(".dn")], sel = new Set();
+    ui.grok(`Krok 1: dane. Stuknij w zadaniu tylko te liczby, które są potrzebne, żeby odpowiedzieć na pytanie.`);
+    dns.forEach(b => b.onclick = () => { const i = +b.dataset.i; sfx("click"); sel.has(i) ? sel.delete(i) : sel.add(i); b.classList.toggle("sel", sel.has(i)) });
+    $("#act").hidden = false;
+    ui.action("Sprawdź dane", () => {
+      const ok = sel.size === need.size && [...sel].every(i => need.has(i));
+      dns.forEach(b => { const i = +b.dataset.i; b.disabled = true; b.classList.remove("sel"); b.classList.add(need.has(i) ? "need" : "extra") });
+      $("#given").innerHTML = `Dane: ${t.need.map(i => `<b>${t.nums[i]}</b>`).join(", ")}`;
+      if (ok) { ui.correct(); ui.beata("Bee! Tylko to, co potrzebne!", "good") }
+      else { ui.error(); ui.beata(`Bee… potrzebne są tylko zielone liczby. Przekreślone nic nie zmieniają w odpowiedzi.`, "bad") }
+      calcStep(t);
+    });
+  }
+  function calcStep(t) {
+    $("#bar").innerHTML = stepsBar(1);
+    ui.grok(`Krok 2: obliczenia. Które działanie odpowiada na pytanie?`);
+    const [good] = t.ops;
+    choice({ el: $("#opts"), ok: good[0], cls: "txt", opts: shuffle(t.ops.map(([e, v]) => ({ v: e, t: `${e} = ${v}` }))),
+      onRight: () => ui.beata(praise(), "good"),
+      onWrong: () => ui.beata("Bee… przeczytaj pytanie jeszcze raz. Wyobraź sobie, co się dzieje.", "bad"),
+      onReveal: () => ui.beata(`Trzeba policzyć ${good[0]} = ${good[1]}.`, "bad"),
+      then: () => { $("#act").hidden = false; ui.action("Dalej: odpowiedź →", () => answerStep(t)) } });
+  }
+  function answerStep(t) {
+    $("#bar").innerHTML = stepsBar(2);
+    ui.grok(`Krok 3: odpowiedź <u>pełnym zdaniem</u>. Która odpowiedź pasuje do pytania: „${t.q}”`);
+    const ok = t.ans[0];
+    choice({ el: $("#opts"), ok, cls: "txt", opts: shuffle([...t.ans]).map(v => ({ v, t: v })),
+      onRight: () => { $("#bar").innerHTML = stepsBar(3); ui.beata(praise(), "good"); ui.grok(`Tak! Zadanie rozwiązane: dane, obliczenia, odpowiedź.`) },
+      onWrong: v => ui.beata(/^\d+\.$/.test(v) ? "Bee… sama liczba to nie jest pełne zdanie!" : "Bee… to prawda, ale nie odpowiada na pytanie.", "bad"),
+      onReveal: () => { $("#bar").innerHTML = stepsBar(3); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function trickRound(make) {
+    const t = make();
+    $("#play").innerHTML = `${taskHTML(t)}<div class="opts col" id="opts"></div>`;
+    document.querySelectorAll(".dn").forEach(b => b.disabled = true);
+    ui.grok(`Kosmita ma zagadkę. Jak rozwiązać to zadanie?`);
+    const NO = "Nie da się tego obliczyć";
+    choice({ el: $("#opts"), ok: NO, cls: "txt", tries: 1, opts: shuffle([{ v: t.sum[0], t: t.sum[1] ? `${t.sum[0]}` : `${t.sum[0]} = ?` }, { v: NO, t: `${NO}. W zadaniu nie ma takich danych!` }, { v: "x", t: `${Math.max(...t.nums)} − ${Math.min(...t.nums)} = ${Math.max(...t.nums) - Math.min(...t.nums)}` }]),
+      onRight: () => { ui.grok(`Tak! Zadanie nic nie mówi o tym, o co pyta. Grok by krzyknął „Siedemnaście!”, ale ciebie nie da się nabrać.`); ui.beata("Bee! Najpierw czytamy, potem liczymy!", "good") },
+      onReveal: () => { ui.grok(`Haczyk! Zadanie nic nie mówi o tym, o co pyta, więc nie da się tego obliczyć. Zawsze sprawdź, czy odpowiedź pasuje do pytania.`); ui.beata("Grok też się nabrał. Powiedział: siedemnaście!", "bad") } });
+  }
+
+  const PLAN = [
+    () => taskRound(T.zostalo),
+    () => taskRound(T.plot),
+    () => trickRound(TRICKS[0]),
+    () => taskRound(T.wiecej),
+    () => taskRound(pick([T.kamyki, T.razy])),
+    () => trickRound(pick(TRICKS.slice(1))),
+    () => taskRound(T.siano),
+    () => taskRound(T.dwa),
+  ];
+  GAMES.zadania = {
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 10</h4><ul>
+      <li>Zadanie rozwiązuję w trzech krokach: <b>1. Dane, 2. Obliczenia, 3. Odpowiedź pełnym zdaniem</b>.</li>
+      <li>Gdy zadanie jest trudne: przeczytaj je kilka razy, wyobraź sobie sytuację, wypisz dane albo zrób rysunek.</li>
+      <li>Na koniec sprawdź, czy odpowiedź pasuje do pytania.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 10: TRÓJKĄTNA ZAGRODA (odcinek 11, trójkąty, klasa 5)
+   Warunek trójkąta (deski, także w różnych jednostkach), suma kątów 180°,
+   podział ze względu na kąty i przeciwprostokątna.
+   ===================================================================== */
+(() => {
+  const css = `
+  .planks { display: flex; flex-direction: column; gap: 10px; max-width: 640px; margin: 6px auto 4px }
+  .plank { height: 34px; background: var(--wood); border: 3px solid var(--ink); border-radius: 8px; box-shadow: inset 0 -6px 0 var(--wood-dark); display: flex; align-items: center; padding-left: 10px;
+    font: 900 18px/1 var(--body); color: #fff; -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; white-space: nowrap; animation: pop .35s backwards }
+  .plank:nth-child(2) { animation-delay: .1s } .plank:nth-child(3) { animation-delay: .2s }
+  .tri-svg { display: block; width: min(440px, 100%); height: auto; margin: 0 auto; overflow: visible }
+  .tri-svg text { font: 800 22px var(--body); fill: var(--ink); text-anchor: middle; dominant-baseline: middle }
+  .tri-svg .side text { font: 900 24px var(--body) }
+  .conv { text-align: center; font-size: 17px; margin: 4px 0 0; min-height: 24px }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  const DEG = Math.PI / 180;
+  const fmtD = x => String(x).replace(".", ",");
+
+  function planksHTML(lens, labels) {
+    const mx = Math.max(...lens);
+    return `<div class="planks">${lens.map((l, i) => `<div class="plank" style="width:${Math.max(18, 100 * l / mx)}%">${labels[i]}</div>`).join("")}</div>`;
+  }
+
+  function planksRound(mode) {
+    let a, b, c, can;
+    for (;;) {
+      a = rnd(2, 9); b = rnd(2, 9);
+      can = mode === "no" ? false : mode === "yes" ? true : Math.random() < .5;
+      c = can ? rnd(Math.max(a, b), a + b - 1) : rnd(a + b, a + b + 4);
+      if (c <= 14 && new Set([a, b, c]).size >= 2) break;
+    }
+    const L = shuffle([a, b, c]), mx = Math.max(...L), rest = L.filter((_, i) => i !== L.indexOf(mx)), sum = rest[0] + rest[1];
+    ui.grok(`Grok ma deski: ${L.map(x => num(x) + " m").join(", ")}. Czy zbuduje z nich trójkątną zagrodę?`);
+    $("#play").innerHTML = planksHTML(L, L.map(x => `${x} m`)) + `<p class="conv" id="conv"></p><div class="opts" id="opts"></div>`;
+    const why = `Najdłuższa deska: ${mx} m. Dwie pozostałe: ${rest[0]} + ${rest[1]} = ${sum} m. ${mx < sum ? `${mx} < ${sum}, więc trójkąt się uda!` : `${mx} ${mx === sum ? "=" : ">"} ${sum}, więc zostanie dziura i owce uciekną.`}`;
+    choice({ el: $("#opts"), ok: can ? "t" : "n", tries: 1, opts: yesNo("Tak, zbuduje", "Nie, nie zbuduje"),
+      onRight: () => { $("#conv").innerHTML = why; ui.grok("Tak! Najdłuższa deska musi być krótsza od dwóch pozostałych razem."); ui.beata(can ? praise() : "I znowu zagroda z wyjściem. Bee!", "good") },
+      onReveal: () => { $("#conv").innerHTML = why; ui.grok("Porównaj najdłuższą deskę z sumą dwóch pozostałych."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // patyki w różnych jednostkach: zamień na milimetry
+  function unitsRound() {
+    let mm, can;
+    do { mm = [rnd(20, 60), rnd(20, 60), rnd(20, 90)]; const s = [...mm].sort((x, y) => x - y); can = s[2] < s[0] + s[1] } while (mm[2] % 10 !== 0 || mm[0] % 5 !== 0);
+    const labels = [`${fmtD(mm[0] / 10)} cm`, `${mm[1]} mm`, `${fmtD(mm[2] / 100)} dm`];
+    const sorted = [...mm].sort((x, y) => x - y);
+    ui.grok(`Kosmita ma patyki: ${labels.join(", ")}. Czy ułoży z nich trójkąt?<small>Najpierw zamień wszystko na tę samą jednostkę!</small>`);
+    $("#play").innerHTML = planksHTML(mm, labels) + `<p class="conv" id="conv"></p><div class="opts" id="opts"></div>`;
+    const why = `${labels[0]} = ${mm[0]} mm, ${labels[2]} = ${mm[2]} mm. Najdłuższy: ${sorted[2]} mm, a ${sorted[0]} + ${sorted[1]} = ${sorted[0] + sorted[1]} mm. ${can ? "Uda się!" : "Nie uda się."}`;
+    choice({ el: $("#opts"), ok: can ? "t" : "n", tries: 1, opts: yesNo("Tak, ułoży", "Nie, nie ułoży"),
+      onRight: () => { $("#conv").innerHTML = why; ui.grok("Tak! Przed porównaniem zamieniamy długości na tę samą jednostkę."); ui.beata(praise(), "good") },
+      onReveal: () => { $("#conv").innerHTML = why; ui.grok("1 cm = 10 mm, 1 dm = 100 mm."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // rysunek trójkąta o kątach al (przy A) i be (przy B); show: które kąty podpisać
+  function triSVG(al, be, opt = {}) {
+    const ga = 180 - al - be, AC = Math.sin(be * DEG) / Math.sin(ga * DEG);
+    let P = [[0, 0], [1, 0], [AC * Math.cos(al * DEG), AC * Math.sin(al * DEG)]];
+    const xs = P.map(p => p[0]), ys = P.map(p => p[1]);
+    const minX = Math.min(...xs), maxX = Math.max(...xs), maxY = Math.max(...ys), sc = Math.min(360 / (maxX - minX), 200 / maxY);
+    P = P.map(([x, y]) => [30 + (x - minX) * sc, 240 - y * sc]);
+    const cx = (P[0][0] + P[1][0] + P[2][0]) / 3, cy = (P[0][1] + P[1][1] + P[2][1]) / 3;
+    const angs = [al, be, ga], lab = opt.labels || angs.map(a => a + "°");
+    let h = `<polygon points="${P.map(p => p.join(",")).join(" ")}" fill="#fff7e6" stroke="#2b2340" stroke-width="5" stroke-linejoin="round"/>`;
+    P.forEach((p, i) => {
+      const dx = cx - p[0], dy = cy - p[1], d = Math.hypot(dx, dy), k = Math.min(46, d * .55);
+      const right = angs[i] === 90;
+      if (right) {
+        const q = P.filter((_, j) => j !== i).map(o => { const vx = o[0] - p[0], vy = o[1] - p[1], n = Math.hypot(vx, vy); return [vx / n * 20, vy / n * 20] });
+        h += `<path d="M${p[0] + q[0][0]} ${p[1] + q[0][1]} L${p[0] + q[0][0] + q[1][0]} ${p[1] + q[0][1] + q[1][1]} L${p[0] + q[1][0]} ${p[1] + q[1][1]}" fill="none" stroke="#ef4f4f" stroke-width="3"/>`;
+      }
+      if (lab[i] !== "") h += `<text x="${p[0] + dx / d * k}" y="${p[1] + dy / d * k}" style="fill:${lab[i] === "?" ? "#ff6fa8" : "#2b2340"}">${lab[i]}</text>`;
+    });
+    if (opt.sides) {
+      const cols = ["#3d8bfd", "#2fbf71", "#ff9f1c"];
+      [[0, 1], [1, 2], [2, 0]].forEach(([i, j], s) => {
+        const mx = (P[i][0] + P[j][0]) / 2, my = (P[i][1] + P[j][1]) / 2, dx = mx - cx, dy = my - cy, d = Math.hypot(dx, dy);
+        h += `<g class="side"><line x1="${P[i][0]}" y1="${P[i][1]}" x2="${P[j][0]}" y2="${P[j][1]}" stroke="${cols[s]}" stroke-width="8" stroke-linecap="round"/>
+          <text x="${mx + dx / d * 24}" y="${my + dy / d * 24}" style="fill:${cols[s]}">${opt.sides[s]}</text></g>`;
+      });
+    }
+    return `<svg class="tri-svg" viewBox="0 0 420 280">${h}</svg>`;
+  }
+
+  function angleRound(kind) {
+    let al, be;
+    if (kind === "right") { al = 90; be = rnd(2, 8) * 5 } else do { al = rnd(6, 16) * 5; be = rnd(5, 15) * 5 } while (al + be >= 170 || al + be <= 60);
+    const ga = 180 - al - be;
+    ui.grok(`Zagroda ma kąty ${al}° i ${be}°. Ile stopni ma trzeci kąt?<small>Suma kątów w każdym trójkącie to 180°.</small>`);
+    $("#play").innerHTML = triSVG(al, be, { labels: [al + "°", be + "°", "?"] }) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: ga, unit: "°", max: 3,
+      onRight: () => { ui.grok(`Tak! 180° − ${al}° − ${be}° = ${ga}°.`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === al + be ? `Bee… ${al}° + ${be}° = ${al + be}°. A ile brakuje do 180°?` : `Bee… ${al}° + ${be}° + ${v}° to nie 180°.`, "bad"),
+      onReveal: () => { ui.grok(`180° − (${al}° + ${be}°) = ${ga}°.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const NAZWY = { o: "ostrokątny", p: "prostokątny", r: "rozwartokątny" };
+  function kindRound(want, onlyTwo) {
+    let al, be, ga;
+    for (;;) {
+      al = rnd(4, 24) * 5; be = rnd(4, 24) * 5; ga = 180 - al - be;
+      if (ga < 20) continue;
+      const mx = Math.max(al, be, ga), k = mx < 90 ? "o" : mx === 90 ? "p" : "r";
+      if (k === want) break;
+      if (want === "p") { al = 90; be = rnd(5, 13) * 5; ga = 90 - be; break }
+    }
+    const angs = shuffle([al, be, ga]);
+    ui.grok(onlyTwo ? `Dwa kąty trójkąta mają ${angs[0]}° i ${angs[1]}°. Jaki to trójkąt?<small>Najpierw policz trzeci kąt.</small>` : `Kąty trójkąta: ${angs.join("°, ")}°. Jaki to trójkąt?<small>O nazwie decyduje największy kąt.</small>`);
+    $("#play").innerHTML = triSVG(angs[0], angs[1], { labels: [angs[0] + "°", angs[1] + "°", onlyTwo ? "?" : angs[2] + "°"] }) + `<div class="opts" id="opts"></div>`;
+    const mx = Math.max(...angs), why = `Największy kąt to ${mx}°: ${mx < 90 ? "ostry" : mx === 90 ? "prosty" : "rozwarty"}.`;
+    choice({ el: $("#opts"), ok: want, cls: "txt", opts: Object.entries(NAZWY).map(([v, t]) => ({ v, t })),
+      onRight: () => { ui.grok(`Tak! ${onlyTwo ? `Trzeci kąt: ${angs[2]}°. ` : ""}${why} To trójkąt ${NAZWY[want]}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… ${onlyTwo ? `trzeci kąt to 180° − ${angs[0]}° − ${angs[1]}°. ` : ""}Patrz na największy kąt!`, "bad"),
+      onReveal: () => { ui.grok(`${onlyTwo ? `Trzeci kąt: ${angs[2]}°. ` : ""}${why} To trójkąt ${NAZWY[want]}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function hypoRound() {
+    // kąt prosty w wierzchołku C (trzeci), więc przeciwprostokątna to bok AB
+    const be = rnd(6, 12) * 5, al = 90 - be;
+    ui.grok(`To trójkąt prostokątny. Który bok to <b>przeciwprostokątna</b>?<small>Leży naprzeciw kąta prostego i jest najdłuższa.</small>`);
+    const sideNames = shuffle(["a", "b", "c"]);
+    $("#play").innerHTML = triSVG(al, be, { labels: ["", "", ""], sides: sideNames }) + `<div class="opts" id="opts"></div>`;
+    const ok = sideNames[0];
+    choice({ el: $("#opts"), ok, opts: sideNames.map(v => ({ v, t: `bok ${v}` })), tries: 2,
+      onRight: () => { ui.grok(`Tak! Bok ${ok} leży naprzeciw kąta prostego. Pozostałe dwa to przyprostokątne.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… znajdź kąt prosty (kwadracik). Przeciwprostokątna jest po drugiej stronie.", "bad"),
+      onReveal: () => { ui.grok(`Przeciwprostokątna to bok ${ok}, naprzeciw kąta prostego.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [
+    () => planksRound("no"),
+    () => planksRound("yes"),
+    unitsRound,
+    () => angleRound("any"),
+    () => angleRound("right"),
+    () => kindRound(pick(["o", "r"]), false),
+    () => kindRound(pick(["p", "r", "o"]), true),
+    hypoRound,
+  ];
+  GAMES.trojkaty = {
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 11</h4><ul>
+      <li>Trójkąt zbudujesz, gdy <b>najdłuższy bok jest krótszy od sumy dwóch pozostałych</b>.</li>
+      <li>Przed porównaniem zamień długości na tę samą jednostkę.</li>
+      <li><b>Suma kątów</b> w każdym trójkącie to <b>180°</b>.</li>
+      <li>Największy kąt ostry → ostrokątny, prosty → prostokątny, rozwarty → rozwartokątny.</li>
+      <li>W trójkącie prostokątnym bok naprzeciw kąta prostego to <b>przeciwprostokątna</b>, pozostałe to przyprostokątne.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
 route();
 </script>
 </body>
