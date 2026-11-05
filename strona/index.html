@@ -112,7 +112,7 @@ a { color: inherit }
 
 /* ---------- sekcje ---------- */
 section { padding: 96px 0 }
-.eyebrow { display: inline-block; font: 900 14px/1 var(--body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink); background: var(--yellow);
+.eyebrow { display: inline-block; font: 900 14px/1.3 var(--body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink); background: var(--yellow);
   padding: 7px 12px; border-radius: 8px; rotate: -2deg }
 h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .sub { max-width: 620px; margin: 0; font-size: 19px; color: var(--ink-soft) }
@@ -129,13 +129,13 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .thumb img { width: 100%; height: 100%; object-fit: cover }
 .dur { position: absolute; right: 10px; bottom: 10px; background: var(--ink); color: #fff; font: 800 13px/1 var(--body); padding: 5px 8px; border-radius: 7px }
 .ep-body { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1 }
-.ep-num { font: 900 13px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft) }
+.ep-num { font: 900 14px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft) }
 .ep-num b { color: var(--ink); background: var(--yellow); padding: 3px 7px; border-radius: 6px; margin-right: 6px }
 .ep h3 { margin: 2px 0 0; font: 800 26px/1.1 var(--head) }
 .ep p { margin: 0; font-size: 16px; color: var(--ink-soft) }
 .ep .watch { margin-top: auto; padding-top: 10px; font-weight: 900; font-size: 15px; display: flex; align-items: center; gap: 8px }
 .ep .watch .play { border-left-width: 10px; border-top-width: 6px; border-bottom-width: 6px; color: var(--pink) }
-.ep-num .k4 { color: var(--blue) } .ep-num .k5 { color: #e07d00 }
+.ep-num .k4 { color: #1a62cf } .ep-num .k5 { color: #ad5c00 }
 .ep.soon { box-shadow: 0 6px 0 #2b234066; border-style: dashed }
 .ep.soon:hover { transform: none; box-shadow: 0 6px 0 #2b234066 }
 .ep.soon .thumb img { filter: saturate(.55) brightness(1.05); opacity: .8 }
@@ -177,7 +177,7 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .p-kosmita .portrait { background: #c9f0b4 }
 .p-kosmita .portrait img { max-height: 210px; margin-bottom: 0 }
 .person h3 { margin: 0; font: 800 32px/1 var(--head) }
-.person .role { display: inline-block; margin: 10px 0 12px; font: 900 13px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; border-radius: 7px; background: var(--ink); color: #fff }
+.person .role { display: inline-block; margin: 10px 0 12px; font: 900 14px/1.2 var(--body); letter-spacing: 1px; text-transform: uppercase; padding: 6px 10px; border-radius: 7px; background: var(--ink); color: #fff }
 .person p { margin: 0; font-size: 17px; color: var(--ink-soft) }
 
 /* jak wygląda odcinek */
@@ -191,7 +191,7 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .step:nth-child(3) .digit { background: var(--orange) }
 .step h3 { font: 800 28px/1.1 var(--head); margin: 0 0 8px }
 .step p { margin: 0; color: var(--ink-soft) }
-.stop { display: inline-block; background: var(--pink); color: #fff; font-weight: 900; padding: 0 8px; border-radius: 6px }
+.stop { display: inline-block; background: #c81e63; color: #fff; font-weight: 900; padding: 0 8px; border-radius: 6px }
 
 /* dla nauczycieli */
 .teachers { padding: 0 0 96px; background: #fff }
@@ -219,7 +219,7 @@ footer { position: relative; background: var(--night); color: #fff; overflow: hi
 @keyframes z { 0%,100% { transform: translateY(0); opacity: .4 } 50% { transform: translateY(-8px); opacity: 1 } }
 footer h2 { margin: 18px 0 8px; color: #fff }
 footer .sub { margin: 0 auto 30px; color: #c7cbef }
-.fine { margin-top: 70px; font-size: 14px; color: #8f94c4; position: relative }
+.fine { margin-top: 70px; font-size: 14px; color: #c7cbef; position: relative }
 
 /* milionerzy */
 .game-sec { background: #fff; padding-bottom: 40px }
@@ -265,13 +265,17 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
   .steps { gap: 36px }
   .panel { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px }
   .nav a.link { display: none }
+  .nav a.link[href="#gra"] { display: inline-flex; align-items: center; min-height: 44px; opacity: 1; font-weight: 900 }
+  .nav .wrap { gap: 14px }
   .beata { right: 18vw } .flock { left: 34vw } .hint { display: none }
 }
 @media (max-width: 640px) {
   body { font-size: 17px }
-  .hero { min-height: 780px; padding-top: 104px }
+  .hero { min-height: 860px; padding-top: 96px }
+  .filters { gap: 6px; flex-wrap: nowrap } .chip { font-size: 15px; padding: 10px 12px; white-space: nowrap; min-height: 42px }
+  .ep .watch { min-height: 42px } .ep-game { min-height: 42px }
   .lead { font-size: 17px; padding-inline: 8px }
-  .grok { width: 160px; left: -12px; bottom: -28px }
+  .grok { width: 136px; left: -12px; bottom: -28px }
   .kosmita { width: 78px; right: 8px }
   .beata { width: 108px; right: 84px }
   .flock { display: none }
