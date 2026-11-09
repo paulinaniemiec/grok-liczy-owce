@@ -91,7 +91,7 @@ videos = {
 }
 game = {
     "@type": ["VideoGame", "LearningResource"], "name": "Policz stado!", "url": f"{SITE}/gra.html",
-    "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze, sprytne dodawanie i tabliczka mnożenia.",
+    "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze, sprytne dodawanie i odejmowanie, trójkąty i tabliczka mnożenia.",
     "inLanguage": "pl", "isAccessibleForFree": True, "gamePlatform": "przeglądarka internetowa",
     "applicationCategory": "Game", "educationalLevel": ["klasa 4", "klasa 5"], "isFamilyFriendly": True,
     "publisher": {"@id": f"{SITE}/#serial"},

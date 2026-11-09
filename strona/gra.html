@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: porównywanie liczb, dzielenie pisemne, szacowanie, oś liczbowa, podzielność, liczby pierwsze, sprytne dodawanie, zadania tekstowe, trójkąty i tabliczka mnożenia. Bez logowania, działa na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: porównywanie liczb, dzielenie pisemne, szacowanie, oś liczbowa, podzielność, liczby pierwsze, sprytne dodawanie, sprytne odejmowanie, zadania tekstowe, trójkąty, własności trójkątów i tabliczka mnożenia. Bez logowania, działa na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Dwanaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Czternaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -492,6 +492,8 @@ const ODCINKI = {
   7: { tytul: "Szacowanie", url: "https://www.youtube.com/watch?v=5HGl8kqOalU", rozdzial: "0:24", co: "Kilka, kilkanaście, kilkadziesiąt, kilkaset" },
   8: { tytul: "Sprytne dodawanie", url: "https://www.youtube.com/watch?v=fP3Fg6p8jWc", rozdzial: "1:43", co: "Szukamy pełnych dziesiątek" },
   9: { tytul: "Wielka powtórka", url: "https://www.youtube.com/watch?v=qswL8UbfW60" },
+  12: { tytul: "Sprytne odejmowanie", url: "https://www.youtube.com/watch?v=sVpRYjTEuY0", rozdzial: "1:01", co: "Odejmowanie po kawałku: 93 − 58" },
+  13: { tytul: "Własności trójkątów", url: "https://www.youtube.com/watch?v=wiijZoVs6dg", rozdzial: "1:02", co: "Trójkąt równoramienny: ramiona i podstawa" },
   14: { tytul: "Tabliczka mnożenia", url: "https://www.youtube.com/watch?v=6s-tmt0zgsY", rozdzial: "0:39", co: "Mnożenie zamiast dodawania: 4 · 6 i 6 · 4" },
 };
 function epHref(nr, chapter = true) {
@@ -522,6 +524,8 @@ const PASTWISKA = [
   { key: "zadania", klasa: "4", nr: 9, color: "#e2557a", title: "Ile lat ma pasterz?", ep: 10, desc: "Dane, obliczenia, odpowiedź. Uważaj na zadania z haczykiem!", pics: ["kosmita", "grok"] },
   { key: "trojkaty", klasa: "5", nr: 10, color: "#f59e0b", title: "Trójkątna zagroda", ep: 11, desc: "Z których desek zbudujesz zagrodę? Policz trzeci kąt.", pics: ["grok", "owca"] },
   { key: "mnozenie", klasa: "4", nr: 11, color: "#0ea5e9", title: "Owce w rzędach", ep: 14, desc: "Ustaw owce w rzędy i policz je mnożeniem. Czynniki, iloczyn i „razy więcej”.", pics: ["kosmita", "owca", "owca"] },
+  { key: "odejmowanie", klasa: "4", nr: 12, color: "#65a30d", title: "Sprytne odejmowanie", ep: 12, desc: "Odejmuj po kawałku, przez dodawanie albo przesuń obie liczby. Bez kamyków!", pics: ["owca", "owca", "beata"] },
+  { key: "rownoramienne", klasa: "5", nr: 13, color: "#6366f1", title: "Trójkąty z kosmosu", ep: 13, desc: "Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe!", pics: ["kosmita", "beata"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -1826,6 +1830,7 @@ function near(ok, cands, k = 2) {
   };
 })();
 
+const TRI_RYSUNKI = {};
 /* =====================================================================
    PASTWISKO 10: TRÓJKĄTNA ZAGRODA (odcinek 11, trójkąty, klasa 5)
    Warunek trójkąta (deski, także w różnych jednostkach), suma kątów 180°,
@@ -1969,6 +1974,7 @@ function near(ok, cands, k = 2) {
     () => kindRound(pick(["p", "r", "o"]), true),
     hypoRound,
   ];
+  TRI_RYSUNKI.triSVG = triSVG; TRI_RYSUNKI.planksHTML = planksHTML; // używa ich też pastwisko 13
   GAMES.trojkaty = {
     cheat: `<div class="cheat"><h4>Ściąga z odcinka 11</h4><ul>
       <li>Trójkąt zbudujesz, gdy <b>najdłuższy bok jest krótszy od sumy dwóch pozostałych</b>.</li>
@@ -2129,6 +2135,257 @@ function near(ok, cands, k = 2) {
       if (i === 5 || i === 6) return moreRound((i === 5) === cur.moreFirst);
       PLAN[i]();
     },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 12: SPRYTNE ODEJMOWANIE (odcinek 12, klasa 4)
+   Rzędy osobno, odejmowanie po kawałku, powiększanie obu liczb
+   (93 − 58 = 95 − 60) i odejmowanie przez dodawanie (37 → 40 → 50 → 54).
+   ===================================================================== */
+(() => {
+  const css = `
+  .chain { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px 2px; font: 800 clamp(26px, 5vw, 40px)/1 var(--head); margin: 10px 0 }
+  .chain .st { background: #fff; border: 3px solid var(--ink); border-radius: 14px; padding: 8px 12px 6px }
+  .chain .ar { display: flex; flex-direction: column; align-items: center; font: 900 18px/1 var(--body); color: var(--blue); min-width: 64px }
+  .chain .ar::after { content: "→"; font: 800 30px/1 var(--head); color: var(--ink) }
+  .chain .ar.now { color: var(--pink) }
+  .places { display: inline-grid; grid-template-columns: repeat(3, 1.3ch) ; gap: 0 4px; font: 800 clamp(36px, 7vw, 54px)/1.15 var(--head); font-variant-numeric: tabular-nums; text-align: center }
+  .places .s { color: #e2557a } .places .d { color: #3d8bfd } .places .j { color: #2fbf71 }
+  .places .ln { grid-column: 1 / -1; border-top: 4px solid var(--ink); margin: 4px 0 }
+  .places-wrap { display: flex; justify-content: center; gap: 10px; align-items: flex-end }
+  .places-wrap .minus { font: 800 48px/1 var(--head); margin-bottom: 1.3em }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  // kilka okienek po kolei: każde ma swoje pytanie i podpowiedź
+  function chainPads(items, onDone) {
+    const go = k => {
+      const it = items[k];
+      it.show(); ui.grok(it.ask);
+      numPad({ el: $("#pad"), ok: it.ok, max: 4, tries: 3,
+        onRight: () => ui.beata(pick(["Bee! Dobrze!", "Zgadza się!", "Tak jest!"]), "good"),
+        onWrong: () => ui.beata(it.hint, "bad"),
+        then: () => {
+          if (k < items.length - 1) { $("#act").hidden = false; ui.action("Dalej →", () => go(k + 1)) }
+          else { onDone(); endRound() }
+        } });
+    };
+    go(0);
+  }
+
+  function placesRound() {
+    let a, b; do { a = rnd(300, 989); b = rnd(101, a - 100) } while ([0, 1, 2].some(i => +String(a)[i] < +String(b)[i]));
+    const ok = a - b, A = String(a), B = String(b);
+    const row = (s) => `<span class="s">${s[0]}</span><span class="d">${s[1]}</span><span class="j">${s[2]}</span>`;
+    ui.grok(`Beata zjada snopki na zapas. Ile zostanie? Odejmij osobno setki, dziesiątki i jedności.`);
+    $("#play").innerHTML = `<div class="places-wrap"><span class="minus">−</span><div class="places">${row(A)}${row(B)}<span class="ln"></span>${row("???")}</div></div><div id="pad"></div>`;
+    const res = () => { $(".places").innerHTML = row(A) + row(B) + '<span class="ln"></span>' + row(String(ok).padStart(3, " ")) };
+    numPad({ el: $("#pad"), ok, max: 3,
+      onRight: () => { res(); ui.grok(`Tak! Setki: ${A[0]} − ${B[0]} = ${A[0] - B[0]}, dziesiątki: ${A[1]} − ${B[1]} = ${A[1] - B[1]}, jedności: ${A[2]} − ${B[2]} = ${A[2] - B[2]}.`); ui.beata("Zima idzie. Robię zapasy. W brzuchu.", "good") },
+      onWrong: () => ui.beata(`Bee… zacznij od jedności: ${A[2]} − ${B[2]} = ${A[2] - B[2]}.`, "bad"),
+      onReveal: () => { res(); ui.grok(`${a} − ${b} = ${ok}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function pieceRound() {
+    let a, b; do { a = rnd(52, 98); b = rnd(23, a - 12) } while (a % 10 >= b % 10 || b % 10 === 0 || a % 10 === 0);
+    const tens = b - b % 10, units = b % 10, mid = a - tens, ok = a - b;
+    $("#play").innerHTML = `<div class="q-big" id="qq"></div><div id="pad"></div>`;
+    const q = h => $("#qq").innerHTML = h;
+    chainPads([
+      { ask: `Od ${a % 10} nie odejmę ${units}… Odejmijmy po kawałku! Najpierw dziesiątki: ${num(a)} − ${num(tens)}.`, ok: mid, hint: `Bee… ${Math.floor(a / 10)} − ${tens / 10} dziesiątek.`,
+        show: () => q(`${a} − ${b} = ${a} − ${tens} − ${units}<br><span style="font-size:.8em">${a} − ${tens} = <span class="gap">?</span></span>`) },
+      { ask: `Teraz jedności: ${num(mid)} − ${num(units)}.<small>Możesz najpierw zejść do pełnej dziesiątki: ${mid} − ${mid % 10} = ${mid - mid % 10}.</small>`, ok, hint: `Bee… ${mid} − ${mid % 10} = ${mid - mid % 10}, potem jeszcze − ${units - mid % 10}.`,
+        show: () => q(`${a} − ${b} = ${mid} − ${units}<br><span style="font-size:.8em">${mid} − ${units} = <span class="gap">?</span></span>`) },
+    ], () => { q(`${a} − ${b} = ${mid} − ${units} = ${ok}`); ui.grok(`${cur.roundErrors ? "" : "Tak! "}${a} − ${b} = ${ok}. Bez kamyków!`) });
+  }
+
+  function growRound(ask) {
+    let a, b; do { a = rnd(61, 199); b = rnd(31, a - 20) } while (b % 10 < 6);
+    const add = 10 - b % 10, A = a + add, B = b + add, ok = a - b;
+    ui.grok(`Kosmita i Beata stają na tym samym kamieniu. Obie liczby rosną o tyle samo, a różnica się nie zmienia!`);
+    $("#play").innerHTML = `<div class="q-big" id="qq"></div><div class="opts" id="opts"></div><div id="pad"></div>`;
+    if (ask === "choice") {
+      $("#qq").innerHTML = `${a} − ${b} = <span class="gap">?</span> − ${B}`;
+      ui.grok(`Powiększ obie liczby tak, żeby odjemnik był pełną dziesiątką: ${num(a)} − ${num(b)} = ? − ${num(B)}<small>Do ${b} dodajemy ${add}. Do ${a} też!</small>`);
+      choice({ el: $("#opts"), ok: A, opts: near(A, [a, a - add, A + 10, a + 10]),
+        onRight: () => { $("#qq").innerHTML = `${a} − ${b} = ${A} − ${B} = ${ok}`; ui.grok(`Tak! ${A} − ${B} = ${ok}. Łatwizna.`); ui.beata("Stąd lepiej widać siano.", "good") },
+        onWrong: () => ui.beata(`Bee… do obu liczb dodajemy tyle samo: ${add}.`, "bad"),
+        onReveal: () => { $("#qq").innerHTML = `${a} − ${b} = ${A} − ${B} = ${ok}`; ui.beata(pick(CHEER_UP), "bad") } });
+    } else {
+      chainPads([
+        { ask: `Powiększ obie liczby o ${add}. Ile wyjdzie z ${num(a)}?`, ok: A, hint: `Bee… ${a} + ${add} = ?`,
+          show: () => { $("#qq").innerHTML = `${a} − ${b} = <span class="gap">?</span> − ${B}` } },
+        { ask: `Teraz odejmij: ${num(A)} − ${num(B)}.`, ok, hint: `Bee… odejmujesz pełne dziesiątki, to łatwe!`,
+          show: () => { $("#qq").innerHTML = `${a} − ${b} = ${A} − ${B} = <span class="gap">?</span>` } },
+      ], () => { $("#qq").innerHTML = `${a} − ${b} = ${A} − ${B} = ${ok}`; ui.grok(`${cur.roundErrors ? "" : "Tak! "}${a} − ${b} = ${ok}.`) });
+    }
+  }
+
+  function completeRound() {
+    const x = rnd(51, 89), ok = 100 - x;
+    ui.grok(`Którą liczbę trzeba dodać do ${num(x)}, żeby dostać pełną setkę?`);
+    $("#play").innerHTML = `<div class="q-big">${x} + <span class="gap">?</span> = 100</div><div class="opts" id="opts"></div>`;
+    const wrong = [100 - x + 10, 110 - x - (x % 10) * 2 + 10, x - 50, 100 - x - 10].filter(v => v > 0 && v !== ok);
+    choice({ el: $("#opts"), ok, opts: near(ok, wrong, 3),
+      onRight: () => { ui.grok(`Tak! ${x} + ${10 - x % 10} = ${x + 10 - x % 10}, a ${x + 10 - x % 10} + ${100 - (x + 10 - x % 10)} = 100.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… najpierw do pełnej dziesiątki: ${x} + ${10 - x % 10} = ${x + 10 - x % 10}.`, "bad"),
+      onReveal: () => { ui.grok(`${x} + ${ok} = 100.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function addUpRound() {
+    let b, a; do { b = rnd(23, 68); a = rnd(b + 12, 98) } while (b % 10 === 0 || a % 10 === 0 || Math.floor(a / 10) - Math.ceil(b / 10) < 1);
+    const p1 = Math.ceil(b / 10) * 10, p2 = Math.floor(a / 10) * 10, s1 = p1 - b, s2 = p2 - p1, s3 = a - p2;
+    ui.grok(`Kosmita sprzedaje zieloną owcę za ${a} zł. Grok ma ${b} zł. Ile mu brakuje? Liczymy w górę!`);
+    const draw = k => {
+      const ar = (s, i) => `<span class="ar ${i === k ? "now" : ""}">${i < k ? "+" + s : i === k ? "+ ?" : ""}</span>`;
+      $("#qq").innerHTML = `<div class="chain"><span class="st">${b}</span>${ar(s1, 0)}<span class="st">${p1}</span>${ar(s2, 1)}<span class="st">${p2}</span>${ar(s3, 2)}<span class="st">${a}</span></div>`;
+    };
+    $("#play").innerHTML = `<div id="qq"></div><div id="pad"></div>`;
+    chainPads([
+      { ask: `Ile od ${num(b)} do pełnej dziesiątki ${num(p1)}?`, ok: s1, hint: `Bee… ${b} + ? = ${p1}`, show: () => draw(0) },
+      { ask: `Ile od ${num(p1)} do ${num(p2)}?`, ok: s2, hint: `Bee… licz dziesiątkami: ${p1}, ${p1 + 10}…`, show: () => draw(1) },
+      { ask: `Ile od ${num(p2)} do ${num(a)}?`, ok: s3, hint: `Bee… ${p2} + ? = ${a}`, show: () => draw(2) },
+      { ask: `Ile razem? ${s1} + ${s2} + ${s3} = ?`, ok: a - b, hint: `Bee… dodaj wszystkie skoki.`, show: () => draw(3) },
+    ], () => ui.grok(`${cur.roundErrors ? "" : "Tak! "}${a} − ${b} = ${s1} + ${s2} + ${s3} = ${a - b}. Grokowi brakuje ${a - b} zł.`));
+  }
+
+  function freeRound(kind) {
+    let a, b, how, hint;
+    if (kind === "grow") { a = pick([300, 400, 500, 600, 700]) + rnd(0, 9) * 10; b = pick([198, 197, 199, 298, 99, 98]); const add = (b < 100 ? 100 : Math.ceil(b / 100) * 100) - b; how = `${a} − ${b} = ${a + add} − ${b + add} = ${a - b}`; hint = `dodaj ${add} do obu liczb: ${a + add} − ${b + add}` }
+    else { do { b = rnd(52, 79) } while (b % 10 === 0); a = rnd(121, 165); const p1 = Math.ceil(b / 10) * 10; how = `${b} → ${p1} → 100 → ${a}: ${p1 - b} + ${100 - p1} + ${a - 100} = ${a - b}`; hint = `skacz ${b} → ${p1} → 100 → ${a} i dodaj skoki` }
+    ui.grok(`Teraz sam wybierz sposób. Policz w pamięci: ${num(a)} − ${num(b)}.<small>${kind === "grow" ? "Podpowiedź: powiększ obie liczby." : "Podpowiedź: licz w górę od odjemnika."}</small>`);
+    $("#play").innerHTML = `<div class="q-big">${a} − ${b} = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: a - b, max: 4,
+      onRight: () => { ui.grok(`Tak! ${how}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… spróbuj tak: ${hint}.`, "bad"),
+      onReveal: () => { ui.grok(how + "."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [
+    placesRound,
+    pieceRound,
+    () => growRound("choice"),
+    completeRound,
+    addUpRound,
+    () => growRound("pads"),
+    () => freeRound("up"),
+    () => freeRound("grow"),
+  ];
+  GAMES.odejmowanie = {
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 12</h4><ul>
+      <li><b>Rzędy osobno:</b> setki od setek, dziesiątki od dziesiątek, jedności od jedności.</li>
+      <li><b>Po kawałku:</b> 93 − 58 = 93 − 50 − 8 = 43 − 8 = 35.</li>
+      <li><b>Powiększanie obu liczb:</b> 93 − 58 = 95 − 60 = 35. Różnica się nie zmienia.</li>
+      <li><b>Przez dodawanie:</b> 54 − 37: 37 → 40 → 50 → 54, czyli 3 + 10 + 4 = 17.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 13: TRÓJKĄTY Z KOSMOSU (odcinek 13, własności trójkątów, kl. 5)
+   Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe,
+   w równobocznym wszystkie mają po 60°. Osie symetrii: 3, 1, 0.
+   Rysunki (triSVG, planksHTML) pochodzą z pastwiska 10 (Trójkątna zagroda).
+   ===================================================================== */
+(() => {
+  const { triSVG, planksHTML } = TRI_RYSUNKI;
+  const BOKI = { rb: "równoboczny", rr: "równoramienny", rz: "różnoboczny" };
+  const why = { rb: "Wszystkie trzy boki są równe.", rr: "Dwa boki (ramiona) są równe, trzeci to podstawa.", rz: "Każdy bok ma inną długość." };
+
+  function sidesRound(want) {
+    let L;
+    if (want === "rb") { const a = rnd(2, 6); L = [a, a, a] }
+    else if (want === "rr") { let a, b; do { a = rnd(3, 8); b = rnd(2, 2 * a - 1) } while (b === a); L = shuffle([a, a, b]) }
+    else { let a, b, c; do { [a, b, c] = [rnd(2, 9), rnd(2, 9), rnd(2, 9)] } while (new Set([a, b, c]).size < 3 || Math.max(a, b, c) * 2 >= a + b + c); L = [a, b, c] }
+    ui.grok(`Kosmita rozkłada zagrody ze spodka. Ta ma boki ${L.map(x => num(x) + " m").join(", ")}. Jaki to trójkąt?`);
+    $("#play").innerHTML = planksHTML(L, L.map(x => `${x} m`)) + `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: want, cls: "txt", opts: Object.entries(BOKI).map(([v, t]) => ({ v, t })),
+      onRight: () => { ui.grok(`Tak! ${why[want]} To trójkąt ${BOKI[want]}.`); ui.beata(want === "rz" ? "Różnoboczny, jak moja zagroda 2, 3, 4 m!" : praise(), "good") },
+      onWrong: () => ui.beata("Bee… policz, ile boków ma taką samą długość.", "bad"),
+      onReveal: () => { ui.grok(`${why[want]} To trójkąt ${BOKI[want]}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function equiRound() {
+    ui.grok(`Trzy deski po 3 m. Ile stopni ma każdy kąt takiej zagrody?<small>Wszystkie kąty są równe, a razem dają 180°.</small>`);
+    $("#play").innerHTML = triSVG(60, 60, { labels: ["?", "?", "?"] }) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: 60, unit: "°", max: 3,
+      onRight: () => { ui.grok(`Tak! 180° : 3 = 60°. W trójkącie równobocznym każdy kąt ma 60°.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… 180° podziel na trzy równe kąty.", "bad"),
+      onReveal: () => { ui.grok(`180° : 3 = 60°.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // równoramienny: given = "base" (znamy kąt przy podstawie) albo "top" (kąt między ramionami)
+  function isoRound(given) {
+    const base = given === "base" ? rnd(5, 16) * 5 : null, top = given === "top" ? pick([20, 40, 50, 60, 70, 80, 100, 110, 120, 140]) : null;
+    const B = base ?? (180 - top) / 2, Tp = top ?? 180 - 2 * base;
+    const ok = given === "base" ? Tp : B;
+    ui.grok(given === "base"
+      ? `Trójkąt równoramienny ma kąt przy podstawie ${num(B + "°")}. Ile stopni ma kąt między ramionami?<small>Kąty przy podstawie są równe!</small>`
+      : `Kąt między ramionami trójkąta równoramiennego ma ${num(Tp + "°")}. Ile stopni ma kąt przy podstawie?`);
+    $("#play").innerHTML = triSVG(B, B, { labels: given === "base" ? [B + "°", "", "?"] : ["?", "?", Tp + "°"] }) + `<div id="pad"></div>`;
+    const how = given === "base" ? `180° − (${B}° + ${B}°) = ${Tp}°` : `180° − ${Tp}° = ${180 - Tp}°, a ${180 - Tp}° : 2 = ${B}°`;
+    numPad({ el: $("#pad"), ok, unit: "°", max: 3,
+      onRight: () => { ui.grok(`Tak! ${how}.`); ui.beata(given === "top" ? "Zostało. Ale na dwa kąty." : praise(), "good") },
+      onWrong: v => ui.beata(given === "top" && v === 180 - Tp ? `Bee… zostało ${v}°, ale na dwa kąty!` : given === "base" && v === 180 - B ? `Bee… kąty przy podstawie są dwa, oba po ${B}°.` : "Bee… narysuj sobie, które kąty są równe.", "bad"),
+      onReveal: () => { ui.grok(`${how}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function axesRound() {
+    const k = pick(["rb", "rr", "rz"]), ok = { rb: 3, rr: 1, rz: 0 }[k];
+    const pic = k === "rb" ? triSVG(60, 60, { labels: ["", "", ""] }) : k === "rr" ? triSVG(70, 70, { labels: ["", "", ""] }) : triSVG(40, 75, { labels: ["", "", ""] });
+    ui.grok(`Beata składa papierowy trójkąt ${BOKI[k]} na pół. Ile ma osi symetrii?`);
+    $("#play").innerHTML = pic + `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok, opts: [0, 1, 2, 3],
+      onRight: () => { ui.grok(`Tak! Równoboczny ma 3 osie, równoramienny 1, a różnoboczny żadnej.`); ui.beata(k === "rz" ? "Nie składa się? To go zjem." : praise(), "good") },
+      onWrong: () => ui.beata("Bee… wyobraź sobie, jak złożyć trójkąt, żeby połówki się pokryły.", "bad"),
+      onReveal: () => { ui.grok(`Równoboczny ma 3 osie symetrii, równoramienny 1, a różnoboczny 0.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function anglesToSidesRound() {
+    const want = pick(["rr", "rr", "rb", "rz"]);
+    let A;
+    if (want === "rb") A = [60, 60, 60];
+    else if (want === "rr") { const b = pick([30, 40, 45, 50, 65, 70, 75]); A = shuffle([b, b, 180 - 2 * b]) }
+    else { let a, b; do { a = rnd(5, 20) * 5; b = rnd(5, 20) * 5 } while (a === b || 180 - a - b <= 15 || 180 - a - b === a || 180 - a - b === b || a + b === 120); A = [a, b, 180 - a - b] }
+    ui.grok(`Kąty trójkąta: ${A.join("°, ")}°. Jaki to trójkąt ze względu na boki?<small>Równe kąty leżą naprzeciw równych boków.</small>`);
+    $("#play").innerHTML = triSVG(A[0], A[1], { labels: A.map(a => a + "°") }) + `<div class="opts" id="opts"></div>`;
+    const w = { rb: "Wszystkie kąty po 60°, więc wszystkie boki równe.", rr: "Dwa kąty są równe, więc dwa boki też.", rz: "Każdy kąt jest inny, więc każdy bok też." }[want];
+    choice({ el: $("#opts"), ok: want, cls: "txt", opts: Object.entries(BOKI).map(([v, t]) => ({ v, t })),
+      onRight: () => { ui.grok(`Tak! ${w}`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… poszukaj równych kątów.", "bad"),
+      onReveal: () => { ui.grok(`${w} To trójkąt ${BOKI[want]}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function comboRound() {
+    const base = pick([20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]), top = 180 - 2 * base;
+    const want = top < 90 ? "o" : top === 90 ? "p" : "r", N = { o: "ostrokątny", p: "prostokątny", r: "rozwartokątny" };
+    ui.grok(`Trójkąt równoramienny ma kąt przy podstawie ${base}°. Jaki to trójkąt ze względu na kąty?<small>Najpierw policz kąt między ramionami.</small>`);
+    $("#play").innerHTML = triSVG(base, base, { labels: [base + "°", base + "°", "?"] }) + `<div class="opts" id="opts"></div>`;
+    const how = `Kąt między ramionami: 180° − ${base}° − ${base}° = ${top}°.`;
+    choice({ el: $("#opts"), ok: want, cls: "txt", opts: Object.entries(N).map(([v, t]) => ({ v, t })),
+      onRight: () => { ui.grok(`Tak! ${how} Trójkąt jest ${N[want]}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… ${how} Jaki to kąt?`, "bad"),
+      onReveal: () => { ui.grok(`${how} Trójkąt jest ${N[want]}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [
+    () => sidesRound(pick(["rr", "rz"])),
+    () => sidesRound(pick(["rb", "rr"])),
+    equiRound,
+    () => isoRound("base"),
+    () => isoRound("top"),
+    axesRound,
+    anglesToSidesRound,
+    comboRound,
+  ];
+  GAMES.rownoramienne = {
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 13</h4><ul>
+      <li><b>Równoboczny:</b> wszystkie boki równe, każdy kąt 60°, 3 osie symetrii.</li>
+      <li><b>Równoramienny:</b> dwa boki równe (ramiona), kąty przy podstawie równe, 1 oś symetrii.</li>
+      <li><b>Różnoboczny:</b> każdy bok inny, brak osi symetrii.</li>
+      <li>Przykład: kąt przy podstawie 40° → drugi też 40°, a trzeci 180° − 80° = 100°.</li></ul></div>`,
+    round(i) { PLAN[i]() },
   };
 })();
 
