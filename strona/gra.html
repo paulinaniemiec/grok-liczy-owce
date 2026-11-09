@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: porównywanie liczb, dzielenie pisemne, szacowanie, oś liczbowa, podzielność, liczby pierwsze, sprytne dodawanie, zadania tekstowe i trójkąty. Bez logowania, działa na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: porównywanie liczb, dzielenie pisemne, szacowanie, oś liczbowa, podzielność, liczby pierwsze, sprytne dodawanie, zadania tekstowe, trójkąty i tabliczka mnożenia. Bez logowania, działa na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Jedenaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Dwanaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -492,6 +492,7 @@ const ODCINKI = {
   7: { tytul: "Szacowanie", url: "https://www.youtube.com/watch?v=5HGl8kqOalU", rozdzial: "0:24", co: "Kilka, kilkanaście, kilkadziesiąt, kilkaset" },
   8: { tytul: "Sprytne dodawanie", url: "https://www.youtube.com/watch?v=fP3Fg6p8jWc", rozdzial: "1:43", co: "Szukamy pełnych dziesiątek" },
   9: { tytul: "Wielka powtórka", url: "https://www.youtube.com/watch?v=qswL8UbfW60" },
+  14: { tytul: "Tabliczka mnożenia", url: "https://www.youtube.com/watch?v=6s-tmt0zgsY", rozdzial: "0:39", co: "Mnożenie zamiast dodawania: 4 · 6 i 6 · 4" },
 };
 function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
@@ -520,6 +521,7 @@ const PASTWISKA = [
   { key: "zostalo", klasa: "4", nr: 8, color: "#14b8a6", title: "Ile zostało?", ep: 6, desc: "Składnik, suma, odjemna, odjemnik, różnica. I kto tu jest różnicą?", pics: ["beata", "owca", "owca"] },
   { key: "zadania", klasa: "4", nr: 9, color: "#e2557a", title: "Ile lat ma pasterz?", ep: 10, desc: "Dane, obliczenia, odpowiedź. Uważaj na zadania z haczykiem!", pics: ["kosmita", "grok"] },
   { key: "trojkaty", klasa: "5", nr: 10, color: "#f59e0b", title: "Trójkątna zagroda", ep: 11, desc: "Z których desek zbudujesz zagrodę? Policz trzeci kąt.", pics: ["grok", "owca"] },
+  { key: "mnozenie", klasa: "4", nr: 11, color: "#0ea5e9", title: "Owce w rzędach", ep: 14, desc: "Ustaw owce w rzędy i policz je mnożeniem. Czynniki, iloczyn i „razy więcej”.", pics: ["kosmita", "owca", "owca"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -1975,6 +1977,158 @@ function near(ok, cands, k = 2) {
       <li>Największy kąt ostry → ostrokątny, prosty → prostokątny, rozwarty → rozwartokątny.</li>
       <li>W trójkącie prostokątnym bok naprzeciw kąta prostego to <b>przeciwprostokątna</b>, pozostałe to przyprostokątne.</li></ul></div>`,
     round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 11: OWCE W RZĘDACH (odcinek 14, tabliczka mnożenia, klasa 4)
+   Owce w rzędach zamiast liczenia po jednej, mnożenie zamiast dodawania,
+   zmiana kolejności, wynik z tego, co pamiętasz, mnożenie przez 1 i 0,
+   „razy więcej” czy „o … więcej”, czynniki i iloczyn, brakujący czynnik.
+   ===================================================================== */
+(() => {
+  const css = `
+  .mn-rows { display: grid; gap: 4px 6px; justify-content: center; margin: 8px auto 4px; padding: 12px 14px; width: max-content; max-width: 100%;
+    background: #e9f8d8; border: 3px solid var(--ink); border-radius: 18px }
+  .mn-rows img { width: 38px; display: block } .mn-rows img.hl { animation: pop .3s }
+  .mn-eq { display: flex; justify-content: center; align-items: flex-end; gap: 10px; font: 800 clamp(36px, 7vw, 60px)/1 var(--head); margin: 10px 0 4px }
+  .mn-eq .t { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 14px }
+  .mn-eq .t.hl { background: var(--yellow); outline: 3px solid var(--ink) }
+  .mn-eq .t small { font: 900 14px/1 var(--body); text-transform: uppercase; letter-spacing: .5px; color: var(--ink-soft); min-height: 14px }
+  .mn-story { max-width: 640px; margin: 0 auto; background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 12px 18px; font-size: 19px; text-align: center }
+  @media (max-width: 600px) { .mn-rows { padding: 8px 10px; gap: 3px 4px } .mn-rows img { width: 30px } .mn-eq { gap: 2px; font-size: 32px } .mn-eq .t { padding: 5px 4px } .mn-eq .t small { font-size: 13px; letter-spacing: 0; text-transform: none } .mn-story { font-size: 17px; padding: 10px 12px } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  const rowsHTML = (r, c) => `<div class="mn-rows" style="grid-template-columns: repeat(${c}, auto)">${SHEEP.repeat(r * c)}</div>`;
+  const NAMES = ["czynnik", "", "czynnik", "", "iloczyn"];
+  const eq = (parts, hl = -1, names = []) => `<div class="mn-eq">${parts.map((p, i) =>
+    /^[·=]$/.test(p) ? `<div class="t">${p}<small></small></div>` : `<div class="t${i === hl ? " hl" : ""}">${p}<small>${names[i] || ""}</small></div>`).join("")}</div>`;
+  const snop = n => pl(n, "snopek", "snopki", "snopków");
+
+  // owce w prostokącie: ile ich jest?
+  function countRound() {
+    const r = rnd(2, 4), c = rnd(3, 6), n = r * c;
+    ui.grok(`Ile owiec stoi na pastwisku?<small>Nie licz po jednej! Policz rzędy i owce w jednym rzędzie.</small>`);
+    $("#play").innerHTML = rowsHTML(r, c) + `<div id="pad"></div>`;
+    const why = `${r} ${rzedow(r)} ${poOwiec(c)}: ${r} · ${c} = ${n}.`;
+    numPad({ el: $("#pad"), ok: n, max: 2,
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… policz rzędy. Ile ich jest? A ile owiec w jednym rzędzie?`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // dodawanie jednakowych składników → mnożenie
+  function sumRound() {
+    const c = rnd(3, 9); let k; do { k = rnd(3, 5) } while (k === c);
+    const sum = Array(k).fill(c).join(" + ");
+    ui.grok(`Jak zapisać to dodawanie krócej?`);
+    $("#play").innerHTML = `<div class="q-big">${sum}</div><div class="opts" id="opts"></div>`;
+    const ok = `${k} · ${c}`;
+    choice({ el: $("#opts"), ok, opts: shuffle([ok, `${c} · ${c}`, `${k} + ${c}`]).map(v => ({ v, t: v })),
+      onRight: () => { ui.grok(`Tak! ${k} razy po ${c}: ${sum} = ${k} · ${c} = ${k * c}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… policz, ile razy powtarza się ${c}.`, "bad"),
+      onReveal: () => { ui.grok(`${c} powtarza się ${k} razy, więc ${sum} = ${ok} = ${k * c}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // zmiana kolejności czynników
+  function swapRound() {
+    const a = rnd(2, 4), b = rnd(6, 9), n = a * b;
+    ui.grok(`Kosmita pamięta, że ${a} · ${b} = ${n}. Ile to <b>${b} · ${a}</b>?`);
+    $("#play").innerHTML = `<div class="q-big">${b} · ${a} = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: n, max: 2,
+      onRight: () => { ui.grok(`Tak! Zmiana kolejności nie zmienia wyniku: ${b} · ${a} = ${a} · ${b} = ${n}.`); ui.beata("Wystarczy zapamiętać trochę więcej niż połowę tabliczki!", "good") },
+      onWrong: () => ui.beata(`Bee… a gdyby zamienić liczby miejscami?`, "bad"),
+      onReveal: () => { ui.grok(`${b} · ${a} = ${a} · ${b} = ${n}. W mnożeniu kolejność nie gra roli.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // gdy nie pamiętasz wyniku: skorzystaj z tego, co pamiętasz
+  function knownRound() {
+    const b = rnd(3, 9), up = Math.random() < .5;
+    const [ka, kb] = up ? [5, 6] : [10, 9], known = ka * b, n = kb * b;
+    const why = up ? `${kb} · ${b} to o jedno ${b} więcej niż ${ka} · ${b}: ${known} + ${b} = ${n}.` : `${kb} · ${b} to o jedno ${b} mniej niż ${ka} · ${b}: ${known} − ${b} = ${n}.`;
+    ui.grok(`Grok nie pamięta, ile to ${kb} · ${b}. Ale pamięta, że <b>${ka} · ${b} = ${known}</b>. Pomożesz?`);
+    $("#play").innerHTML = `<div class="q-big">${kb} · ${b} = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: n, max: 2,
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === known ? `Bee… to wynik ${ka} · ${b}. A ${kb} · ${b} to o ${b} ${up ? "więcej" : "mniej"}.` : `Bee… zacznij od ${known} i ${up ? "dodaj" : "odejmij"} ${b}.`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // mnożenie przez 1 i przez 0
+  function zeroOneRound() {
+    const n = rnd(3, 9), by = pick([0, 1]), first = Math.random() < .5;
+    const [a, b] = first ? [by, n] : [n, by], ok = by * n;
+    ui.grok(by ? `Ile to ${a} · ${b}?<small>Mnożenie przez 1 nie zmienia liczby.</small>` : `Ile to ${a} · ${b}?<small>Pomyśl: ${first ? `0 zagród po ${n} ${owiec(n)}` : `${n} ${pl(n, "pusta zagroda", "puste zagrody", "pustych zagród")}`}.</small>`);
+    $("#play").innerHTML = `<div class="q-big">${a} · ${b} = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok, max: 2, tries: 2,
+      onRight: () => { ui.grok(by ? `Tak! ${a} · ${b} = ${n}. Mnożenie przez 1 nie zmienia liczby.` : `Tak! Wynikiem mnożenia przez 0 jest zawsze 0.`); ui.beata(by ? praise() : "Zero owiec? To kogo Grok będzie liczył przed snem?", "good") },
+      onWrong: () => ui.beata(by ? `Bee… ${n} razy po jednej owcy?` : `Bee… mnożenie przez 0 zawsze daje 0!`, "bad"),
+      onReveal: () => { ui.grok(by ? `${a} · ${b} = ${n}. Mnożenie przez 1 nie zmienia liczby.` : `${a} · ${b} = 0. Wynikiem mnożenia przez 0 jest zawsze 0.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // „k razy więcej” (mnożymy) czy „o k więcej” (dodajemy)?
+  function moreRound(times) {
+    const a = rnd(3, 9), k = rnd(2, 4), ok = times ? a * k : a + k, other = times ? a + k : a * k;
+    const how = times ? `${k} razy więcej` : `o ${k} więcej`;
+    ui.grok(`Przeczytaj uważnie i policz.`);
+    $("#play").innerHTML = `<div class="mn-story">Beata zjadła ${a} ${snop(a)} siana. Kosmita zjadł <b>${how}</b>. Ile snopków zjadł Kosmita?</div><div class="opts" id="opts"></div>`;
+    const why = times ? `„${k} razy więcej” to mnożenie: ${a} · ${k} = ${ok}.` : `„O ${k} więcej” to dodawanie: ${a} + ${k} = ${ok}.`;
+    choice({ el: $("#opts"), ok, opts: shuffle([ok, other, a * (k + 1)]),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(+v === other ? (times ? `Bee… „razy więcej” to nie dodawanie. Tu mnożymy!` : `Bee… „o ${k} więcej” to nie mnożenie. Tu dodajemy!`) : `Bee… to nie to. Spróbuj jeszcze raz!`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // czynniki i iloczyn
+  function namesRound() {
+    const a = rnd(3, 9), b = rnd(3, 9), parts = [a, "·", b, "=", a * b], idx = pick([0, 2, 4, 4]);
+    ui.grok(`Jak nazywa się zaznaczona liczba?`);
+    $("#play").innerHTML = `<div id="eq">${eq(parts, idx)}</div><div class="opts" id="opts"></div>`;
+    const showAll = () => { $("#eq").innerHTML = eq(parts, idx, NAMES) };
+    choice({ el: $("#opts"), ok: NAMES[idx], cls: "txt", opts: ["czynnik", "iloczyn", "składnik"].map(v => ({ v, t: v })),
+      onRight: () => { showAll(); ui.grok(`Tak! Liczby, które mnożymy, to czynniki, a wynik to iloczyn.`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === "składnik" ? "Bee… składniki są w dodawaniu. Tu mnożymy!" : "Bee… spójrz, gdzie stoi ta liczba.", "bad"),
+      onReveal: () => { showAll(); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // brakujący czynnik
+  function missingRound() {
+    const a = rnd(3, 9), b = rnd(3, 9), n = a * b, left = Math.random() < .5;
+    ui.grok(`Jaki czynnik schował się pod znakiem zapytania?<small>Poszukaj w tabliczce liczby, która razy ${left ? b : a} da ${n}.</small>`);
+    const gap = '<span class="gap">?</span>';
+    $("#play").innerHTML = `<div class="q-big">${left ? `${gap} · ${b}` : `${a} · ${gap}`} = ${n}</div><div id="pad"></div>`;
+    const ok = left ? a : b, k = left ? b : a;
+    numPad({ el: $("#pad"), ok, max: 2,
+      onRight: () => { ui.grok(`Tak! ${a} · ${b} = ${n}.`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(`Bee… ${v} · ${k} = ${v * k}, a nie ${n}.`, "bad"),
+      onReveal: () => { ui.grok(`${a} · ${b} = ${n}, więc brakuje ${ok}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [
+    countRound,
+    sumRound,
+    swapRound,
+    knownRound,
+    zeroOneRound,
+    null, null, // „razy więcej” i „o … więcej” w losowej kolejności (w setup)
+    namesRound,
+    missingRound,
+  ];
+  GAMES.mnozenie = {
+    rounds: PLAN.length,
+    setup(c) { c.moreFirst = Math.random() < .5 },
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 14</h4><ul>
+      <li>Jednakowe składniki zastąpisz mnożeniem: <b>6 + 6 + 6 + 6 = 4 · 6</b>.</li>
+      <li>Kolejność nie gra roli: <b>4 · 6 = 6 · 4</b>.</li>
+      <li>Nie pamiętasz? Skorzystaj z tego, co pamiętasz: 5 · 4 = 20, więc 6 · 4 = 20 + 4 = 24.</li>
+      <li>Mnożenie przez 1 nie zmienia liczby. Mnożenie przez 0 daje zawsze <b>0</b>.</li>
+      <li><b>„2 razy więcej”</b> → mnożymy. <b>„o 2 więcej”</b> → dodajemy.</li>
+      <li>W 7 · 4 = 28 liczby 7 i 4 to <b>czynniki</b>, a 28 to <b>iloczyn</b>.</li></ul></div>`,
+    round(i) {
+      if (i === 5 || i === 6) return moreRound((i === 5) === cur.moreFirst);
+      PLAN[i]();
+    },
   };
 })();
 
