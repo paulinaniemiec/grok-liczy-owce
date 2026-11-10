@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: porównywanie liczb, dzielenie pisemne, szacowanie, oś liczbowa, podzielność, liczby pierwsze, sprytne dodawanie, sprytne odejmowanie, zadania tekstowe, trójkąty, własności trójkątów i tabliczka mnożenia. Bez logowania, działa na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna w przeglądarce dla klas 4–5: porównywanie liczb, dzielenie pisemne, szacowanie, oś liczbowa, podzielność, liczby pierwsze, sprytne dodawanie, sprytne odejmowanie, zadania tekstowe, trójkąty, własności trójkątów, tabliczka mnożenia i tabliczka dzielenia. Bez logowania, działa na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Czternaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Piętnaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -495,6 +495,7 @@ const ODCINKI = {
   12: { tytul: "Sprytne odejmowanie", url: "https://www.youtube.com/watch?v=sVpRYjTEuY0", rozdzial: "1:01", co: "Odejmowanie po kawałku: 93 − 58" },
   13: { tytul: "Własności trójkątów", url: "https://www.youtube.com/watch?v=wiijZoVs6dg", rozdzial: "1:02", co: "Trójkąt równoramienny: ramiona i podstawa" },
   14: { tytul: "Tabliczka mnożenia", url: "https://www.youtube.com/watch?v=6s-tmt0zgsY", rozdzial: "0:39", co: "Mnożenie zamiast dodawania: 4 · 6 i 6 · 4" },
+  15: { tytul: "Tabliczka dzielenia", url: "https://www.youtube.com/watch?v=HP6u5QTtBAQ", rozdzial: "0:35", co: "Mnożenie i dzielenie: 9 · 3 = 27" },
 };
 function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
@@ -526,6 +527,7 @@ const PASTWISKA = [
   { key: "mnozenie", klasa: "4", nr: 11, color: "#0ea5e9", title: "Owce w rzędach", ep: 14, desc: "Ustaw owce w rzędy i policz je mnożeniem. Czynniki, iloczyn i „razy więcej”.", pics: ["kosmita", "owca", "owca"] },
   { key: "odejmowanie", klasa: "4", nr: 12, color: "#65a30d", title: "Sprytne odejmowanie", ep: 12, desc: "Odejmuj po kawałku, przez dodawanie albo przesuń obie liczby. Bez kamyków!", pics: ["owca", "owca", "beata"] },
   { key: "rownoramienne", klasa: "5", nr: 13, color: "#6366f1", title: "Trójkąty z kosmosu", ep: 13, desc: "Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe!", pics: ["kosmita", "beata"] },
+  { key: "dzielenie", klasa: "4", nr: 14, color: "#d946ef", title: "Dzielna owca", ep: 15, desc: "Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz.", pics: ["beata", "owca", "owca"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -2385,6 +2387,189 @@ const TRI_RYSUNKI = {};
       <li><b>Równoramienny:</b> dwa boki równe (ramiona), kąty przy podstawie równe, 1 oś symetrii.</li>
       <li><b>Różnoboczny:</b> każdy bok inny, brak osi symetrii.</li>
       <li>Przykład: kąt przy podstawie 40° → drugi też 40°, a trzeci 180° − 80° = 100°.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 14: DZIELNA OWCA (odcinek 15, tabliczka dzielenia, klasa 4)
+   Owce po równo do zagród, dzielenie z tabliczki mnożenia, sprawdzanie
+   mnożeniem, dwa pytania dzielenia (po ile? ile razy?), zero i jedynka,
+   „razy mniej” czy „o … mniej”, „ile razy więcej?”, dzielna, dzielnik,
+   iloraz i zagadka z odcinka: którą liczbę podzielisz przez 8?
+   ===================================================================== */
+(() => {
+  const css = `
+  .dz-herd { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 4px; max-width: 560px; margin: 6px auto; padding: 10px 12px; min-height: 40px;
+    background: #e9f8d8; border: 3px solid var(--ink); border-radius: 18px }
+  .dz-herd img, .dz-pen img { width: 34px; display: block } .dz-herd.empty { opacity: .45 }
+  .dz-pens { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 10px auto 4px; max-width: 760px }
+  .dz-pen { position: relative; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 2px; width: 128px; min-height: 92px; padding: 22px 6px 8px;
+    background: #fff; border: 3px solid var(--wood-dark); border-radius: 14px; font: 800 34px/1 var(--head); color: var(--ink-soft) }
+  .dz-pen::before { content: ""; position: absolute; left: 8px; right: 8px; top: 6px; height: 8px; border-top: 4px solid var(--wood); border-bottom: 4px solid var(--wood); opacity: .6 }
+  .dz-pen img { animation: pop .3s }
+  .dz-story { max-width: 640px; margin: 0 auto; background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 12px 18px; font-size: 19px; text-align: center }
+  .dz-hint { text-align: center; font: 800 clamp(22px, 4vw, 30px)/1.2 var(--head); color: var(--blue); margin: 4px 0 }
+  .dz-green { filter: sepia(1) saturate(6) hue-rotate(55deg) brightness(.95) }
+  .dz-groups { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 8px auto }
+  .dz-groups > div { display: flex; gap: 2px; padding: 6px 8px; border: 3px dashed #c9bfd9; border-radius: 14px; background: #fff }
+  .dz-groups img { width: 30px; display: block }
+  @media (max-width: 600px) { .dz-herd img, .dz-pen img { width: 26px } .dz-pen { width: 96px; min-height: 72px; padding: 18px 4px 6px } .dz-pens { gap: 6px } .dz-story { font-size: 17px; padding: 10px 12px } .dz-groups img { width: 22px } .dz-groups { gap: 6px } .dz-groups > div { padding: 4px 5px } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+  const snop = n => pl(n, "snopek", "snopki", "snopków");
+  const zagrod = n => pl(n, "zagroda", "zagrody", "zagród");
+  const NAMES = ["dzielna", "", "dzielnik", "", "iloraz"];
+  const eq = (parts, hl = -1, names = []) => `<div class="mn-eq">${parts.map((p, i) =>
+    /^[:=]$/.test(p) ? `<div class="t">${p}<small></small></div>` : `<div class="t${i === hl ? " hl" : ""}">${p}<small>${names[i] || ""}</small></div>`).join("")}</div>`;
+
+  // 24 owce, 4 zagrody: po ile owiec w każdej?
+  function pensRound() {
+    const k = rnd(3, 5), q = rnd(3, 7), n = k * q;
+    ui.grok(`Mam ${n} ${owiec(n)} i ${k} ${zagrod(k)}. Ile owiec wejdzie do każdej zagrody, jeśli po równo?<small>Nie przenoś po jednej! Pomyśl: ${k} razy ile daje ${n}?</small>`);
+    $("#play").innerHTML = `<div class="dz-herd" id="herd">${SHEEP.repeat(n)}</div>
+      <div class="dz-pens">${'<div class="dz-pen">?</div>'.repeat(k)}</div><div id="pad"></div>`;
+    const fill = () => { $("#herd").innerHTML = ""; $("#herd").classList.add("empty"); document.querySelectorAll(".dz-pen").forEach(p => p.innerHTML = SHEEP.repeat(q)) };
+    const why = `${n} : ${k} = ${q}, bo ${k} · ${q} = ${n}.`;
+    numPad({ el: $("#pad"), ok: q, max: 2,
+      onRight: () => { fill(); ui.grok(`Tak! ${why}`); ui.beata("Wszystkie owce na miejscach. Bez biegania!", "good") },
+      onWrong: v => ui.beata(`Bee… ${k} · ${v} = ${k * v}, a owiec jest ${n}.`, "bad"),
+      onReveal: () => { fill(); ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // z mnożenia do dzielenia: 9 · 3 = 27 → 27 : 3 i 27 : 9
+  function fromMulRound() {
+    let a, b; do { a = rnd(3, 9); b = rnd(3, 9) } while (a === b);
+    const n = a * b, byA = Math.random() < .5, d = byA ? a : b, ok = byA ? b : a;
+    ui.grok(`Kosmita pamięta z tabliczki mnożenia, że <b>${a} · ${b} = ${n}</b>. Ile to ${n} : ${d}?`);
+    $("#play").innerHTML = `<div class="dz-hint">${a} · ${b} = ${n}</div><div class="q-big">${n} : ${d} = <span class="gap">?</span></div><div id="pad"></div>`;
+    const why = `${a} · ${b} = ${n}, więc ${n} : ${a} = ${b} i ${n} : ${b} = ${a}.`;
+    numPad({ el: $("#pad"), ok, max: 2,
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata("Tabliczka mnożenia działa też od tyłu!", "good") },
+      onWrong: v => ui.beata(+v === d ? `Bee… ${d} to dzielnik. Szukamy drugiej liczby z mnożenia.` : `Bee… spójrz na mnożenie u góry.`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // Grok dzieli, a ty sprawdzasz mnożeniem
+  function checkRound() {
+    const d = rnd(3, 9), q = rnd(4, 9), n = d * q, good = Math.random() < .5, g = good ? q : q + pick([-1, 1]);
+    ui.grok(`Policzyłem: <b>${n} : ${d} = ${g}</b>. Dobrze?<small>Sprawdź mnożeniem: wynik razy dzielnik musi dać ${n}.</small>`);
+    $("#play").innerHTML = `<div class="q-big">${n} : ${d} = ${g}</div><div class="opts" id="opts"></div>`;
+    const why = good ? `Sprawdzenie: ${g} · ${d} = ${n}. Zgadza się!` : `Sprawdzenie: ${g} · ${d} = ${g * d}, a nie ${n}. Dobrze jest ${n} : ${d} = ${q}, bo ${q} · ${d} = ${n}.`;
+    choice({ el: $("#opts"), ok: good ? "t" : "n", opts: yesNo("Dobrze", "Źle"),
+      onRight: () => { ui.grok(`${good ? "Tak!" : "Racja, pomyliłem się."} ${why}`); ui.beata(good ? praise() : "Grok znowu liczy jak Grok.", "good") },
+      tries: 1, onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // dwa pytania dzielenia: po ile? (podział po równo) i ilu? (porcje)
+  function storyRound(equal) {
+    const k = rnd(3, 6), q = rnd(2, 6), n = k * q;
+    const [txt, ok, ans] = equal
+      ? [`Grok ma ${n} ${snop(n)} siana i dzieli je po równo między ${k} ${pl(k, "owcę", "owce", "owiec")}. Ile snopków dostanie każda owca?`, q, `Każda owca dostanie ${q} ${snop(q)}: ${n} : ${k} = ${q}.`]
+      : [`Grok ma ${n} ${snop(n)} siana. Każda owca dostaje po ${q} ${snop(q)}. Ile owiec się naje?`, k, `Naje się ${k} ${owiec(k)}: ${n} : ${q} = ${k}.`];
+    ui.grok(`Przeczytaj i policz.<small>Oba pytania to dzielenie!</small>`);
+    $("#play").innerHTML = `<div class="dz-story">${txt}</div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok, max: 2,
+      onRight: () => { ui.grok(`Tak! ${ans}`); ui.beata("Nie lubię dzielenia. Chyba że dzielimy siano.", "good") },
+      onWrong: v => ui.beata(v === n * (equal ? k : q) ? `Bee… tu nie mnożymy. Siano trzeba podzielić!` : `Bee… podziel ${n} przez ${equal ? k : q}.`, "bad"),
+      onReveal: () => { ui.grok(ans); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // zero i jedynka; przez 0 nie dzielimy
+  function zeroOneRound() {
+    const n = rnd(3, 9), kind = cur.zeroKinds[cur.zeroI++ % cur.zeroKinds.length];
+    const [a, b, ok, why] = {
+      zero: [0, n, 0, `0 : ${n} = 0. Zero owiec w ${n} zagrodach to wciąż zero owiec.`],
+      self: [n, n, 1, `${n} : ${n} = 1. Liczba podzielona przez samą siebie daje 1.`],
+      one: [n, 1, n, `${n} : 1 = ${n}. Dzielenie przez 1 nie zmienia liczby.`],
+      byZero: [n, 0, "x", `${n} : 0? Żadna liczba razy 0 nie da ${n}. Przez 0 nie można dzielić!`],
+    }[kind];
+    ui.grok(`Ile to ${a} : ${b}?`);
+    $("#play").innerHTML = `<div class="q-big">${a} : ${b} = <span class="gap">?</span></div><div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok, opts: [...shuffle([0, 1, n]), { v: "x", t: "Nie da się" }],
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(kind === "byZero" ? "Kalkulator Kosmity już nie dymi. Uff." : kind === "one" ? "Całe siano dla mnie? Teraz lubię dzielenie." : praise(), "good") },
+      onWrong: () => ui.beata(kind === "byZero" ? "Bee… sprawdź mnożeniem: ? · 0 = " + n + ". Jest taka liczba?" : "Bee… sprawdź mnożeniem!", "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // „k razy mniej” (dzielimy) czy „o k mniej” (odejmujemy)?
+  function lessRound(times) {
+    const k = rnd(2, 4), q = rnd(3, 9), n = k * q, ok = times ? q : n - k, other = times ? n - k : q;
+    const how = times ? `${k} razy mniej` : `o ${k} mniej`;
+    ui.grok(`Przeczytaj uważnie i policz.`);
+    $("#play").innerHTML = `<div class="dz-story">Grok ma ${n} ${owiec(n)}. Kosmita ma <b>${how}</b>. Ile owiec ma Kosmita?</div><div class="opts" id="opts"></div>`;
+    const why = times ? `„${k} razy mniej” to dzielenie: ${n} : ${k} = ${q}.` : `„O ${k} mniej” to odejmowanie: ${n} − ${k} = ${ok}.`;
+    choice({ el: $("#opts"), ok, opts: shuffle([ok, other, n + k]),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(+v === other ? (times ? `Bee… „razy mniej” to nie odejmowanie. Tu dzielimy!` : `Bee… „o ${k} mniej” to nie dzielenie. Tu odejmujemy!`) : `Bee… mniej, a nie więcej!`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // ile razy więcej? większą liczbę dzielimy przez mniejszą
+  function timesRound() {
+    const s = rnd(2, 5), k = rnd(2, 4), b = s * k, more = Math.random() < .5;
+    const white = `<div>${SHEEP.repeat(s)}</div>`.repeat(k), green = `<div>${SHEEP.replace("<img", '<img class="dz-green"').repeat(s)}</div>`;
+    ui.grok(more ? `Ile razy więcej jest owiec białych niż zielonych?` : `Ile razy mniej jest owiec zielonych niż białych?`);
+    $("#play").innerHTML = `<div class="dz-groups">${white}</div><div class="dz-groups">${green}</div>
+      <p class="q-sub">${b} ${pl(b, "biała", "białe", "białych")} i ${s} ${pl(s, "zielona", "zielone", "zielonych")}</p><div id="pad"></div>`;
+    const why = `Większą liczbę dzielimy przez mniejszą: ${b} : ${s} = ${k}.`;
+    numPad({ el: $("#pad"), ok: k, max: 2,
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(`Zielone są ${k} razy ładniejsze? Nie.`, "good") },
+      onWrong: v => ui.beata(v === b - s ? `Bee… ${b - s} to „o ile więcej”. A pytamy „ile razy”!` : `Bee… ile razy grupka zielonych mieści się w białych?`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // dzielna, dzielnik, iloraz
+  function namesRound() {
+    const d = rnd(3, 9), q = rnd(3, 9), parts = [d * q, ":", d, "=", q], idx = cur.nameIdx;
+    ui.grok(`Jak nazywa się zaznaczona liczba?`);
+    $("#play").innerHTML = `<div id="eq">${eq(parts, idx)}</div><div class="opts" id="opts"></div>`;
+    const showAll = () => { $("#eq").innerHTML = eq(parts, idx, NAMES) };
+    choice({ el: $("#opts"), ok: NAMES[idx], cls: "txt", opts: ["dzielna", "dzielnik", "iloraz", "czynnik"].map(v => ({ v, t: v })),
+      onRight: () => { showAll(); ui.grok(`Tak! Dzielimy dzielną przez dzielnik, a wynik to iloraz.`); ui.beata(idx === 0 ? "Jestem dzielna. Pierwsza wchodzę do jaskini!" : praise(), "good") },
+      onWrong: v => ui.beata(v === "czynnik" ? "Bee… czynniki są w mnożeniu. Tu dzielimy!" : "Bee… spójrz, gdzie stoi ta liczba.", "bad"),
+      onReveal: () => { showAll(); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // zagadka z odcinka: którą liczbę można podzielić przez d, korzystając z tabliczki?
+  function quizRound() {
+    const d = rnd(6, 9), q = rnd(3, 9), ok = d * q, bad = new Set();
+    while (bad.size < 3) { const x = ok + rnd(-12, 12); if (x > 12 && x <= 90 && x % d) bad.add(x) }
+    const opts = [ok, ...bad].sort((a, b) => a - b);
+    ui.grok(`Zagadka z odcinka! Którą liczbę można podzielić przez <b>${d}</b>, korzystając z tabliczki mnożenia?`);
+    $("#play").innerHTML = `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok, opts: opts.map((v, i) => ({ v, t: `${"ABCD"[i]}&nbsp;&nbsp;${v}` })),
+      onRight: () => { ui.grok(`Tak! ${q} · ${d} = ${ok}, więc ${ok} : ${d} = ${q}.`); ui.beata("Bez reszty? Reszta to ja. Czyli mam wolne!", "good") },
+      onWrong: v => ui.beata(`Bee… w tabliczce razy ${d} nie ma ${v}. Przejdź po kolei: ${d}, ${2 * d}, ${3 * d}…`, "bad"),
+      onReveal: () => { ui.grok(`${q} · ${d} = ${ok}, więc ${ok} : ${d} = ${q}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [
+    pensRound,
+    fromMulRound,
+    checkRound,
+    () => storyRound(cur.equalFirst), () => storyRound(!cur.equalFirst),
+    zeroOneRound, zeroOneRound,
+    () => lessRound(cur.lessFirst), () => lessRound(!cur.lessFirst),
+    timesRound,
+    namesRound,
+    quizRound,
+  ];
+  GAMES.dzielenie = {
+    rounds: PLAN.length,
+    setup(c) {
+      c.equalFirst = Math.random() < .5; c.lessFirst = Math.random() < .5; c.nameIdx = pick([0, 2, 4]);
+      c.zeroKinds = ["byZero", ...shuffle(["zero", "self", "one"])].slice(0, 2); shuffle(c.zeroKinds); c.zeroI = 0;
+    },
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 15</h4><ul>
+      <li>W dzieleniu pomaga tabliczka mnożenia: <b>9 · 3 = 27</b>, więc 27 : 3 = 9 i 27 : 9 = 3.</li>
+      <li>Wynik sprawdzisz mnożeniem: 30 : 5 = 6, bo <b>6 · 5 = 30</b>.</li>
+      <li>0 : 4 = 0. <b>Przez 0 nie można dzielić!</b></li>
+      <li>8 : 8 = 1, a 8 : 1 = 8.</li>
+      <li><b>„3 razy mniej”</b> → dzielimy przez 3. <b>„o 3 mniej”</b> → odejmujemy 3.</li>
+      <li>Ile razy więcej? Większą liczbę dzielimy przez mniejszą: 15 : 5 = 3.</li>
+      <li>W 30 : 6 = 5 liczba 30 to <b>dzielna</b>, 6 to <b>dzielnik</b>, a 5 to <b>iloraz</b>.</li></ul></div>`,
     round(i) { PLAN[i]() },
   };
 })();

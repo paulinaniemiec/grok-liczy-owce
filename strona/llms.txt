@@ -21,6 +21,7 @@ W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darm
 - [#12 Sprytne odejmowanie (matematyka klasa 4, 4:35)](https://www.youtube.com/watch?v=sVpRYjTEuY0): 93 owce, a 58 idzie do rzeki. Cztery sprytne sposoby odejmowania w pamięci, bez ani jednego kamyka. Gra do odcinka: https://grokliczyowce.pl/gra.html#odejmowanie („Sprytne odejmowanie”).
 - [#13 Własności trójkątów (matematyka klasa 5, 4:16)](https://www.youtube.com/watch?v=wiijZoVs6dg): Trzy deski po 3 m i żadna nie jest najdłuższa. Trójkąty równoboczne, równoramienne i różnoboczne, ich kąty i osie symetrii. Gra do odcinka: https://grokliczyowce.pl/gra.html#rownoramienne („Trójkąty z kosmosu”).
 - [#14 Tabliczka mnożenia (matematyka klasa 4, 4:47)](https://www.youtube.com/watch?v=6s-tmt0zgsY): Kosmita liczy od razu: cztery razy sześć, dwadzieścia cztery. Mnożenie zamiast dodawania, mnożenie przez 0 i 1, czynniki i iloczyn. Gra do odcinka: https://grokliczyowce.pl/gra.html#mnozenie („Owce w rzędach”).
+- [#15 Tabliczka dzielenia (matematyka klasa 4, 4:43)](https://www.youtube.com/watch?v=HP6u5QTtBAQ): 24 owce i 4 zagrody. Dzielenie z pomocą tabliczki mnożenia: dzielna, dzielnik, iloraz i dlaczego przez 0 nie dzielimy. Gra do odcinka: https://grokliczyowce.pl/gra.html#dzielenie („Dzielna owca”).
 
 ## Materiały
 
