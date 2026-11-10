@@ -7,16 +7,16 @@ Cała strona leży w `strona/` (czysty HTML i CSS, bez budowania). Po każdym pu
 
 Podgląd lokalny: otwórz `strona/index.html` w przeglądarce.
 
-Odcinki #1–#14 linkują do filmów na kanale `@grokliczyowce`, a klasy na kartach są wzięte z tytułów na YouTube.
+Odcinki #1–#15 linkują do filmów na kanale `@grokliczyowce`, a klasy na kartach są wzięte z tytułów na YouTube.
 Po wrzuceniu kolejnego odcinka w `index.html` zamień jego `<div class="ep soon" …>` na `<a class="ep" … href="https://www.youtube.com/watch?v=…">`, a plakietkę „Wkrótce” na czas trwania.
 
 ## Mini-gra „Policz stado!”
 
 `strona/gra.html` to samodzielna gra (jeden plik, bez budowania). Pastwiska: „Ile owiec?” (odc. 7), „Owca na osi” (odc. 5),
 „Zagrody” (odc. 2), „Stado w prostokąt” (odc. 3), „Okrągłe pary” (odc. 8), „Która większa?” (odc. 1), „Snopki dla zagród” (odc. 4),
-„Ile zostało?” (odc. 6), „Ile lat ma pasterz?” (odc. 10), „Trójkątna zagroda” (odc. 11), „Sprytne odejmowanie” (odc. 12), „Trójkąty z kosmosu” (odc. 13), „Owce w rzędach” (odc. 14) i finał „Wielka powtórka” (odc. 9, 10 rund na czas).
+„Ile zostało?” (odc. 6), „Ile lat ma pasterz?” (odc. 10), „Trójkątna zagroda” (odc. 11), „Sprytne odejmowanie” (odc. 12), „Trójkąty z kosmosu” (odc. 13), „Owce w rzędach” (odc. 14), „Dzielna owca” (odc. 15) i finał „Wielka powtórka” (odc. 9, 10 rund na czas).
 Linki do odcinków są w obiekcie `ODCINKI` w `gra.html` (po dodaniu pastwiska do nowego odcinka wpisz tam jego adres).
-Do pastwiska można wejść bezpośrednio: `gra.html#szacowanie`, `#os`, `#zagrody`, `#prostokat`, `#pary`, `#porownaj`, `#snopki`, `#zostalo`, `#zadania`, `#trojkaty`, `#odejmowanie`, `#rownoramienne`, `#mnozenie`, `#final`.
+Do pastwiska można wejść bezpośrednio: `gra.html#szacowanie`, `#os`, `#zagrody`, `#prostokat`, `#pary`, `#porownaj`, `#snopki`, `#zostalo`, `#zadania`, `#trojkaty`, `#odejmowanie`, `#rownoramienne`, `#mnozenie`, `#dzielenie`, `#final`.
 
 ## SEO i wyszukiwarki AI
 
