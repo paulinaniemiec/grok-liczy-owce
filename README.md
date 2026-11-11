@@ -28,3 +28,12 @@ generuje skrypt. **Po dodaniu albo zmianie odcinka w `index.html` uruchom:**
     python3 scripts/seo.py
 
 Daty publikacji filmów skrypt pobiera z YouTube i zapisuje w `scripts/seo-daty.json`.
+
+### Podstrony tematyczne
+
+Każdy odcinek ma własną podstronę pod adresem `grokliczyowce.pl/<temat>/` (np. `/liczby-pierwsze-i-zlozone/`): film,
+rozdziały z linkami do minut na YouTube, „Do zapamiętania”, przykład krok po kroku, link do pastwiska w grze i pytania.
+Treść jest w `scripts/tematy.json` (klucz = numer odcinka), szablon w `scripts/podstrony.py`, wygląd w `strona/temat.css`.
+Strony `strona/<temat>/index.html` generuje `scripts/seo.py`, więc ich nie edytuj ręcznie. Nowy odcinek: dopisz kartę
+w `index.html`, wpis w `tematy.json` (slug, h1, title do ~60 znaków, description do ~155 znaków, lead, pamietaj,
+przyklad, faq oraz `rozdzialy` z opisu na YouTube albo `w_odcinku`) i uruchom `python3 scripts/seo.py`.

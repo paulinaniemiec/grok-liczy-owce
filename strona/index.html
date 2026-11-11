@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grok liczy owce · matematyka klasa 4 i 5 w animowanych filmikach</title>
-<meta name="description" content="Darmowe animowane filmiki z matematyki dla klas 4–5: liczby naturalne, podzielność, liczby pierwsze, dzielenie pisemne, oś liczbowa, szacowanie, zadania tekstowe i trójkąty. Każdy odcinek ok. 5 minut, z zagadkami, plus darmowa gra.">
+<meta name="description" content="Darmowe animowane filmiki z matematyki dla klas 4–5: od liczb naturalnych po trójkąty i tabliczkę dzielenia. Odcinki po 5 minut, zagadki i gra.">
 <link rel="canonical" href="https://grokliczyowce.pl/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
@@ -80,6 +80,7 @@ a { color: inherit }
 .title span:nth-child(1) { color: var(--yellow); rotate: -3deg }
 .title span:nth-child(2) { color: #fff; rotate: 2deg }
 .title span:nth-child(3) { color: var(--yellow); rotate: -2deg }
+.title .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 .tag { display: inline-block; margin-top: 22px; background: var(--ink); color: #fff; font: 900 clamp(17px, 2vw, 24px)/1.2 var(--body); padding: 8px 22px 10px; border-radius: 16px; rotate: -1.5deg }
 .tag b { color: var(--yellow) }
 .lead { max-width: 560px; margin: 26px auto 0; font-size: 19px; font-weight: 700; color: var(--ink) }
@@ -132,6 +133,9 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .ep-num { font: 900 14px/1 var(--body); letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft) }
 .ep-num b { color: var(--ink); background: var(--yellow); padding: 3px 7px; border-radius: 6px; margin-right: 6px }
 .ep h3 { margin: 2px 0 0; font: 800 26px/1.1 var(--head) }
+.ep h3 a { text-decoration: none }
+.ep h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit }   /* cała karta prowadzi do podstrony tematu */
+.ep h3 a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 4px }
 .ep p { margin: 0; font-size: 16px; color: var(--ink-soft) }
 .ep .watch { margin-top: auto; padding-top: 10px; font-weight: 900; font-size: 15px; display: flex; align-items: center; gap: 8px }
 .ep .watch .play { border-left-width: 10px; border-top-width: 6px; border-bottom-width: 6px; color: var(--pink) }
@@ -143,8 +147,8 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .ep .watch.later { color: var(--ink-soft) }
 .ep[hidden] { display: none }
 .ep.has-game { position: relative; cursor: pointer }
-.ep.has-game a.watch { text-decoration: none; color: inherit }
-.ep.has-game a.watch::after { content: ""; position: absolute; inset: 0; border-radius: inherit }   /* cała karta otwiera film */
+.ep.has-game a.watch { position: relative; z-index: 1; text-decoration: none; color: inherit }
+.ep.has-game a.watch:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px }
 .ep-actions { margin-top: auto; padding-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap }
 .ep-actions .watch { margin-top: 0; padding-top: 0 }
 .ep-game { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 7px; font: 900 14px/1 var(--body); color: var(--ink); text-decoration: none;
@@ -373,377 +377,92 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
     {
      "@type": "ListItem",
      "position": 1,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Liczby naturalne – matematyka klasa 4 | Grok liczy owce #1",
-      "description": "Grok nie zna liczb. Skąd się wzięło liczenie, po co nam setki i dlaczego zero to wielki wynalazek.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-01.jpg",
-      "uploadDate": "2026-11-02T11:05:57-08:00",
-      "duration": "PT4M22S",
-      "url": "https://www.youtube.com/watch?v=NEiQK3w0GOs",
-      "embedUrl": "https://www.youtube.com/embed/NEiQK3w0GOs",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Liczby naturalne",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Liczby naturalne – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/liczby-naturalne/"
     },
     {
      "@type": "ListItem",
      "position": 2,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Cechy podzielności – matematyka klasa 5 | Grok liczy owce #2",
-      "description": "Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-02.jpg",
-      "uploadDate": "2026-11-02T11:14:06-08:00",
-      "duration": "PT7M25S",
-      "url": "https://www.youtube.com/watch?v=ClVDgk-Ps1E",
-      "embedUrl": "https://www.youtube.com/embed/ClVDgk-Ps1E",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 5",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Cechy podzielności",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Cechy podzielności – matematyka klasa 5",
+     "url": "https://grokliczyowce.pl/cechy-podzielnosci/"
     },
     {
      "@type": "ListItem",
      "position": 3,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Liczby pierwsze i złożone – matematyka klasa 5 | Grok liczy owce #3",
-      "description": "Siedem owiec nie chce stanąć w równych rzędach. Dzielniki, liczby pierwsze i drzewko czynników.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-03.jpg",
-      "uploadDate": "2026-11-02T11:17:35-08:00",
-      "duration": "PT5M21S",
-      "url": "https://www.youtube.com/watch?v=axhkUmy1AgY",
-      "embedUrl": "https://www.youtube.com/embed/axhkUmy1AgY",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 5",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Liczby pierwsze i złożone",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Liczby pierwsze i złożone – matematyka klasa 5",
+     "url": "https://grokliczyowce.pl/liczby-pierwsze-i-zlozone/"
     },
     {
      "@type": "ListItem",
      "position": 4,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Dzielenie pisemne – matematyka klasa 5 | Grok liczy owce #4",
-      "description": "852 snopki siana do trzech zagród. Dzielenie pisemne krok po kroku, z resztą i przez liczbę dwucyfrową.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-04.jpg",
-      "uploadDate": "2026-11-02T11:26:29-08:00",
-      "duration": "PT5M3S",
-      "url": "https://www.youtube.com/watch?v=GWMigBTXm8A",
-      "embedUrl": "https://www.youtube.com/embed/GWMigBTXm8A",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 5",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Dzielenie pisemne",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Dzielenie pisemne – matematyka klasa 5",
+     "url": "https://grokliczyowce.pl/dzielenie-pisemne/"
     },
     {
      "@type": "ListItem",
      "position": 5,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Oś liczbowa – matematyka klasa 4 | Grok liczy owce #5",
-      "description": "Owce przy płocie to prawie oś liczbowa. Jednostka, równe odstępy i liczby schowane pod literami.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-05.jpg",
-      "uploadDate": "2026-11-02T11:35:00-08:00",
-      "duration": "PT5M26S",
-      "url": "https://www.youtube.com/watch?v=RIXLuf781SQ",
-      "embedUrl": "https://www.youtube.com/embed/RIXLuf781SQ",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Oś liczbowa",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Oś liczbowa – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/os-liczbowa/"
     },
     {
      "@type": "ListItem",
      "position": 6,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Dodawanie i odejmowanie – matematyka klasa 4 | Grok liczy owce #6",
-      "description": "Składnik, suma, odjemna, odjemnik i różnica. Przylatuje Kosmita z zielonymi owcami.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-06.jpg",
-      "uploadDate": "2026-11-02T11:37:11-08:00",
-      "duration": "PT3M47S",
-      "url": "https://www.youtube.com/watch?v=6-Dt63XVpCM",
-      "embedUrl": "https://www.youtube.com/embed/6-Dt63XVpCM",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Dodawanie i odejmowanie",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Dodawanie i odejmowanie – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/dodawanie-i-odejmowanie/"
     },
     {
      "@type": "ListItem",
      "position": 7,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Szacowanie – matematyka klasa 4 | Grok liczy owce #7",
-      "description": "„Jedna… dwie… DUŻO!” Kiedy wystarczy oszacować i jak sprawdzić, czy wynik ma sens.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-07.jpg",
-      "uploadDate": "2026-11-02T11:38:52-08:00",
-      "duration": "PT4M44S",
-      "url": "https://www.youtube.com/watch?v=5HGl8kqOalU",
-      "embedUrl": "https://www.youtube.com/embed/5HGl8kqOalU",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Szacowanie",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Szacowanie – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/szacowanie/"
     },
     {
      "@type": "ListItem",
      "position": 8,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Sprytne dodawanie – matematyka klasa 4 | Grok liczy owce #8",
-      "description": "Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-08.jpg",
-      "uploadDate": "2026-11-03T12:08:34-08:00",
-      "duration": "PT4M46S",
-      "url": "https://www.youtube.com/watch?v=fP3Fg6p8jWc",
-      "embedUrl": "https://www.youtube.com/embed/fP3Fg6p8jWc",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Sprytne dodawanie",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Sprytne dodawanie – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/sprytne-dodawanie/"
     },
     {
      "@type": "ListItem",
      "position": 9,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Wielka powtórka – matematyka klasa 4 | Grok liczy owce #9",
-      "description": "Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda?",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-09.jpg",
-      "uploadDate": "2026-11-03T12:09:59-08:00",
-      "duration": "PT4M34S",
-      "url": "https://www.youtube.com/watch?v=qswL8UbfW60",
-      "embedUrl": "https://www.youtube.com/embed/qswL8UbfW60",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Wielka powtórka",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Wielka powtórka – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/powtorka-klasa-4/"
     },
     {
      "@type": "ListItem",
      "position": 10,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Zadania tekstowe – matematyka klasa 4 | Grok liczy owce #10",
-      "description": "Ile lat ma pasterz? Zadania tekstowe w trzech krokach: dane, obliczenia i odpowiedź pełnym zdaniem.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-10.jpg",
-      "uploadDate": "2026-11-03T12:04:26-08:00",
-      "duration": "PT4M24S",
-      "url": "https://www.youtube.com/watch?v=uovow-ytGzM",
-      "embedUrl": "https://www.youtube.com/embed/uovow-ytGzM",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Zadania tekstowe",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Zadania tekstowe – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/zadania-tekstowe/"
     },
     {
      "@type": "ListItem",
      "position": 11,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Trójkąty – matematyka klasa 5 | Grok liczy owce #11",
-      "description": "Zagroda z trzech desek, przez którą ucieka Beata. Kiedy powstanie trójkąt, suma kątów i rodzaje trójkątów.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-11.jpg",
-      "uploadDate": "2026-11-03T12:19:49-08:00",
-      "duration": "PT4M55S",
-      "url": "https://www.youtube.com/watch?v=AVuYOJIyyMI",
-      "embedUrl": "https://www.youtube.com/embed/AVuYOJIyyMI",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 5",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Trójkąty",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Trójkąty – matematyka klasa 5",
+     "url": "https://grokliczyowce.pl/trojkaty/"
     },
     {
      "@type": "ListItem",
      "position": 12,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Sprytne odejmowanie – matematyka klasa 4 | Grok liczy owce #12",
-      "description": "93 owce, a 58 idzie do rzeki. Cztery sprytne sposoby odejmowania w pamięci, bez ani jednego kamyka.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-12.jpg",
-      "uploadDate": "2026-11-04T08:02:39-08:00",
-      "duration": "PT4M35S",
-      "url": "https://www.youtube.com/watch?v=sVpRYjTEuY0",
-      "embedUrl": "https://www.youtube.com/embed/sVpRYjTEuY0",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Sprytne odejmowanie",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Sprytne odejmowanie – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/sprytne-odejmowanie/"
     },
     {
      "@type": "ListItem",
      "position": 13,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Własności trójkątów – matematyka klasa 5 | Grok liczy owce #13",
-      "description": "Trzy deski po 3 m i żadna nie jest najdłuższa. Trójkąty równoboczne, równoramienne i różnoboczne, ich kąty i osie symetrii.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-13.jpg",
-      "uploadDate": "2026-11-05T23:45:39-08:00",
-      "duration": "PT4M16S",
-      "url": "https://www.youtube.com/watch?v=wiijZoVs6dg",
-      "embedUrl": "https://www.youtube.com/embed/wiijZoVs6dg",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 5",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Własności trójkątów",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Własności trójkątów – matematyka klasa 5",
+     "url": "https://grokliczyowce.pl/wlasnosci-trojkatow/"
     },
     {
      "@type": "ListItem",
      "position": 14,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Tabliczka mnożenia – matematyka klasa 4 | Grok liczy owce #14",
-      "description": "Kosmita liczy od razu: cztery razy sześć, dwadzieścia cztery. Mnożenie zamiast dodawania, mnożenie przez 0 i 1, czynniki i iloczyn.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-14.jpg",
-      "uploadDate": "2026-11-09T00:30:27-08:00",
-      "duration": "PT4M47S",
-      "url": "https://www.youtube.com/watch?v=6s-tmt0zgsY",
-      "embedUrl": "https://www.youtube.com/embed/6s-tmt0zgsY",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Tabliczka mnożenia",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Tabliczka mnożenia – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/tabliczka-mnozenia/"
     },
     {
      "@type": "ListItem",
      "position": 15,
-     "item": {
-      "@type": [
-       "VideoObject",
-       "LearningResource"
-      ],
-      "name": "Tabliczka dzielenia – matematyka klasa 4 | Grok liczy owce #15",
-      "description": "24 owce i 4 zagrody. Dzielenie z pomocą tabliczki mnożenia: dzielna, dzielnik, iloraz i dlaczego przez 0 nie dzielimy.",
-      "thumbnailUrl": "https://grokliczyowce.pl/img/odc-15.jpg",
-      "uploadDate": "2026-11-10T01:00:11-08:00",
-      "duration": "PT4M43S",
-      "url": "https://www.youtube.com/watch?v=HP6u5QTtBAQ",
-      "embedUrl": "https://www.youtube.com/embed/HP6u5QTtBAQ",
-      "inLanguage": "pl",
-      "isFamilyFriendly": true,
-      "educationalLevel": "klasa 4",
-      "learningResourceType": "film edukacyjny",
-      "teaches": "Tabliczka dzielenia",
-      "partOfSeries": {
-       "@id": "https://grokliczyowce.pl/#seria"
-      }
-     }
+     "name": "Tabliczka dzielenia – matematyka klasa 4",
+     "url": "https://grokliczyowce.pl/tabliczka-dzielenia/"
     }
    ]
   },
@@ -754,7 +473,7 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
    ],
    "name": "Policz stado!",
    "url": "https://grokliczyowce.pl/gra.html",
-   "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze, sprytne dodawanie i odejmowanie, trójkąty, tabliczka mnożenia i tabliczka dzielenia.",
+   "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5. Pastwiska: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze i złożone, sprytne dodawanie, liczby naturalne, dzielenie pisemne, dodawanie i odejmowanie, zadania tekstowe, trójkąty, tabliczka mnożenia, sprytne odejmowanie, własności trójkątów, tabliczka dzielenia, wielka powtórka.",
    "inLanguage": "pl",
    "isAccessibleForFree": true,
    "gamePlatform": "przeglądarka internetowa",
@@ -796,7 +515,7 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
   </div>
 
   <div class="hero-copy wrap">
-    <h1 class="title"><span>GROK</span><span>LICZY</span><span>OWCE</span></h1>
+    <h1 class="title"><span>GROK</span><span>LICZY</span><span>OWCE</span><span class="sr"> – matematyka dla klas 4–5 w animowanych filmikach</span></h1>
     <div class="tag">Matematyka z owcami · <b>klasy 4–5</b></div>
     <p class="lead">Animowany serial o pasterzu, który musi policzyć swoje owce. Każdy odcinek to jeden temat z lekcji matematyki, wyjaśniony krok po kroku.</p>
     <div class="cta">
@@ -849,77 +568,77 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
     <div class="grid">
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-01.jpg" alt="Odcinek 1: Liczby naturalne – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:22</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#1</b><span class="k4">Klasa 4</span></span><h3>Liczby naturalne</h3>
+        <div class="ep-body"><span class="ep-num"><b>#1</b><span class="k4">Klasa 4</span></span><h3><a href="liczby-naturalne/">Liczby naturalne</a></h3>
         <p>Grok nie zna liczb. Skąd się wzięło liczenie, po co nam setki i dlaczego zero to wielki wynalazek.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=NEiQK3w0GOs" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#porownaj"><img src="img/owca.png" alt="">Zagraj: Która większa?</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="5">
         <div class="thumb"><img src="img/odc-02.jpg" alt="Odcinek 2: Cechy podzielności – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">7:25</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#2</b><span class="k5">Klasa 5</span></span><h3>Cechy podzielności</h3>
+        <div class="ep-body"><span class="ep-num"><b>#2</b><span class="k5">Klasa 5</span></span><h3><a href="cechy-podzielnosci/">Cechy podzielności</a></h3>
         <p>Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=ClVDgk-Ps1E" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#zagrody"><img src="img/owca.png" alt="">Zagraj: Zagrody</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="5">
         <div class="thumb"><img src="img/odc-03.jpg" alt="Odcinek 3: Liczby pierwsze i złożone – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">5:21</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#3</b><span class="k5">Klasa 5</span></span><h3>Liczby pierwsze i złożone</h3>
+        <div class="ep-body"><span class="ep-num"><b>#3</b><span class="k5">Klasa 5</span></span><h3><a href="liczby-pierwsze-i-zlozone/">Liczby pierwsze i złożone</a></h3>
         <p>Siedem owiec nie chce stanąć w równych rzędach. Dzielniki, liczby pierwsze i drzewko czynników.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=axhkUmy1AgY" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#prostokat"><img src="img/owca.png" alt="">Zagraj: Stado w prostokąt</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="5">
         <div class="thumb"><img src="img/odc-04.jpg" alt="Odcinek 4: Dzielenie pisemne – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">5:03</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#4</b><span class="k5">Klasa 5</span></span><h3>Dzielenie pisemne</h3>
+        <div class="ep-body"><span class="ep-num"><b>#4</b><span class="k5">Klasa 5</span></span><h3><a href="dzielenie-pisemne/">Dzielenie pisemne</a></h3>
         <p>852 snopki siana do trzech zagród. Dzielenie pisemne krok po kroku, z resztą i przez liczbę dwucyfrową.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=GWMigBTXm8A" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#snopki"><img src="img/owca.png" alt="">Zagraj: Snopki dla zagród</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-05.jpg" alt="Odcinek 5: Oś liczbowa – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">5:26</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#5</b><span class="k4">Klasa 4</span></span><h3>Oś liczbowa</h3>
+        <div class="ep-body"><span class="ep-num"><b>#5</b><span class="k4">Klasa 4</span></span><h3><a href="os-liczbowa/">Oś liczbowa</a></h3>
         <p>Owce przy płocie to prawie oś liczbowa. Jednostka, równe odstępy i liczby schowane pod literami.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=RIXLuf781SQ" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#os"><img src="img/owca.png" alt="">Zagraj: Owca na osi</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-06.jpg" alt="Odcinek 6: Dodawanie i odejmowanie – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">3:47</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#6</b><span class="k4">Klasa 4</span></span><h3>Dodawanie i odejmowanie</h3>
+        <div class="ep-body"><span class="ep-num"><b>#6</b><span class="k4">Klasa 4</span></span><h3><a href="dodawanie-i-odejmowanie/">Dodawanie i odejmowanie</a></h3>
         <p>Składnik, suma, odjemna, odjemnik i różnica. Przylatuje Kosmita z zielonymi owcami.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=6-Dt63XVpCM" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#zostalo"><img src="img/owca.png" alt="">Zagraj: Ile zostało?</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-07.jpg" alt="Odcinek 7: Szacowanie – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:44</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#7</b><span class="k4">Klasa 4</span></span><h3>Szacowanie</h3>
+        <div class="ep-body"><span class="ep-num"><b>#7</b><span class="k4">Klasa 4</span></span><h3><a href="szacowanie/">Szacowanie</a></h3>
         <p>„Jedna… dwie… DUŻO!” Kiedy wystarczy oszacować i jak sprawdzić, czy wynik ma sens.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=5HGl8kqOalU" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#szacowanie"><img src="img/owca.png" alt="">Zagraj: Ile owiec?</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-08.jpg" alt="Odcinek 8: Sprytne dodawanie – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:46</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#8</b><span class="k4">Klasa 4</span></span><h3>Sprytne dodawanie</h3>
+        <div class="ep-body"><span class="ep-num"><b>#8</b><span class="k4">Klasa 4</span></span><h3><a href="sprytne-dodawanie/">Sprytne dodawanie</a></h3>
         <p>Dziesięć palców kontra osiem. Dodawanie w pamięci: kolejność, pełne dziesiątki i przekładanie.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=fP3Fg6p8jWc" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#pary"><img src="img/owca.png" alt="">Zagraj: Okrągłe pary</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-09.jpg" alt="Odcinek 9: Wielka powtórka – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:34</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#9</b><span class="k4">Klasa 4</span></span><h3>Wielka powtórka</h3>
+        <div class="ep-body"><span class="ep-num"><b>#9</b><span class="k4">Klasa 4</span></span><h3><a href="powtorka-klasa-4/">Wielka powtórka</a></h3>
         <p>Kosmiczny egzamin z ośmiu pytań. Powtarzamy wszystko o liczbach naturalnych i działaniach. Czy Grok zda?</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=qswL8UbfW60" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#final"><img src="img/owca.png" alt="">Zagraj: Wielka powtórka</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-10.jpg" alt="Odcinek 10: Zadania tekstowe – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:24</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#10</b><span class="k4">Klasa 4</span></span><h3>Zadania tekstowe</h3>
+        <div class="ep-body"><span class="ep-num"><b>#10</b><span class="k4">Klasa 4</span></span><h3><a href="zadania-tekstowe/">Zadania tekstowe</a></h3>
         <p>Ile lat ma pasterz? Zadania tekstowe w trzech krokach: dane, obliczenia i odpowiedź pełnym zdaniem.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=uovow-ytGzM" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#zadania"><img src="img/owca.png" alt="">Zagraj: Ile lat ma pasterz?</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="5">
         <div class="thumb"><img src="img/odc-11.jpg" alt="Odcinek 11: Trójkąty – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:55</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#11</b><span class="k5">Klasa 5</span></span><h3>Trójkąty</h3>
+        <div class="ep-body"><span class="ep-num"><b>#11</b><span class="k5">Klasa 5</span></span><h3><a href="trojkaty/">Trójkąty</a></h3>
         <p>Zagroda z trzech desek, przez którą ucieka Beata. Kiedy powstanie trójkąt, suma kątów i rodzaje trójkątów.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=AVuYOJIyyMI" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#trojkaty"><img src="img/owca.png" alt="">Zagraj: Trójkątna zagroda</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-12.jpg" alt="Odcinek 12: Sprytne odejmowanie – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:35</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#12</b><span class="k4">Klasa 4</span></span><h3>Sprytne odejmowanie</h3>
+        <div class="ep-body"><span class="ep-num"><b>#12</b><span class="k4">Klasa 4</span></span><h3><a href="sprytne-odejmowanie/">Sprytne odejmowanie</a></h3>
         <p>93 owce, a 58 idzie do rzeki. Cztery sprytne sposoby odejmowania w pamięci, bez ani jednego kamyka.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=sVpRYjTEuY0" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#odejmowanie"><img src="img/owca.png" alt="">Zagraj: Sprytne odejmowanie</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="5">
         <div class="thumb"><img src="img/odc-13.jpg" alt="Odcinek 13: Własności trójkątów – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:16</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#13</b><span class="k5">Klasa 5</span></span><h3>Własności trójkątów</h3>
+        <div class="ep-body"><span class="ep-num"><b>#13</b><span class="k5">Klasa 5</span></span><h3><a href="wlasnosci-trojkatow/">Własności trójkątów</a></h3>
         <p>Trzy deski po 3 m i żadna nie jest najdłuższa. Trójkąty równoboczne, równoramienne i różnoboczne, ich kąty i osie symetrii.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=wiijZoVs6dg" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#rownoramienne"><img src="img/owca.png" alt="">Zagraj: Trójkąty z kosmosu</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-14.jpg" alt="Odcinek 14: Tabliczka mnożenia – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:47</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#14</b><span class="k4">Klasa 4</span></span><h3>Tabliczka mnożenia</h3>
+        <div class="ep-body"><span class="ep-num"><b>#14</b><span class="k4">Klasa 4</span></span><h3><a href="tabliczka-mnozenia/">Tabliczka mnożenia</a></h3>
         <p>Kosmita liczy od razu: cztery razy sześć, dwadzieścia cztery. Mnożenie zamiast dodawania, mnożenie przez 0 i 1, czynniki i iloczyn.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=6s-tmt0zgsY" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#mnozenie"><img src="img/owca.png" alt="">Zagraj: Owce w rzędach</a></div></div>
       </div>
       <div class="ep has-game" data-klasa="4">
         <div class="thumb"><img src="img/odc-15.jpg" alt="Odcinek 15: Tabliczka dzielenia – miniaturka filmu" loading="lazy" width="800" height="450"><span class="dur">4:43</span></div>
-        <div class="ep-body"><span class="ep-num"><b>#15</b><span class="k4">Klasa 4</span></span><h3>Tabliczka dzielenia</h3>
+        <div class="ep-body"><span class="ep-num"><b>#15</b><span class="k4">Klasa 4</span></span><h3><a href="tabliczka-dzielenia/">Tabliczka dzielenia</a></h3>
         <p>24 owce i 4 zagrody. Dzielenie z pomocą tabliczki mnożenia: dzielna, dzielnik, iloraz i dlaczego przez 0 nie dzielimy.</p><div class="ep-actions"><a class="watch" href="https://www.youtube.com/watch?v=HP6u5QTtBAQ" target="_blank" rel="noopener"><span class="play"></span>Oglądaj</a><a class="ep-game" href="gra.html#dzielenie"><img src="img/owca.png" alt="">Zagraj: Dzielna owca</a></div></div>
       </div>
       <div class="ep trailer">

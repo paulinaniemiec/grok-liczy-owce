@@ -1,0 +1,89 @@
+/* Podstrony tematyczne (strona/<temat>/index.html, generowane przez scripts/seo.py). Te same kolory i czcionki co index.html. */
+:root {
+  --ink: #2b2340; --ink-soft: #5a5170; --sky1: #7cc8f2; --sky2: #d9f1ff; --grass: #5da646;
+  --yellow: #ffd84d; --pink: #ff6fa8; --blue: #3d8bfd; --green: #2fbf71; --night: #1d2350; --paper: #fffaf0;
+  --head: "Baloo 2", system-ui, sans-serif; --body: "Nunito", system-ui, sans-serif; --radius: 22px;
+}
+* { box-sizing: border-box }
+body { margin: 0; font: 600 18px/1.6 var(--body); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased }
+img { display: block; max-width: 100%; height: auto }
+a { color: inherit }
+.wrap { width: min(1080px, 100% - 40px); margin-inline: auto }
+
+/* nagłówek */
+.nav { padding: 16px 0 }
+.nav .wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 800 22px/1 var(--head); margin-right: auto }
+.brand img { width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--ink) }
+.nav a.link { text-decoration: none; font-weight: 800; font-size: 16px; opacity: .85 }
+.nav a.link:hover { opacity: 1; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 5px }
+.btn { display: inline-flex; align-items: center; gap: 10px; font: 800 18px/1 var(--body); text-decoration: none; padding: 15px 26px 16px;
+  border-radius: 999px; border: 3px solid var(--ink); box-shadow: 0 5px 0 var(--ink); transition: transform .15s, box-shadow .15s; background: var(--yellow); color: var(--ink) }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink) }
+.btn-yt { background: var(--ink); color: #fff; padding: 11px 18px 12px; font-size: 16px; box-shadow: 0 4px 0 #00000040 }
+.play { width: 0; height: 0; border-left: 11px solid var(--yellow); border-top: 7px solid transparent; border-bottom: 7px solid transparent }
+
+/* nagłówek tematu */
+.t-hero { background: linear-gradient(var(--sky1), var(--sky2) 85%); padding: 4px 0 64px }
+.crumbs { font-size: 15px; font-weight: 800; color: var(--ink-soft); margin: 18px 0 18px }
+.crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px }
+.crumbs li + li::before { content: "›"; margin-right: 6px }
+.crumbs a { text-decoration: none } .crumbs a:hover { text-decoration: underline }
+.eyebrow { display: inline-block; font: 900 14px/1.3 var(--body); letter-spacing: 1.2px; text-transform: uppercase; background: var(--yellow);
+  padding: 7px 12px; border-radius: 8px; rotate: -2deg }
+h1 { font: 800 clamp(38px, 5.4vw, 62px)/1.04 var(--head); margin: 14px 0 14px; max-width: 900px }
+.lead { max-width: 900px; margin: 0 0 30px; font-size: 19px; font-weight: 700 }
+.player { border: 4px solid var(--ink); border-radius: var(--radius); overflow: hidden; box-shadow: 0 8px 0 var(--ink); background: var(--ink); aspect-ratio: 16/9; max-width: 900px }
+.player iframe, .yt, .yt img { width: 100%; height: 100%; border: 0; display: block }
+.yt { position: relative; cursor: pointer }
+.yt img { object-fit: cover }
+.yt-play { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 96px; height: 96px; border-radius: 50%; background: var(--pink);
+  border: 4px solid var(--ink); box-shadow: 0 6px 0 var(--ink); transition: scale .15s }
+.yt-play::after { content: ""; position: absolute; left: 36px; top: 26px; border-left: 32px solid #fff; border-top: 20px solid transparent; border-bottom: 20px solid transparent }
+.yt:hover .yt-play { scale: 1.08 }
+
+/* treść */
+section { padding: 64px 0 }
+h2 { font: 800 clamp(28px, 3.4vw, 40px)/1.1 var(--head); margin: 0 0 16px }
+.cols { display: grid; grid-template-columns: 1.25fr 1fr; gap: 44px; align-items: start }
+.example { background: #fff; border: 3px solid var(--ink); border-radius: var(--radius); box-shadow: 0 6px 0 var(--ink); padding: 22px 26px }
+.example .q { margin: 0 0 10px; font-weight: 900 }
+.example ol { margin: 0; padding-left: 22px; color: var(--ink-soft) }
+.example li + li { margin-top: 6px }
+.note { background: var(--yellow); border: 3px solid var(--ink); border-radius: var(--radius); box-shadow: 0 8px 0 var(--ink); padding: 26px 28px; rotate: .6deg; position: sticky; top: 20px }
+.note ul { margin: 0; padding-left: 22px }
+.note li + li { margin-top: 8px }
+.note .hint { margin: 16px 0 0; font-size: 15px; font-weight: 800 }
+
+.t-game { background: #fff; border-block: 3px solid var(--ink) }
+.game { display: flex; gap: 28px; align-items: center; flex-wrap: wrap }
+.game img { width: 120px }
+.game > div { flex: 1; min-width: 260px }
+.game p { margin: 0 0 18px; color: var(--ink-soft) }
+
+.faq details { background: #fff; border: 3px solid var(--ink); border-radius: 16px; padding: 14px 20px; margin-bottom: 12px }
+.faq summary { font: 800 20px/1.3 var(--head); cursor: pointer }
+.faq details p { margin: 10px 0 2px; color: var(--ink-soft) }
+
+.more { background: linear-gradient(#fff, var(--sky2)) }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px }
+.tile { display: block; text-decoration: none; background: #fff; border: 3px solid var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 0 5px 0 var(--ink); transition: transform .15s }
+.tile:hover { transform: translateY(-3px) rotate(-.5deg) }
+.tile img { aspect-ratio: 16/9; object-fit: cover; width: 100%; border-bottom: 3px solid var(--ink) }
+.tile span { display: block; padding: 10px 14px 12px; font: 800 19px/1.15 var(--head) }
+.pager { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 34px; font-weight: 900 }
+.pager a { text-decoration: none } .pager a:hover { text-decoration: underline }
+
+footer { background: var(--night); color: #c7cbef; text-align: center; padding: 48px 0 40px; font-size: 15px }
+footer a { color: #fff; font-weight: 800 }
+footer p { margin: 6px 0 }
+
+@media (max-width: 820px) {
+  .cols { grid-template-columns: 1fr }
+  .note { position: static; rotate: 0deg }
+  .nav a.link { display: none }
+  .tiles { grid-template-columns: 1fr 1fr; gap: 12px }
+  .tile span { font-size: 16px; padding: 8px 10px 10px }
+  .yt-play { width: 72px; height: 72px }
+  .yt-play::after { left: 26px; top: 18px; border-left-width: 24px; border-top-width: 15px; border-bottom-width: 15px }
+}
