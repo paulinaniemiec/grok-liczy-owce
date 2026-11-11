@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://grokliczyowce.pl/</loc><lastmod>2026-11-10</lastmod><priority>1.0</priority></url>
-  <url><loc>https://grokliczyowce.pl/gra.html</loc><lastmod>2026-11-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://grokliczyowce.pl/</loc><lastmod>2026-11-11</lastmod><priority>1.0</priority></url>
+  <url><loc>https://grokliczyowce.pl/gra.html</loc><lastmod>2026-11-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://grokliczyowce.pl/liczby-naturalne/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/cechy-podzielnosci/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/liczby-pierwsze-i-zlozone/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/dzielenie-pisemne/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/os-liczbowa/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/dodawanie-i-odejmowanie/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/szacowanie/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/sprytne-dodawanie/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/powtorka-klasa-4/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/zadania-tekstowe/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/trojkaty/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/sprytne-odejmowanie/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/wlasnosci-trojkatow/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/tabliczka-mnozenia/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://grokliczyowce.pl/tabliczka-dzielenia/</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
 </urlset>

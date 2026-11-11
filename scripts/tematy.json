@@ -1,0 +1,922 @@
+{
+ "_info": "Treść podstron tematycznych (strona/<slug>/index.html). Klucz = numer odcinka z index.html. Generuje je scripts/seo.py. Treść oparta na opisach z YouTube i scenariuszach filmów; rozdziały = te same znaczniki czasu co w opisie na YouTube.",
+ "1": {
+  "slug": "liczby-naturalne",
+  "h1": "Liczby naturalne",
+  "title": "Liczby naturalne – klasa 4, filmik i gra | Grok liczy owce",
+  "description": "Czym są liczby naturalne? Jedności, dziesiątki i setki, zero i porównywanie liczb znakami < i >. Animowany filmik dla klasy 4 i darmowa gra.",
+  "lead": "Czym są liczby naturalne i skąd się wzięło liczenie? Pasterz Grok nie zna liczb, więc liczy owce kamykami w worku. W filmie sprawdzamy, czym są jedności, dziesiątki i setki, dlaczego zero też jest liczbą naturalną, jak porównywać liczby znakami < i > i czy istnieje największa liczba naturalna.",
+  "pamietaj": [
+   "Liczby naturalne to liczby, którymi liczymy rzeczy: 0, 1, 2, 3, 4…",
+   "Zero też jest liczbą naturalną.",
+   "10 jedności = 1 dziesiątka, 10 dziesiątek = 1 setka.",
+   "Znak < lub > zawsze otwiera „paszczę” w stronę większej liczby.",
+   "Największej liczby naturalnej nie ma. Do każdej można dodać jeden."
+  ],
+  "przyklad": {
+   "pytanie": "Ile setek, dziesiątek i jedności ma liczba 528?",
+   "kroki": [
+    "528 = 5 setek + 2 dziesiątki + 8 jedności",
+    "Co jest większe: 1009 czy 1090? Tysięcy i setek jest tyle samo, więc decydują dziesiątki: 1090 > 1009."
+   ]
+  },
+  "faq": [
+   [
+    "Czy zero jest liczbą naturalną?",
+    "Tak. Zero owiec to też odpowiedź na pytanie „ile?”, dlatego w szkole zero zaliczamy do liczb naturalnych: 0, 1, 2, 3…"
+   ],
+   [
+    "Jaka jest największa liczba naturalna?",
+    "Nie ma takiej. Do każdej liczby naturalnej można dodać 1 i dostać większą, nawet do googola, czyli jedynki i stu zer."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Liczenie owiec"
+   ],
+   [
+    "0:14",
+    "Grok nie zna liczb"
+   ],
+   [
+    "0:35",
+    "Kamyki w worku i kreski na kości"
+   ],
+   [
+    "1:10",
+    "Jedności, dziesiątki, setki"
+   ],
+   [
+    "1:46",
+    "Zagadka 1: ile setek ma 528?"
+   ],
+   [
+    "2:02",
+    "Wielki wynalazek: zero"
+   ],
+   [
+    "2:36",
+    "Czym są liczby naturalne?"
+   ],
+   [
+    "2:55",
+    "Liczby na osi i porównywanie (< >)"
+   ],
+   [
+    "3:18",
+    "Zagadka 2: 1009 czy 1090?"
+   ],
+   [
+    "3:32",
+    "Jaka jest największa liczba naturalna?"
+   ],
+   [
+    "3:58",
+    "Zagadka 3: zero i dwa i pół"
+   ],
+   [
+    "4:09",
+    "Dobranoc"
+   ]
+  ]
+ },
+ "2": {
+  "slug": "cechy-podzielnosci",
+  "h1": "Cechy podzielności przez 2, 3, 4, 5, 9 i 10",
+  "title": "Cechy podzielności przez 2, 3, 4, 5, 9 i 10 – klasa 5",
+  "description": "Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 lub 10, bez dzielenia? Cechy podzielności w animowanym filmiku dla klasy 5, ze ściągą i grą.",
+  "lead": "Jak sprawdzić, czy liczba dzieli się przez 2, 3, 4, 5, 9 albo 10, bez liczenia wszystkiego od początku? Grok chce podzielić 2358 owiec na równe zagrody i odkrywa, że wystarczy spojrzeć na cyfry. W filmie poznajesz wszystkie cechy podzielności z podręcznika klasy 5, z przykładami i pułapkami.",
+  "pamietaj": [
+   "Przez 2: ostatnia cyfra to 0, 2, 4, 6 lub 8.",
+   "Przez 5: ostatnia cyfra to 0 lub 5.",
+   "Przez 10: ostatnia cyfra to 0.",
+   "Przez 4: dwie ostatnie cyfry tworzą liczbę podzielną przez 4.",
+   "Przez 3: suma cyfr dzieli się przez 3.",
+   "Przez 9: suma cyfr dzieli się przez 9."
+  ],
+  "przyklad": {
+   "pytanie": "Czy liczba 2358 dzieli się przez 3? A przez 4?",
+   "kroki": [
+    "Przez 3: 2 + 3 + 5 + 8 = 18, a 18 dzieli się przez 3, więc 2358 też.",
+    "Przez 4: dwie ostatnie cyfry to 58. 58 : 4 = 14 reszty 2, więc 2358 nie dzieli się przez 4. Pułapka: liczy się całe 58, a nie sama ósemka."
+   ]
+  },
+  "faq": [
+   [
+    "Jak sprawdzić, czy liczba dzieli się przez 4?",
+    "Spójrz na dwie ostatnie cyfry. Jeśli tworzą liczbę podzielną przez 4, cała liczba też się dzieli. Na przykład 1316 dzieli się przez 4, bo 16 dzieli się przez 4."
+   ],
+   [
+    "Czym różni się cecha podzielności przez 3 i przez 9?",
+    "W obu dodajesz cyfry. Gdy suma dzieli się przez 3, liczba dzieli się przez 3. Gdy suma dzieli się przez 9, liczba dzieli się przez 9."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Owce w dwóch zagrodach"
+   ],
+   [
+    "0:19",
+    "Co znaczy „podzielna”?"
+   ],
+   [
+    "0:58",
+    "Podzielność przez 2"
+   ],
+   [
+    "1:35",
+    "Podzielność przez 5 i przez 10"
+   ],
+   [
+    "2:15",
+    "Zagadka: 340, 715, 802"
+   ],
+   [
+    "2:33",
+    "Podzielność przez 4"
+   ],
+   [
+    "3:29",
+    "Podzielność przez 3"
+   ],
+   [
+    "4:17",
+    "Podzielność przez 9"
+   ],
+   [
+    "4:51",
+    "Ściąga: wszystkie cechy podzielności"
+   ],
+   [
+    "5:05",
+    "Przykłady: 2358 i 2520"
+   ],
+   [
+    "5:38",
+    "Quiz: prawda czy fałsz?"
+   ],
+   [
+    "6:59",
+    "Owca numer 2521"
+   ]
+  ]
+ },
+ "3": {
+  "slug": "liczby-pierwsze-i-zlozone",
+  "h1": "Liczby pierwsze i złożone",
+  "title": "Liczby pierwsze i złożone, rozkład na czynniki – klasa 5",
+  "description": "Co to jest liczba pierwsza, a co złożona? Dzielniki, 0 i 1 oraz rozkład na czynniki pierwsze drzewkiem. Animowany filmik dla klasy 5 i darmowa gra.",
+  "lead": "Co to jest liczba pierwsza, a co liczba złożona? Grok ustawia owce do zdjęcia w równych rzędach, ale z siedmioma owcami zawsze ktoś wystaje. W filmie poznajesz dzielniki, liczby pierwsze i złożone, sprawdzasz, co z zerem i jedynką, i rozkładasz liczby na czynniki pierwsze za pomocą drzewka.",
+  "pamietaj": [
+   "Liczba pierwsza ma tylko dwa dzielniki: 1 i samą siebie (2, 3, 5, 7, 11, 13…).",
+   "Liczba złożona ma więcej niż dwa dzielniki (np. 6: 1, 2, 3, 6).",
+   "0 i 1 nie są ani pierwsze, ani złożone.",
+   "Każdą liczbę złożoną można rozłożyć na czynniki pierwsze, np. 20 = 2 · 2 · 5."
+  ],
+  "przyklad": {
+   "pytanie": "Rozłóż liczbę 420 na czynniki pierwsze.",
+   "kroki": [
+    "420 = 42 · 10",
+    "42 = 2 · 21, a 21 = 3 · 7. 10 = 2 · 5.",
+    "Na końcach gałęzi są same liczby pierwsze: 420 = 2 · 2 · 3 · 5 · 7 = 2² · 3 · 5 · 7."
+   ]
+  },
+  "faq": [
+   [
+    "Czy 1 jest liczbą pierwszą?",
+    "Nie. Jedynka ma tylko jeden dzielnik (siebie), a liczba pierwsza musi mieć dokładnie dwa. Złożona też nie jest. Tak samo zero."
+   ],
+   [
+    "Jak rozpoznać liczbę złożoną?",
+    "Liczba złożona ma więcej niż dwa dzielniki. Na przykład 12 dzieli się przez 1, 2, 3, 4, 6 i 12, więc 12 owiec da się ustawić w równe rzędy na kilka sposobów."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Zdjęcie owiec w rzędach"
+   ],
+   [
+    "0:25",
+    "Dzielniki liczby 6"
+   ],
+   [
+    "0:53",
+    "Liczba pierwsza"
+   ],
+   [
+    "1:25",
+    "Liczba złożona"
+   ],
+   [
+    "1:52",
+    "A co z 0 i 1?"
+   ],
+   [
+    "2:20",
+    "Rozkład na czynniki pierwsze"
+   ],
+   [
+    "2:50",
+    "Drzewo liczby 420"
+   ],
+   [
+    "3:30",
+    "Zagadka: rozłóż 60"
+   ],
+   [
+    "3:50",
+    "Quiz: prawda czy fałsz?"
+   ],
+   [
+    "5:01",
+    "Ósma owca"
+   ]
+  ]
+ },
+ "4": {
+  "slug": "dzielenie-pisemne",
+  "h1": "Dzielenie pisemne krok po kroku",
+  "title": "Dzielenie pisemne krok po kroku, z resztą – klasa 5",
+  "description": "Dzielenie pisemne krok po kroku: 852 : 3, dzielenie z resztą i przez liczbę dwucyfrową, plus wierszyk na zapamiętanie. Animowany filmik dla klasy 5.",
+  "lead": "Jak dzielić pisemnie? Grok rozdaje 852 snopki siana do trzech zagród po jednym i zajmuje mu to jesień, zimę i wiosnę. W filmie pokazujemy dzielenie pisemne krok po kroku: dzielenie z resztą, sprawdzanie wyniku i dzielenie przez liczbę dwucyfrową. Jest też wierszyk, który pomaga zapamiętać kolejne kroki.",
+  "pamietaj": [
+   "Kolejne kroki: dzielę, mnożę, odejmuję, dopisuję i od początku.",
+   "Reszta zawsze jest mniejsza od dzielnika.",
+   "Sprawdzenie: wynik · dzielnik + reszta = dzielna (24 · 4 + 1 = 97)."
+  ],
+  "przyklad": {
+   "pytanie": "Ile to 97 : 4?",
+   "kroki": [
+    "9 : 4 = 2, bo 2 · 4 = 8. Zostaje 1.",
+    "Dopisujemy 7: mamy 17. 17 : 4 = 4, bo 4 · 4 = 16. Zostaje 1.",
+    "Wynik: 97 : 4 = 24 reszty 1. Sprawdzenie: 24 · 4 + 1 = 97."
+   ]
+  },
+  "faq": [
+   [
+    "Jaki jest wierszyk do dzielenia pisemnego?",
+    "„Dzielę, mnożę, odejmuję, a na koniec dopisuję. No a potem? Od początku, aż kreseczki będą w rządku.”"
+   ],
+   [
+    "Jak sprawdzić dzielenie z resztą?",
+    "Pomnóż wynik przez dzielnik i dodaj resztę. Musi wyjść dzielna: 97 : 4 = 24 r. 1, bo 24 · 4 + 1 = 97."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "852 snopki dla trzech zagród"
+   ],
+   [
+    "0:26",
+    "852 : 3 krok po kroku"
+   ],
+   [
+    "2:04",
+    "Wierszyk o dzieleniu"
+   ],
+   [
+    "2:21",
+    "Dzielenie z resztą: 97 : 4"
+   ],
+   [
+    "3:09",
+    "Dzielenie przez 12: 936 : 12"
+   ],
+   [
+    "4:20",
+    "Zagadka: 745 : 5"
+   ],
+   [
+    "4:34",
+    "Reszta dla reszty"
+   ]
+  ]
+ },
+ "5": {
+  "slug": "os-liczbowa",
+  "h1": "Oś liczbowa",
+  "title": "Oś liczbowa – jak narysować i odczytać liczby, klasa 4",
+  "description": "Jak narysować oś liczbową, czym jest jednostka i jak odczytać liczby schowane pod literami? Animowany filmik dla klasy 4 z quizem i darmową grą.",
+  "lead": "Jak narysować oś liczbową i odczytać z niej liczby? Owce Groka stoją przy płocie, każda przy swoim słupku w równych odstępach. To prawie gotowa oś liczbowa! W filmie sprawdzamy, czym jest jednostka, dlaczego odstępy muszą być równe, jak wyglądają osie co 2, co 5 i co 100 i jakie liczby kryją się pod literami.",
+  "pamietaj": [
+   "Liczby na osi są rozmieszczone w równych odległościach.",
+   "Strzałka pokazuje, w którą stronę liczby rosną.",
+   "Odstęp od jednej podpisanej liczby do następnej (np. od 0 do 1) to jednostka.",
+   "Na osi nie musi być zera, ale zawsze trzeba podpisać co najmniej dwie liczby."
+  ],
+  "przyklad": {
+   "pytanie": "Na osi podpisano 0 i 5. Jakie liczby kryją się pod literami A (dwie kreseczki dalej) i B (pięć kreseczek dalej)?",
+   "kroki": [
+    "Sąsiednie podpisane liczby to 0 i 5, więc kreseczki idą co 5.",
+    "Odliczamy co 5: 10, 15, czyli A = 15. Dalej 20, 25, 30, czyli B = 30."
+   ]
+  },
+  "faq": [
+   [
+    "Czy na osi liczbowej musi być zero?",
+    "Nie. Oś może zaczynać się od dowolnej liczby, np. od 4 albo od 100. Ważne, żeby odstępy były równe."
+   ],
+   [
+    "Dlaczego na osi trzeba podpisać dwie liczby?",
+    "Z jedną liczbą nie wiadomo, co ile idą kreseczki. Dopiero dwie podpisane liczby pokazują, ile wynosi jeden odstęp."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Owce przy płocie"
+   ],
+   [
+    "0:29",
+    "Jak wygląda oś liczbowa?"
+   ],
+   [
+    "1:01",
+    "Jak narysować oś: jednostka"
+   ],
+   [
+    "1:50",
+    "Różne osie: co 2, co 5, co 100"
+   ],
+   [
+    "2:36",
+    "Gdzie jest ta liczba?"
+   ],
+   [
+    "2:59",
+    "Jakie liczby kryją się pod literami?"
+   ],
+   [
+    "3:58",
+    "Zagadka: oś z 60 i 70"
+   ],
+   [
+    "4:13",
+    "Quiz: prawda czy fałsz?"
+   ],
+   [
+    "5:01",
+    "Dobranoc przy zerze"
+   ]
+  ]
+ },
+ "6": {
+  "slug": "dodawanie-i-odejmowanie",
+  "h1": "Dodawanie i odejmowanie: składnik, suma, odjemna, odjemnik, różnica",
+  "title": "Składnik, suma, odjemna, odjemnik, różnica – klasa 4",
+  "description": "Jak nazywają się liczby w dodawaniu i odejmowaniu? Składnik, suma, odjemna, odjemnik i różnica oraz sprawdzanie wyniku. Filmik dla klasy 4 i gra.",
+  "lead": "Jak nazywają się liczby w dodawaniu i odejmowaniu? Rano do Groka przybiegają nowe owce, a wieczorem kilka idzie spać. W filmie poznajesz nazwy: składnik, suma, odjemna, odjemnik i różnica, sprawdzasz, na jakie pytania odpowiada odejmowanie, i uczysz się sprawdzać wynik dodawaniem.",
+  "pamietaj": [
+   "Dodajemy składniki, a wynik to suma: 7 + 5 = 12.",
+   "Od odjemnej odejmujemy odjemnik, a wynik to różnica: 15 − 7 = 8.",
+   "Odejmowanie odpowiada na pytania: ile zostało? o ile więcej? o ile mniej? ile brakuje?",
+   "Odejmowanie sprawdzamy dodawaniem: różnica + odjemnik = odjemna.",
+   "Dodanie albo odjęcie zera nie zmienia liczby."
+  ],
+  "przyklad": {
+   "pytanie": "Grok ma 17 owiec, a Kosmita 38. O ile więcej owiec ma Kosmita?",
+   "kroki": [
+    "Od większej liczby odejmujemy mniejszą: 38 − 17 = 21.",
+    "Sprawdzenie dodawaniem: 21 + 17 = 38.",
+    "To samo odejmowanie mówi też, że Grok ma o 21 owiec mniej i że brakuje mu 21 owiec."
+   ]
+  },
+  "faq": [
+   [
+    "Jak zapamiętać, co to odjemna, a co odjemnik?",
+    "Od odjemnej zabieramy, a odjemnik to to, co zabieramy. W 15 − 7 = 8 liczba 15 to odjemna, 7 to odjemnik, a 8 to różnica."
+   ],
+   [
+    "Jak sprawdzić wynik odejmowania?",
+    "Dodaj do różnicy odjemnik. Jeśli wyjdzie odjemna, wynik jest dobry: 38 − 17 = 21, bo 21 + 17 = 38."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Owce przychodzą i odchodzą"
+   ],
+   [
+    "0:28",
+    "Składnik, suma, odjemna, odjemnik, różnica"
+   ],
+   [
+    "1:12",
+    "Do czego służy odejmowanie?"
+   ],
+   [
+    "2:27",
+    "Sprawdzanie wyniku i zero"
+   ],
+   [
+    "3:04",
+    "Zagadka: snopki Beaty"
+   ],
+   [
+    "3:26",
+    "Brakuje jednej owcy!"
+   ]
+  ]
+ },
+ "7": {
+  "slug": "szacowanie",
+  "h1": "Szacowanie",
+  "title": "Szacowanie: prawie, około, ponad – klasa 4 | Grok liczy owce",
+  "description": "Co to znaczy oszacować? Prawie, około, ponad i niecałe, szacowanie zakupów i sprawdzanie, czy wynik ma sens. Animowany filmik dla klasy 4 i darmowa gra.",
+  "lead": "Co to znaczy oszacować i kiedy nie trzeba liczyć dokładnie? Kosmita pyta Groka, ile ma owiec, a Grok odpowiada: „Jedna… dwie… DUŻO!”. W filmie uczysz się słów kilka, kilkanaście, kilkadziesiąt i kilkaset, mówisz prawie, około, ponad i niecałe, szacujesz zakupy na targu i sprawdzasz szacowaniem, czy wynik działania ma sens.",
+  "pamietaj": [
+   "Szacować to podawać liczbę w przybliżeniu.",
+   "Mówimy wtedy: prawie, około, mniej więcej, ponad, niecałe.",
+   "Zanim policzysz dokładnie, oszacuj wynik.",
+   "Jeśli wynik jest daleko od szacunku, to gdzieś jest błąd."
+  ],
+  "przyklad": {
+   "pytanie": "Grok policzył 516 − 295 i wyszło mu 21. Czy to możliwe?",
+   "kroki": [
+    "Szacujemy: 516 to około 500, a 295 to około 300. 500 − 300 = 200.",
+    "Wynik powinien wyjść około 200, a nie 21. Gdzieś jest błąd.",
+    "Dokładny wynik: 516 − 295 = 221."
+   ]
+  },
+  "faq": [
+   [
+    "Co to znaczy oszacować?",
+    "Oszacować to podać liczbę w przybliżeniu, np. „prawie 200 kroków” zamiast „186 kroków”. Wystarcza, gdy nie potrzebujemy dokładnego wyniku."
+   ],
+   [
+    "Po co szacować wynik działania?",
+    "Szacunek pokazuje, jaki wynik ma sens. Jeśli dokładny wynik bardzo się od niego różni, warto policzyć jeszcze raz, nawet na kalkulatorze."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Ile masz owiec?"
+   ],
+   [
+    "0:24",
+    "Kilka, kilkanaście, kilkadziesiąt, kilkaset"
+   ],
+   [
+    "0:52",
+    "Prawie dwieście kroków"
+   ],
+   [
+    "1:10",
+    "Prawie, około, ponad, niecałe"
+   ],
+   [
+    "1:46",
+    "Zakupy na targu"
+   ],
+   [
+    "2:38",
+    "Szacowanie wyniku działania"
+   ],
+   [
+    "3:25",
+    "Kosmiczny kalkulator"
+   ],
+   [
+    "4:19",
+    "Ile owiec jest w stadzie?"
+   ]
+  ]
+ },
+ "8": {
+  "slug": "sprytne-dodawanie",
+  "h1": "Sprytne dodawanie w pamięci",
+  "title": "Sprytne dodawanie w pamięci – klasa 4 | Grok liczy owce",
+  "description": "Jak dodawać w pamięci? Zmiana kolejności, pełne dziesiątki i dodawanie przez przekładanie. Animowany filmik dla klasy 4 i darmowa gra z parami do 10.",
+  "lead": "Jak szybko dodawać w pamięci bez kamyków i palców? Grok ma dziesięć palców, a Kosmita osiem, ale obaj liczą sprytnie. W filmie poznajesz trzy sztuczki: zmianę kolejności liczb, szukanie pełnych dziesiątek i przekładanie, czyli tyle, ile jednej liczbie dodajemy, tyle drugiej odejmujemy.",
+  "pamietaj": [
+   "Kolejność liczb w dodawaniu nie wpływa na wynik.",
+   "Szukamy liczb, które razem dają pełne dziesiątki.",
+   "Możemy przekładać: ile jednej liczbie dodajemy, tyle drugiej odejmujemy (194 + 48 = 200 + 42)."
+  ],
+  "przyklad": {
+   "pytanie": "Z kosmicznych spodków wysiadają stada: 22, 27, 18 i 23 owce. Ile owiec jest razem?",
+   "kroki": [
+    "Szukamy par, które dają pełne dziesiątki: 22 + 18 = 40 i 27 + 23 = 50.",
+    "40 + 50 = 90. Razem 90 owiec."
+   ]
+  },
+  "faq": [
+   [
+    "Na czym polega dodawanie przez przekładanie?",
+    "Przekładamy kawałek jednej liczby do drugiej, żeby wyszła pełna dziesiątka albo setka: 194 + 48 = 200 + 42 = 242. Wynik się nie zmienia."
+   ],
+   [
+    "Czy kolejność dodawania ma znaczenie?",
+    "Nie. 12 + 7 i 7 + 12 to zawsze 19, dlatego liczby możemy dodawać w dowolnej kolejności, np. najpierw te, które dają pełne dziesiątki."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Ile brakuje do 10?"
+   ],
+   [
+    "0:30",
+    "Kolejność nie zmienia wyniku"
+   ],
+   [
+    "1:13",
+    "Dziesiątki z dziesiątkami: 34 + 59"
+   ],
+   [
+    "1:43",
+    "Szukamy pełnych dziesiątek"
+   ],
+   [
+    "2:18",
+    "Cztery spodki"
+   ],
+   [
+    "2:47",
+    "Przekładanie owiec między zagrodami"
+   ],
+   [
+    "3:23",
+    "Dodawanie przez przekładanie"
+   ],
+   [
+    "4:05",
+    "Zagadka: 345 + 89"
+   ],
+   [
+    "4:27",
+    "Dobranoc"
+   ]
+  ]
+ },
+ "9": {
+  "slug": "powtorka-klasa-4",
+  "h1": "Wielka powtórka: liczby naturalne i działania",
+  "title": "Powtórka z matematyki klasa 4: liczby i działania",
+  "description": "Powtórka przed sprawdzianem z klasy 4: duże liczby, porównywanie, oś liczbowa, szacowanie, sprytne dodawanie i odejmowanie. Osiem pytań w filmiku i gra.",
+  "lead": "Powtórka przed sprawdzianem z liczb naturalnych i działań. Kosmita ogłasza kosmiczny egzamin z ośmiu pytań, bo na jego planecie wszyscy liczą po osiem. Razem z Grokiem powtarzasz duże liczby, porównywanie, oś liczbową, szacowanie, dodawanie i odejmowanie. Licz punkty i sprawdź, czy zdobędziesz osiem na osiem!",
+  "pamietaj": [
+   "Długą liczbę dzielimy od prawej na grupy po trzy cyfry: jedności, tysiące, miliony.",
+   "składnik + składnik = suma. Składniki możesz dodawać w dowolnej kolejności.",
+   "Dodanie zera nie zmienia liczby.",
+   "odjemna − odjemnik = różnica.",
+   "Wynik sprawdzamy dodawaniem: różnica + odjemnik = odjemna."
+  ],
+  "przyklad": {
+   "pytanie": "Odejmij sprytnie: 82 − 47.",
+   "kroki": [
+    "Powiększamy obie liczby o 3, żeby odejmować pełne dziesiątki: 85 − 50.",
+    "85 − 50 = 35. Różnica się nie zmienia, więc 82 − 47 = 35."
+   ]
+  },
+  "faq": [
+   [
+    "Jak przeczytać liczbę 58 093 572?",
+    "Dzielimy ją od prawej na grupy po trzy cyfry i czytamy: 58 milionów 93 tysiące 572."
+   ],
+   [
+    "Co jest w powtórce?",
+    "Osiem pytań z klasy 4: duże liczby, porównywanie, oś liczbowa, szacowanie, nazwy w dodawaniu, sprytne dodawanie, nazwy w odejmowaniu i trzy sposoby sprytnego odejmowania."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Kosmiczny egzamin"
+   ],
+   [
+    "0:20",
+    "Pytanie 1: duże liczby"
+   ],
+   [
+    "0:46",
+    "Pytanie 2: porównywanie liczb"
+   ],
+   [
+    "1:08",
+    "Pytanie 3: oś liczbowa"
+   ],
+   [
+    "1:24",
+    "Pytanie 4: szacowanie"
+   ],
+   [
+    "1:59",
+    "Pytanie 5: dodawanie"
+   ],
+   [
+    "2:28",
+    "Pytanie 6: sprytne dodawanie"
+   ],
+   [
+    "3:13",
+    "Pytanie 7: odejmowanie"
+   ],
+   [
+    "3:29",
+    "Pytanie 8: sprytne odejmowanie"
+   ],
+   [
+    "4:13",
+    "Osiem na osiem!"
+   ]
+  ]
+ },
+ "10": {
+  "slug": "zadania-tekstowe",
+  "h1": "Zadania tekstowe w trzech krokach",
+  "title": "Jak rozwiązywać zadania tekstowe? Klasa 4 | Grok liczy owce",
+  "description": "Jak rozwiązywać zadania tekstowe: dane, obliczenia i odpowiedź pełnym zdaniem. Rysunek, pułapki i zagadka „Ile lat ma pasterz?”. Filmik dla klasy 4 i gra.",
+  "lead": "Jak rozwiązywać zadania tekstowe, żeby się nie pogubić? Kosmita pyta: „Na łące pasie się 12 owiec, przychodzi jeszcze 5. Ile lat ma pasterz?”, a Grok od razu odpowiada: „Siedemnaście!”. W filmie uczysz się rozwiązywać zadania w trzech krokach: dane, obliczenia, odpowiedź pełnym zdaniem. Pokazujemy też, jak pomaga rysunek.",
+  "pamietaj": [
+   "Zadanie rozwiązuję w trzech krokach: 1. Dane, 2. Obliczenia, 3. Odpowiedź pełnym zdaniem.",
+   "Przy każdym działaniu piszę, co liczę.",
+   "Gdy zadanie jest trudne: przeczytaj je kilka razy, wyobraź sobie sytuację, wypisz dane lub zrób rysunek.",
+   "Na koniec sprawdź, czy odpowiedź pasuje do pytania."
+  ],
+  "przyklad": {
+   "pytanie": "Grok zbudował 23 m płotu, czyli o 16 m więcej niż Kosmita. Ile metrów płotu zbudowali razem?",
+   "kroki": [
+    "Dane: Grok 23 m, Kosmita o 16 m mniej.",
+    "Obliczenia: Kosmita 23 − 16 = 7 (m). Razem 23 + 7 = 30 (m).",
+    "Odpowiedź: Grok i Kosmita zbudowali razem 30 metrów płotu."
+   ]
+  },
+  "faq": [
+   [
+    "Ile lat ma pasterz?",
+    "Tego nie da się policzyć, bo w zadaniu nie ma o tym ani słowa. Ta zagadka uczy, żeby najpierw dobrze przeczytać zadanie, a dopiero potem liczyć."
+   ],
+   [
+    "Jak zapisać odpowiedź do zadania tekstowego?",
+    "Pełnym zdaniem, z liczbą i jednostką, np. „Razem mają 203 owce”. Potem przeczytaj pytanie jeszcze raz i sprawdź, czy odpowiedź do niego pasuje."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Ile lat ma pasterz?"
+   ],
+   [
+    "0:27",
+    "Trzy kroki: dane, obliczenia, odpowiedź"
+   ],
+   [
+    "1:17",
+    "Kamyki przez cztery dni"
+   ],
+   [
+    "2:27",
+    "Zagadka: snopki Beaty"
+   ],
+   [
+    "2:52",
+    "Płot Groka i Kosmity"
+   ],
+   [
+    "3:22",
+    "Rysunek pomaga"
+   ],
+   [
+    "4:02",
+    "Odpowiedź pełnym zdaniem"
+   ]
+  ]
+ },
+ "11": {
+  "slug": "trojkaty",
+  "h1": "Trójkąty: warunek trójkąta, suma kątów i rodzaje",
+  "title": "Trójkąty: suma kątów, warunek trójkąta, rodzaje – klasa 5",
+  "description": "Kiedy z trzech odcinków powstanie trójkąt? Suma kątów 180°, trzeci kąt, trójkąt ostrokątny, prostokątny i rozwartokątny. Filmik dla klasy 5 i darmowa gra.",
+  "lead": "Kiedy z trzech odcinków da się zbudować trójkąt? Grok buduje dla owiec zagrodę z desek 2 m, 3 m i 6 m, a Beata wychodzi przez dziurę. W filmie poznajesz warunek trójkąta, sprawdzasz, że suma kątów w trójkącie to zawsze 180°, obliczasz brakujący kąt i uczysz się, czym są trójkąty ostrokątne, prostokątne i rozwartokątne, przyprostokątne i przeciwprostokątna.",
+  "pamietaj": [
+   "Z trzech odcinków zbudujesz trójkąt tylko wtedy, gdy najdłuższy jest krótszy od sumy dwóch pozostałych.",
+   "Przed porównaniem długości zamień je na tę samą jednostkę.",
+   "Suma kątów w każdym trójkącie wynosi 180°.",
+   "O nazwie trójkąta decyduje jego największy kąt: ostry – ostrokątny, prosty – prostokątny, rozwarty – rozwartokątny.",
+   "W trójkącie prostokątnym boki przy kącie prostym to przyprostokątne, a bok naprzeciw kąta prostego to przeciwprostokątna (najdłuższy bok)."
+  ],
+  "przyklad": {
+   "pytanie": "Trójkąt ma kąty 67° i 54°. Ile stopni ma trzeci kąt?",
+   "kroki": [
+    "Od 180° odejmujemy sumę znanych kątów.",
+    "180° − (67° + 54°) = 180° − 121° = 59°",
+    "Odpowiedź: trzeci kąt ma 59°."
+   ]
+  },
+  "faq": [
+   [
+    "Ile wynosi suma kątów w trójkącie?",
+    "Zawsze 180°. Jeśli odetniesz trzy rogi papierowego trójkąta i ułożysz je obok siebie, utworzą kąt półpełny."
+   ],
+   [
+    "Czy z odcinków 2 cm, 3 cm i 6 cm zbudujesz trójkąt?",
+    "Nie. 2 + 3 = 5, a to mniej niż 6. Krótsze odcinki nie sięgną, żeby się spotkać."
+   ]
+  ],
+  "rozdzialy": [
+   [
+    "0:00",
+    "Zagroda z dziurą"
+   ],
+   [
+    "0:26",
+    "Warunek trójkąta"
+   ],
+   [
+    "1:01",
+    "Patyki Kosmity: 3,5 cm, 28 mm, 0,7 dm"
+   ],
+   [
+    "1:47",
+    "Suma kątów trójkąta to 180°"
+   ],
+   [
+    "2:17",
+    "Jak obliczyć trzeci kąt?"
+   ],
+   [
+    "2:48",
+    "Trójkąt ostrokątny, prostokątny, rozwartokątny"
+   ],
+   [
+    "3:28",
+    "Przyprostokątne i przeciwprostokątna"
+   ],
+   [
+    "3:57",
+    "Zagadka: kąty 30° i 60°"
+   ],
+   [
+    "4:28",
+    "Wieczór w trójkątnej zagrodzie"
+   ]
+  ]
+ },
+ "12": {
+  "slug": "sprytne-odejmowanie",
+  "h1": "Sprytne odejmowanie w pamięci",
+  "title": "Sprytne odejmowanie w pamięci – klasa 4 | Grok liczy owce",
+  "description": "Jak odejmować w pamięci? Odejmowanie po kawałku, przez powiększanie obu liczb i przez dodawanie. Animowany filmik dla klasy 4 i darmowa gra.",
+  "lead": "Jak odjąć 93 − 58 w pamięci, gdy od 3 nie da się odjąć 8? Rano 58 z 93 owiec Groka idzie do rzeki, a Grok chce iść po kamyki. W filmie poznajesz cztery sprytne sposoby odejmowania: setki, dziesiątki i jedności osobno, odejmowanie po kawałku, powiększanie obu liczb o tyle samo i odejmowanie przez dodawanie.",
+  "w_odcinku": [
+   "Odejmowanie setek, dziesiątek i jedności: 367 − 152 = 215",
+   "Odejmowanie po kawałku: 93 − 58",
+   "Powiększanie obu liczb: 121 − 83 = 138 − 100",
+   "Odejmowanie przez dodawanie: ile brakuje od 37 zł do 54 zł?",
+   "Zagadka: ile trzeba dodać do 67, żeby dostać 100?"
+  ],
+  "pamietaj": [
+   "Możemy odejmować po kawałku: 93 − 58 = 93 − 50 − 3 − 5 = 35.",
+   "Różnica się nie zmieni, jeśli obie liczby powiększymy o tyle samo.",
+   "Najwygodniej odejmować pełne dziesiątki albo setki: 93 − 58 = 95 − 60.",
+   "Odejmowanie przez dodawanie: do mniejszej liczby dodajemy po kawałku, aż dojdziemy do większej. Wszystkie kawałki razem to różnica."
+  ],
+  "przyklad": {
+   "pytanie": "Kosmita sprzedaje zieloną owcę za 54 zł. Grok ma 37 zł. Ile musi jeszcze zebrać?",
+   "kroki": [
+    "Do 37 dokładamy po kawałku: + 3 = 40, + 10 = 50, + 4 = 54.",
+    "Kawałki razem: 3 + 10 + 4 = 17.",
+    "Odpowiedź: Grok musi zebrać jeszcze 17 zł, bo 54 − 37 = 17."
+   ]
+  },
+  "faq": [
+   [
+    "Jak odejmować w pamięci, gdy brakuje jedności?",
+    "Odejmij po kawałku: najpierw pełne dziesiątki, potem tyle, żeby dojść do równej dziesiątki, a na końcu resztę. 93 − 58: 93 − 50 = 43, 43 − 3 = 40, 40 − 5 = 35."
+   ],
+   [
+    "Dlaczego różnica się nie zmienia, gdy powiększymy obie liczby?",
+    "Bo odległość między nimi zostaje taka sama. Gdy Kosmita i Beata staną na tym samym kamieniu, różnica ich wzrostu się nie zmieni: 121 − 83 = 138 − 100 = 38."
+   ]
+  ]
+ },
+ "13": {
+  "slug": "wlasnosci-trojkatow",
+  "h1": "Trójkąt równoboczny, równoramienny i różnoboczny",
+  "title": "Trójkąt równoboczny, równoramienny, różnoboczny – klasa 5",
+  "description": "Własności trójkątów: równoboczny, równoramienny i różnoboczny, ich kąty i osie symetrii. Obliczanie kątów przy podstawie. Filmik dla klasy 5 i gra.",
+  "lead": "Jakie własności mają trójkąty równoboczne, równoramienne i różnoboczne? Grok buduje zagrodę z trzech desek po 3 m i nie może znaleźć najdłuższej. W filmie sprawdzasz, ile stopni mają kąty trójkąta równobocznego, czym są ramiona i podstawa, które kąty w trójkącie równoramiennym są równe i ile osi symetrii ma każdy trójkąt.",
+  "w_odcinku": [
+   "Trójkąt równoboczny: równe boki i kąty po 60°",
+   "Trójkąt równoramienny: ramiona, podstawa i kąty przy podstawie",
+   "Trójkąt różnoboczny",
+   "Obliczanie kątów w trójkącie równoramiennym",
+   "Osie symetrii trójkątów",
+   "Zagadka: kąt między ramionami 80°"
+  ],
+  "pamietaj": [
+   "Trójkąt równoboczny ma wszystkie boki równe i wszystkie kąty po 60°.",
+   "Trójkąt równoramienny ma co najmniej dwa boki równe (ramiona). Trzeci bok to podstawa.",
+   "W trójkącie równoramiennym kąty przy podstawie są równe.",
+   "Trójkąt różnoboczny ma każdy bok innej długości.",
+   "Każdy trójkąt równoboczny jest też równoramienny.",
+   "Osie symetrii: równoboczny ma 3, równoramienny (nierównoboczny) 1, różnoboczny żadnej."
+  ],
+  "przyklad": {
+   "pytanie": "W trójkącie równoramiennym kąt przy podstawie ma 40°. Ile mają pozostałe kąty?",
+   "kroki": [
+    "Kąty przy podstawie są równe, więc drugi też ma 40°.",
+    "Trzeci kąt: 180° − (40° + 40°) = 100°.",
+    "Odpowiedź: pozostałe kąty mają 40° i 100°. Ten trójkąt jest równoramienny i rozwartokątny."
+   ]
+  },
+  "faq": [
+   [
+    "Czy trójkąt równoboczny jest równoramienny?",
+    "Tak. Trójkąt równoramienny ma co najmniej dwa równe boki, a równoboczny ma równe wszystkie trzy, więc spełnia ten warunek."
+   ],
+   [
+    "Ile osi symetrii ma trójkąt równoramienny?",
+    "Jedną, jeśli nie jest równoboczny. Trójkąt równoboczny ma trzy osie symetrii, a różnoboczny nie ma żadnej."
+   ]
+  ]
+ },
+ "14": {
+  "slug": "tabliczka-mnozenia",
+  "h1": "Tabliczka mnożenia",
+  "title": "Tabliczka mnożenia – klasa 4, filmik i gra | Grok liczy owce",
+  "description": "Tabliczka mnożenia z owcami: mnożenie zamiast dodawania, mnożenie przez 0 i 1, „razy więcej” i „o więcej”, czynniki i iloczyn. Filmik dla klasy 4 i gra.",
+  "lead": "Jak nauczyć się tabliczki mnożenia i rozumieć, skąd się bierze? Grok liczy owce po jednej i ciągle się gubi, a Kosmita mówi od razu: cztery razy sześć, dwadzieścia cztery. W filmie sprawdzasz, skąd bierze się mnożenie, po co zmieniać kolejność liczb, co zrobić, gdy nie pamiętasz wyniku, jak działa mnożenie przez 1 i przez 0 i czym różni się „2 razy więcej” od „o 2 więcej”.",
+  "w_odcinku": [
+   "Mnożenie zamiast dodawania: 6 + 6 + 6 + 6 = 4 · 6",
+   "Zamiana kolejności: 4 · 6 = 6 · 4",
+   "Co zrobić, gdy nie pamiętasz wyniku?",
+   "Mnożenie przez 1 i przez 0",
+   "„2 razy więcej” czy „o 2 więcej”?",
+   "Czynniki i iloczyn"
+  ],
+  "pamietaj": [
+   "Jednakowe składniki zastąpisz mnożeniem: 6 + 6 + 6 + 6 = 4 · 6.",
+   "Kolejność nie gra roli: 4 · 6 = 6 · 4.",
+   "Nie pamiętasz wyniku? Skorzystaj z tego, co pamiętasz: 5 · 4 = 20, więc 6 · 4 = 20 + 4 = 24.",
+   "Mnożenie przez 1 nie zmienia liczby. Mnożenie przez 0 daje zawsze 0.",
+   "„2 razy więcej” → mnożymy. „o 2 więcej” → dodajemy.",
+   "W 7 · 4 = 28 liczby 7 i 4 to czynniki, a 28 to iloczyn."
+  ],
+  "przyklad": {
+   "pytanie": "Beata ma 6 snopków siana, a Grok 2 razy więcej. Ile ma Grok? A gdyby miał o 2 więcej?",
+   "kroki": [
+    "„2 razy więcej” to mnożenie: 2 · 6 = 12 snopków.",
+    "„o 2 więcej” to dodawanie: 6 + 2 = 8 snopków."
+   ]
+  },
+  "faq": [
+   [
+    "Ile to jest liczba razy 0?",
+    "Zawsze 0. Jeśli masz 5 zagród i w każdej 0 owiec, to razem masz 0 owiec: 5 · 0 = 0."
+   ],
+   [
+    "Jak szybko przypomnieć sobie wynik z tabliczki mnożenia?",
+    "Skorzystaj z wyniku, który pamiętasz, i dodaj albo odejmij jeszcze jedną grupę. Nie pamiętasz 6 · 4? 5 · 4 = 20, więc 6 · 4 = 20 + 4 = 24."
+   ]
+  ]
+ },
+ "15": {
+  "slug": "tabliczka-dzielenia",
+  "h1": "Tabliczka dzielenia",
+  "title": "Tabliczka dzielenia – klasa 4, filmik i gra | Grok liczy owce",
+  "description": "Dzielenie z pomocą tabliczki mnożenia: dzielna, dzielnik, iloraz, „razy mniej” i dlaczego przez 0 nie dzielimy. Animowany filmik dla klasy 4 i darmowa gra.",
+  "lead": "Jak dzielić z pomocą tabliczki mnożenia? Grok ma 24 owce i 4 zagrody, więc biega i przenosi owce po jednej, a Kosmita mówi od razu: 24 : 4 = 6. W filmie sprawdzasz, jak pomaga tabliczka mnożenia, jak sprawdzić wynik mnożeniem, co się dzieje z zerem i jedynką, dlaczego przez 0 nie można dzielić i co znaczy „3 razy mniej”.",
+  "w_odcinku": [
+   "Dzielenie po równo: 24 owce do 4 zagród",
+   "Tabliczka mnożenia pomaga dzielić: 9 · 3 = 27",
+   "Sprawdzanie dzielenia mnożeniem",
+   "Zero i jedynka w dzieleniu, czyli dlaczego przez 0 nie dzielimy",
+   "„3 razy mniej” i „ile razy więcej?”",
+   "Dzielna, dzielnik i iloraz"
+  ],
+  "pamietaj": [
+   "W dzieleniu pomaga tabliczka mnożenia: 9 · 3 = 27, więc 27 : 3 = 9 i 27 : 9 = 3.",
+   "Wynik sprawdzisz mnożeniem: 30 : 5 = 6, bo 6 · 5 = 30.",
+   "0 : 4 = 0. Przez 0 nie można dzielić!",
+   "8 : 8 = 1, a 8 : 1 = 8.",
+   "„3 razy mniej” → dzielimy przez 3. „o 3 mniej” → odejmujemy 3.",
+   "Ile razy więcej? Większą liczbę dzielimy przez mniejszą: 15 : 5 = 3.",
+   "W 30 : 6 = 5 liczba 30 to dzielna, 6 to dzielnik, a 5 to iloraz."
+  ],
+  "przyklad": {
+   "pytanie": "Grok ma 24 owce i 4 zagrody. Ile owiec trafi do każdej zagrody?",
+   "kroki": [
+    "Szukamy w tabliczce mnożenia: 6 · 4 = 24.",
+    "Więc 24 : 4 = 6. Do każdej zagrody trafi 6 owiec.",
+    "Sprawdzenie: 6 · 4 = 24."
+   ]
+  },
+  "faq": [
+   [
+    "Dlaczego nie można dzielić przez 0?",
+    "Dzielenie sprawdzamy mnożeniem. Żadna liczba pomnożona przez 0 nie da np. 5, bo zawsze wychodzi 0. Dlatego 5 : 0 nie ma wyniku."
+   ],
+   [
+    "Jak nazywają się liczby w dzieleniu?",
+    "W 30 : 6 = 5 liczba 30 to dzielna, 6 to dzielnik, a wynik 5 to iloraz."
+   ]
+  ]
+ }
+}
