@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 15 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 17 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Piętnaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Siedemnaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -573,6 +573,8 @@ const ODCINKI = {
   13: { tytul: "Własności trójkątów", url: "https://www.youtube.com/watch?v=wiijZoVs6dg", rozdzial: "1:02", co: "Trójkąt równoramienny: ramiona i podstawa" },
   14: { tytul: "Tabliczka mnożenia", url: "https://www.youtube.com/watch?v=6s-tmt0zgsY", rozdzial: "0:39", co: "Mnożenie zamiast dodawania: 4 · 6 i 6 · 4" },
   15: { tytul: "Tabliczka dzielenia", url: "https://www.youtube.com/watch?v=HP6u5QTtBAQ", rozdzial: "0:35", co: "Mnożenie i dzielenie: 9 · 3 = 27" },
+  16: { tytul: "Wysokość trójkąta", url: "", rozdzial: "0:53", co: "Wysokość trójkąta: definicja" },
+  17: { tytul: "Sprytne mnożenie", url: "", rozdzial: "0:29", co: "Mnożenie przez 10, 100, 1000" },
 };
 function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
@@ -605,6 +607,8 @@ const PASTWISKA = [
   { key: "odejmowanie", klasa: "4", nr: 12, color: "#65a30d", title: "Sprytne odejmowanie", ep: 12, desc: "Odejmuj po kawałku, przez dodawanie albo przesuń obie liczby. Bez kamyków!", pics: ["owca", "owca", "beata"] },
   { key: "rownoramienne", klasa: "5", nr: 13, color: "#6366f1", title: "Trójkąty z kosmosu", ep: 13, desc: "Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe!", pics: ["kosmita", "beata"] },
   { key: "dzielenie", klasa: "4", nr: 14, color: "#d946ef", title: "Dzielna owca", ep: 15, desc: "Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz.", pics: ["beata", "owca", "owca"] },
+  { key: "wysokosc", klasa: "5", nr: 15, color: "#ef4444", title: "Pion Groka", ep: 16, desc: "Która kreska jest wysokością? Szukaj kąta prostego, a nie pionu. Wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym.", pics: ["grok", "owca"] },
+  { key: "sprytne", klasa: "4", nr: 16, color: "#f97316", title: "Zera na końcu", ep: 17, desc: "Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50!", pics: ["kosmita", "owca", "owca"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -2647,6 +2651,331 @@ const TRI_RYSUNKI = {};
       <li><b>„3 razy mniej”</b> → dzielimy przez 3. <b>„o 3 mniej”</b> → odejmujemy 3.</li>
       <li>Ile razy więcej? Większą liczbę dzielimy przez mniejszą: 15 : 5 = 3.</li>
       <li>W 30 : 6 = 5 liczba 30 to <b>dzielna</b>, 6 to <b>dzielnik</b>, a 5 to <b>iloraz</b>.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+
+/* =====================================================================
+   PASTWISKO 15: PION GROKA (odcinek 16, wysokość trójkąta, klasa 5)
+   Która kreska jest wysokością (pionowa ≠ prostopadła), ile wysokości ma
+   trójkąt, gdzie leżą w trójkącie ostro-, prosto- i rozwartokątnym,
+   do którego boku jest prostopadła, szałas Groka i przedłużenia boków.
+   ===================================================================== */
+(() => {
+  const css = `
+  .wy-svg { display: block; width: min(420px, 100%); height: auto; margin: 0 auto; overflow: visible }
+  .wy-svg text { font: italic 700 26px Georgia, 'Times New Roman', serif; fill: var(--ink); text-anchor: middle; dominant-baseline: middle }
+  .wy-svg .lbl { font: 800 24px var(--body); font-style: normal }
+  .opt.pic { padding: 6px; min-width: 0; border-radius: 18px }
+  .opt.pic svg { display: block; width: 210px; height: auto }
+  @media (max-width: 600px) { .opt.pic svg { width: 98px } .wy-svg { width: min(330px, 100%); max-height: 210px } .opts.pics { gap: 8px } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+  const RED = "#e8506a", BLUE = "#3d9be9", GREEN = "#7cb82f", INK = "#2b2340";
+
+  const foot = (p, a, b) => { const dx = b[0] - a[0], dy = b[1] - a[1], t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy); return { q: [a[0] + dx * t, a[1] + dy * t], t } };
+  const rot = (P, deg) => { const r = deg * Math.PI / 180, c = [P.reduce((s, p) => s + p[0], 0) / 3, P.reduce((s, p) => s + p[1], 0) / 3]; return P.map(([x, y]) => [c[0] + (x - c[0]) * Math.cos(r) - (y - c[1]) * Math.sin(r), c[1] + (x - c[0]) * Math.sin(r) + (y - c[1]) * Math.cos(r)]) };
+  const poly = P => `<polygon points="${P.map(p => p.join(",")).join(" ")}" fill="#fff6c9" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`;
+  const line = (a, b, col, w = 6, dash = "") => `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${col}" stroke-width="${w}" stroke-linecap="round" ${dash ? `stroke-dasharray="${dash}"` : ""}/>`;
+  // znak kąta prostego w wierzchołku v, ramiona w stronę p i q
+  const mark = (v, p, q, s = 16) => {
+    const u = o => { const dx = o[0] - v[0], dy = o[1] - v[1], n = Math.hypot(dx, dy); return [dx / n * s, dy / n * s] };
+    const a = u(p), b = u(q);
+    return `<path d="M${v[0] + a[0]} ${v[1] + a[1]} L${v[0] + a[0] + b[0]} ${v[1] + a[1] + b[1]} L${v[0] + b[0]} ${v[1] + b[1]}" fill="none" stroke="${INK}" stroke-width="3"/><circle cx="${v[0] + (a[0] + b[0]) / 2}" cy="${v[1] + (a[1] + b[1]) / 2}" r="2.5" fill="${INK}"/>`;
+  };
+  // wysokość z wierzchołka i (z przerywanym przedłużeniem boku, jeśli trzeba)
+  const height = (P, i, col, withMark = true) => {
+    const v = P[i], a = P[(i + 1) % 3], b = P[(i + 2) % 3], { q, t } = foot(v, a, b);
+    const out = t < -0.01 || t > 1.01, near = t < 0 ? a : b, far = Math.hypot(q[0] - a[0], q[1] - a[1]) > Math.hypot(q[0] - b[0], q[1] - b[1]) ? a : b;
+    let h = "";
+    if (out) { const L = Math.hypot(q[0] - near[0], q[1] - near[1]), k = (L + 24) / L; h += line(near, [near[0] + (q[0] - near[0]) * k, near[1] + (q[1] - near[1]) * k], INK, 3, "9 7") }
+    h += line(v, q, col, 6) + (withMark ? mark(q, v, far) : "");
+    return h;
+  };
+  const svg = (inner, vb = "0 0 360 300") => `<svg class="wy-svg" viewBox="${vb}">${inner}</svg>`;
+  const labels = (P, names) => { const c = [P.reduce((s, p) => s + p[0], 0) / 3, P.reduce((s, p) => s + p[1], 0) / 3]; return P.map((p, i) => { const dx = p[0] - c[0], dy = p[1] - c[1], d = Math.hypot(dx, dy); return `<text x="${p[0] + dx / d * 24}" y="${p[1] + dy / d * 24}">${names[i]}</text>` }).join("") };
+
+  const SHAPES = {
+    o: () => [[40, 230], [320, 230], [rnd(130, 230), rnd(50, 70)]],
+    p: () => Math.random() < .5 ? [[60, 230], [320, 230], [60, 50]] : [[300, 230], [40, 230], [300, 50]],
+    r: () => [[150, 190], [330, 190], [30, 60]],
+  };
+  const TYPE = { o: "ostrokątny", p: "prostokątny", r: "rozwartokątny" };
+  const INSIDE = { o: 3, p: 1, r: 1 };
+  const WHY = {
+    o: "W trójkącie ostrokątnym wszystkie trzy wysokości leżą wewnątrz.",
+    p: "W trójkącie prostokątnym dwie wysokości to boki przy kącie prostym, a tylko trzecia leży wewnątrz.",
+    r: "W trójkącie rozwartokątnym tylko jedna wysokość leży wewnątrz. Dwie padają na przedłużenia boków.",
+  };
+
+  // trzy rysunki tego samego przechylonego trójkąta: która czerwona kreska jest wysokością?
+  function pickRound() {
+    const tilt = pick([-1, 1]) * rnd(14, 22);
+    const cx = pick([rnd(100, 135), rnd(225, 260)]);
+    const P = rot([[40, 220], [320, 220], [cx, 60]], tilt), [A, B, C] = P;
+    const perp = foot(C, A, B).q;
+    const t = (C[0] - A[0]) / (B[0] - A[0]), vert = [C[0], A[1] + (B[1] - A[1]) * t];
+    const mid = [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+    const kinds = shuffle([["perp", perp], ["vert", vert], ["mid", mid]]);
+    const pic = (end, extra = "") => `<svg viewBox="0 0 360 280">${poly(P)}${line(C, end, RED, 7)}${extra}</svg>`;
+    ui.grok(`Na którym rysunku czerwona kreska jest <b>wysokością</b> trójkąta?<small>Pionowa to nie zawsze prostopadła!</small>`);
+    $("#play").innerHTML = `<div class="opts pics" id="opts"></div>`;
+    const addMark = () => { const b = document.querySelector(`.opt[data-v="perp"] svg`); if (b) b.insertAdjacentHTML("beforeend", mark(perp, C, A)) };
+    choice({ el: $("#opts"), ok: "perp", cls: "pic", opts: kinds.map(([k, e]) => ({ v: k, t: pic(e) })),
+      onRight: () => { addMark(); ui.grok("Tak! Wysokość tworzy z bokiem kąt prosty."); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === "vert" ? "Pionowa. Ale nie prostopadła." : "Bee… ta kreska idzie do środka boku, ale krzywo.", "bad"),
+      onReveal: () => { addMark(); ui.grok("Wysokość jest zawsze prostopadła do boku. Nie zawsze pionowa!"); ui.beata("Albo obróć kartkę.", "bad") } });
+  }
+
+  function countRound() {
+    const k = pick(["o", "p", "r"]), P = SHAPES[k]();
+    ui.grok(`Ile wysokości ma każdy trójkąt?`);
+    $("#play").innerHTML = `<div id="pic">${svg(poly(P))}</div><div class="opts" id="opts"></div>`;
+    const all = () => { $("#pic").innerHTML = svg(poly(P) + height(P, 0, RED) + height(P, 1, BLUE) + height(P, 2, GREEN)) };
+    choice({ el: $("#opts"), ok: 3, opts: [1, 2, 3, 6],
+      onRight: () => { all(); ui.grok("Tak! Trójkąt ma trzy wierzchołki, a z każdego opuszczamy jedną wysokość."); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… policz wierzchołki. Z każdego wychodzi jedna wysokość.", "bad"),
+      onReveal: () => { all(); ui.grok("Trzy: po jednej z każdego wierzchołka."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function whereRound(k) {
+    const P = SHAPES[k]();
+    ui.grok(`To trójkąt <b>${TYPE[k]}</b>. Ile jego wysokości leży <b>wewnątrz</b> trójkąta?`);
+    $("#play").innerHTML = `<div id="pic">${svg(poly(P), k === "r" ? "0 0 360 320" : "0 0 360 300")}</div><div class="opts" id="opts"></div>`;
+    const all = () => { $("#pic").innerHTML = svg(poly(P) + height(P, 0, RED) + height(P, 1, BLUE) + height(P, 2, GREEN), k === "r" ? "0 0 360 320" : "0 0 360 300") };
+    choice({ el: $("#opts"), ok: INSIDE[k], opts: [0, 1, 2, 3],
+      onRight: () => { all(); ui.grok(`Tak! ${WHY[k]}`); ui.beata(k === "p" ? "Dwie wysokości za darmo. Pierwszy raz coś dostałeś za darmo." : k === "r" ? "Wysokość nie uciekła. Wyszła na przedłużenie." : praise(), "good") },
+      onWrong: () => ui.beata(k === "o" ? "Bee… w ostrokątnym wszystkie mieszczą się w środku." : "Bee… wyobraź sobie ekierkę przy każdym boku.", "bad"),
+      onReveal: () => { all(); ui.grok(WHY[k]); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function sideRound() {
+    const P = SHAPES.o(), i = rnd(0, 2), N = ["A", "B", "C"], side = N[(i + 1) % 3] + N[(i + 2) % 3];
+    const sides = ["AB", "BC", "CA"], ok = sides.find(s => s.includes(N[(i + 1) % 3]) && s.includes(N[(i + 2) % 3]));
+    ui.grok(`Z wierzchołka <b>${N[i]}</b> opuściłem wysokość. Do którego boku jest prostopadła?`);
+    $("#play").innerHTML = svg(poly(P) + height(P, i, RED, false) + labels(P, N)) + `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok, opts: sides,
+      onRight: () => { ui.grok(`Tak! Wysokość z wierzchołka ${N[i]} jest prostopadła do boku ${side}, który leży naprzeciwko.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… wysokość z ${N[i]} idzie do boku, który leży naprzeciwko ${N[i]}.`, "bad"),
+      onReveal: () => { ui.grok(`Do boku ${side}: tego naprzeciwko wierzchołka ${N[i]}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function tentRound() {
+    const L = [40, 250], R = [320, 250], T = [180, 170];
+    const pic = svg(`<line x1="0" y1="252" x2="360" y2="252" stroke="#5da646" stroke-width="8" stroke-linecap="round"/>
+      ${line(L, T, "#a8703f", 14)}${line(R, T, "#a8703f", 14)}<text class="lbl" x="90" y="190">3 m</text>
+      ${line(T, [180, 250], RED, 4, "10 7")}<circle cx="180" cy="248" r="8" fill="#9aa0a8"/><text class="lbl" x="205" y="215" style="fill:${RED}">?</text>`, "0 0 360 280");
+    ui.grok(`Mój szałas: dwie deski po 3 m. Deski stoją ukośnie. Ile ma szałas wysokości?<small>Pion ze szczytu spada prosto w dół.</small>`);
+    $("#play").innerHTML = pic + `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: "lt", cls: "txt", opts: [{ v: "gt", t: "Więcej niż 3 m" }, { v: "eq", t: "Dokładnie 3 m" }, { v: "lt", t: "Mniej niż 3 m" }],
+      onRight: () => { ui.grok("Tak! Deska jest ukośna, więc szałas jest niższy niż deska."); ui.beata("A ja się zmieszczę.", "good") },
+      onWrong: v => ui.beata(v === "eq" ? "Bee… tak myślał Grok. A potem było ŁUP!" : "Bee… pochylona deska nie sięga wyżej niż stojąca.", "bad"),
+      onReveal: () => { ui.grok("Mniej niż 3 m. Wysokość mierzymy pionem, a nie wzdłuż ukośnej deski."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function outsideRound() {
+    const P = SHAPES.r(), i = pick([1, 2]);
+    ui.grok(`To trójkąt rozwartokątny. Gdzie pada wysokość z zaznaczonego wierzchołka?`);
+    $("#play").innerHTML = `<div id="pic">${svg(poly(P) + `<circle cx="${P[i][0]}" cy="${P[i][1]}" r="11" fill="${RED}"/>`, "0 0 360 320")}</div><div class="opts" id="opts"></div>`;
+    const show = () => { $("#pic").innerHTML = svg(poly(P) + height(P, i, RED), "0 0 360 320") };
+    choice({ el: $("#opts"), ok: "ext", cls: "txt", opts: [{ v: "side", t: "Na bok trójkąta" }, { v: "ext", t: "Na przedłużenie boku" }],
+      onRight: () => { show(); ui.grok("Tak! Przedłużamy bok linią przerywaną i przykładamy ekierkę."); ui.beata("Wysokość nie uciekła. Wyszła na spacer.", "good") },
+      tries: 1, onReveal: () => { show(); ui.grok("W trójkącie rozwartokątnym dwie wysokości padają na przedłużenia boków."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function rightRound() {
+    const P = [[60, 230], [320, 230], [60, 50]];
+    ui.grok(`W trójkącie prostokątnym dwie wysokości są bokami. Które to boki?`);
+    $("#play").innerHTML = `<div id="pic">${svg(poly(P) + mark(P[0], P[1], P[2], 22) + labels(P, ["A", "B", "C"]))}</div><div class="opts" id="opts"></div>`;
+    const show = () => { $("#pic").innerHTML = svg(poly(P) + line(P[0], P[2], RED, 8) + line(P[0], P[1], BLUE, 8) + mark(P[0], P[1], P[2], 22) + labels(P, ["A", "B", "C"])) };
+    choice({ el: $("#opts"), ok: "ab-ac", opts: [{ v: "ab-ac", t: "AB i AC" }, { v: "ab-bc", t: "AB i BC" }, { v: "bc-ac", t: "BC i AC" }],
+      onRight: () => { show(); ui.grok("Tak! Boki przy kącie prostym są do siebie prostopadłe, więc są wysokościami."); ui.beata("Dwie wysokości za darmo!", "good") },
+      onWrong: () => ui.beata("Bee… szukaj boków przy kącie prostym.", "bad"),
+      onReveal: () => { show(); ui.grok("AB i AC: to boki przy kącie prostym."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [
+    pickRound, tentRound, countRound, pickRound,
+    () => whereRound(cur.whereA), sideRound, () => whereRound(cur.whereB), rightRound, outsideRound,
+  ];
+  GAMES.wysokosc = {
+    rounds: PLAN.length,
+    setup(c) { [c.whereA, c.whereB] = shuffle(["o", "p", "r"]) },
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 16</h4><ul>
+      <li><b>Wysokość trójkąta</b> to odcinek z wierzchołka, prostopadły do przeciwległego boku (albo jego przedłużenia).</li>
+      <li>Wysokość <b>nie zawsze jest pionowa</b>, ale zawsze jest prostopadła. Pomaga obrócenie kartki.</li>
+      <li>Każdy trójkąt ma <b>3 wysokości</b>. Rysujemy je ekierką.</li>
+      <li>Ostrokątny: 3 wewnątrz. Prostokątny: 2 to boki, 1 wewnątrz. Rozwartokątny: 1 wewnątrz, 2 na zewnątrz.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 16: ZERA NA KOŃCU (odcinek 17, sprytne mnożenie, klasa 4)
+   Mnożenie przez 10, 100, 1000 (zera na końcu, nie z przodu!), liczby
+   z zerami na końcu i pułapka 800 · 50, dowolna kolejność czynników,
+   mnożenie po kawałku, 12 rzędów po 6 owiec, dobra rada i quiz.
+   ===================================================================== */
+(() => {
+  const css = `
+  .sm-hint { text-align: center; font: 800 clamp(20px, 3.6vw, 26px)/1.25 var(--head); color: var(--ink-soft); margin: 2px 0 }
+  .sm-zero { color: #2f7fe0 } .sm-pink { color: #e0407f }
+  .sm-grid { display: flex; justify-content: center; gap: 10px; margin: 8px auto }
+  .sm-grid .blk { display: grid; gap: 3px }
+  .sm-grid i { display: block; width: 18px; height: 18px; border-radius: 4px; border: 2px solid }
+  .sm-grid .a i { background: #bfe9e4; border-color: #17a398 } .sm-grid .b i { background: #e3cdf0; border-color: #9b59b6 }
+  .sm-grid .cap { text-align: center; font: 800 20px var(--head); margin-top: 4px }
+  .sm-flock { display: flex; justify-content: center; gap: 4px; margin: 6px auto; flex-wrap: nowrap }
+  .sm-flock .row { display: flex; flex-direction: column; gap: 0; padding: 4px 2px; border-radius: 10px }
+  .sm-flock .row img { width: 26px; display: block }
+  .sm-flock.split .row.big { background: #bfe9e4 } .sm-flock.split .row.rest { background: #e3cdf0 } .sm-flock.split .gap { width: 14px }
+  .sm-tip { max-width: 520px; margin: 4px auto; background: #fff; border: 3px solid #6fb52c; border-radius: 16px; padding: 8px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 24px; font: 800 22px var(--head) }
+  .sm-tip h4 { grid-column: 1 / -1; margin: 0; color: #6fb52c; font: 900 18px var(--body); letter-spacing: 1px }
+  @media (max-width: 600px) { .sm-grid i { width: 12px; height: 12px } .sm-flock .row img { width: 17px } .sm-tip { font-size: 18px } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+  const zeros = k => "0".repeat(k);
+  const tens = k => 10 ** k;
+  const zer = n => pl(n, "zero", "zera", "zer");
+
+  // przez 10, 100, 1000: gdzie dopisać zera? (gag z odcinka: „09”)
+  function zerosChoice() {
+    const a = rnd(2, 9) * 10 + rnd(1, 9), k = rnd(1, 3), ok = a * tens(k);
+    ui.grok(`Ile to ${fmt(a)} · ${fmt(tens(k))}?<small>Dopisuję ${k === 1 ? "zero" : k + " " + zer(k)}… tylko gdzie?</small>`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(a)} · <span class="sm-zero">${fmt(tens(k))}</span> = <span class="gap">?</span></div><div class="opts" id="opts"></div>`;
+    const front = zeros(k) + a;
+    choice({ el: $("#opts"), ok, opts: shuffle([ok, front, a * tens(k + 1), k > 1 ? a * tens(k - 1) : a].map(v => typeof v === "number" ? { v, t: fmt(v) } : { v, t: v })),
+      onRight: () => { ui.grok(`Tak! Zera dopisujemy <b>na końcu</b>: ${fmt(a)} · ${fmt(tens(k))} = ${fmt(ok)}.`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === front ? `Bee… zera z przodu nic nie zmieniają. ${front} to po prostu ${a}!` : `Bee… ${fmt(tens(k))} ma ${k} ${zer(k)}. Tyle dopisz.`, "bad"),
+      onReveal: () => { ui.grok(`${fmt(a)} · ${fmt(tens(k))} = ${fmt(ok)}. Zera na końcu!`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function zerosPad() {
+    const a = pick([rnd(2, 9), rnd(11, 99), rnd(101, 999)]), k = rnd(1, 3), ok = a * tens(k);
+    ui.grok(`Policz w pamięci.`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(a)} · <span class="sm-zero">${fmt(tens(k))}</span> = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok, max: 7,
+      onRight: () => { ui.grok(`Tak! ${k} ${zer(k)} na końcu: ${fmt(ok)}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(`Bee… policz zera w ${fmt(tens(k))} i dopisz je na końcu ${fmt(a)}.`, "bad"),
+      onReveal: () => { ui.grok(`${fmt(a)} · ${fmt(tens(k))} = ${fmt(ok)}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // liczby z zerami na końcu: odrzuć zera, pomnóż, dopisz
+  function dropPad() {
+    let x, y; do { x = rnd(2, 9); y = rnd(2, 9) } while ((x * y) % 10 === 0);
+    const i = rnd(1, 2), j = rnd(1, 2), A = x * tens(i), B = y * tens(j), ok = A * B;
+    ui.grok(`Ile to ${fmt(A)} · ${fmt(B)}?<small>Najpierw odrzuć zera i pomnóż. Potem dopisz zera.</small>`);
+    $("#play").innerHTML = `<div class="q-big">${x}<span class="sm-pink">${zeros(i)}</span> · ${y}<span class="sm-zero">${zeros(j)}</span> = <span class="gap">?</span></div><div class="sm-hint" id="hint"></div><div id="pad"></div>`;
+    const why = `${x} · ${y} = ${x * y} i ${i + j} ${zer(i + j)}: ${fmt(ok)}.`;
+    numPad({ el: $("#pad"), ok, max: 7,
+      onRight: () => { $("#hint").textContent = why; ui.grok(`Tak! ${why}`); ui.beata("Pilnowałam zer. Żadne nie uciekło.", "good") },
+      onWrong: v => { $("#hint").textContent = `${x} · ${y} = ${x * y}`; ui.beata(v === x * y ? "Bee… a gdzie zera? Wracają na koniec!" : `Bee… odrzucone zera: ${i + j}. Dopisz je do ${x * y}.`, "bad") },
+      onReveal: () => { $("#hint").textContent = why; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // pułapka 800 · 50: jedno zero przychodzi z iloczynu
+  function trapChoice() {
+    const [x, y] = pick([[8, 5], [5, 4], [6, 5], [5, 2], [4, 5], [2, 5], [5, 8], [5, 6]]);
+    const i = rnd(1, 2), j = rnd(1, 2), A = x * tens(i), B = y * tens(j), ok = A * B, short = ok / 10;
+    ui.grok(`Ile to ${fmt(A)} · ${fmt(B)}?<small>Uważaj na zera!</small>`);
+    $("#play").innerHTML = `<div class="q-big">${x}<span class="sm-pink">${zeros(i)}</span> · ${y}<span class="sm-zero">${zeros(j)}</span> = <span class="gap">?</span></div><div class="opts" id="opts"></div>`;
+    const why = `${x} · ${y} = ${x * y}, a do tego ${i + j} ${zer(i + j)}: ${fmt(ok)}. Jedno zero przyszło z ${x * y}!`;
+    choice({ el: $("#opts"), ok, opts: shuffle([ok, short, ok * 10]),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata("Zapasowe zero? Nie moje. Z mnożenia.", "good") },
+      onWrong: v => ui.beata(+v === short ? `Bee… zgubiłeś zero z ${x * y}!` : `Bee… o jedno zero za dużo.`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const TRIPLES = [[5, 7, 2], [2, 9, 5], [4, 7, 25], [25, 3, 4], [5, 13, 2], [2, 8, 50], [20, 7, 5], [4, 9, 25]];
+  // którą parę pomnożyć najpierw?
+  function orderChoice() {
+    const t = pick(TRIPLES), pairs = [[0, 1], [1, 2], [0, 2]], best = pairs.find(([a, b]) => [10, 100].includes(t[a] * t[b]));
+    const lbl = ([a, b]) => `${t[a]} · ${t[b]}`;
+    ui.grok(`${t.join(" · ")}. Które dwie liczby pomnożysz najpierw?<small>Liczby możemy mnożyć w dowolnej kolejności!</small>`);
+    $("#play").innerHTML = `<div class="q-big">${t.join(" · ")}</div><div class="opts" id="opts"></div>`;
+    const rest = t[3 - best[0] - best[1]], p = t[best[0]] * t[best[1]];
+    const why = `${lbl(best)} = ${p}, a ${p} · ${rest} = ${fmt(p * rest)}.`;
+    choice({ el: $("#opts"), ok: best.join(""), opts: pairs.map(q => ({ v: q.join(""), t: lbl(q) })),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata("Kamyki zostają w domu.", "good") },
+      onWrong: () => ui.beata(`Bee… szukaj pary, która da 10 albo 100.`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  function orderPad() {
+    const t = shuffle([...pick(TRIPLES)]), ok = t[0] * t[1] * t[2];
+    ui.grok(`Policz sprytnie: ${t.join(" · ")}`);
+    $("#play").innerHTML = `<div class="q-big">${t.join(" · ")} = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok, max: 5,
+      onRight: () => { ui.grok(`Tak! ${fmt(ok)}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… najpierw pomnóż te dwie, które dają 10 albo 100.", "bad"),
+      onReveal: () => { ui.grok(`${t.join(" · ")} = ${fmt(ok)}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // po kawałku: a · (10 + b) = a · 10 + a · b, z kratkami jak w podręczniku
+  function pieceRound() {
+    const a = rnd(3, 8), b = rnd(2, 9), n = 10 + b, ok = a * n;
+    const blk = (cols, cls, cap) => `<div><div class="blk ${cls}" style="grid-template-columns: repeat(${cols}, auto)">${"<i></i>".repeat(cols * a)}</div><div class="cap">${cap}</div></div>`;
+    ui.grok(`Ile to ${a} · ${n}? Mnożymy po kawałku.<small>${a} ${rzedow(a)} po ${n} to ${a} ${rzedow(a)} po 10 i ${a} ${rzedow(a)} po ${b}.</small>`);
+    $("#play").innerHTML = `<div class="sm-grid">${blk(10, "a", `${a} · 10`)}${blk(b, "b", `${a} · ${b}`)}</div><div class="sm-hint" id="hint"></div><div id="pad"></div>`;
+    const why = `${a} · ${n} = ${a} · 10 + ${a} · ${b} = ${a * 10} + ${a * b} = ${ok}.`;
+    numPad({ el: $("#pad"), ok, max: 3,
+      onRight: () => { $("#hint").textContent = why; ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: () => { $("#hint").textContent = `${a} · 10 = ${a * 10}`; ui.beata(`Bee… dodaj jeszcze ${a} · ${b}.`, "bad") },
+      onReveal: () => { $("#hint").textContent = why; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // stado z odcinka: 12 rzędów po 6 owiec
+  function flockRound() {
+    const r = rnd(11, 13), k = rnd(4, 6), ok = r * k;
+    const rows = Array.from({ length: r }, (_, i) => `${i === 10 ? '<div class="gap"></div>' : ""}<div class="row ${i < 10 ? "big" : "rest"}">${SHEEP.repeat(k)}</div>`).join("");
+    ui.grok(`Owce stoją w ${r} rzędach, w każdym po ${k}. Ile jest owiec?<small>10 rzędów… i jeszcze ${r - 10}.</small>`);
+    $("#play").innerHTML = `<div class="sm-flock" id="fl">${rows}</div><div class="sm-hint" id="hint"></div><div id="pad"></div>`;
+    const why = `10 · ${k} = ${10 * k}, ${r - 10} · ${k} = ${(r - 10) * k}, razem ${ok}.`;
+    const split = () => $("#fl").classList.add("split");
+    numPad({ el: $("#pad"), ok, max: 3,
+      onRight: () => { split(); $("#hint").textContent = why; ui.grok(`Tak! ${why} Policzyłem po kawałku!`); ui.beata("Ja śpię w tym mniejszym kawałku. Za to w lepszym.", "good") },
+      onWrong: () => { split(); ui.beata("Bee… policz osobno 10 rzędów i resztę.", "bad") },
+      onReveal: () => { split(); $("#hint").textContent = why; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // dobra rada: iloczyny do zapamiętania
+  function tipRound() {
+    const m = rnd(2, 4), b = pick([25, 15]), ok = m * b, c = rnd(2, 9);
+    const big = Math.random() < .5;
+    ui.grok(big ? `Dobra rada się przydaje! Ile to ${m} · ${b} · ${c}?` : `Dobra rada: ile to ${m} · ${b}?`);
+    $("#play").innerHTML = `<div class="sm-tip"><h4>DOBRA RADA</h4><span>2 · 25 = 50</span><span>2 · 15 = 30</span><span>3 · 25 = 75</span><span>3 · 15 = 45</span><span>4 · 25 = 100</span><span>4 · 15 = 60</span></div>
+      <div class="q-big">${big ? `${m} · ${b} · ${c}` : `${m} · ${b}`} = <span class="gap">?</span></div><div id="pad"></div>`;
+    const res = big ? ok * c : ok;
+    numPad({ el: $("#pad"), ok: res, max: 4,
+      onRight: () => { ui.grok(big ? `Tak! ${m} · ${b} = ${ok}, a ${ok} · ${c} = ${res}.` : `Tak! ${m} · ${b} = ${ok}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… zajrzyj do dobrej rady.", "bad"),
+      onReveal: () => { ui.grok(`${big ? `${m} · ${b} · ${c}` : `${m} · ${b}`} = ${res}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // zagadka z odcinka: 40 · 100 = ?
+  function quizRound() {
+    const x = rnd(2, 9), i = 1, j = rnd(2, 3), n = i + j, ok = x * tens(n);
+    const uniq = [n - 2, n - 1, n, n + 1].map(e => x * tens(e));
+    ui.grok(`Zagadka z odcinka! Ile jest ${fmt(x * 10)} · ${fmt(tens(j))}?`);
+    $("#play").innerHTML = `<div class="opts" id="opts"></div>`;
+    const why = `${x} · 1 = ${x}, a potem ${i + j} ${zer(i + j)}: jedno z ${x * 10} i ${j} z ${fmt(tens(j))}. ${fmt(ok)}.`;
+    choice({ el: $("#opts"), ok, opts: uniq.map((v, k) => ({ v, t: `${"ABCD"[k]}&nbsp;&nbsp;${fmt(v)}` })),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(`${i + j} ${zer(i + j)}, Grok. Policz je.`, "good") },
+      onWrong: v => ui.beata(+v > ok ? "Bee… im więcej zer, tym lepiej? Nie!" : "Bee… policz wszystkie zera.", "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [zerosChoice, zerosPad, dropPad, trapChoice, orderChoice, orderPad, pieceRound, flockRound, tipRound, quizRound];
+  GAMES.sprytne = {
+    rounds: PLAN.length,
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 17</h4><ul>
+      <li>Mnożysz przez 10, 100, 1000? <b>Dopisz zera na końcu</b>: 127 · 100 = 12 700.</li>
+      <li>Liczby z zerami na końcu: odrzuć zera, pomnóż, dopisz: 60 · 800 = 48 000.</li>
+      <li>Uwaga: 800 · 50 = 40 000, bo jedno zero jest z 8 · 5 = 40.</li>
+      <li>Kolejność dowolna: 5 · 7 · 2 = 5 · 2 · 7 = 10 · 7 = 70.</li>
+      <li>Po kawałku: 7 · 12 = 7 · 10 + 7 · 2 = 70 + 14 = 84.</li>
+      <li>Zapamiętaj: 4 · 25 = 100, 3 · 25 = 75, 4 · 15 = 60.</li></ul></div>`,
     round(i) { PLAN[i]() },
   };
 })();
