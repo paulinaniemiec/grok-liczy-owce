@@ -918,5 +918,139 @@
     "W 30 : 6 = 5 liczba 30 to dzielna, 6 to dzielnik, a wynik 5 to iloraz."
    ]
   ]
+ },
+ "16": {
+  "slug": "wysokosc-trojkata",
+  "h1": "Wysokość trójkąta",
+  "title": "Wysokość trójkąta – klasa 5, filmik i gra | Grok liczy owce",
+  "description": "Wysokość trójkąta: odcinek prostopadły do boku, nie zawsze pionowy. Trzy wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym. Filmik i gra.",
+  "lead": "Co to jest wysokość trójkąta i jak ją narysować? Grok buduje szałas z dwóch desek po 3 m i jest pewny, że szałas też ma 3 m. Wchodzi i… łup! W filmie mierzysz wysokość pionem, rysujesz trzy wysokości ekierką i sprawdzasz, gdzie leżą w trójkącie ostrokątnym, prostokątnym i rozwartokątnym.",
+  "rozdzialy": [
+   [
+    "0:00",
+    "Ile metrów ma szałas Groka?"
+   ],
+   [
+    "0:27",
+    "Pion, czyli kamyk na sznurku"
+   ],
+   [
+    "0:53",
+    "Wysokość trójkąta: definicja"
+   ],
+   [
+    "1:26",
+    "Trzy wysokości i ekierka"
+   ],
+   [
+    "2:04",
+    "Wysokości w trójkącie prostokątnym"
+   ],
+   [
+    "2:23",
+    "Wysokości w trójkącie rozwartokątnym"
+   ],
+   [
+    "3:04",
+    "Zagadka: który odcinek jest wysokością?"
+   ],
+   [
+    "3:24",
+    "Dobranoc"
+   ]
+  ],
+  "pamietaj": [
+   "Wysokość trójkąta to odcinek poprowadzony z wierzchołka, prostopadły do przeciwległego boku (albo do jego przedłużenia).",
+   "Każdy trójkąt ma trzy wysokości, po jednej z każdego wierzchołka.",
+   "Wysokość nie zawsze jest pionowa, ale zawsze jest prostopadła do boku. Pomaga obrócenie kartki.",
+   "W trójkącie ostrokątnym wszystkie wysokości leżą wewnątrz trójkąta.",
+   "W trójkącie prostokątnym dwie wysokości to boki przy kącie prostym, a trzecia leży wewnątrz.",
+   "W trójkącie rozwartokątnym jedna wysokość leży wewnątrz, a dwie na zewnątrz, na przedłużeniach boków."
+  ],
+  "przyklad": {
+   "pytanie": "Jak narysować wysokość trójkąta opuszczoną z wierzchołka C na bok AB?",
+   "kroki": [
+    "Przyłóż ekierkę jednym bokiem do boku AB.",
+    "Przesuń ją tak, żeby drugi bok ekierki dotykał wierzchołka C.",
+    "Narysuj odcinek z C do boku AB wzdłuż ekierki i zaznacz kąt prosty. Jeśli ekierka nie trafia w bok, przedłuż bok AB linią przerywaną."
+   ]
+  },
+  "faq": [
+   [
+    "Czy wysokość trójkąta zawsze jest pionowa?",
+    "Nie. Wysokość jest zawsze prostopadła do boku, na który ją opuszczamy, ale pionowa jest tylko wtedy, gdy ten bok leży poziomo. Jeśli trudno to zobaczyć, obróć kartkę."
+   ],
+   [
+    "Ile wysokości ma trójkąt?",
+    "Trzy, po jednej z każdego wierzchołka. W trójkącie rozwartokątnym dwie z nich leżą poza trójkątem, na przedłużeniach boków."
+   ]
+  ]
+ },
+ "17": {
+  "slug": "sprytne-mnozenie",
+  "h1": "Sprytne mnożenie w pamięci",
+  "title": "Sprytne mnożenie – klasa 4, filmik i gra | Grok liczy owce",
+  "description": "Mnożenie przez 10, 100 i 1000, liczby z zerami na końcu, dowolna kolejność i mnożenie po kawałku. Animowany filmik dla klasy 4 i darmowa gra.",
+  "lead": "Jak mnożyć szybko w pamięci? Rano owce Groka stoją w 12 rzędach po 6. Grok liczy po jednej i się gubi, a Kosmita od razu wie: 72. W filmie poznajesz mnożenie przez 10, 100 i 1000, mnożenie liczb z zerami na końcu, zmianę kolejności czynników i mnożenie po kawałku, a na koniec iloczyny, które warto zapamiętać.",
+  "rozdzialy": [
+   [
+    "0:00",
+    "12 rzędów po 6 owiec"
+   ],
+   [
+    "0:29",
+    "Mnożenie przez 10, 100, 1000"
+   ],
+   [
+    "1:23",
+    "Liczby z zerami na końcu"
+   ],
+   [
+    "2:26",
+    "Mnożenie w dowolnej kolejności"
+   ],
+   [
+    "3:08",
+    "Mnożenie „po kawałku”"
+   ],
+   [
+    "3:48",
+    "Dobra rada: iloczyny do zapamiętania"
+   ],
+   [
+    "4:27",
+    "Zagadka: ile jest 40 · 100?"
+   ],
+   [
+    "4:58",
+    "Dobranoc"
+   ]
+  ],
+  "pamietaj": [
+   "Aby pomnożyć liczbę przez 10, 100, 1000 i tak dalej, dopisz do niej na końcu odpowiednią liczbę zer: 127 · 100 = 12 700.",
+   "Gdy mnożysz liczby z zerami na końcu, pomnóż liczby bez zer, a potem dopisz odrzucone zera: 60 · 800 = 48 000.",
+   "Uwaga: 800 · 50 = 40 000, bo jedno zero pochodzi z 8 · 5 = 40.",
+   "Liczby możesz mnożyć w dowolnej kolejności: 5 · 7 · 2 = 5 · 2 · 7 = 10 · 7 = 70.",
+   "Mnożenie po kawałku: 7 · 12 = 7 · 10 + 7 · 2 = 70 + 14 = 84.",
+   "Warto zapamiętać: 2 · 25 = 50, 3 · 25 = 75, 4 · 25 = 100, 2 · 15 = 30, 3 · 15 = 45, 4 · 15 = 60."
+  ],
+  "przyklad": {
+   "pytanie": "Owce stoją w 12 rzędach, w każdym po 6. Ile jest owiec?",
+   "kroki": [
+    "Dzielimy stado na 10 rzędów i 2 rzędy.",
+    "10 · 6 = 60 i 2 · 6 = 12.",
+    "60 + 12 = 72. Owiec jest 72."
+   ]
+  },
+  "faq": [
+   [
+    "Gdzie dopisać zera przy mnożeniu przez 10, 100 lub 1000?",
+    "Zawsze na końcu liczby. Zero dopisane z przodu nic nie zmienia: 09 to po prostu 9, a 9 · 10 = 90."
+   ],
+   [
+    "Dlaczego 800 · 50 to 40 000, a nie 4000?",
+    "Najpierw mnożymy 8 · 5 = 40, a potem dopisujemy trzy odrzucone zera. Jedno zero jest już w liczbie 40, więc wynik ma cztery zera."
+   ]
+  ]
  }
 }
