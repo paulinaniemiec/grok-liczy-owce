@@ -161,6 +161,9 @@ h2 { font: 800 clamp(36px, 4.6vw, 54px)/1.05 var(--head); margin: 14px 0 12px }
 .chip { font: 800 16px/1 var(--body); color: var(--ink); background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 9px 18px 10px; cursor: pointer }
 .chip:hover { background: #fff4c2 }
 .chip.on { background: var(--ink); color: var(--yellow) }
+.ep[hidden], .more[hidden] { display: none }
+.ep-new { display: inline-block; margin-right: 6px; background: var(--pink); color: #fff; padding: 3px 7px; border-radius: 6px; letter-spacing: 1px }
+.more { display: flex; justify-content: center; margin-top: 34px }
 .ep.trailer { background: var(--ink); color: #fff }
 .ep.trailer .ep-body { justify-content: center; align-items: flex-start }
 .ep.trailer h3 { color: var(--yellow) }
@@ -276,7 +279,7 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
 @media (max-width: 640px) {
   body { font-size: 17px }
   .hero { min-height: 860px; padding-top: 96px }
-  .filters { gap: 6px; flex-wrap: nowrap } .chip { font-size: 15px; padding: 10px 12px; white-space: nowrap; min-height: 42px }
+  .filters { gap: 6px; flex-wrap: wrap } .chip { font-size: 15px; padding: 10px 12px; white-space: nowrap; min-height: 42px }
   .ep .watch { min-height: 42px } .ep-game { min-height: 42px }
   .lead { font-size: 17px; padding-inline: 8px }
   .grok { width: 136px; left: -12px; bottom: -28px }
@@ -571,9 +574,10 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
       </div>
     </div>
     <div class="filters" role="group" aria-label="Pokaż odcinki dla klasy">
-      <button type="button" class="chip on" data-f="all">Wszystkie</button>
+      <button type="button" class="chip on" data-f="new">Najnowsze</button>
       <button type="button" class="chip" data-f="4">Klasa 4</button>
       <button type="button" class="chip" data-f="5">Klasa 5</button>
+      <button type="button" class="chip" data-f="all">Wszystkie</button>
     </div>
 
     <!-- Linki do odcinków: po wrzuceniu na YouTube podmień href na adres filmu. -->
@@ -668,6 +672,7 @@ footer .sub { margin: 0 auto 30px; color: #c7cbef }
         <p>Grok wciąż liczy. Następne tematy są w drodze, a owiec też ciągle przybywa.</p></div>
       </div>
     </div>
+    <div class="more" id="more" hidden><button type="button" class="btn btn-ghost" id="show-all">Pokaż wszystkie odcinki</button></div>
   </div>
 </section>
 
@@ -800,11 +805,28 @@ document.querySelectorAll(".sheep").forEach((s) => s.addEventListener("click", (
   clearTimeout(t); t = setTimeout(() => bubble.classList.remove("on"), 1600);
   document.querySelector(".hint")?.remove();
 }));
-// Filtr klas
-document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => {
-  document.querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x === c));
-  document.querySelectorAll(".ep[data-klasa]").forEach((e) => { e.hidden = c.dataset.f !== "all" && e.dataset.klasa !== c.dataset.f; });
-}));
+// Odcinki: domyślnie 3 najnowsze (od najnowszego), filtr klas i „Wszystkie” pokazują pełną listę po kolei.
+const NAJNOWSZE = 3;
+const eps = [...document.querySelectorAll(".ep[data-klasa]")];
+const numer = (e) => +e.querySelector(".ep-num b").textContent.replace("#", "");
+const najnowsze = [...eps].sort((a, b) => numer(b) - numer(a)).slice(0, NAJNOWSZE);
+const trailer = document.querySelector(".ep.trailer"), more = document.getElementById("more");
+const najnowszy = najnowsze[0]?.querySelector(".ep-num b");
+if (najnowszy) najnowszy.insertAdjacentHTML("afterend", '<span class="ep-new">Nowy</span>');
+document.getElementById("show-all").textContent = `Pokaż wszystkie odcinki (${eps.length})`;
+function pokaz(f) {
+  document.querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x.dataset.f === f));
+  eps.forEach((e) => {
+    const i = najnowsze.indexOf(e);
+    e.hidden = f === "new" ? i < 0 : f !== "all" && e.dataset.klasa !== f;
+    e.style.order = f === "new" && i >= 0 ? i - NAJNOWSZE : "";
+  });
+  if (trailer) trailer.hidden = f === "new";
+  more.hidden = f !== "new";
+}
+document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => pokaz(c.dataset.f)));
+document.getElementById("show-all").addEventListener("click", () => pokaz("all"));
+pokaz("new");
 // Milionerzy: pytanie na rozgrzewkę
 const say = document.getElementById("say");
 document.querySelectorAll("#answers .ans").forEach((b) => b.addEventListener("click", () => {
