@@ -393,7 +393,7 @@ html { -webkit-text-size-adjust: 100% }
    ],
    "name": "Policz stado!",
    "url": "https://grokliczyowce.pl/gra.html",
-   "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5. Pastwiska: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze i złożone, sprytne dodawanie, liczby naturalne, dzielenie pisemne, dodawanie i odejmowanie, zadania tekstowe, trójkąty, tabliczka mnożenia, sprytne odejmowanie, własności trójkątów, tabliczka dzielenia, wielka powtórka.",
+   "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5. Pastwiska: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze i złożone, sprytne dodawanie, liczby naturalne, dzielenie pisemne, dodawanie i odejmowanie, zadania tekstowe, trójkąty, tabliczka mnożenia, sprytne odejmowanie, własności trójkątów, tabliczka dzielenia, wysokość trójkąta, sprytne mnożenie, wielka powtórka.",
    "inLanguage": "pl",
    "isAccessibleForFree": true,
    "gamePlatform": "przeglądarka internetowa",
@@ -465,6 +465,8 @@ html { -webkit-text-size-adjust: 100% }
       <li><a class="tp-game" href="#odejmowanie">Sprytne odejmowanie</a> <span>(klasa 4)</span> – Odejmuj po kawałku, przez dodawanie albo przesuń obie liczby. Bez kamyków! Temat: <a href="sprytne-odejmowanie/">Sprytne odejmowanie w pamięci</a>, odcinek #12.</li>
       <li><a class="tp-game" href="#rownoramienne">Trójkąty z kosmosu</a> <span>(klasa 5)</span> – Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe! Temat: <a href="wlasnosci-trojkatow/">Trójkąt równoboczny, równoramienny i różnoboczny</a>, odcinek #13.</li>
       <li><a class="tp-game" href="#dzielenie">Dzielna owca</a> <span>(klasa 4)</span> – Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz. Temat: <a href="tabliczka-dzielenia/">Tabliczka dzielenia</a>, odcinek #15.</li>
+      <li><a class="tp-game" href="#wysokosc">Pion Groka</a> <span>(klasa 5)</span> – Która kreska jest wysokością? Szukaj kąta prostego, a nie pionu. Wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym. Temat: <a href="wysokosc-trojkata/">Wysokość trójkąta</a>, odcinek #16.</li>
+      <li><a class="tp-game" href="#sprytne">Zera na końcu</a> <span>(klasa 4)</span> – Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50! Temat: <a href="sprytne-mnozenie/">Sprytne mnożenie w pamięci</a>, odcinek #17.</li>
       <li><a class="tp-game" href="#final">Wielka powtórka</a> <span>(klasy 4–5)</span> – Wszystko naraz i na czas. Dasz radę przed snem? Temat: <a href="powtorka-klasa-4/">Wielka powtórka: liczby naturalne i działania</a>, odcinek #9.</li>
       </ul>
     </section>
@@ -573,8 +575,8 @@ const ODCINKI = {
   13: { tytul: "Własności trójkątów", url: "https://www.youtube.com/watch?v=wiijZoVs6dg", rozdzial: "1:02", co: "Trójkąt równoramienny: ramiona i podstawa" },
   14: { tytul: "Tabliczka mnożenia", url: "https://www.youtube.com/watch?v=6s-tmt0zgsY", rozdzial: "0:39", co: "Mnożenie zamiast dodawania: 4 · 6 i 6 · 4" },
   15: { tytul: "Tabliczka dzielenia", url: "https://www.youtube.com/watch?v=HP6u5QTtBAQ", rozdzial: "0:35", co: "Mnożenie i dzielenie: 9 · 3 = 27" },
-  16: { tytul: "Wysokość trójkąta", url: "", rozdzial: "0:53", co: "Wysokość trójkąta: definicja" },
-  17: { tytul: "Sprytne mnożenie", url: "", rozdzial: "0:29", co: "Mnożenie przez 10, 100, 1000" },
+  16: { tytul: "Wysokość trójkąta", url: "https://www.youtube.com/watch?v=XWtTRl0ZYgE", rozdzial: "0:53", co: "Wysokość trójkąta: definicja" },
+  17: { tytul: "Sprytne mnożenie", url: "https://www.youtube.com/watch?v=7BR1pXLJIfM", rozdzial: "0:29", co: "Mnożenie przez 10, 100, 1000" },
 };
 function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
