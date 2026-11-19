@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 17 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 18 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Siedemnaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Osiemnaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -599,6 +599,7 @@ const ODCINKI = {
   15: { tytul: "Tabliczka dzielenia", url: "https://www.youtube.com/watch?v=HP6u5QTtBAQ", rozdzial: "0:35", co: "Mnożenie i dzielenie: 9 · 3 = 27" },
   16: { tytul: "Wysokość trójkąta", url: "https://www.youtube.com/watch?v=XWtTRl0ZYgE", rozdzial: "0:53", co: "Wysokość trójkąta: definicja" },
   17: { tytul: "Sprytne mnożenie", url: "https://www.youtube.com/watch?v=7BR1pXLJIfM", rozdzial: "0:29", co: "Mnożenie przez 10, 100, 1000" },
+  18: { tytul: "Sprytne dzielenie", url: "", rozdzial: "0:29", co: "Dzielenie przez 10, 100, 1000" },
 };
 function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
@@ -633,6 +634,7 @@ const PASTWISKA = [
   { key: "dzielenie", klasa: "4", nr: 15, color: "#d946ef", title: "Dzielna owca", ep: 15, desc: "Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz.", pics: ["beata", "owca", "owca"] },
   { key: "wysokosc", klasa: "5", nr: 16, color: "#ef4444", title: "Pion Groka", ep: 16, desc: "Która kreska jest wysokością? Szukaj kąta prostego, a nie pionu. Wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym.", pics: ["grok", "owca"] },
   { key: "sprytne", klasa: "4", nr: 17, color: "#f97316", title: "Zera na końcu", ep: 17, desc: "Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50!", pics: ["kosmita", "owca", "owca"] },
+  { key: "skresl", klasa: "4", nr: 18, color: "#2563eb", title: "Skreśl zera", ep: 18, desc: "Dziel sprytnie: skreślaj zera z końca, w obu liczbach po tyle samo, a resztę dziel po kawałku. Uważaj na 4000 : 8!", pics: ["grok", "owca", "beata"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -3000,6 +3002,213 @@ const TRI_RYSUNKI = {};
       <li>Kolejność dowolna: 5 · 7 · 2 = 5 · 2 · 7 = 10 · 7 = 70.</li>
       <li>Po kawałku: 7 · 12 = 7 · 10 + 7 · 2 = 70 + 14 = 84.</li>
       <li>Zapamiętaj: 4 · 25 = 100, 3 · 25 = 75, 4 · 15 = 60.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 18: SKREŚL ZERA (odcinek 18, sprytne dzielenie, klasa 4)
+   Dzielenie przez 10, 100, 1000 (skreślamy zera z końca, a nie
+   dziewiątkę!), zera tylko w dzielnej i pułapka 4000 : 8, skreślanie
+   tyle samo zer w obu liczbach, zagadka 42 000 : 600, siano dla owiec,
+   dzielenie po kawałku (72 : 3, 51 : 3, 721 : 7) i sprawdzanie mnożeniem.
+   ===================================================================== */
+(() => {
+  const css = `
+  .sd-hint { text-align: center; font: 800 clamp(20px, 3.6vw, 26px)/1.25 var(--head); color: var(--ink-soft); margin: 2px 0; min-height: 1.25em }
+  .sd-zero { color: #2f7fe0 } .sd-pink { color: #e0407f }
+  .sd-num { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px; margin: 10px 0 4px; font: 800 clamp(34px, 6vw, 54px)/1 var(--head) }
+  .sd-num .sp { width: 10px } .sd-num .op { margin: 0 10px }
+  .sd-num button { position: relative; font: inherit; color: var(--ink); background: #fff; border: 3px solid var(--ink); border-radius: 12px; box-shadow: 0 4px 0 var(--ink);
+    min-width: 1.05em; padding: 6px 4px; cursor: pointer }
+  .sd-num button:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink) }
+  .sd-num button.x { color: #b9b2c7; background: #f2eff7; box-shadow: none; transform: translateY(3px) }
+  .sd-num button.x::after { content: ""; position: absolute; left: 12%; right: 12%; top: 50%; height: 6px; border-radius: 3px; background: #e23b3b; transform: rotate(-58deg) }
+  .sd-num button.no { background: #ffe4ec; animation: shake .4s }
+  .sd-num button:disabled { cursor: default }
+  .sd-story { max-width: 560px; margin: 6px auto; background: #fff8e6; border: 3px solid var(--ink); border-radius: 18px; padding: 10px 16px; text-align: center; font: 700 20px/1.35 var(--body) }
+  .sd-herd { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 8px; margin: 6px auto }
+  .sd-herd .sd-grp { display: grid; grid-template-columns: repeat(var(--cols), 24px); gap: 0 1px; padding: 6px; border-radius: 14px; border: 3px solid transparent; transition: background .3s, border-color .3s }
+  .sd-herd img { width: 24px; display: block }
+  .sd-herd.split .sd-grp { border-color: var(--c); background: var(--bg) }
+  .sd-herd .cap { grid-column: 1 / -1; text-align: center; font: 800 20px var(--head); color: var(--c); display: none }
+  .sd-herd.split .cap { display: block; margin-top: 2px }
+  @media (max-width: 600px) { .sd-num { gap: 3px } .sd-num .op { margin: 0 4px } .sd-num .sp { width: 4px } .sd-herd .sd-grp { grid-template-columns: repeat(var(--cols), 17px) } .sd-herd img { width: 17px } .sd-story { font-size: 17px; padding: 8px 12px } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+  const tens = k => 10 ** k;
+  const zer = n => pl(n, "zero", "zera", "zer");
+  const zerAcc = n => n === 1 ? "jedno zero" : `${n} ${zer(n)}`;
+  const small = () => { let a; do { a = pick([rnd(2, 9), rnd(11, 99), rnd(101, 999)]) } while (a % 10 === 0); return a };
+  const GROUPS = [["#17a398", "#d4f2ee"], ["#9b59b6", "#eddcf6"], ["#e07b00", "#ffe7bf"]];
+
+  // przez 10, 100, 1000: skreśl zera z końca (gag z odcinka: skreślona dziewiątka)
+  function crossRound() {
+    const k = rnd(1, 3), a = small(), N = a * tens(k + rnd(0, 2)), D = tens(k), ok = N / D;
+    const s = String(N), L = s.length, f = fmt(N);
+    let di = 0;
+    const cells = [...f].map(ch => /\d/.test(ch) ? `<button data-i="${di++}">${ch}</button>` : '<span class="sp"></span>').join("");
+    ui.grok(`${fmt(N)} : ${fmt(D)}. Skreśl tyle zer, ile trzeba!<small>Stuknij zera, które skreślasz.</small>`);
+    $("#play").innerHTML = `<div class="sd-num" id="num">${cells}<span class="op">:</span><span class="sd-zero">${fmt(D)}</span></div><div class="sd-hint" id="hint"></div>`;
+    $("#act").hidden = true;
+    const btns = [...$("#num").querySelectorAll("button")];
+    let crossed = 0, errs = 0, done = false;
+    const why = `${fmt(D)} ma ${zerAcc(k)}, więc skreślamy ${zerAcc(k)} z końca: ${fmt(N)} : ${fmt(D)} = ${fmt(ok)}. Sprawdzenie: ${fmt(ok)} · ${fmt(D)} = ${fmt(N)}.`;
+    const end = (good) => {
+      done = true; btns.forEach((b, i) => { b.disabled = true; if (i >= L - k) b.classList.add("x") });
+      $("#hint").textContent = `= ${fmt(ok)}`;
+      if (good) { ui.correct(); ui.grok(`Tak! ${why}`); ui.beata(errs ? praise() : pick(["Dziewiątka cała. Ulga.", praise()]), "good") }
+      else { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") }
+      endRound();
+    };
+    btns.forEach(b => b.onclick = () => {
+      if (done || b.classList.contains("x")) return;
+      const i = +b.dataset.i;
+      if (i >= L - k) { sfx("tick"); b.classList.add("x"); b.disabled = true; if (++crossed === k) end(true); return }
+      ui.error(); errs++; b.classList.add("no"); ui.later(() => b.classList.remove("no"), 450);
+      ui.beata(s[i] !== "0" ? `Bee… skreślamy zera, a nie ${s[i] === "9" ? "dziewiątkę" : "cyfrę " + s[i]}!`
+        : `Bee… ${fmt(D)} ma tylko ${zerAcc(k)}. Skreślaj od samego końca.`, "bad");
+      if (errs >= 3) end(false);
+    });
+  }
+
+  function tensPad() {
+    const k = rnd(1, 3), N = small() * tens(k + rnd(0, 2)), D = tens(k), ok = N / D;
+    ui.grok(`Policz w pamięci.`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(N)} : <span class="sd-zero">${fmt(D)}</span> = <span class="gap">?</span></div><div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok, max: 7,
+      onRight: () => { ui.grok(`Tak! ${k === 1 ? "Jedno zero" : k + " " + zer(k)} mniej: ${fmt(ok)}.`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === ok / 10 || v === ok * 10 ? `Bee… policz jeszcze raz zera w ${fmt(D)}.` : `Bee… skreśl ${zerAcc(k)} z końca ${fmt(N)}.`, "bad"),
+      onReveal: () => { ui.grok(`${fmt(N)} : ${fmt(D)} = ${fmt(ok)}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // zera tylko w dzielnej: dzielimy bez zer i dopisujemy zera (63 000 : 7)
+  function dividendPad() {
+    let d, q; do { d = rnd(2, 9); q = rnd(2, 9) } while ((d * q) % 10 === 0);
+    const k = rnd(1, 3), N = d * q * tens(k), ok = q * tens(k);
+    ui.grok(`Ile to ${fmt(N)} : ${d}?<small>Podziel bez zer, a potem dopisz zera.</small>`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(N)} : ${d} = <span class="gap">?</span></div><div class="sd-hint" id="hint"></div><div id="pad"></div>`;
+    const why = `${d * q} : ${d} = ${q} i dopisujemy ${zerAcc(k)}: ${fmt(ok)}.`;
+    numPad({ el: $("#pad"), ok, max: 6,
+      onRight: () => { $("#hint").textContent = `Sprawdzenie: ${fmt(ok)} · ${d} = ${fmt(N)}`; ui.grok(`Tak! ${why}`); ui.beata("Każda owca dostaje tyle samo. Sprawiedliwie.", "good") },
+      onWrong: v => { $("#hint").textContent = `${d * q} : ${d} = ${q}`; ui.beata(v === q ? "Bee… a gdzie zera? Dopisz je na końcu!" : "Bee… najpierw podziel bez zer.", "bad") },
+      onReveal: () => { $("#hint").textContent = `Sprawdzenie: ${fmt(ok)} · ${d} = ${fmt(N)}`; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // pułapka 4000 : 8: „4 : 8 się nie da!”, więc bierzemy 40 : 8
+  function trapChoice() {
+    const [d, q] = pick([[8, 5], [5, 4], [6, 5], [4, 5], [5, 2], [5, 6], [5, 8], [2, 5]]);
+    const k = rnd(1, 3), N = d * q * tens(k), ok = q * tens(k), lead = d * q / 10;
+    ui.grok(`${fmt(N)} : ${d}… ${lead} : ${d} się nie da! Wszystko przepadło?<small>Ile to jest?</small>`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(N)} : ${d} = <span class="gap">?</span></div><div class="opts" id="opts"></div>`;
+    const why = `${lead} : ${d} się nie da, więc bierzemy ${d * q} : ${d} = ${q}. Zostały ${zerAcc(k)}: ${fmt(ok)}. Sprawdzenie: ${d} · ${fmt(ok)} = ${fmt(N)}.`;
+    choice({ el: $("#opts"), ok, opts: shuffle([ok, ok / 10, ok * 10]),
+      onRight: () => { ui.grok(`Tak! Nic nie przepadło. ${why}`); ui.beata("Siano uratowane!", "good") },
+      onWrong: v => ui.beata(+v < ok ? `Bee… policz zera. ${d} · ${fmt(+v)} to tylko ${fmt(d * v)}.` : `Bee… ${d} · ${fmt(+v)} to aż ${fmt(d * v)}.`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // zagadka z odcinka: które działanie ma taki sam wynik jak 42 000 : 600?
+  function quizRound() {
+    let d, q; do { d = rnd(3, 9); q = rnd(2, 9) } while ((d * q) % 10 === 0);
+    const m = rnd(2, 3), j = rnd(1, m - 1), N = d * q * tens(m), D = d * tens(j), ok = q * tens(m - j);
+    const good = `${fmt(N / tens(j))} : ${d}`, all = `${d * q} : ${d}`, half = `${fmt(N)} : ${d}`;
+    const items = shuffle([good, all, half]);
+    ui.grok(`Zagadka z odcinka! Które działanie ma taki sam wynik jak ${fmt(N)} : ${fmt(D)}?`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(N)} : ${fmt(D)}</div><div class="opts" id="opts"></div>`;
+    const why = `${fmt(D)} ma ${zerAcc(j)}, więc skreślamy ${j === 1 ? "po jednym zerze" : "po dwa zera"} w obu liczbach. ${good} = ${fmt(ok)}.`;
+    choice({ el: $("#opts"), ok: good, opts: items.map((t, i) => ({ v: t, t: `${"ABC"[i]}&nbsp;&nbsp;${t}` })),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata("Po tyle samo zer z każdej strony. Uczciwie.", "good") },
+      onWrong: v => ui.beata(v === all ? `Bee… skreśliłeś więcej zer w dzielnej niż w dzielniku!` : `Bee… zera skreślamy w obu liczbach, nie tylko w ${fmt(D)}.`, "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // obie liczby mają zera: skreśl tyle samo w każdej (720 : 80, 56 000 : 800)
+  function bothPad() {
+    const d = rnd(2, 9), q = rnd(2, 9), m = rnd(1, 3), j = rnd(1, m), N = d * q * tens(m), D = d * tens(j), ok = q * tens(m - j);
+    ui.grok(`Ile to ${fmt(N)} : ${fmt(D)}?<small>Obie liczby mają zera. Skreśl po tyle samo w każdej.</small>`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(N)} : ${fmt(D)} = <span class="gap">?</span></div><div class="sd-hint" id="hint"></div><div id="pad"></div>`;
+    const step = `${fmt(N / tens(j))} : ${d}`;
+    const why = `Skreślamy ${zerAcc(j)} w obu liczbach: ${step} = ${fmt(ok)}.`;
+    numPad({ el: $("#pad"), ok, max: 5,
+      onRight: () => { $("#hint").textContent = `${fmt(N)} : ${fmt(D)} = ${step} = ${fmt(ok)}`; ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: () => { $("#hint").textContent = `${fmt(N)} : ${fmt(D)} = ${step}`; ui.beata(`Bee… ${fmt(D)} ma ${zerAcc(j)}. Skreśl tyle samo w ${fmt(N)}.`, "bad") },
+      onReveal: () => { $("#hint").textContent = `${fmt(N)} : ${fmt(D)} = ${step} = ${fmt(ok)}`; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // siano: 10 razy więcej snopków i 10 razy więcej owiec, a każda owca dostaje tyle samo
+  function hayRound() {
+    const d = rnd(3, 9), q = rnd(2, 9), N = d * q * 10, D = d * 10;
+    const snop = n => pl(n, "snopek", "snopki", "snopków");
+    ui.grok(`Mam ${fmt(N)} ${snop(N)} siana dla ${D} owiec. Ile dostanie każda owca?`);
+    $("#play").innerHTML = `<div class="sd-story">${fmt(N)} ${snop(N)} : ${D} owiec<br><small>Po równo dla każdej!</small></div><div class="sd-hint" id="hint"></div><div id="pad"></div>`;
+    const why = `10 razy mniej snopków i 10 razy mniej owiec: ${d * q} : ${d} = ${q}. Każda owca dostaje ${q} ${snop(q)}.`;
+    numPad({ el: $("#pad"), ok: q, max: 3,
+      onRight: () => { $("#hint").textContent = `${fmt(N)} : ${D} = ${d * q} : ${d} = ${q}`; ui.grok(`Tak! ${why}`); ui.beata(`${q} ${snop(q)}? Wreszcie matematyka, którą rozumiem.`, "good") },
+      onWrong: v => { $("#hint").textContent = `${fmt(N)} : ${D} = ${d * q} : ${d}`; ui.beata(v === q * 10 ? "Bee… a ja bym chętnie tyle zjadła. Skreśl zero w obu liczbach!" : "Bee… skreśl jedno zero w każdej liczbie.", "bad") },
+      onReveal: () => { $("#hint").textContent = `${fmt(N)} : ${D} = ${d * q} : ${d} = ${q}`; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // po kawałku: które kawałki łatwo dzielą się przez d? (72 : 3 = 60 : 3 + 12 : 3)
+  function pieceChoice() {
+    let d, q; do { d = pick([3, 4, 6]); q = rnd(12, 29) } while (q % 10 === 0 || d * q > 99);
+    const N = d * q, A = d * 10 * Math.floor(q / 10), B = N - A;
+    const bad = [];
+    for (let a = 10; a < N; a += 10) if ((a % d || (N - a) % d) && a !== A) bad.push(a);
+    const opts = shuffle([A, ...shuffle(bad).slice(0, 2)]);
+    ui.grok(`${N} owiec do ${d} zagród. Podzielimy po kawałku!<small>Na jakie kawałki rozłożyć ${N}, żeby każdy łatwo dzielił się przez ${d}?</small>`);
+    const grp = (n, g, cap, cols = Math.min(n, 10)) => `<div class="sd-grp" style="--cols:${cols};--c:${GROUPS[g][0]};--bg:${GROUPS[g][1]}">${SHEEP.repeat(n)}<div class="cap">${cap}</div></div>`;
+    $("#play").innerHTML = `<div class="sd-herd" id="herd">${grp(N, 0, "", 12)}</div><div class="sd-hint" id="hint"></div><div class="opts" id="opts"></div>`;
+    const why = `${N} : ${d} = (${A} + ${B}) : ${d} = ${A / d} + ${B / d} = ${q}.`;
+    const show = () => { const h = $("#herd"); h.innerHTML = grp(A, 0, `${A} : ${d} = ${A / d}`) + grp(B, 1, `${B} : ${d} = ${B / d}`, Math.min(B, 6)); h.classList.add("split"); $("#hint").textContent = why };
+    choice({ el: $("#opts"), ok: A, opts: opts.map(a => ({ v: a, t: `${a} + ${N - a}` })),
+      onRight: () => { show(); ui.grok(`Tak! ${why} Po ${q} owiec w każdej zagrodzie.`); ui.beata("Owiec się nie kroi. Dobrze, że kawałki są równe.", "good") },
+      onWrong: v => { const a = +v, x = a % d ? a : N - a; ui.beata(`Bee… ${x} nie dzieli się po równo przez ${d}. Owiec się nie kroi!`, "bad") },
+      onReveal: () => { show(); ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // po kawałku z klawiaturą: 51 : 3 = (30 + 21) : 3, 721 : 7 = (700 + 21) : 7
+  function piecePad() {
+    let d, base, b; do { d = rnd(3, 9); base = pick([10, 100]); b = rnd(2, 9) } while (base === 10 && d * b < 10);
+    const A = d * base, B = d * b, N = A + B, ok = base + b;
+    ui.grok(`Ile to ${N} : ${d}? Podziel po kawałku.<small>${N} = ${A} + ${B}</small>`);
+    $("#play").innerHTML = `<div class="q-big">(${A} + ${B}) : ${d} = <span class="gap">?</span></div><div class="sd-hint" id="hint"></div><div id="pad"></div>`;
+    const why = `${N} : ${d} = (${A} + ${B}) : ${d} = ${base} + ${b} = ${ok}.`;
+    numPad({ el: $("#pad"), ok, max: 3,
+      onRight: () => { $("#hint").textContent = why; ui.grok(`Tak! ${why}`); ui.beata("I nic nie wybuchło.", "good") },
+      onWrong: () => { $("#hint").textContent = `${A} : ${d} = ${base}`; ui.beata(`Bee… dodaj jeszcze ${B} : ${d}.`, "bad") },
+      onReveal: () => { $("#hint").textContent = why; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // sprawdzanie mnożeniem: czy Grok dobrze policzył?
+  function checkRound() {
+    const kind = rnd(0, 2);
+    let N, D, ok;
+    if (kind === 0) { const k = rnd(1, 3); D = tens(k); N = small() * tens(k + rnd(0, 1)) }
+    else if (kind === 1) { const d = rnd(2, 9), q = rnd(2, 9), k = rnd(1, 3); D = d; N = d * q * tens(k) }
+    else { const d = rnd(2, 9), q = rnd(2, 9), m = rnd(2, 3), j = rnd(1, m - 1); D = d * tens(j); N = d * q * tens(m) }
+    ok = N / D;
+    const right = Math.random() < .5, claim = right ? ok : pick(ok % 10 === 0 ? [ok / 10, ok * 10] : [ok * 10]);
+    ui.grok(`Policzyłem: ${fmt(N)} : ${fmt(D)} = ${fmt(claim)}. Dobrze?<small>Sprawdź mnożeniem: wynik · dzielnik = dzielna.</small>`);
+    $("#play").innerHTML = `<div class="q-big">${fmt(N)} : ${fmt(D)} = ${fmt(claim)}</div><div class="sd-hint" id="hint">Sprawdzenie: ${fmt(claim)} · ${fmt(D)} = ?</div><div class="opts" id="opts"></div>`;
+    const prod = claim * D;
+    const why = right ? `${fmt(claim)} · ${fmt(D)} = ${fmt(N)}. Zgadza się!` : `${fmt(claim)} · ${fmt(D)} = ${fmt(prod)}, a nie ${fmt(N)}. Dobrze jest ${fmt(ok)}.`;
+    choice({ el: $("#opts"), ok: right ? "t" : "n", opts: yesNo("Dobrze", "Źle"),
+      onRight: () => { $("#hint").textContent = `Sprawdzenie: ${fmt(claim)} · ${fmt(D)} = ${fmt(prod)}`; ui.grok(right ? `Uff! ${why}` : `Ojej… ${why}`); ui.beata(right ? "Nie ma reszty, czyli mam wolne." : "Dobrze, że sprawdziłeś.", "good") },
+      onWrong: () => {}, tries: 1,
+      onReveal: () => { $("#hint").textContent = `Sprawdzenie: ${fmt(claim)} · ${fmt(D)} = ${fmt(prod)}`; ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [crossRound, tensPad, dividendPad, trapChoice, hayRound, bothPad, quizRound, pieceChoice, piecePad, checkRound];
+  GAMES.skresl = {
+    rounds: PLAN.length,
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 18</h4><ul>
+      <li>Dzielisz przez 10, 100, 1000? <b>Skreśl zera z końca</b>: 245 000 : 100 = 2450.</li>
+      <li>Skreślamy zera, a nie inne cyfry: 90 : 10 = 9.</li>
+      <li>Zera tylko w dzielnej: 63 000 : 7 = 9000, bo 63 : 7 = 9. A 4000 : 8 = 500, bo 40 : 8 = 5.</li>
+      <li>Zera w obu liczbach: skreśl <b>tyle samo</b> w każdej: 56 000 : 800 = 560 : 8 = 70.</li>
+      <li>Po kawałku: 72 : 3 = (60 + 12) : 3 = 20 + 4 = 24.</li>
+      <li>Sprawdzaj mnożeniem: 2450 · 100 = 245 000.</li></ul></div>`,
     round(i) { PLAN[i]() },
   };
 })();

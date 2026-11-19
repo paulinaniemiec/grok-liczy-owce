@@ -1052,5 +1052,72 @@
     "Najpierw mnożymy 8 · 5 = 40, a potem dopisujemy trzy odrzucone zera. Jedno zero jest już w liczbie 40, więc wynik ma cztery zera."
    ]
   ]
+ },
+ "18": {
+  "slug": "sprytne-dzielenie",
+  "h1": "Sprytne dzielenie w pamięci",
+  "title": "Sprytne dzielenie – klasa 4, filmik i gra | Grok liczy owce",
+  "description": "Dzielenie przez 10, 100 i 1000, skreślanie zer w obu liczbach i dzielenie po kawałku. Animowany filmik dla klasy 4 i darmowa gra.",
+  "lead": "Jak dzielić szybko w pamięci? Grok ma 72 owce i 3 zagrody. Rozdziela je po jednej i skończyłby chyba na zimę, a Kosmita od razu wie: po 24. W filmie poznajesz dzielenie przez 10, 100 i 1000, dzielenie liczb z zerami na końcu, skreślanie tyle samo zer w obu liczbach i dzielenie po kawałku. Każdy wynik sprawdzamy mnożeniem.",
+  "rozdzialy": [
+   [
+    "0:00",
+    "72 owce i 3 zagrody"
+   ],
+   [
+    "0:29",
+    "Dzielenie przez 10, 100, 1000"
+   ],
+   [
+    "1:29",
+    "Siano dla owiec: zera tylko w dzielnej"
+   ],
+   [
+    "2:17",
+    "Obie liczby mają zera"
+   ],
+   [
+    "3:10",
+    "Zagadka: 42 000 : 600"
+   ],
+   [
+    "3:44",
+    "Dzielenie „po kawałku”"
+   ],
+   [
+    "4:37",
+    "Dobranoc"
+   ]
+  ],
+  "pamietaj": [
+   "Aby podzielić liczbę z zerami na końcu przez 10, 100, 1000 i tak dalej, pomiń odpowiednią liczbę zer od końca: 245 000 : 100 = 2450.",
+   "Skreślamy zera z końca, a nie inne cyfry: 90 : 10 = 9.",
+   "Gdy zera ma tylko dzielna, podziel liczbę bez zer i dopisz zera: 63 000 : 7 = 9000, bo 63 : 7 = 9. A 4000 : 8 = 500, bo 40 : 8 = 5.",
+   "Jeśli obie liczby mają zera na końcu, skreśl tyle samo zer w każdej z nich, a iloraz się nie zmieni: 56 000 : 800 = 560 : 8 = 70.",
+   "Dzielenie po kawałku: 72 : 3 = (30 + 30 + 12) : 3 = 10 + 10 + 4 = 24.",
+   "Wynik sprawdzamy mnożeniem: 2450 · 100 = 245 000."
+  ],
+  "przyklad": {
+   "pytanie": "Grok ma 72 owce i 3 zagrody. Ile owiec trafi do każdej zagrody?",
+   "kroki": [
+    "Rozkładamy 72 na kawałki, które łatwo dzielą się przez 3: 30, 30 i 12.",
+    "30 : 3 = 10, 30 : 3 = 10 i 12 : 3 = 4.",
+    "10 + 10 + 4 = 24. W każdej zagrodzie są 24 owce. Sprawdzenie: 24 · 3 = 72."
+   ]
+  },
+  "faq": [
+   [
+    "Ile zer skreślić przy dzieleniu przez 100?",
+    "Dwa, bo 100 ma dwa zera. Skreślamy je z końca dzielnej: 245 000 : 100 = 2450. Nie skreślamy innych cyfr, więc 90 : 10 = 9, a nie 0."
+   ],
+   [
+    "Dlaczego 4000 : 8 to 500?",
+    "Samego 4 nie podzielimy przez 8, więc bierzemy 40 : 8 = 5. Zostały dwa zera, więc wynik to 500. Sprawdzenie: 8 · 500 = 4000."
+   ],
+   [
+    "Czy można skreślić zera w dzielnej i w dzielniku?",
+    "Tak, ale tyle samo w każdej liczbie. 42 000 : 600 = 420 : 6 = 70, bo w 600 są dwa zera, więc skreślamy po dwa zera."
+   ]
+  ]
  }
 }
