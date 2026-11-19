@@ -123,19 +123,21 @@ gra_block = ('<!-- SEO:START (generowane przez scripts/seo.py, nie edytuj ręczn
              + json.dumps(gra_ld, ensure_ascii=False, indent=1) + '\n</script>\n<!-- SEO:END -->')
 gra = re.sub(r"<!-- SEO:START.*?<!-- SEO:END -->", lambda _: gra_block, gra, flags=re.S) if "<!-- SEO:START" in gra \
     else gra.replace("</head>", gra_block + "\n</head>", 1)
-rows = []
-for p in sorted(pastwiska, key=lambda p: p["ep"]):
-    e = by_n.get(p["ep"])
-    kl = "klasy 4–5" if p["klasa"] == "45" else f"klasa {p['klasa']}"
-    temat = (f'<a href="{e["t"]["slug"]}/">{html.escape(e["t"]["h1"])}</a>' if e and e["t"] else html.escape(e["title"] if e else ""))
-    rows.append(f'        <li><span class="tp-n">#{p["ep"]}</span> <span class="tp-t">{temat}</span> '
-                f'<span class="tp-kl">{kl}</span> <a class="tp-game" href="#{p["key"]}" title="{html.escape(p["desc"])}">'
-                f'▶ {html.escape(p["title"])}</a></li>')
+groups = []
+for kl_key, kl_name in (("4", "Klasa 4"), ("5", "Klasa 5"), ("45", "Klasy 4–5")):
+    rows = []
+    for p in sorted((p for p in pastwiska if p["klasa"] == kl_key), key=lambda p: p["ep"]):
+        e = by_n.get(p["ep"])
+        temat = (f'<a href="{e["t"]["slug"]}/">{html.escape(e["t"]["h1"])}</a>' if e and e["t"] else html.escape(e["title"] if e else ""))
+        rows.append(f'        <li><span class="tp-n">#{p["ep"]}</span> <span class="tp-t">{temat}</span> '
+                    f'<a class="tp-game" href="#{p["key"]}" title="{html.escape(p["desc"])}">▶ {html.escape(p["title"])}</a></li>')
+    if rows:
+        groups.append(f'      <h3 class="tp-kl-h">{kl_name}</h3>\n      <ul>\n' + "\n".join(rows) + '\n      </ul>')
 tematy_block = ('<!-- TEMATY:START (generowane przez scripts/seo.py z PASTWISKA i scripts/tematy.json) -->\n'
                 '    <details class="topics">\n'
                 '      <summary><h2 id="tematy-h">Tematy z matematyki w grze</h2> <span>dla rodziców i nauczycieli</span></summary>\n'
                 '      <p>Każde pastwisko ćwiczy temat z jednego odcinka serialu. Przy każdym temacie jest film, ściąga i przykłady.</p>\n'
-                '      <ul>\n' + "\n".join(rows) + '\n      </ul>\n    </details>\n    <!-- TEMATY:END -->')
+                + "\n".join(groups) + '\n    </details>\n    <!-- TEMATY:END -->')
 gra = re.sub(r"<!-- TEMATY:START.*?<!-- TEMATY:END -->", lambda _: tematy_block, gra, flags=re.S) if "<!-- TEMATY:START" in gra \
     else gra.replace('    <p class="back-home">', "    " + tematy_block + '\n    <p class="back-home">', 1)
 open(GRA, "w", encoding="utf-8").write(gra)

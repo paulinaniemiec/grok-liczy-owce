@@ -106,8 +106,10 @@ button, a { touch-action: manipulation }
 .topics summary h2 { display: inline; margin: 0; font: 800 20px/1.2 var(--head) }
 .topics summary span { font-size: 15px; color: var(--ink-soft) }
 .topics > p { margin: 0 22px 10px; font-size: 15px; color: var(--ink-soft) }
-.topics ul { list-style: none; margin: 0; padding: 0 12px 14px; font-size: 15px }
-.topics li { display: grid; grid-template-columns: 2.6em 1fr auto auto; align-items: center; gap: 4px 12px; padding: 7px 10px; border-radius: 10px }
+.topics .tp-kl-h { margin: 14px 22px 6px; font: 800 17px/1.2 var(--head) }
+.topics ul { list-style: none; margin: 0; padding: 0 12px 6px; font-size: 15px }
+.topics ul:last-child { padding-bottom: 16px }
+.topics li { display: grid; grid-template-columns: 2.6em 1fr auto; align-items: center; gap: 4px 12px; padding: 7px 10px; border-radius: 10px }
 .topics li:nth-child(odd) { background: #f4f1fa }
 .topics .tp-n { font-weight: 900; color: var(--ink-soft) }
 .topics .tp-t a { color: var(--ink); font-weight: 800; text-decoration: none }
@@ -115,7 +117,7 @@ button, a { touch-action: manipulation }
 .topics .tp-kl { font-size: 13px; color: var(--ink-soft); white-space: nowrap }
 .topics .tp-game { font-size: 13px; font-weight: 900; color: var(--ink); text-decoration: none; border: 2px solid var(--ink); border-radius: 99px; padding: 2px 10px; white-space: nowrap }
 .topics .tp-game:hover { background: var(--ink); color: #fff }
-@media (max-width: 600px) { .topics li { grid-template-columns: 2.2em 1fr } .topics .tp-kl, .topics .tp-game { grid-column: 2; justify-self: start } }
+@media (max-width: 600px) { .topics li { grid-template-columns: 2.2em 1fr } .topics .tp-game { grid-column: 2; justify-self: start } }
 .lvl-name .kl { font-size: 13px; margin-left: 4px; position: relative; top: -3px }
 .film-btn { text-decoration: none; gap: 8px }
 .field.soon .go { background: #b9b2c9 }
@@ -406,7 +408,7 @@ html { -webkit-text-size-adjust: 100% }
    ],
    "name": "Policz stado!",
    "url": "https://grokliczyowce.pl/gra.html",
-   "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5. Pastwiska: szacowanie, oś liczbowa, cechy podzielności, liczby pierwsze i złożone, sprytne dodawanie, liczby naturalne, dzielenie pisemne, dodawanie i odejmowanie, zadania tekstowe, trójkąty, tabliczka mnożenia, sprytne odejmowanie, własności trójkątów, tabliczka dzielenia, wysokość trójkąta, sprytne mnożenie, wielka powtórka.",
+   "description": "Darmowa gra matematyczna w przeglądarce dla klas 4–5. Pastwiska: liczby naturalne, cechy podzielności, liczby pierwsze i złożone, dzielenie pisemne, oś liczbowa, dodawanie i odejmowanie, szacowanie, sprytne dodawanie, zadania tekstowe, trójkąty, sprytne odejmowanie, własności trójkątów, tabliczka mnożenia, tabliczka dzielenia, wysokość trójkąta, sprytne mnożenie, wielka powtórka.",
    "inLanguage": "pl",
    "isAccessibleForFree": true,
    "gamePlatform": "przeglądarka internetowa",
@@ -463,24 +465,31 @@ html { -webkit-text-size-adjust: 100% }
     <details class="topics">
       <summary><h2 id="tematy-h">Tematy z matematyki w grze</h2> <span>dla rodziców i nauczycieli</span></summary>
       <p>Każde pastwisko ćwiczy temat z jednego odcinka serialu. Przy każdym temacie jest film, ściąga i przykłady.</p>
+      <h3 class="tp-kl-h">Klasa 4</h3>
       <ul>
-        <li><span class="tp-n">#1</span> <span class="tp-t"><a href="liczby-naturalne/">Liczby naturalne</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#porownaj" title="Znak &lt; i &gt; otwiera paszczę w stronę większej liczby. Porównuj i licz worki kamyków.">▶ Która większa?</a></li>
-        <li><span class="tp-n">#2</span> <span class="tp-t"><a href="cechy-podzielnosci/">Cechy podzielności przez 2, 3, 4, 5, 9 i 10</a></span> <span class="tp-kl">klasa 5</span> <a class="tp-game" href="#zagrody" title="Do których zagród owce zmieszczą się po równo?">▶ Zagrody</a></li>
-        <li><span class="tp-n">#3</span> <span class="tp-t"><a href="liczby-pierwsze-i-zlozone/">Liczby pierwsze i złożone</a></span> <span class="tp-kl">klasa 5</span> <a class="tp-game" href="#prostokat" title="Ustaw owce w równe rzędy. Czy to liczba pierwsza?">▶ Stado w prostokąt</a></li>
-        <li><span class="tp-n">#4</span> <span class="tp-t"><a href="dzielenie-pisemne/">Dzielenie pisemne krok po kroku</a></span> <span class="tp-kl">klasa 5</span> <a class="tp-game" href="#snopki" title="Dziel pisemnie krok po kroku: dzielę, mnożę, odejmuję, dopisuję.">▶ Snopki dla zagród</a></li>
-        <li><span class="tp-n">#5</span> <span class="tp-t"><a href="os-liczbowa/">Oś liczbowa</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#os" title="Postaw owcę we właściwym miejscu na osi liczbowej.">▶ Owca na osi</a></li>
-        <li><span class="tp-n">#6</span> <span class="tp-t"><a href="dodawanie-i-odejmowanie/">Dodawanie i odejmowanie: składnik, suma, odjemna, odjemnik, różnica</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#zostalo" title="Składnik, suma, odjemna, odjemnik, różnica. I kto tu jest różnicą?">▶ Ile zostało?</a></li>
-        <li><span class="tp-n">#7</span> <span class="tp-t"><a href="szacowanie/">Szacowanie</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#szacowanie" title="Stado przebiega przez łąkę. Zgadnij, ile było owiec.">▶ Ile owiec?</a></li>
-        <li><span class="tp-n">#8</span> <span class="tp-t"><a href="sprytne-dodawanie/">Sprytne dodawanie w pamięci</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#pary" title="Połącz grupki owiec, które razem dają okrągłą liczbę.">▶ Okrągłe pary</a></li>
-        <li><span class="tp-n">#9</span> <span class="tp-t"><a href="powtorka-klasa-4/">Wielka powtórka: liczby naturalne i działania</a></span> <span class="tp-kl">klasy 4–5</span> <a class="tp-game" href="#final" title="Wszystko naraz i na czas. Dasz radę przed snem?">▶ Wielka powtórka</a></li>
-        <li><span class="tp-n">#10</span> <span class="tp-t"><a href="zadania-tekstowe/">Zadania tekstowe w trzech krokach</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#zadania" title="Dane, obliczenia, odpowiedź. Uważaj na zadania z haczykiem!">▶ Ile lat ma pasterz?</a></li>
-        <li><span class="tp-n">#11</span> <span class="tp-t"><a href="trojkaty/">Trójkąty: warunek trójkąta, suma kątów i rodzaje</a></span> <span class="tp-kl">klasa 5</span> <a class="tp-game" href="#trojkaty" title="Z których desek zbudujesz zagrodę? Policz trzeci kąt.">▶ Trójkątna zagroda</a></li>
-        <li><span class="tp-n">#12</span> <span class="tp-t"><a href="sprytne-odejmowanie/">Sprytne odejmowanie w pamięci</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#odejmowanie" title="Odejmuj po kawałku, przez dodawanie albo przesuń obie liczby. Bez kamyków!">▶ Sprytne odejmowanie</a></li>
-        <li><span class="tp-n">#13</span> <span class="tp-t"><a href="wlasnosci-trojkatow/">Trójkąt równoboczny, równoramienny i różnoboczny</a></span> <span class="tp-kl">klasa 5</span> <a class="tp-game" href="#rownoramienne" title="Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe!">▶ Trójkąty z kosmosu</a></li>
-        <li><span class="tp-n">#14</span> <span class="tp-t"><a href="tabliczka-mnozenia/">Tabliczka mnożenia</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#mnozenie" title="Ustaw owce w rzędy i policz je mnożeniem. Czynniki, iloczyn i „razy więcej”.">▶ Owce w rzędach</a></li>
-        <li><span class="tp-n">#15</span> <span class="tp-t"><a href="tabliczka-dzielenia/">Tabliczka dzielenia</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#dzielenie" title="Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz.">▶ Dzielna owca</a></li>
-        <li><span class="tp-n">#16</span> <span class="tp-t"><a href="wysokosc-trojkata/">Wysokość trójkąta</a></span> <span class="tp-kl">klasa 5</span> <a class="tp-game" href="#wysokosc" title="Która kreska jest wysokością? Szukaj kąta prostego, a nie pionu. Wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym.">▶ Pion Groka</a></li>
-        <li><span class="tp-n">#17</span> <span class="tp-t"><a href="sprytne-mnozenie/">Sprytne mnożenie w pamięci</a></span> <span class="tp-kl">klasa 4</span> <a class="tp-game" href="#sprytne" title="Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50!">▶ Zera na końcu</a></li>
+        <li><span class="tp-n">#1</span> <span class="tp-t"><a href="liczby-naturalne/">Liczby naturalne</a></span> <a class="tp-game" href="#porownaj" title="Znak &lt; i &gt; otwiera paszczę w stronę większej liczby. Porównuj i licz worki kamyków.">▶ Która większa?</a></li>
+        <li><span class="tp-n">#5</span> <span class="tp-t"><a href="os-liczbowa/">Oś liczbowa</a></span> <a class="tp-game" href="#os" title="Postaw owcę we właściwym miejscu na osi liczbowej.">▶ Owca na osi</a></li>
+        <li><span class="tp-n">#6</span> <span class="tp-t"><a href="dodawanie-i-odejmowanie/">Dodawanie i odejmowanie: składnik, suma, odjemna, odjemnik, różnica</a></span> <a class="tp-game" href="#zostalo" title="Składnik, suma, odjemna, odjemnik, różnica. I kto tu jest różnicą?">▶ Ile zostało?</a></li>
+        <li><span class="tp-n">#7</span> <span class="tp-t"><a href="szacowanie/">Szacowanie</a></span> <a class="tp-game" href="#szacowanie" title="Stado przebiega przez łąkę. Zgadnij, ile było owiec.">▶ Ile owiec?</a></li>
+        <li><span class="tp-n">#8</span> <span class="tp-t"><a href="sprytne-dodawanie/">Sprytne dodawanie w pamięci</a></span> <a class="tp-game" href="#pary" title="Połącz grupki owiec, które razem dają okrągłą liczbę.">▶ Okrągłe pary</a></li>
+        <li><span class="tp-n">#10</span> <span class="tp-t"><a href="zadania-tekstowe/">Zadania tekstowe w trzech krokach</a></span> <a class="tp-game" href="#zadania" title="Dane, obliczenia, odpowiedź. Uważaj na zadania z haczykiem!">▶ Ile lat ma pasterz?</a></li>
+        <li><span class="tp-n">#12</span> <span class="tp-t"><a href="sprytne-odejmowanie/">Sprytne odejmowanie w pamięci</a></span> <a class="tp-game" href="#odejmowanie" title="Odejmuj po kawałku, przez dodawanie albo przesuń obie liczby. Bez kamyków!">▶ Sprytne odejmowanie</a></li>
+        <li><span class="tp-n">#14</span> <span class="tp-t"><a href="tabliczka-mnozenia/">Tabliczka mnożenia</a></span> <a class="tp-game" href="#mnozenie" title="Ustaw owce w rzędy i policz je mnożeniem. Czynniki, iloczyn i „razy więcej”.">▶ Owce w rzędach</a></li>
+        <li><span class="tp-n">#15</span> <span class="tp-t"><a href="tabliczka-dzielenia/">Tabliczka dzielenia</a></span> <a class="tp-game" href="#dzielenie" title="Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz.">▶ Dzielna owca</a></li>
+        <li><span class="tp-n">#17</span> <span class="tp-t"><a href="sprytne-mnozenie/">Sprytne mnożenie w pamięci</a></span> <a class="tp-game" href="#sprytne" title="Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50!">▶ Zera na końcu</a></li>
+      </ul>
+      <h3 class="tp-kl-h">Klasa 5</h3>
+      <ul>
+        <li><span class="tp-n">#2</span> <span class="tp-t"><a href="cechy-podzielnosci/">Cechy podzielności przez 2, 3, 4, 5, 9 i 10</a></span> <a class="tp-game" href="#zagrody" title="Do których zagród owce zmieszczą się po równo?">▶ Zagrody</a></li>
+        <li><span class="tp-n">#3</span> <span class="tp-t"><a href="liczby-pierwsze-i-zlozone/">Liczby pierwsze i złożone</a></span> <a class="tp-game" href="#prostokat" title="Ustaw owce w równe rzędy. Czy to liczba pierwsza?">▶ Stado w prostokąt</a></li>
+        <li><span class="tp-n">#4</span> <span class="tp-t"><a href="dzielenie-pisemne/">Dzielenie pisemne krok po kroku</a></span> <a class="tp-game" href="#snopki" title="Dziel pisemnie krok po kroku: dzielę, mnożę, odejmuję, dopisuję.">▶ Snopki dla zagród</a></li>
+        <li><span class="tp-n">#11</span> <span class="tp-t"><a href="trojkaty/">Trójkąty: warunek trójkąta, suma kątów i rodzaje</a></span> <a class="tp-game" href="#trojkaty" title="Z których desek zbudujesz zagrodę? Policz trzeci kąt.">▶ Trójkątna zagroda</a></li>
+        <li><span class="tp-n">#13</span> <span class="tp-t"><a href="wlasnosci-trojkatow/">Trójkąt równoboczny, równoramienny i różnoboczny</a></span> <a class="tp-game" href="#rownoramienne" title="Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe!">▶ Trójkąty z kosmosu</a></li>
+        <li><span class="tp-n">#16</span> <span class="tp-t"><a href="wysokosc-trojkata/">Wysokość trójkąta</a></span> <a class="tp-game" href="#wysokosc" title="Która kreska jest wysokością? Szukaj kąta prostego, a nie pionu. Wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym.">▶ Pion Groka</a></li>
+      </ul>
+      <h3 class="tp-kl-h">Klasy 4–5</h3>
+      <ul>
+        <li><span class="tp-n">#9</span> <span class="tp-t"><a href="powtorka-klasa-4/">Wielka powtórka: liczby naturalne i działania</a></span> <a class="tp-game" href="#final" title="Wszystko naraz i na czas. Dasz radę przed snem?">▶ Wielka powtórka</a></li>
       </ul>
     </details>
     <!-- TEMATY:END -->
@@ -608,22 +617,22 @@ function epLink(nr) {
 
 /* ============ pastwiska ============ */
 const PASTWISKA = [
-  { key: "szacowanie", klasa: "4", nr: 1, color: "var(--orange)", title: "Ile owiec?", ep: 7, desc: "Stado przebiega przez łąkę. Zgadnij, ile było owiec.", pics: ["owca", "owca", "owca"] },
-  { key: "os", klasa: "4", nr: 2, color: "var(--blue)", title: "Owca na osi", ep: 5, desc: "Postaw owcę we właściwym miejscu na osi liczbowej.", pics: ["owca", "beata"] },
-  { key: "zagrody", klasa: "5", nr: 3, color: "var(--green)", title: "Zagrody", ep: 2, desc: "Do których zagród owce zmieszczą się po równo?", pics: ["grok", "owca", "owca"] },
-  { key: "prostokat", klasa: "5", nr: 4, color: "var(--pink)", title: "Stado w prostokąt", ep: 3, desc: "Ustaw owce w równe rzędy. Czy to liczba pierwsza?", pics: ["owca", "owca", "owca"] },
-  { key: "pary", klasa: "4", nr: 5, color: "#9b6bff", title: "Okrągłe pary", ep: 8, desc: "Połącz grupki owiec, które razem dają okrągłą liczbę.", pics: ["kosmita", "owca"] },
-  { key: "porownaj", klasa: "4", nr: 6, color: "#ff7a59", title: "Która większa?", ep: 1, desc: "Znak &lt; i &gt; otwiera paszczę w stronę większej liczby. Porównuj i licz worki kamyków.", pics: ["owca", "beata"] },
-  { key: "snopki", klasa: "5", nr: 7, color: "var(--wood)", title: "Snopki dla zagród", ep: 4, desc: "Dziel pisemnie krok po kroku: dzielę, mnożę, odejmuję, dopisuję.", pics: ["grok", "owca"] },
-  { key: "zostalo", klasa: "4", nr: 8, color: "#14b8a6", title: "Ile zostało?", ep: 6, desc: "Składnik, suma, odjemna, odjemnik, różnica. I kto tu jest różnicą?", pics: ["beata", "owca", "owca"] },
-  { key: "zadania", klasa: "4", nr: 9, color: "#e2557a", title: "Ile lat ma pasterz?", ep: 10, desc: "Dane, obliczenia, odpowiedź. Uważaj na zadania z haczykiem!", pics: ["kosmita", "grok"] },
-  { key: "trojkaty", klasa: "5", nr: 10, color: "#f59e0b", title: "Trójkątna zagroda", ep: 11, desc: "Z których desek zbudujesz zagrodę? Policz trzeci kąt.", pics: ["grok", "owca"] },
-  { key: "mnozenie", klasa: "4", nr: 11, color: "#0ea5e9", title: "Owce w rzędach", ep: 14, desc: "Ustaw owce w rzędy i policz je mnożeniem. Czynniki, iloczyn i „razy więcej”.", pics: ["kosmita", "owca", "owca"] },
+  { key: "porownaj", klasa: "4", nr: 1, color: "#ff7a59", title: "Która większa?", ep: 1, desc: "Znak &lt; i &gt; otwiera paszczę w stronę większej liczby. Porównuj i licz worki kamyków.", pics: ["owca", "beata"] },
+  { key: "zagrody", klasa: "5", nr: 2, color: "var(--green)", title: "Zagrody", ep: 2, desc: "Do których zagród owce zmieszczą się po równo?", pics: ["grok", "owca", "owca"] },
+  { key: "prostokat", klasa: "5", nr: 3, color: "var(--pink)", title: "Stado w prostokąt", ep: 3, desc: "Ustaw owce w równe rzędy. Czy to liczba pierwsza?", pics: ["owca", "owca", "owca"] },
+  { key: "snopki", klasa: "5", nr: 4, color: "var(--wood)", title: "Snopki dla zagród", ep: 4, desc: "Dziel pisemnie krok po kroku: dzielę, mnożę, odejmuję, dopisuję.", pics: ["grok", "owca"] },
+  { key: "os", klasa: "4", nr: 5, color: "var(--blue)", title: "Owca na osi", ep: 5, desc: "Postaw owcę we właściwym miejscu na osi liczbowej.", pics: ["owca", "beata"] },
+  { key: "zostalo", klasa: "4", nr: 6, color: "#14b8a6", title: "Ile zostało?", ep: 6, desc: "Składnik, suma, odjemna, odjemnik, różnica. I kto tu jest różnicą?", pics: ["beata", "owca", "owca"] },
+  { key: "szacowanie", klasa: "4", nr: 7, color: "var(--orange)", title: "Ile owiec?", ep: 7, desc: "Stado przebiega przez łąkę. Zgadnij, ile było owiec.", pics: ["owca", "owca", "owca"] },
+  { key: "pary", klasa: "4", nr: 8, color: "#9b6bff", title: "Okrągłe pary", ep: 8, desc: "Połącz grupki owiec, które razem dają okrągłą liczbę.", pics: ["kosmita", "owca"] },
+  { key: "zadania", klasa: "4", nr: 10, color: "#e2557a", title: "Ile lat ma pasterz?", ep: 10, desc: "Dane, obliczenia, odpowiedź. Uważaj na zadania z haczykiem!", pics: ["kosmita", "grok"] },
+  { key: "trojkaty", klasa: "5", nr: 11, color: "#f59e0b", title: "Trójkątna zagroda", ep: 11, desc: "Z których desek zbudujesz zagrodę? Policz trzeci kąt.", pics: ["grok", "owca"] },
   { key: "odejmowanie", klasa: "4", nr: 12, color: "#65a30d", title: "Sprytne odejmowanie", ep: 12, desc: "Odejmuj po kawałku, przez dodawanie albo przesuń obie liczby. Bez kamyków!", pics: ["owca", "owca", "beata"] },
   { key: "rownoramienne", klasa: "5", nr: 13, color: "#6366f1", title: "Trójkąty z kosmosu", ep: 13, desc: "Równoboczny, równoramienny, różnoboczny. Kąty przy podstawie są równe!", pics: ["kosmita", "beata"] },
-  { key: "dzielenie", klasa: "4", nr: 14, color: "#d946ef", title: "Dzielna owca", ep: 15, desc: "Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz.", pics: ["beata", "owca", "owca"] },
-  { key: "wysokosc", klasa: "5", nr: 15, color: "#ef4444", title: "Pion Groka", ep: 16, desc: "Która kreska jest wysokością? Szukaj kąta prostego, a nie pionu. Wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym.", pics: ["grok", "owca"] },
-  { key: "sprytne", klasa: "4", nr: 16, color: "#f97316", title: "Zera na końcu", ep: 17, desc: "Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50!", pics: ["kosmita", "owca", "owca"] },
+  { key: "mnozenie", klasa: "4", nr: 14, color: "#0ea5e9", title: "Owce w rzędach", ep: 14, desc: "Ustaw owce w rzędy i policz je mnożeniem. Czynniki, iloczyn i „razy więcej”.", pics: ["kosmita", "owca", "owca"] },
+  { key: "dzielenie", klasa: "4", nr: 15, color: "#d946ef", title: "Dzielna owca", ep: 15, desc: "Rozdziel owce po równo do zagród. Sprawdzaj mnożeniem, uważaj na zero i poznaj dzielną, dzielnik i iloraz.", pics: ["beata", "owca", "owca"] },
+  { key: "wysokosc", klasa: "5", nr: 16, color: "#ef4444", title: "Pion Groka", ep: 16, desc: "Która kreska jest wysokością? Szukaj kąta prostego, a nie pionu. Wysokości w trójkącie ostrokątnym, prostokątnym i rozwartokątnym.", pics: ["grok", "owca"] },
+  { key: "sprytne", klasa: "4", nr: 17, color: "#f97316", title: "Zera na końcu", ep: 17, desc: "Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50!", pics: ["kosmita", "owca", "owca"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
