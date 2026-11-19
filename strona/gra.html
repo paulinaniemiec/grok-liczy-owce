@@ -76,7 +76,8 @@ button, a { touch-action: manipulation }
 .field-body { padding: 14px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1 }
 .field h3 { margin: 0; font: 800 26px/1.05 var(--head) }
 .field p { margin: 0; font-size: 16px; color: var(--ink-soft) }
-.field .from { font: 900 13px/1.25 var(--body); letter-spacing: .6px; text-transform: uppercase; color: var(--ink-soft) }
+.field h3 { text-transform: uppercase; letter-spacing: .5px }
+.field .game-name { font: 800 19px/1.15 var(--head); color: var(--ink-soft) }
 .field-foot { margin-top: auto; padding-top: 10px; display: flex; align-items: center; justify-content: space-between }
 .stars { display: flex; gap: 2px }
 .stars svg { width: 28px; height: 28px; fill: #e9e4f2; stroke: var(--ink); stroke-width: 1.8; stroke-linejoin: round }
@@ -626,8 +627,8 @@ function drawMap() {
     return `<div class="field">
       <div class="field-pic">${pics}<span class="field-num" style="background:${p.color}">${p.nr}</span>${klasaTag(p.klasa)}</div>
       <div class="field-body">
-        <span class="from">Z odcinka ${p.ep}: ${o.tytul}</span>
-        <h3>${p.title}</h3><p>${p.desc}</p>
+        <h3>${o.tytul}</h3>
+        <span class="game-name">${p.title}</span><p>${p.desc}</p>
         <div class="field-foot"><div class="stars">${starsHTML(st)}</div><a class="go" href="#${p.key}">${st ? "Zagraj jeszcze raz" : "Graj"}</a></div>
         ${film}
       </div></div>`;
