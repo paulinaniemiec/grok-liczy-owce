@@ -124,17 +124,18 @@ gra_block = ('<!-- SEO:START (generowane przez scripts/seo.py, nie edytuj ręczn
 gra = re.sub(r"<!-- SEO:START.*?<!-- SEO:END -->", lambda _: gra_block, gra, flags=re.S) if "<!-- SEO:START" in gra \
     else gra.replace("</head>", gra_block + "\n</head>", 1)
 rows = []
-for p in pastwiska:
+for p in sorted(pastwiska, key=lambda p: p["ep"]):
     e = by_n.get(p["ep"])
     kl = "klasy 4–5" if p["klasa"] == "45" else f"klasa {p['klasa']}"
     temat = (f'<a href="{e["t"]["slug"]}/">{html.escape(e["t"]["h1"])}</a>' if e and e["t"] else html.escape(e["title"] if e else ""))
-    rows.append(f'      <li><a class="tp-game" href="#{p["key"]}">{html.escape(p["title"])}</a> <span>({kl})</span> – {html.escape(p["desc"])} '
-                f'Temat: {temat}, odcinek #{p["ep"]}.</li>')
+    rows.append(f'        <li><span class="tp-n">#{p["ep"]}</span> <span class="tp-t">{temat}</span> '
+                f'<span class="tp-kl">{kl}</span> <a class="tp-game" href="#{p["key"]}" title="{html.escape(p["desc"])}">'
+                f'▶ {html.escape(p["title"])}</a></li>')
 tematy_block = ('<!-- TEMATY:START (generowane przez scripts/seo.py z PASTWISKA i scripts/tematy.json) -->\n'
-                '    <section class="topics" aria-labelledby="tematy-h">\n'
-                '      <h2 id="tematy-h">Pastwiska i tematy z matematyki</h2>\n'
+                '    <details class="topics">\n'
+                '      <summary><h2 id="tematy-h">Tematy z matematyki w grze</h2> <span>dla rodziców i nauczycieli</span></summary>\n'
                 '      <p>Każde pastwisko ćwiczy temat z jednego odcinka serialu. Przy każdym temacie jest film, ściąga i przykłady.</p>\n'
-                '      <ul>\n' + "\n".join(rows) + '\n      </ul>\n    </section>\n    <!-- TEMATY:END -->')
+                '      <ul>\n' + "\n".join(rows) + '\n      </ul>\n    </details>\n    <!-- TEMATY:END -->')
 gra = re.sub(r"<!-- TEMATY:START.*?<!-- TEMATY:END -->", lambda _: tematy_block, gra, flags=re.S) if "<!-- TEMATY:START" in gra \
     else gra.replace('    <p class="back-home">', "    " + tematy_block + '\n    <p class="back-home">', 1)
 open(GRA, "w", encoding="utf-8").write(gra)
