@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 19 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 20 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Dziewiętnaście pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Dwadzieścia pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -601,6 +601,7 @@ const ODCINKI = {
   17: { tytul: "Sprytne mnożenie", url: "https://www.youtube.com/watch?v=7BR1pXLJIfM", rozdzial: "0:29", co: "Mnożenie przez 10, 100, 1000" },
   18: { tytul: "Sprytne dzielenie", url: "", rozdzial: "0:29", co: "Dzielenie przez 10, 100, 1000" },
   19: { tytul: "Równoległoboki", url: "", rozdzial: "0:24", co: "Co to jest równoległobok?" },
+  20: { tytul: "Wysokość równoległoboku", url: "", rozdzial: "1:18", co: "Wysokość równoległoboku: definicja" },
 };
 function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
@@ -637,6 +638,7 @@ const PASTWISKA = [
   { key: "sprytne", klasa: "4", nr: 17, color: "#f97316", title: "Zera na końcu", ep: 17, desc: "Mnóż sprytnie: dopisuj zera na końcu, zmieniaj kolejność i mnóż po kawałku. Uważaj na 800 · 50!", pics: ["kosmita", "owca", "owca"] },
   { key: "skresl", klasa: "4", nr: 18, color: "#2563eb", title: "Skreśl zera", ep: 18, desc: "Dziel sprytnie: skreślaj zera z końca, w obu liczbach po tyle samo, a resztę dziel po kawałku. Uważaj na 4000 : 8!", pics: ["grok", "owca", "beata"] },
   { key: "zagroda", klasa: "5", nr: 19, color: "#8b5cf6", title: "Krzywa zagroda", ep: 19, desc: "Równoległoboki, romby i kwadraty. Licz kąty w krzywej zagrodzie Groka i odróżnij romb od latawca!", pics: ["kosmita", "owca", "beata"] },
+  { key: "furtka", klasa: "5", nr: 20, color: "#0891b2", title: "Furtka Groka", ep: 20, desc: "Która kreska jest wysokością równoległoboku? Licz kratki, szukaj kąta prostego i nie myl wysokości z ukośnym bokiem!", pics: ["grok", "owca", "beata"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -3428,6 +3430,217 @@ const TRI_RYSUNKI = {};
       <li><b>Prostokąt</b> to równoległobok, który ma wszystkie kąty proste.</li>
       <li><b>Romb</b> to równoległobok o równych bokach. Przekątne przecinają się pod kątem prostym i dzielą się na połowy.</li>
       <li><b>Kwadrat</b> jest rombem z przekątnymi równej długości.</li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 20: FURTKA GROKA (odcinek 20, wysokość równoległoboku, kl. 5)
+   Czy to wysokość? Który rysunek? Odczytaj wysokość z kratek (pionową
+   i poziomą), wysokość do przedłużenia boku, na który bok opuszczona,
+   romb i równoległobok na ławce, prawda czy fałsz, furtka Groka.
+   ===================================================================== */
+(() => {
+  const css = `
+  .fu-pic { display: block; margin: 6px auto; max-width: 100%; height: auto }
+  .fu-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap }
+  .fu-row .opt { padding: 6px 8px 8px; flex-direction: column; border-radius: 20px; width: auto; height: auto }
+  .fu-row .opt svg { display: block; width: 170px; height: auto }
+  .fu-say { max-width: 600px; margin: 8px auto; background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 12px 18px; text-align: center; font: 800 clamp(20px, 3.4vw, 26px)/1.3 var(--head) }
+  .fu-hint { text-align: center; font: 800 clamp(20px, 3.6vw, 26px)/1.25 var(--head); color: var(--ink-soft); margin: 2px 0; min-height: 1.25em }
+  @media (max-width: 600px) { .fu-row .opt svg { width: 96px } .fu-row { gap: 6px } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+  const RED = "#e8506a", BLUE = "#3d9be9", INK = "#2b2340";
+  const U = 34;
+
+  function gridSvg(w, h, inner, cls = "fu-pic") {
+    const lines = [];
+    for (let i = 0; i <= w; i++) lines.push(`<line x1="${i * U}" y1="0" x2="${i * U}" y2="${h * U}" />`);
+    for (let j = 0; j <= h; j++) lines.push(`<line x1="0" y1="${j * U}" x2="${w * U}" y2="${j * U}" />`);
+    return `<svg class="${cls}" width="${w * U + 20}" height="${h * U + 20}" viewBox="-10 -10 ${w * U + 20} ${h * U + 20}">
+      <rect x="0" y="0" width="${w * U}" height="${h * U}" fill="#fff" stroke="#c9c2b3" stroke-width="2" />
+      <g stroke="#e2dccf" stroke-width="1.5">${lines.join("")}</g>${inner}</svg>`;
+  }
+  const P = ([x, y]) => `${x * U} ${y * U}`;
+  const poly = (pts, fill = "#fff6c9") => `<path d="M ${pts.map(P).join(" L ")} Z" fill="${fill}" stroke="${INK}" stroke-width="4" stroke-linejoin="round" />`;
+  const seg = (a, b, col = RED, w = 5, dash = "") => `<line x1="${a[0] * U}" y1="${a[1] * U}" x2="${b[0] * U}" y2="${b[1] * U}" stroke="${col}" stroke-width="${w}" stroke-linecap="round" ${dash ? `stroke-dasharray="${dash}"` : ""} />`;
+  // znak kąta prostego w punkcie v, ramiona w kierunkach d1, d2 (jednostkowe, w kratkach)
+  const right = (v, d1, d2, s = 0.5) => {
+    const a = [v[0] + d1[0] * s, v[1] + d1[1] * s], b = [v[0] + d2[0] * s, v[1] + d2[1] * s], c = [a[0] + d2[0] * s, a[1] + d2[1] * s];
+    return `<path d="M ${P(a)} L ${P(c)} L ${P(b)}" fill="none" stroke="${INK}" stroke-width="3" /><circle cx="${(v[0] + c[0]) / 2 * U}" cy="${(v[1] + c[1]) / 2 * U}" r="3.5" fill="${INK}" />`;
+  };
+  const letter = (p, t, dx, dy) => `<text x="${p[0] * U + dx}" y="${p[1] * U + dy}" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', serif" font-style="italic" font-weight="700" font-size="26" fill="${INK}">${t}</text>`;
+
+  // równoległobok w kratkach: dół od (x0, y1) do (x0+a, y1), góra przesunięta o s, wysokość h
+  const para = (x0, y1, a, s, h) => [[x0, y1], [x0 + a, y1], [x0 + a + s, y1 - h], [x0 + s, y1 - h]];
+
+  // 1. czy czerwony odcinek jest wysokością?
+  const CASES = [
+    { ok: true, seg: [[5, 1], [5, 5]], why: "Łączy dwa równoległe boki i jest do nich prostopadły." },
+    { ok: true, seg: [[8, 1], [8, 5]], ext: true, why: "Łączy bok z przedłużeniem drugiego boku i jest prostopadły. To też wysokość!" },
+    { ok: false, seg: [[6, 5], [8, 1]], why: "To bok równoległoboku, a nie wysokość. Nie jest prostopadły do podstawy." },
+    { ok: false, seg: [[4, 1], [4, 3]], why: "Jest prostopadły, ale nie dochodzi do drugiego boku." },
+    { ok: false, seg: [[3, 1], [5, 5]], why: "Łączy równoległe boki, ale jest ukośny, a nie prostopadły." },
+  ];
+  function isHeightRound() {
+    const q = pick(CASES), pts = para(0, 5, 6, 2, 4);
+    const ext = q.ext ? seg([6, 5], [9, 5], INK, 3, "8 7") : "";
+    const mark = q.ok ? right(q.seg[1], [0, -1], [-1, 0]) : "";
+    ui.grok(`Czy czerwony odcinek jest wysokością równoległoboku?<small>Wysokość łączy dwa równoległe boki i jest do nich prostopadła.</small>`);
+    $("#play").innerHTML = gridSvg(10, 6, ext + poly(pts) + seg(q.seg[0], q.seg[1]) + mark) + `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: q.ok ? "t" : "n", opts: yesNo(), tries: 1,
+      onRight: () => { ui.grok(`Tak! ${q.why}`); ui.beata(praise(), "good") },
+      onReveal: () => { ui.grok(`${q.ok ? "To jest wysokość." : "To nie jest wysokość."} ${q.why}`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 2. zagadka z odcinka: na którym rysunku czerwony odcinek jest wysokością?
+  function pickRound() {
+    const pts = para(0, 5, 5, 2, 4);
+    const pics = shuffle([
+      { k: "ok", inner: seg([4, 1], [4, 5]) + right([4, 5], [0, -1], [-1, 0]) },
+      { k: "side", inner: seg([5, 5], [7, 1]) },
+      { k: "short", inner: seg([4, 1], [4, 3]) },
+    ]);
+    ui.grok(`Zagadka z odcinka! Na którym rysunku czerwony odcinek jest wysokością równoległoboku?`);
+    $("#play").innerHTML = `<div class="fu-row" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: "ok", opts: pics.map((p, i) => ({ v: p.k, t: `<b>${"ABC"[i]}</b>${gridSvg(8, 6, poly(pts) + p.inner, "")}` })),
+      onRight: () => { ui.grok("Tak! Wysokość łączy dwa równoległe boki i jest do nich prostopadła."); ui.beata("Bok to nie wysokość. Furtka coś o tym wie.", "good") },
+      onWrong: v => ui.beata(v === "side" ? "Bee… to ukośny bok. Bok też jest wysoki, ale to nie wysokość!" : "Bee… ten odcinek nie dochodzi do drugiego boku.", "bad"),
+      onReveal: () => { ui.grok("Wysokość łączy dwa równoległe boki i jest do nich prostopadła."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 3. odczytaj wysokość z kratek (pionowa)
+  function readVertical() {
+    const h = rnd(3, 5), a = rnd(4, 6), s = rnd(1, 3), x0 = 1, y1 = h + 1;
+    const pts = para(x0, y1, a, s, h), hx = x0 + s + 1;
+    ui.grok(`Ile kratek ma wysokość tego równoległoboku?<small>Policz kratki wzdłuż czerwonego odcinka.</small>`);
+    $("#play").innerHTML = gridSvg(a + s + 2, h + 2, poly(pts) + seg([hx, y1 - h], [hx, y1]) + right([hx, y1], [0, -1], [-1, 0])) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: h, max: 2, tries: 2,
+      onRight: () => { ui.grok(`Tak! Wysokość ma ${h} ${pl(h, "kratkę", "kratki", "kratek")}.`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === Math.round(Math.hypot(s, h)) ? "Bee… to długość ukośnego boku. Licz wzdłuż czerwonego!" : "Bee… policz kratki jeszcze raz.", "bad"),
+      onReveal: () => { ui.grok(`Wysokość ma ${h} ${pl(h, "kratkę", "kratki", "kratek")}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 4. wysokość pozioma (równoległobok „na boku")
+  function readHorizontal() {
+    const w = rnd(3, 5), b = rnd(3, 5), s = rnd(1, 2), x0 = 1, y0 = 1;
+    // pionowe boki: lewy od (x0, y0+s) do (x0, y0+s+b), prawy przesunięty o w i w górę o s
+    const pts = [[x0, y0 + s], [x0 + w, y0], [x0 + w, y0 + b], [x0, y0 + s + b]];
+    const hy = y0 + s + 1;
+    ui.grok(`A tu? Ile kratek ma wysokość?<small>Ta wysokość jest pozioma, bo boki są pionowe.</small>`);
+    $("#play").innerHTML = gridSvg(w + 2, s + b + 2, poly(pts, "#d6ecff") + seg([x0, hy], [x0 + w, hy], BLUE) + right([x0 + w, hy], [-1, 0], [0, -1])) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: w, max: 2, tries: 2,
+      onRight: () => { ui.grok(`Tak! ${w} ${pl(w, "kratka", "kratki", "kratek")}. Wysokość nie musi być pionowa!`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… policz kratki wzdłuż niebieskiego odcinka.", "bad"),
+      onReveal: () => { ui.grok(`${w} ${pl(w, "kratka", "kratki", "kratek")}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 5. wysokość do przedłużenia boku ma tę samą długość
+  function extRound() {
+    const h = rnd(3, 5), cm = h;
+    const pts = para(0, h + 1, 5, 2, h), y1 = h + 1;
+    const inner = seg([5, y1], [9, y1], INK, 3, "8 7") + poly(pts) + seg([4, 1], [4, y1]) + right([4, y1], [0, -1], [-1, 0]) + seg([6.5, 1], [6.5, y1], BLUE) + right([6.5, y1], [0, -1], [-1, 0]);
+    ui.grok(`Czerwona wysokość ma ${cm} cm. Ile ma niebieska, opuszczona na przedłużenie boku?`);
+    $("#play").innerHTML = gridSvg(10, h + 2, inner) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: cm, unit: "cm", max: 2, tries: 2,
+      onRight: () => { ui.grok(`Tak! Też ${cm} cm. Wszystkie wysokości opuszczone na ten sam bok są równe.`); ui.beata("Jedna… dwie… dużo. I wszystkie takie same.", "good") },
+      onWrong: () => ui.beata("Bee… obie łączą te same dwa równoległe boki.", "bad"),
+      onReveal: () => { ui.grok(`${cm} cm. Wszystkie wysokości opuszczone na ten sam bok są równe.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 6. na który bok opuszczona jest wysokość?
+  function sideRound() {
+    const pts = [[1, 1], [7, 1], [9, 5], [3, 5]]; // A, D u góry; B, C na dole
+    const [A, D, Cc, B] = pts;
+    const blueCase = Math.random() < .5;
+    let inner = poly(pts) + letter(A, "A", -14, -14) + letter(D, "D", 14, -14) + letter(B, "B", -14, 16) + letter(Cc, "C", 14, 16);
+    let ok, opts;
+    if (!blueCase) {
+      inner += seg([5, 1], [5, 5]) + right([5, 5], [0, -1], [1, 0]);
+      ok = "BC"; opts = [{ v: "BC", t: "na BC (i na AD)" }, { v: "AB", t: "na AB (i na CD)" }, { v: "AC", t: "na AC" }];
+    } else {
+      // wysokość z D na bok AB
+      const k = [2 / Math.hypot(2, 4), 4 / Math.hypot(2, 4)]; // kierunek AB (od A do B)
+      const t = ((D[0] - A[0]) * k[0] + (D[1] - A[1]) * k[1]);
+      const F = [A[0] + k[0] * t, A[1] + k[1] * t];
+      inner += seg(D, F, BLUE) + right(F, [(D[0] - F[0]) / Math.hypot(D[0] - F[0], D[1] - F[1]), (D[1] - F[1]) / Math.hypot(D[0] - F[0], D[1] - F[1])], [k[0], k[1]]);
+      ok = "AB"; opts = [{ v: "AB", t: "na AB (i na CD)" }, { v: "BC", t: "na BC (i na AD)" }, { v: "AC", t: "na AC" }];
+    }
+    ui.grok(`Na który bok jest opuszczona ta wysokość?<small>Wysokość jest opuszczona na bok, do którego jest prostopadła.</small>`);
+    $("#play").innerHTML = gridSvg(10, 6, inner) + `<div class="opts col" id="opts"></div>`;
+    const why = ok === "BC" ? "Jest prostopadła do BC, a więc też do równoległego boku AD." : "Jest prostopadła do AB, a więc też do równoległego boku CD.";
+    choice({ el: $("#opts"), ok, cls: "txt", opts: shuffle(opts),
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === "AC" ? "Bee… AC to przekątna, a nie bok." : "Bee… sprawdź, do którego boku jest prostopadła.", "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 7. romb: wysokości na sąsiednie boki są równe
+  function rhombPad() {
+    const h = rnd(3, 9);
+    ui.grok(`Romb stoi na ławce. Wysokość na jeden bok ma ${h} cm. Przewracam go na sąsiedni bok. Ile ma teraz wysokość?`);
+    $("#play").innerHTML = gridSvg(9, 5, poly([[1, 4], [5, 4], [8, 1], [4, 1]], "#d6ecff") + seg([5, 1], [5, 4]) + right([5, 4], [0, -1], [-1, 0])) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: h, unit: "cm", max: 2, tries: 2,
+      onRight: () => { ui.grok(`Tak! ${h} cm. W rombie wszystkie boki są równe, więc obie wysokości też.`); ui.beata("Romb jest sprawiedliwy.", "good") },
+      onWrong: () => ui.beata("Bee… romb ma wszystkie boki równe. Wysokości też są równe!", "bad"),
+      onReveal: () => { ui.grok(`${h} cm. W rombie obie wysokości są równe.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 8. równoległobok na ławce: na krótszym boku inna wysokość
+  function benchRound() {
+    const [a, b, h1, h2] = pick([[10, 5, 4, 8], [6, 3, 2, 4], [8, 4, 3, 6], [12, 6, 5, 10]]);
+    ui.grok(`Równoległobok ma boki ${a} cm i ${b} cm. Na dłuższym boku ma ${h1} cm wysokości. Czy na krótszym boku też ma ${h1} cm?`);
+    $("#play").innerHTML = gridSvg(10, 5, poly([[0, 4], [6, 4], [8, 1], [2, 1]]) + seg([4, 1], [4, 4]) + right([4, 4], [0, -1], [-1, 0])) + `<div class="opts" id="opts"></div>`;
+    const why = `Nie. Na krótszym boku wysokość jest większa: ${h2} cm. Wysokości na sąsiednie boki są na ogół różne.`;
+    choice({ el: $("#opts"), ok: "n", opts: yesNo(), tries: 1,
+      onRight: () => { ui.grok(`Brawo! ${why}`); ui.beata("Zależy, na którym boku stoisz.", "good") },
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 9. prawda czy fałsz
+  const FACTS = [
+    ["Wysokość równoległoboku jest prostopadła do boku, na który jest opuszczona.", true, "Zawsze."],
+    ["Wysokość równoległoboku zawsze jest pionowa.", false, "Nie zawsze. Ale zawsze jest prostopadła. Można obrócić kartkę."],
+    ["Równoległobok ma tylko jedną wysokość.", false, "Ma ich bardzo dużo. Wszystkie opuszczone na ten sam bok są równe."],
+    ["Wysokość może łączyć bok z przedłużeniem drugiego boku.", true, "Tak, na przykład niebieskie wysokości z odcinka."],
+    ["Bok równoległoboku to jego wysokość.", false, "Tylko w prostokącie bok jest wysokością. Zwykle bok jest ukośny."],
+    ["W rombie wysokości opuszczone na sąsiednie boki są równe.", true, "Bo romb ma wszystkie boki równe."],
+    ["Wysokości opuszczone na sąsiednie boki równoległoboku są zawsze równe.", false, "Na ogół są różne. Równe są w rombie."],
+  ];
+  function factRound() {
+    const [t, ok, why] = pick(FACTS);
+    ui.grok("Prawda czy fałsz?");
+    $("#play").innerHTML = `<div class="fu-say">${t}</div><div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: ok ? "t" : "n", opts: yesNo("Prawda", "Fałsz"), tries: 1,
+      onRight: () => { ui.grok(`Tak! ${ok ? "Prawda." : "Fałsz."} ${why}`); ui.beata(praise(), "good") },
+      onReveal: () => { ui.grok(`${ok ? "Prawda." : "Fałsz."} ${why}`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 10. furtka Groka: wysokość jest krótsza niż ukośna deska
+  function gateRound() {
+    const [d, h] = pick([[2, "1,6"], [2.5, "2"], [3, "2,4"], [1.5, "1,2"]]);
+    const fm = v => String(v).replace(".", ",");
+    ui.grok(`Boczne deski furtki mają po ${fm(d)} m i stoją ukośnie. Ile może mieć wysokość furtki?`);
+    $("#play").innerHTML = `<svg class="fu-pic" width="360" height="220" viewBox="0 0 360 220"><rect x="0" y="196" width="360" height="24" fill="#8fcf6a" />
+      ${[[[60, 196], [240, 196]], [[60, 196], [150, 40]], [[240, 196], [330, 40]], [[150, 40], [330, 40]]].map(([a, b]) => `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#7a4e26" stroke-width="16" stroke-linecap="round" /><line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#c28a52" stroke-width="8" stroke-linecap="round" />`).join("")}
+      <line x1="200" y1="40" x2="200" y2="196" stroke="${RED}" stroke-width="5" stroke-dasharray="10 8" /><text x="222" y="120" font-family="var(--head)" font-weight="800" font-size="30" fill="${RED}">?</text></svg><div class="opts" id="opts"></div>`;
+    const ok = `${h} m`, opts = shuffle([ok, `${fm(d)} m`, `${fm(d + 0.5)} m`]);
+    choice({ el: $("#opts"), ok, opts: opts.map(t => ({ v: t, t })),
+      onRight: () => { ui.grok(`Tak! Deski stoją ukośnie, więc furtka jest niższa niż deska: ${ok}.`); ui.beata("Pierwszy raz bez guza.", "good") },
+      onWrong: v => ui.beata(v === `${fm(d)} m` ? "Bee… tyle ma deska. Ale ona stoi ukośnie! ŁUP." : "Bee… furtka nie może być wyższa niż jej deska.", "bad"),
+      onReveal: () => { ui.grok(`Furtka jest niższa niż ukośna deska: ${ok}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [isHeightRound, pickRound, readVertical, readHorizontal, extRound, sideRound, rhombPad, benchRound, factRound, gateRound];
+  GAMES.furtka = {
+    rounds: PLAN.length,
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 20</h4><ul>
+      <li><b>Wysokość równoległoboku</b> łączy dwa równoległe boki i jest do nich prostopadła.</li>
+      <li>Może też łączyć bok z <b>przedłużeniem</b> drugiego boku. Wszystkie wysokości opuszczone na ten sam bok są równe.</li>
+      <li>Wysokość jest <b>opuszczona na bok</b>, do którego jest prostopadła (np. na BC, a więc też na AD).</li>
+      <li>Wysokości na <b>sąsiednie boki</b> są na ogół różne. W rombie są równe.</li>
+      <li>Wysokość nie zawsze jest pionowa. <b>Obróć kartkę!</b></li></ul></div>`,
     round(i) { PLAN[i]() },
   };
 })();
