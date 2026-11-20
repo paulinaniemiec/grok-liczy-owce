@@ -1119,5 +1119,73 @@
     "Tak, ale tyle samo w każdej liczbie. 42 000 : 600 = 420 : 6 = 70, bo w 600 są dwa zera, więc skreślamy po dwa zera."
    ]
   ]
+ },
+ "19": {
+  "slug": "rownolegloboki",
+  "h1": "Równoległobok, romb i kwadrat",
+  "title": "Równoległoboki – klasa 5, filmik i gra | Grok liczy owce",
+  "description": "Równoległobok, jego boki i kąty, romb i jego przekątne, prostokąt i kwadrat. Animowany filmik dla klasy 5 i darmowa gra.",
+  "lead": "Co to jest równoległobok? Grok zbija prostokątną zagrodę z czterech desek, owce się o nią opierają i zagroda się przekrzywia. Zepsuła się? Nie, teraz to równoległobok! W filmie poznajesz boki i kąty równoległoboku, sprawdzasz, że prostokąt też jest równoległobokiem, wycinasz z kartki romb i uczysz się rysować równoległobok i romb w zeszycie w kratkę.",
+  "rozdzialy": [
+   [
+    "0:00",
+    "Krzywa zagroda Groka"
+   ],
+   [
+    "0:24",
+    "Co to jest równoległobok?"
+   ],
+   [
+    "1:01",
+    "Kąty równoległoboku"
+   ],
+   [
+    "1:49",
+    "Romb z kartki i kwadrat"
+   ],
+   [
+    "2:31",
+    "Zagadka: kąt 50°"
+   ],
+   [
+    "3:11",
+    "Dobra rada: rysujemy w kratkę"
+   ],
+   [
+    "3:43",
+    "Dobranoc"
+   ]
+  ],
+  "pamietaj": [
+   "Równoległobok to czworokąt, który ma dwie pary boków równoległych.",
+   "Przeciwległe boki równoległoboku mają tę samą długość.",
+   "Kąty równoległoboku leżące naprzeciwko siebie są równe.",
+   "Kąty leżące przy jednym boku równoległoboku mają w sumie 180°: jeśli kąt A ma 60°, to kąt B ma 120°.",
+   "Prostokąt też jest równoległobokiem. To równoległobok, który ma wszystkie kąty proste.",
+   "Romb to równoległobok, który ma wszystkie boki równe. Jego przekątne przecinają się pod kątem prostym i dzielą się na połowy.",
+   "Kwadrat jest rombem. W odróżnieniu od innych rombów ma przekątne równej długości."
+  ],
+  "przyklad": {
+   "pytanie": "Jeden kąt równoległoboku ma 50°. Ile mają pozostałe kąty?",
+   "kroki": [
+    "Kąt naprzeciwko jest równy: też 50°.",
+    "Kąty przy jednym boku mają w sumie 180°, więc kąt obok ma 180° − 50° = 130°.",
+    "Kąty równoległoboku: 50°, 130°, 50° i 130°."
+   ]
+  },
+  "faq": [
+   [
+    "Czy prostokąt jest równoległobokiem?",
+    "Tak. Prostokąt ma dwie pary boków równoległych, więc jest równoległobokiem. To równoległobok, który ma wszystkie kąty proste."
+   ],
+   [
+    "Czym romb różni się od kwadratu?",
+    "Romb ma wszystkie boki równe, ale jego kąty nie muszą być proste. Kwadrat jest rombem, który ma kąty proste i przekątne równej długości."
+   ],
+   [
+    "Jak narysować romb w zeszycie w kratkę?",
+    "Zacznij od przekątnych: jednej pionowej i jednej poziomej. Muszą się przecinać w połowie każdej z nich. Potem połącz ich końce."
+   ]
+  ]
  }
 }
