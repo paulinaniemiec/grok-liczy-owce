@@ -1257,5 +1257,80 @@
     "Przyłóż ekierkę do boku tak, żeby drugi bok ekierki doszedł do przeciwległego boku. Najłatwiej, gdy wysokość jest pionowa, więc możesz obrócić kartkę."
    ]
   ]
+ },
+ "21": {
+  "slug": "trapezy",
+  "h1": "Trapezy: podstawy, ramiona i wysokość",
+  "title": "Trapezy – klasa 5, filmik i gra | Grok liczy owce",
+  "description": "Trapez, jego podstawy i ramiona, kąty przy ramieniu, wysokość, trapez równoramienny i prostokątny. Animowany filmik dla klasy 5 i darmowa gra.",
+  "lead": "Co to jest trapez? Grok tnie długą deskę na kawałki do płotu i wszystkie wychodzą mu krzywe. Kosmita mówi, że to trapezy! W filmie tniemy pasek papieru, poznajemy podstawy i ramiona trapezu, sprawdzamy, że kąty przy jednym ramieniu dają razem 180°, rysujemy wysokość i poznajemy trapez równoramienny i prostokątny. Dowiadujemy się też, że każdy równoległobok jest trapezem.",
+  "rozdzialy": [
+   [
+    "0:00",
+    "Krzywe kawałki deski"
+   ],
+   [
+    "0:19",
+    "Tniemy pasek papieru"
+   ],
+   [
+    "0:52",
+    "Trapez: podstawy i ramiona"
+   ],
+   [
+    "1:17",
+    "Kąty i wysokość trapezu"
+   ],
+   [
+    "1:45",
+    "Zagadka 1: kąt 70°"
+   ],
+   [
+    "2:15",
+    "Trapez równoramienny"
+   ],
+   [
+    "2:35",
+    "Trapez prostokątny"
+   ],
+   [
+    "2:49",
+    "Zagadka 2: co nie jest trapezem?"
+   ],
+   [
+    "3:11",
+    "Dobranoc"
+   ]
+  ],
+  "pamietaj": [
+   "Trapez to czworokąt, który ma jedną lub dwie pary boków równoległych. Każdy równoległobok też jest trapezem.",
+   "Równoległe boki trapezu nazywamy podstawami, a pozostałe boki ramionami.",
+   "Kąty leżące przy jednym ramieniu trapezu mają w sumie 180°.",
+   "Wysokość trapezu rysujemy tylko między podstawami. Łączy je (albo ich przedłużenia) i jest do nich prostopadła.",
+   "Trapez równoramienny ma równe ramiona i oś symetrii. Kąty przy tej samej podstawie są równe.",
+   "Trapez prostokątny ma przynajmniej jedno ramię prostopadłe do podstaw. To ramię jest jednocześnie wysokością."
+  ],
+  "przyklad": {
+   "pytanie": "Kąt A przy ramieniu AD trapezu ma 70°. Ile ma kąt D?",
+   "kroki": [
+    "Kąty A i D leżą przy jednym ramieniu AD.",
+    "Kąty przy jednym ramieniu mają w sumie 180°.",
+    "180° − 70° = 110°. Kąt D ma 110°."
+   ]
+  },
+  "faq": [
+   [
+    "Czy równoległobok jest trapezem?",
+    "Tak. Trapez to czworokąt, który ma jedną lub dwie pary boków równoległych. Równoległobok ma dwie pary, więc też jest trapezem."
+   ],
+   [
+    "Co to są podstawy i ramiona trapezu?",
+    "Podstawy to równoległe boki trapezu. Ramiona to dwa pozostałe boki."
+   ],
+   [
+    "Czym różni się trapez równoramienny od prostokątnego?",
+    "Trapez równoramienny ma równe ramiona i oś symetrii. Trapez prostokątny ma ramię prostopadłe do podstaw, które jest jednocześnie wysokością."
+   ]
+  ]
  }
 }
