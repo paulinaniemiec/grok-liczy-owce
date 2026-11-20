@@ -1187,5 +1187,75 @@
     "Zacznij od przekątnych: jednej pionowej i jednej poziomej. Muszą się przecinać w połowie każdej z nich. Potem połącz ich końce."
    ]
   ]
+ },
+ "20": {
+  "slug": "wysokosc-rownolegloboku",
+  "h1": "Wysokość równoległoboku",
+  "title": "Wysokość równoległoboku – klasa 5, filmik i gra | Grok liczy owce",
+  "description": "Wysokość równoległoboku i rombu: prostopadła do dwóch równoległych boków, do przedłużenia boku, na sąsiednie boki. Filmik dla klasy 5 i gra.",
+  "lead": "Co to jest wysokość równoległoboku? Grok robi furtkę z desek po 2 metry i jest pewny, że się zmieści. Łup! W filmie mierzymy wysokość pionem, stawiamy tekturowy równoległobok i romb na brzegu ławki, poznajemy wysokości opuszczone na boki i do przedłużenia boku, a na koniec rysujemy wysokość po obróceniu kartki.",
+  "rozdzialy": [
+   [
+    "0:00",
+    "Furtka Groka"
+   ],
+   [
+    "0:24",
+    "Pion i 1,6 metra"
+   ],
+   [
+    "0:44",
+    "Równoległobok i romb na ławce"
+   ],
+   [
+    "1:18",
+    "Wysokość równoległoboku: definicja"
+   ],
+   [
+    "1:45",
+    "Wysokość opuszczona na bok"
+   ],
+   [
+    "2:10",
+    "Zagadka: który odcinek jest wysokością?"
+   ],
+   [
+    "2:32",
+    "Dobra rada: obróć kartkę"
+   ],
+   [
+    "2:51",
+    "Dobranoc"
+   ]
+  ],
+  "pamietaj": [
+   "Wysokość równoległoboku to odcinek, który łączy dwa równoległe boki i jest do nich prostopadły.",
+   "Wysokość może też łączyć bok z przedłużeniem drugiego boku. Wszystkie wysokości opuszczone na ten sam bok mają tę samą długość.",
+   "Wysokość jest opuszczona na bok, do którego jest prostopadła, na przykład na bok BC, a więc też na bok AD.",
+   "Wysokości opuszczone na sąsiednie boki są na ogół różnej długości. W rombie są równe.",
+   "Wysokość najłatwiej narysować, gdy jest pionowa. Jeśli nie jest, obróć kartkę."
+  ],
+  "przyklad": {
+   "pytanie": "Równoległobok ma boki 10 cm i 5 cm. Stoi na dłuższym boku i ma 4 cm wysokości. Co się stanie, gdy postawimy go na krótszym boku?",
+   "kroki": [
+    "Mierzymy pionem i linijką wysokość opuszczoną na krótszy bok.",
+    "Wychodzi 8 cm, a nie 4 cm.",
+    "Wysokości opuszczone na sąsiednie boki równoległoboku są na ogół różne."
+   ]
+  },
+  "faq": [
+   [
+    "Czy bok równoległoboku jest jego wysokością?",
+    "Nie. Bok jest zwykle ukośny, a wysokość jest prostopadła do dwóch równoległych boków. Tylko w prostokącie bok jest jednocześnie wysokością."
+   ],
+   [
+    "Ile wysokości ma równoległobok?",
+    "Bardzo dużo. Wszystkie wysokości opuszczone na ten sam bok mają tę samą długość. Wysokości opuszczone na sąsiednie boki są na ogół różne."
+   ],
+   [
+    "Jak narysować wysokość równoległoboku?",
+    "Przyłóż ekierkę do boku tak, żeby drugi bok ekierki doszedł do przeciwległego boku. Najłatwiej, gdy wysokość jest pionowa, więc możesz obrócić kartkę."
+   ]
+  ]
  }
 }
