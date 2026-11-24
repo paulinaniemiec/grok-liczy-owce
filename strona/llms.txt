@@ -24,6 +24,7 @@ W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darm
 - [#15 Tabliczka dzielenia (matematyka klasa 4, 4:43)](https://www.youtube.com/watch?v=HP6u5QTtBAQ): 24 owce i 4 zagrody. Dzielenie z pomocą tabliczki mnożenia: dzielna, dzielnik, iloraz i dlaczego przez 0 nie dzielimy. Gra do odcinka: https://grokliczyowce.pl/gra.html#dzielenie („Dzielna owca”). Opis, ściąga i przykłady: https://grokliczyowce.pl/tabliczka-dzielenia/
 - [#16 Wysokość trójkąta (matematyka klasa 5, 3:44)](https://www.youtube.com/watch?v=XWtTRl0ZYgE): Deska ma 3 m, a szałas? Wysokość trójkąta: zawsze prostopadła, nie zawsze pionowa. Trzy wysokości w każdym trójkącie. Gra do odcinka: https://grokliczyowce.pl/gra.html#wysokosc („Pion Groka”). Opis, ściąga i przykłady: https://grokliczyowce.pl/wysokosc-trojkata/
 - [#17 Sprytne mnożenie (matematyka klasa 4, 5:21)](https://www.youtube.com/watch?v=7BR1pXLJIfM): 12 rzędów po 6 owiec. Mnożenie przez 10, 100 i 1000, zera na końcu, dowolna kolejność i mnożenie po kawałku. Gra do odcinka: https://grokliczyowce.pl/gra.html#sprytne („Zera na końcu”). Opis, ściąga i przykłady: https://grokliczyowce.pl/sprytne-mnozenie/
+- [#18 Sprytne dzielenie (matematyka klasa 4, 5:00)](https://www.youtube.com/watch?v=zY1Jd6aauQw): 72 owce i 3 zagrody. Dzielenie przez 10, 100 i 1000, skreślanie zer w obu liczbach i dzielenie po kawałku. Gra do odcinka: https://grokliczyowce.pl/gra.html#skresl („Skreśl zera”). Opis, ściąga i przykłady: https://grokliczyowce.pl/sprytne-dzielenie/
 
 ## Materiały
 
