@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Policz stado! · darmowa gra matematyczna dla klas 4–5 · Grok liczy owce</title>
-<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 20 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
+<meta name="description" content="Darmowa gra matematyczna dla klas 4–5: 21 pastwisk z owcami, od tabliczki mnożenia po trójkąty. Bez logowania, na telefonie i tablicy interaktywnej.">
 <link rel="canonical" href="https://grokliczyowce.pl/gra.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grok liczy owce">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://grokliczyowce.pl/gra.html">
 <meta property="og:title" content="Policz stado! · gra matematyczna z Grokiem i owcą Beatą">
-<meta property="og:description" content="Dwadzieścia pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
+<meta property="og:description" content="Dwadzieścia jeden pastwisk z tematami z matematyki klas 4–5. Zbierz wszystkie gwiazdki, zanim Beata zaśnie!">
 <meta property="og:image" content="https://grokliczyowce.pl/img/odc-07.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7cc8f2">
@@ -605,6 +605,7 @@ const ODCINKI = {
   18: { tytul: "Sprytne dzielenie", url: "https://www.youtube.com/watch?v=zY1Jd6aauQw", rozdzial: "0:29", co: "Dzielenie przez 10, 100, 1000" },
   19: { tytul: "Równoległoboki", url: "https://www.youtube.com/watch?v=cwVpKYGds_I", rozdzial: "0:24", co: "Co to jest równoległobok?" },
   20: { tytul: "Wysokość równoległoboku", url: "https://www.youtube.com/watch?v=mK2WGvtaZOI", rozdzial: "1:18", co: "Wysokość równoległoboku: definicja" },
+  21: { tytul: "Trapezy", url: "", rozdzial: "0:52", co: "Trapez: podstawy i ramiona" },
 };
 function epHref(nr, chapter = true) {
   const o = ODCINKI[nr];
@@ -642,6 +643,7 @@ const PASTWISKA = [
   { key: "skresl", klasa: "4", nr: 18, color: "#2563eb", title: "Skreśl zera", ep: 18, desc: "Dziel sprytnie: skreślaj zera z końca, w obu liczbach po tyle samo, a resztę dziel po kawałku. Uważaj na 4000 : 8!", pics: ["grok", "owca", "beata"] },
   { key: "zagroda", klasa: "5", nr: 19, color: "#8b5cf6", title: "Krzywa zagroda", ep: 19, desc: "Równoległoboki, romby i kwadraty. Licz kąty w krzywej zagrodzie Groka i odróżnij romb od latawca!", pics: ["kosmita", "owca", "beata"] },
   { key: "furtka", klasa: "5", nr: 20, color: "#0891b2", title: "Furtka Groka", ep: 20, desc: "Która kreska jest wysokością równoległoboku? Licz kratki, szukaj kąta prostego i nie myl wysokości z ukośnym bokiem!", pics: ["grok", "owca", "beata"] },
+  { key: "trapez", klasa: "5", nr: 21, color: "#d97706", title: "Krzywa deska", ep: 21, desc: "Trapezy z krzywo pociętej deski: podstawy, ramiona, kąty przy ramieniu i wysokość. Równoramienny czy prostokątny?", pics: ["grok", "kosmita", "owca"] },
   { key: "final", klasa: "45", nr: "★", color: "var(--night)", title: "Wielka powtórka", ep: 9, desc: "Wszystko naraz i na czas. Dasz radę przed snem?", pics: ["beata", "owca-spi"] },
 ];
 
@@ -3644,6 +3646,220 @@ const TRI_RYSUNKI = {};
       <li>Wysokość jest <b>opuszczona na bok</b>, do którego jest prostopadła (np. na BC, a więc też na AD).</li>
       <li>Wysokości na <b>sąsiednie boki</b> są na ogół różne. W rombie są równe.</li>
       <li>Wysokość nie zawsze jest pionowa. <b>Obróć kartkę!</b></li></ul></div>`,
+    round(i) { PLAN[i]() },
+  };
+})();
+
+/* =====================================================================
+   PASTWISKO 21: KRZYWA DESKA (odcinek 21, trapezy, klasa 5)
+   Czy to trapez? Podstawa czy ramię? Kąty przy ramieniu (180°),
+   trapez równoramienny, wysokość z kratek, rodzaj trapezu, gdzie
+   rysujemy wysokość, zagadka z odcinka, prawda czy fałsz, pasek.
+   ===================================================================== */
+(() => {
+  const css = `
+  .tz-pic { display: block; margin: 6px auto; max-width: 100%; height: auto }
+  .tz-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap }
+  .tz-row .opt { padding: 6px 8px 8px; flex-direction: column; border-radius: 20px; width: auto; height: auto }
+  .tz-row .opt svg { display: block; width: 170px; height: auto }
+  .tz-say { max-width: 600px; margin: 8px auto; background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 12px 18px; text-align: center; font: 800 clamp(20px, 3.4vw, 26px)/1.3 var(--head) }
+  @media (max-width: 600px) { .tz-row .opt svg { width: 96px } .tz-row { gap: 6px } }
+  `;
+  document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+  const RED = "#e8506a", BLUE = "#3d9be9", GREEN = "#7cb82f", INK = "#2b2340";
+  const U = 34, rad = d => d * Math.PI / 180;
+
+  function gridSvg(w, h, inner, cls = "tz-pic") {
+    const lines = [];
+    for (let i = 0; i <= w; i++) lines.push(`<line x1="${i * U}" y1="0" x2="${i * U}" y2="${h * U}" />`);
+    for (let j = 0; j <= h; j++) lines.push(`<line x1="0" y1="${j * U}" x2="${w * U}" y2="${j * U}" />`);
+    return `<svg class="${cls}" width="${w * U + 20}" height="${h * U + 20}" viewBox="-10 -10 ${w * U + 20} ${h * U + 20}">
+      <rect x="0" y="0" width="${w * U}" height="${h * U}" fill="#fff" stroke="#c9c2b3" stroke-width="2" />
+      <g stroke="#e2dccf" stroke-width="1.5">${lines.join("")}</g>${inner}</svg>`;
+  }
+  const P = ([x, y]) => `${x * U} ${y * U}`;
+  const poly = (pts, fill = "#fff6c9") => `<path d="M ${pts.map(P).join(" L ")} Z" fill="${fill}" stroke="${INK}" stroke-width="4" stroke-linejoin="round" />`;
+  const seg = (a, b, col = RED, w = 6, dash = "") => `<line x1="${a[0] * U}" y1="${a[1] * U}" x2="${b[0] * U}" y2="${b[1] * U}" stroke="${col}" stroke-width="${w}" stroke-linecap="round" ${dash ? `stroke-dasharray="${dash}"` : ""} />`;
+  const right = (v, d1, d2, s = 0.5) => {
+    const a = [v[0] + d1[0] * s, v[1] + d1[1] * s], b = [v[0] + d2[0] * s, v[1] + d2[1] * s], c = [a[0] + d2[0] * s, a[1] + d2[1] * s];
+    return `<path d="M ${P(a)} L ${P(c)} L ${P(b)}" fill="none" stroke="${INK}" stroke-width="3" /><circle cx="${(v[0] + c[0]) / 2 * U}" cy="${(v[1] + c[1]) / 2 * U}" r="3.5" fill="${INK}" />`;
+  };
+
+  // 1. czy to trapez?
+  const QUADS = [
+    { pts: [[0, 5], [8, 5], [6, 1], [2, 1]], ok: true, why: "Ma jedną parę boków równoległych." },
+    { pts: [[0, 5], [7, 5], [7, 1], [3, 1]], ok: true, why: "To trapez prostokątny." },
+    { pts: [[1, 5], [5, 5], [8, 1], [0, 1]], ok: true, why: "Górny i dolny bok są równoległe." },
+    { pts: [[0, 5], [6, 5], [8, 1], [2, 1]], ok: true, why: "To równoległobok, a każdy równoległobok jest trapezem!" },
+    { pts: [[1, 5], [8, 5], [8, 1], [1, 1]], ok: true, why: "Prostokąt ma dwie pary boków równoległych, więc też jest trapezem." },
+    { pts: [[4, 0], [7, 2], [4, 6], [1, 2]], ok: false, why: "To latawiec. Nie ma żadnej pary boków równoległych." },
+    { pts: [[0, 5], [7, 5], [8, 1], [1, 2]], ok: false, why: "Żadne dwa boki nie są równoległe." },
+  ];
+  function isTrapRound() {
+    const q = pick(QUADS);
+    ui.grok(`Odciąłem taki kawałek deski. Czy to trapez?<small>Trapez ma jedną lub dwie pary boków równoległych.</small>`);
+    $("#play").innerHTML = gridSvg(9, 6, poly(q.pts)) + `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: q.ok ? "t" : "n", opts: yesNo(), tries: 1,
+      onRight: () => { ui.grok(`Tak! ${q.why}`); ui.beata(praise(), "good") },
+      onReveal: () => { ui.grok(`${q.ok ? "To jest trapez." : "To nie jest trapez."} ${q.why}`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 2. podstawa czy ramię?
+  function partRound() {
+    const pts = [[0, 5], [8, 5], [6, 1], [2, 1]], sides = [[0, 1], [1, 2], [2, 3], [3, 0]];
+    const k = rnd(0, 3), [i, j] = sides[k], ok = k % 2 === 0 ? "p" : "r";
+    ui.grok(`Jak się nazywa czerwony bok tego trapezu?`);
+    $("#play").innerHTML = gridSvg(8, 6, poly(pts) + seg(pts[i], pts[j], RED, 8)) + `<div class="opts" id="opts"></div>`;
+    const why = ok === "p" ? "To podstawa: jest równoległa do drugiej podstawy." : "To ramię: ramiona to boki, które nie są podstawami.";
+    choice({ el: $("#opts"), ok, opts: [{ v: "p", t: "podstawa" }, { v: "r", t: "ramię" }], tries: 1,
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // trapez z kątem phi przy A (px) z łukami
+  function trapSvg(phi, { iso = false, labels = {} } = {}) {
+    const h = 140, A = [40, 40 + h], B = [iso ? 40 + 2 * h / Math.tan(rad(phi)) + 140 : 380, A[1]];
+    const D = [A[0] + h / Math.tan(rad(phi)), A[1] - h], C = iso ? [B[0] - h / Math.tan(rad(phi)), D[1]] : [D[0] + 120, D[1]];
+    const W = Math.max(B[0], C[0]) + 50, H = A[1] + 40;
+    const arc = (v, a0, a1, r, col) => {
+      const p0 = [v[0] + r * Math.cos(rad(a0)), v[1] - r * Math.sin(rad(a0))], p1 = [v[0] + r * Math.cos(rad(a1)), v[1] - r * Math.sin(rad(a1))];
+      return `<path d="M ${v[0]} ${v[1]} L ${p0[0]} ${p0[1]} A ${r} ${r} 0 0 0 ${p1[0]} ${p1[1]} Z" fill="${col}" opacity=".45" />`;
+    };
+    const lab = (v, deg, r, t) => `<text x="${v[0] + r * Math.cos(rad(deg))}" y="${v[1] - r * Math.sin(rad(deg))}" text-anchor="middle" dominant-baseline="central" font-family="var(--head)" font-weight="800" font-size="24" fill="${INK}">${t}</text>`;
+    const bAng = Math.atan2(A[1] - C[1], C[0] - B[0]) * 180 / Math.PI; // kąt ramienia BC z poziomem (od strony B, w stronę C)
+    const ang = { A: [A, 0, phi, GREEN], D: [D, 180 + phi, 360, BLUE], B: [B, bAng, 180, iso ? GREEN : "#f2c94c"] };
+    let marks = "";
+    for (const k of Object.keys(labels)) { const [v, a0, a1, col] = ang[k]; marks += arc(v, a0, a1, 32, col) + lab(v, (a0 + a1) / 2, 58, labels[k]) }
+    const letter = (v, dx, dy, t) => `<text x="${v[0] + dx}" y="${v[1] + dy}" text-anchor="middle" dominant-baseline="central" font-family="'Times New Roman', serif" font-style="italic" font-weight="700" font-size="26" fill="${INK}">${t}</text>`;
+    return `<svg class="tz-pic" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><path d="M ${A} L ${B} L ${C} L ${D} Z" fill="#fff6c9" stroke="${INK}" stroke-width="4" stroke-linejoin="round" />${marks}
+      ${letter(A, -16, 16, "A") + letter(B, 16, 16, "B") + letter(C, 16, -14, "C") + letter(D, -16, -14, "D")}</svg>`;
+  }
+
+  // 3. kąty przy jednym ramieniu
+  function armPad() {
+    const x = rnd(8, 16) * 5;
+    ui.grok(`Kąt A ma ${x}°. Ile ma kąt D?<small>Kąty przy jednym ramieniu mają w sumie 180°.</small>`);
+    $("#play").innerHTML = trapSvg(x, { labels: { A: `${x}°`, D: "?" } }) + `<div id="pad"></div>`;
+    const ok = 180 - x;
+    numPad({ el: $("#pad"), ok, unit: "°", max: 3, tries: 2,
+      onRight: () => { ui.grok(`Tak! 180° − ${x}° = ${ok}°.`); ui.beata("Bez kamyków. Rekord.", "good") },
+      onWrong: v => ui.beata(v === x ? "Bee… kąty przy ramieniu nie są równe. Dają razem 180°!" : "Bee… policz 180° minus kąt A.", "bad"),
+      onReveal: () => { ui.grok(`180° − ${x}° = ${ok}°.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 4. trapez równoramienny: kąty przy tej samej podstawie są równe
+  function isoPad() {
+    const x = rnd(9, 15) * 5, askB = Math.random() < .5, ok = askB ? x : 180 - x;
+    ui.grok(`To trapez równoramienny. Kąt A ma ${x}°. Ile ma kąt ${askB ? "B" : "D"}?`);
+    $("#play").innerHTML = trapSvg(x, { iso: true, labels: askB ? { A: `${x}°`, B: "?" } : { A: `${x}°`, D: "?" } }) + `<div class="tz-say" style="font-size:20px">AD = BC</div><div id="pad"></div>`;
+    const why = askB ? `Kąty przy tej samej podstawie są równe: kąt B też ma ${x}°.` : `Kąty przy jednym ramieniu dają 180°: 180° − ${x}° = ${ok}°.`;
+    numPad({ el: $("#pad"), ok, unit: "°", max: 3, tries: 2,
+      onRight: () => { ui.grok(`Tak! ${why}`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata(askB ? "Bee… złóż trapez wzdłuż osi symetrii. Kąty A i B się pokryją!" : "Bee… A i D leżą przy jednym ramieniu.", "bad"),
+      onReveal: () => { ui.grok(why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 5. wysokość z kratek
+  function heightPad() {
+    const h = rnd(3, 5), y1 = h + 1, b = rnd(6, 8), t0 = rnd(1, 2), t1 = rnd(t0 + 2, b - 1);
+    const pts = [[0, y1], [b, y1], [t1, 1], [t0, 1]], hx = t0 + 1;
+    ui.grok(`Ile kratek ma wysokość tego trapezu?`);
+    $("#play").innerHTML = gridSvg(b + 1, h + 2, poly(pts) + seg([hx, 1], [hx, y1], GREEN) + right([hx, y1], [0, -1], [1, 0])) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: h, max: 2, tries: 2,
+      onRight: () => { ui.grok(`Tak! ${h} ${pl(h, "kratka", "kratki", "kratek")}.`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… licz kratki wzdłuż zielonego odcinka.", "bad"),
+      onReveal: () => { ui.grok(`${h} ${pl(h, "kratka", "kratki", "kratek")}.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 6. jaki to trapez?
+  const KINDS = [
+    { pts: [[1, 5], [7, 5], [5, 1], [3, 1]], ok: "iso", why: "Ramiona są równe i ma oś symetrii." },
+    { pts: [[0, 5], [8, 5], [6, 1], [2, 1]], ok: "iso", why: "Ramiona są równe i ma oś symetrii." },
+    { pts: [[1, 5], [8, 5], [4, 1], [1, 1]], ok: "right", why: "Lewe ramię jest prostopadłe do podstaw." },
+    { pts: [[0, 5], [7, 5], [7, 1], [4, 1]], ok: "right", why: "Prawe ramię jest prostopadłe do podstaw." },
+    { pts: [[0, 5], [8, 5], [4, 1], [1, 1]], ok: "plain", why: "Ramiona nie są równe i żadne nie jest prostopadłe do podstaw." },
+  ];
+  function kindRound() {
+    const q = pick(KINDS);
+    ui.grok(`Jaki to trapez?<small>Policz kratki i sprawdź kąty.</small>`);
+    $("#play").innerHTML = gridSvg(9, 6, poly(q.pts, "#d6ecff")) + `<div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: q.ok, cls: "sm", opts: [{ v: "iso", t: "równoramienny" }, { v: "right", t: "prostokątny" }, { v: "plain", t: "zwykły" }],
+      onRight: () => { ui.grok(`Tak! ${q.why}`); ui.beata(praise(), "good") },
+      onWrong: () => ui.beata("Bee… sprawdź ramiona: równe? prostopadłe?", "bad"),
+      onReveal: () => { ui.grok(q.why); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 7. gdzie jest wysokość?
+  function whereRound() {
+    const pts = [[0, 5], [8, 5], [6, 1], [2, 1]];
+    const pics = shuffle([
+      { k: "ok", inner: seg([4, 1], [4, 5], GREEN) + right([4, 5], [0, -1], [1, 0]) },
+      { k: "arms", inner: seg([1, 3], [7, 3], GREEN) },
+      { k: "slant", inner: seg([3, 1], [5.5, 5], GREEN) },
+    ]);
+    ui.grok(`Na którym rysunku zielony odcinek jest wysokością trapezu?`);
+    $("#play").innerHTML = `<div class="tz-row" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: "ok", opts: pics.map((p, i) => ({ v: p.k, t: `<b>${"ABC"[i]}</b>${gridSvg(8, 6, poly(pts) + p.inner, "")}` })),
+      onRight: () => { ui.grok("Tak! Wysokość łączy podstawy i jest do nich prostopadła."); ui.beata(praise(), "good") },
+      onWrong: v => ui.beata(v === "arms" ? "Bee… ramiona nie są równoległe. Tam wysokości nie ma." : "Bee… ten odcinek jest ukośny, a nie prostopadły.", "bad"),
+      onReveal: () => { ui.grok("Wysokość łączy podstawy i jest do nich prostopadła."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 8. zagadka z odcinka: który nie jest trapezem?
+  function quizRound() {
+    const pics = shuffle([
+      { k: "para", inner: poly([[0, 5], [5, 5], [7, 1], [2, 1]]) },
+      { k: "right", inner: poly([[0, 5], [7, 5], [4, 1], [0, 1]]) + right([0, 5], [0, -1], [1, 0]) + right([0, 1], [1, 0], [0, 1]) },
+      { k: "none", inner: poly([[0, 5], [7, 5.5], [6, 0.5], [2, 1.5]]) },
+    ]);
+    ui.grok(`Zagadka z odcinka! Który czworokąt NIE jest trapezem?`);
+    $("#play").innerHTML = `<div class="tz-row" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: "none", opts: pics.map((p, i) => ({ v: p.k, t: `<b>${"ABC"[i]}</b>${gridSvg(8, 6, p.inner, "")}` })),
+      onRight: () => { ui.grok("Tak! Ten nie ma żadnej pary boków równoległych."); ui.beata("Krzywa zagroda już się nie obraża.", "good") },
+      onWrong: v => ui.beata(v === "para" ? "Bee… równoległobok też jest trapezem! Ma nawet dwie pary boków równoległych." : "Bee… trapez prostokątny to też trapez.", "bad"),
+      onReveal: () => { ui.grok("Trapezem nie jest czworokąt, który nie ma żadnej pary boków równoległych."); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 9. prawda czy fałsz
+  const FACTS = [
+    ["Każdy równoległobok jest trapezem.", true, "Ma dwie pary boków równoległych, a trapez musi mieć co najmniej jedną."],
+    ["Równoległe boki trapezu nazywamy ramionami.", false, "Równoległe boki to podstawy. Ramiona to pozostałe boki."],
+    ["Kąty przy jednym ramieniu trapezu mają w sumie 180°.", true, "Na przykład 70° i 110°."],
+    ["Wysokość trapezu może łączyć jego ramiona.", false, "Wysokość rysujemy tylko między podstawami."],
+    ["Trapez równoramienny ma oś symetrii.", true, "Po złożeniu wzdłuż niej kąty przy podstawie się pokrywają."],
+    ["W trapezie prostokątnym jedno ramię jest wysokością.", true, "To ramię, które jest prostopadłe do podstaw."],
+    ["Każdy trapez ma kąty proste.", false, "Kąty proste ma tylko trapez prostokątny."],
+  ];
+  function factRound() {
+    const [t, ok, why] = pick(FACTS);
+    ui.grok("Prawda czy fałsz?");
+    $("#play").innerHTML = `<div class="tz-say">${t}</div><div class="opts" id="opts"></div>`;
+    choice({ el: $("#opts"), ok: ok ? "t" : "n", opts: yesNo("Prawda", "Fałsz"), tries: 1,
+      onRight: () => { ui.grok(`Tak! ${ok ? "Prawda." : "Fałsz."} ${why}`); ui.beata(praise(), "good") },
+      onReveal: () => { ui.grok(`${ok ? "Prawda." : "Fałsz."} ${why}`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  // 10. pasek: każdy kawałek ma tę samą wysokość
+  function stripPad() {
+    const wcm = rnd(2, 6);
+    ui.grok(`Pociąłem pasek o szerokości ${wcm} cm na krzywe kawałki. Ile cm ma wysokość tego kawałka?`);
+    const pts = [[1, 4], [6, 4], [4, 1], [2, 1]];
+    $("#play").innerHTML = gridSvg(7, 5, `<rect x="0" y="${U}" width="${7 * U}" height="${3 * U}" fill="#cfe6f8" opacity=".5" />` + poly(pts, "#cfe6f8") + seg(pts[0], pts[1], RED) + seg(pts[3], pts[2], RED) + seg([3, 1], [3, 4], GREEN) + right([3, 4], [0, -1], [1, 0])) + `<div id="pad"></div>`;
+    numPad({ el: $("#pad"), ok: wcm, unit: "cm", max: 2, tries: 2,
+      onRight: () => { ui.grok(`Tak! ${wcm} cm, tyle, ile szerokość paska.`); ui.beata("Pierwszy raz Grok coś przewidział.", "good") },
+      onWrong: () => ui.beata("Bee… wysokość to odległość między brzegami paska.", "bad"),
+      onReveal: () => { ui.grok(`${wcm} cm, tyle, ile szerokość paska.`); ui.beata(pick(CHEER_UP), "bad") } });
+  }
+
+  const PLAN = [isTrapRound, partRound, armPad, isoPad, heightPad, kindRound, whereRound, quizRound, factRound, stripPad];
+  GAMES.trapez = {
+    rounds: PLAN.length,
+    cheat: `<div class="cheat"><h4>Ściąga z odcinka 21</h4><ul>
+      <li><b>Trapez</b> ma jedną lub dwie pary boków równoległych. Każdy równoległobok też jest trapezem.</li>
+      <li>Równoległe boki to <b>podstawy</b>, pozostałe to <b>ramiona</b>.</li>
+      <li>Kąty przy jednym ramieniu mają w sumie <b>180°</b>.</li>
+      <li><b>Wysokość</b> rysujemy tylko między podstawami.</li>
+      <li><b>Równoramienny:</b> równe ramiona, oś symetrii, równe kąty przy tej samej podstawie. <b>Prostokątny:</b> ramię prostopadłe do podstaw.</li></ul></div>`,
     round(i) { PLAN[i]() },
   };
 })();
