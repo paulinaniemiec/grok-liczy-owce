@@ -26,6 +26,7 @@ W odcinkach są zagadki „Zatrzymaj film!” i quizy. Na stronie jest też darm
 - [#17 Sprytne mnożenie (matematyka klasa 4, 5:21)](https://www.youtube.com/watch?v=7BR1pXLJIfM): 12 rzędów po 6 owiec. Mnożenie przez 10, 100 i 1000, zera na końcu, dowolna kolejność i mnożenie po kawałku. Gra do odcinka: https://grokliczyowce.pl/gra.html#sprytne („Zera na końcu”). Opis, ściąga i przykłady: https://grokliczyowce.pl/sprytne-mnozenie/
 - [#18 Sprytne dzielenie (matematyka klasa 4, 5:00)](https://www.youtube.com/watch?v=zY1Jd6aauQw): 72 owce i 3 zagrody. Dzielenie przez 10, 100 i 1000, skreślanie zer w obu liczbach i dzielenie po kawałku. Gra do odcinka: https://grokliczyowce.pl/gra.html#skresl („Skreśl zera”). Opis, ściąga i przykłady: https://grokliczyowce.pl/sprytne-dzielenie/
 - [#19 Równoległoboki (matematyka klasa 5, 4:01)](https://www.youtube.com/watch?v=cwVpKYGds_I): Zagroda Groka się przekrzywia, ale dalej jest równoległobokiem. Boki i kąty równoległoboku, romb z kartki, kwadrat i rysowanie w kratkę. Gra do odcinka: https://grokliczyowce.pl/gra.html#zagroda („Krzywa zagroda”). Opis, ściąga i przykłady: https://grokliczyowce.pl/rownolegloboki/
+- [#20 Wysokość równoległoboku (matematyka klasa 5, 3:11)](https://www.youtube.com/watch?v=mK2WGvtaZOI): Deski furtki mają 2 m, a furtka? Wysokość równoległoboku: prostopadła do dwóch równoległych boków, do przedłużenia boku i po obróceniu kartki. Gra do odcinka: https://grokliczyowce.pl/gra.html#furtka („Furtka Groka”). Opis, ściąga i przykłady: https://grokliczyowce.pl/wysokosc-rownolegloboku/
 
 ## Materiały
 
